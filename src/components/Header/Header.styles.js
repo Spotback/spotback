@@ -13,21 +13,41 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
+  footer: {
+    backgroundColor: '#343A40',
+    width: width,
+    height: 85,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
   profilePic: {
     position: 'absolute',
     left: 25,
-    top: 50
+    top: 50,
   },
-  title: {
+  headerTitle: {
     color: '#fff',
     fontSize: 24,
     marginTop: 100,
-    left: 30
+    left: 25,
+  },
+  footerLine: {
+    alignSelf: 'flex-start',
+    borderTopColor: 'white',
+    borderTopWidth: 3,
+  },
+  footerTitle: {
+    color: '#fff',
+    fontSize: 24,
+    left: 0,
   },
   balance: {
     color: '#fff',
     fontSize: 24,
-    left: 120
+    left: 120,
   },
 });
 
