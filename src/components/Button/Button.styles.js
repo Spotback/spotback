@@ -5,14 +5,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#343A40',
         padding: 10,
-        width: 375,
+        width: 350,
         height: 55,
         borderRadius: 10,
-        marginVertical: 30
+        shadowColor: '#797979',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,  
+        elevation: 10
+    
       },
       title: {
         color: '#fff',
-        fontSize: 24
+        fontSize: 24,
       }
   });
 
