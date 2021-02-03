@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {View, Text, TouchableOpacity} from 'react-native';
+
 import styles from './Link.styles';
 
 const Link = ({extraText, linkText, onPress}) => {
