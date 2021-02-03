@@ -3,9 +3,11 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
+import BackArrow from '../BackArrow/BackArrow';
 import Onboarding from '../../views/Onboarding/Onboarding';
 import Signup from '../../views/Signup/Signup';
 import Login from '../../views/Login/Login';
+import Home from '../../views/Home/Home';
 
 const Stack = createStackNavigator();
 
@@ -16,18 +18,48 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}
-          options={{title: 'Onboarding'}}
+          options={{
+            title: null,
+            headerStyle: {
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 0,
+            },
+          }}
         />
         <Stack.Screen
           name="Signup"
           component={Signup}
-          options={{title: 'Signup'}}
+          options={{
+            title: null,
+            headerStyle: {
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 0,
+            },
+            headerLeft: () => <BackArrow navigationDirection="Onboarding" />,
+          }}
         />
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{title: 'Login'}}
+          options={{
+            title: null,
+            headerStyle: {
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 0,
+            },
+            headerLeft: () => <BackArrow navigationDirection="Onboarding" />,
+          }}
         />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            headerShown: false
+          }}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -9,7 +9,7 @@ const App = () => {
   const height = Dimensions.get('window').height;
 
   return (
-    <SafeAreaView style={{ height: height}}>
+    <SafeAreaView style={{ height: height }}>
       <StackNavigator />
     </SafeAreaView>
   );

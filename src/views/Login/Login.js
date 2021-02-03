@@ -2,6 +2,8 @@ import React from 'react';
 
 import {View} from 'react-native';
 
+import {useNavigation} from '@react-navigation/native';
+
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Link from '../../components/Link/Link';
@@ -9,6 +11,9 @@ import Link from '../../components/Link/Link';
 import styles from './Login.styles';
 
 const Login = () => {
+
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Input placeholder="Your Email" inputStyle="long" />
@@ -21,7 +26,7 @@ const Login = () => {
         </View>
       </View>
       <View style={styles.button}>
-        <Button title="Log In" />
+        <Button title="Log In" onPress={() => navigation.navigate('Home') }/>
       </View>
     </View>
   );
