@@ -1,6 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
 
+import {useNavigation} from '@react-navigation/native';
+
 import Header from '../../components/Header/Header';
 import profilePic from '../../images/profilePic.png';
 import Button from '../../components/Button/Button';
@@ -10,6 +12,9 @@ import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import styles from './Home.styles';
 
 const Home = () => {
+
+  const navigation = useNavigation();
+
   return (
     <View style={styles.mainContainer}>
       <Header title="Account" profilePic={profilePic} balance={15} />
@@ -32,7 +37,7 @@ const Home = () => {
         </View>
         <View style={styles.buttonContainer}>
           <View style={styles.spacing}>
-            <Button title="Find Me A Spot" />
+            <Button title="Find Me A Spot" onPress={() => navigation.navigate('FindMeASpot') }/>
           </View>
           <View style={styles.spacing}>
             <Button title="Post My Spot" />

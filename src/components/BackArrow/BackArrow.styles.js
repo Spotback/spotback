@@ -2,8 +2,8 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
-    marginLeft: 40,
+    marginTop: 65,
+    marginLeft: 25,
   },
   image: {
     width: 45,
