@@ -18,6 +18,18 @@ const styles = StyleSheet.create({
   spacing: {
     padding: 5,
   },
+
+
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    height: 550,
+    width: 400,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
 });
 
 export default styles;
