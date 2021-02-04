@@ -9,14 +9,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#343A40',
     width: width,
-    height: 85,
+    height: 75,
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
   footer: {
     backgroundColor: '#343A40',
     width: width,
-    height: 85,
+    height: 75,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'center',
@@ -26,12 +26,12 @@ const styles = StyleSheet.create({
   profilePic: {
     position: 'absolute',
     left: 25,
-    top: 50,
+    top: 40,
   },
   headerTitle: {
     color: '#fff',
     fontSize: 24,
-    marginTop: 100,
+    marginTop: 80,
     left: 25,
   },
   footerLine: {

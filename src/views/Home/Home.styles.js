@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FDFFFD',
+    zIndex: -1 //added negative Z for profile pic to show
   },
   buttonContainer: {
     bottom: 50,
@@ -18,9 +19,7 @@ const styles = StyleSheet.create({
   spacing: {
     padding: 5,
   },
-
-
-  container: {
+  mapView: {
     ...StyleSheet.absoluteFillObject,
     height: 550,
     width: 400,

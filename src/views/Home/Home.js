@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 
 import Header from '../../components/Header/Header';
 import profilePic from '../../images/profilePic.png';
 import Button from '../../components/Button/Button';
 
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 
 import styles from './Home.styles';
 
@@ -14,17 +14,21 @@ const Home = () => {
     <View style={styles.mainContainer}>
       <Header title="Account" profilePic={profilePic} balance={15} />
       <View style={styles.subContainer}>
-        <Text>Map Integration</Text>
-        <View style={styles.container}>
+        <View style={styles.mapView}>
           <MapView
-            provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+            provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
               latitude: 37.78825,
               longitude: -122.4324,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
-            }}></MapView>
+            }}>
+            <Marker
+              coordinate={{latitude: 37.78825, longitude: -122.4324}}
+              image={require('../../images/spotPin.png')}
+            />
+          </MapView>
         </View>
         <View style={styles.buttonContainer}>
           <View style={styles.spacing}>
