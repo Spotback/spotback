@@ -18,19 +18,7 @@ const FindMeASpot = () => {
             </View>
             <View style={styles.centerContainer}>
                 <View>
-                    <Text style={styles.text}>
-                        Where are you going?
-                    </Text>
-                </View>
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={() => console.log('press') }>
-                        <View style={styles.button}>
-                            <Text style={styles.buttonTitle}>Find Spot Here</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <View>
                     <Input placeholder="Enter destination" inputStyle="long" />
-                    </View>
                 </View>
             </View>
 

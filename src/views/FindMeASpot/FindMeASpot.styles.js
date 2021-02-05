@@ -23,36 +23,16 @@ const styles = StyleSheet.create({
   },
   centerContainer: {
     position: 'absolute',
-    top: 80,
+    top: 180,
     padding: 10,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     backgroundColor: '#343A40',
     width: 352,
-    height: 332,
+    height: 246,
     borderRadius: 10,
     elevation: 5
-  },
-  text: {
-    color: '#FFFFFF',
-    fontFamily: 'PT Sans',
-    fontSize: 24,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-  },
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#FFF',
-    padding: 10,
-    width: 165,
-    height: 55,
-    borderRadius: 10,
-  },
-  buttonTitle: {
-    color: '#000',
-    fontSize: 20,
   }
 });
 
