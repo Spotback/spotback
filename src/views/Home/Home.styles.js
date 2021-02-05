@@ -1,4 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
+
+const height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -10,7 +13,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FDFFFD',
-    zIndex: -1 //added negative Z for profile pic to show
+    zIndex: -1, //added negative Z for profile pic to show
   },
   buttonContainer: {
     bottom: 50,
@@ -21,13 +24,17 @@ const styles = StyleSheet.create({
   },
   mapView: {
     ...StyleSheet.absoluteFillObject,
-    height: 550,
+    height: height - 150,
     width: 400,
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  slider: {
+    backgroundColor: '#FDFFFD',
+    height: height,
   },
 });
 
