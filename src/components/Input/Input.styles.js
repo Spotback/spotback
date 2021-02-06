@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
   longInput: {
     backgroundColor: '#FFF',
     padding: 10,
-    width: 350,
-    height: 55,
+    width: 315,
+    height: 50,
     borderRadius: 10,
     borderWidth: 4,
     borderColor: '#343A40',
@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
   smallInput: {
     backgroundColor: '#FFF',
     padding: 10,
-    width: 165,
-    height: 55,
+    width: 149,
+    height: 50,
     borderRadius: 10,
     borderWidth: 4,
     borderColor: '#343A40',

@@ -25,7 +25,7 @@ const Signup = () => {
         </View>
         <Input placeholder="Referal Code" inputStyle="long" />
         <View style={styles.button}>
-          <Button title="Sign Up" />
+          <Button title="Sign Up" size='large'/>
         </View>
       </View>
     </View>

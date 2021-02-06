@@ -25,7 +25,7 @@ const Login = () => {
         </View>
       </View>
       <View style={styles.button}>
-        <Button title="Log In" onPress={() => navigation.navigate('Home') }/>
+        <Button title="Log In" size='large' onPress={() => navigation.navigate('Home') }/>
       </View>
     </View>
   );
