@@ -9,6 +9,7 @@ import Signup from '../../views/Signup/Signup';
 import Login from '../../views/Login/Login';
 import Home from '../../views/Home/Home';
 import FindMeASpot from '../../views/FindMeASpot/FindMeASpot'
+import Account from '../../views/Account/Account';
 
 const Stack = createStackNavigator();
 
@@ -72,6 +73,19 @@ const StackNavigator = () => {
               borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Login" />,
+          }}
+          />
+           <Stack.Screen
+          name="Account"
+          component={Account}
+          options={{
+            title: null,
+            headerStyle: {
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 0,
+            },
+            headerLeft: () => <BackArrow navigationDirection="Home" />,
           }}
           />
       </Stack.Navigator>

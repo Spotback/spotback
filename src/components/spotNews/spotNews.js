@@ -1,12 +1,16 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import {View, Text, Image} from 'react-native';
+import styles from './SpotNews.styles';
 
-const spotNews = () => {
-    return (
-        <View>
-            <Text></Text>
-        </View>
-    )
-}
+const SpotNews = ({text, image}) => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>{text}</Text>
+      </View>
+      <Image style={styles.image} source={image} />
+    </View>
+  );
+};
 
-export default spotNews
+export default SpotNews;

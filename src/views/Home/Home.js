@@ -4,7 +4,11 @@ import {View, Text} from 'react-native';
 import Header from '../../components/Header/Header';
 import profilePic from '../../images/profilePic.png';
 import Button from '../../components/Button/Button';
+import SpotNews from '../../components/SpotNews/SpotNews';
 import styles from './Home.styles';
+import handShake from '../../images/handShake.png';
+import friends from '../../images/friends.png';
+import pin from '../../images/pin.png';
 
 import {useNavigation} from '@react-navigation/native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
@@ -24,7 +28,7 @@ const Home = () => {
 
   return (
     <View style={styles.mainContainer}>
-      <Header title="Account" profilePic={profilePic} balance={15} />
+      <Header title="Account" profilePic={profilePic} balance={15} onPress={() => navigation.navigate('Account')} />
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
           <MapView
@@ -59,12 +63,13 @@ const Home = () => {
         componentVisible={spotNewsVisible}
         changeVisibilityCallback={toggleSpotNewsVisibility}
         useNativeDriver={true}
-      >
-        <View style={styles.slider}>
+        height={styles.slider.height}
+        containerStyle={styles.slider}>
         <Header title="SpotNews" flip onPress={toggleSpotNewsVisibility} />
-          <Text>Welcome to the Spotback parking app!</Text>
-          <Text>Invite your friends and recieve a free spot.</Text>
-          <Text>Pin you location after parking so we can match you before getting back in your car.</Text>
+        <View style={styles.sliderContainer}>
+          <SpotNews text="Welcome to the Spotback parking app!" image={handShake}/>
+          <SpotNews text="Invite your friends and recieve a free spot" image={friends}/>
+          <SpotNews text="Pin you location after parking so we can match you before getting back in your car." image={pin}/>
         </View>
       </SlidingView>
     </View>

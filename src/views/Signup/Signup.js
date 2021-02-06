@@ -1,12 +1,15 @@
 import React from 'react';
 
 import {View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import styles from './Signup.styles';
 
 const Signup = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Input placeholder="Your Email" inputStyle="long" />
@@ -25,7 +28,7 @@ const Signup = () => {
         </View>
         <Input placeholder="Referal Code" inputStyle="long" />
         <View style={styles.button}>
-          <Button title="Sign Up" />
+          <Button title="Sign Up" onPress={() => navigation.navigate('Home')} />
         </View>
       </View>
     </View>

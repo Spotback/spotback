@@ -34,8 +34,15 @@ const styles = StyleSheet.create({
   },
   slider: {
     backgroundColor: '#FDFFFD',
-    height: height,
+    height: height - 200,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
+  sliderContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 20
+  }
 });
 
 export default styles;
