@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDFFFD',
   },
   image: {
-    width: 320,
-    height: 84,
+    width: 273,
   },
   button: {
     marginVertical: 30

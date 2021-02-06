@@ -19,6 +19,7 @@ const Onboarding = () => {
       <View style={styles.button}>
         <Button
           title="Sign Up With Email"
+          size='large'
           onPress={() => navigation.navigate('Signup')}
         />
       </View>

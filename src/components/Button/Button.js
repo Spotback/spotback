@@ -1,15 +1,27 @@
 import React from 'react';
 
-import {Text, TouchableOpacity, View} from 'react-native';
+import { Text, TouchableOpacity, View, Image } from 'react-native';
 
 import styles from './Button.styles';
 
-const Button = ({title, onPress}) => {
+const Button = ({ title, onPress, size, icon, color }) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={styles.button}>
-        <Text style={styles.title}>{title}</Text>
-      </View>
+      {
+        size && size === 'large' && (
+          <View style={styles.buttonLarge}>
+            <Text style={styles.titleLarge}>{title}</Text>
+          </View>
+        )
+      }
+      {
+        size && size === 'small' && (
+          <View style={styles.buttonSmall}>
+            <Text style={styles.titleSmall}>{title}</Text>
+            <Image style={styles.icon} source={icon} />
+          </View>
+        )
+      }
     </TouchableOpacity>
   );
 };

@@ -1,9 +1,12 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 
+import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 
 import styles from './FindMeASpot.styles';
+
+import pinIcon from '../../images/spotPin.png'
 
 const FindMeASpot = () => {
     return (
@@ -15,6 +18,17 @@ const FindMeASpot = () => {
                 <Text style={styles.titleText}>
                     Pay $6
                 </Text>
+            </View>
+            <View style={styles.buttonsContainer}>
+                <Button
+                    title="Find Spot here"
+                    size='small'
+                    icon={pinIcon}
+                />
+                <Button
+                    title="EV Spot"
+                    size='small'
+                />
             </View>
             <View style={styles.centerContainer}>
                 <View>

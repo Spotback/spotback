@@ -50,11 +50,12 @@ const Home = () => {
           <View style={styles.spacing}>
             <Button
               title="Find Me A Spot"
+              size= "large"
               onPress={() => navigation.navigate('FindMeASpot')}
             />
           </View>
           <View style={styles.spacing}>
-            <Button title="Post My Spot" />
+            <Button title="Post My Spot" size= "large"/>
           </View>
         </View>
       </View>
