@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {View, Text, Image} from 'react-native';
 
 import StarRating from 'react-native-star-rating';
 
