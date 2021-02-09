@@ -27,6 +27,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 25,
     top: 40,
+    width: 65,
+    height: 65
   },
   headerTitle: {
     color: '#fff',

@@ -23,6 +23,7 @@ const StackNavigator = () => {
           options={{
             title: null,
             headerStyle: {
+              backgroundColor: '#FDFFFD',
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -35,6 +36,7 @@ const StackNavigator = () => {
           options={{
             title: null,
             headerStyle: {
+              backgroundColor: '#FDFFFD',
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -48,6 +50,7 @@ const StackNavigator = () => {
           options={{
             title: null,
             headerStyle: {
+              backgroundColor: '#FDFFFD',
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -68,6 +71,7 @@ const StackNavigator = () => {
           options={{
             title: null,
             headerStyle: {
+              backgroundColor: '#FDFFFD',
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -81,6 +85,7 @@ const StackNavigator = () => {
           options={{
             title: null,
             headerStyle: {
+              backgroundColor: '#FDFFFD',
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
