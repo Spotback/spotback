@@ -41,7 +41,6 @@ const Home = () => {
               longitudeDelta: 0.0121,
             }}>
             <Marker
-            // commit for change
               coordinate={{latitude: 37.78825, longitude: -122.4324}}
               image={require('../../images/spotPin.png')}
             />
