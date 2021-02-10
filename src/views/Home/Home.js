@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView, Image} from 'react-native';
 
 import Header from '../../components/Header/Header';
 import profilePic from '../../images/profilePic.png';
 import Button from '../../components/Button/Button';
-import SpotNews from '../../components/SpotNews/SpotNews';
 import styles from './Home.styles';
 import handShake from '../../images/handShake.png';
 import friends from '../../images/friends.png';
@@ -26,9 +25,33 @@ const Home = () => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   }, []);
 
+  const spotNewsItems = [
+    {
+      image: handShake,
+      title: 'Welcome to the Spotback parking app!',
+      id: 1,
+    },
+    {
+      image: friends,
+      title: 'Invite your friends and recieve a free spot',
+      id: 2,
+    },
+    {
+      image: pin,
+      title:
+        'Pin you location after parking so we can match you before getting back in your car',
+      id: 3,
+    },
+  ];
+
   return (
     <View style={styles.mainContainer}>
-      <Header title="Account" profilePic={profilePic} balance={15} onPress={() => navigation.navigate('Account')} />
+      <Header
+        title="Account"
+        profilePic={profilePic}
+        balance={15}
+        onPress={() => navigation.navigate('Account')}
+      />
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
           <MapView
@@ -50,12 +73,12 @@ const Home = () => {
           <View style={styles.spacing}>
             <Button
               title="Find Me A Spot"
-              size= "large"
+              size="large"
               onPress={() => navigation.navigate('FindMeASpot')}
             />
           </View>
           <View style={styles.spacing}>
-            <Button title="Post My Spot" size= "large"/>
+            <Button title="Post My Spot" size="large" />
           </View>
         </View>
       </View>
@@ -67,11 +90,20 @@ const Home = () => {
         height={styles.slider.height}
         containerStyle={styles.slider}>
         <Header title="SpotNews" flip onPress={toggleSpotNewsVisibility} />
-        <View style={styles.sliderContainer}>
-          <SpotNews text="Welcome to the Spotback parking app!" image={handShake}/>
-          <SpotNews text="Invite your friends and recieve a free spot" image={friends}/>
-          <SpotNews text="Pin you location after parking so we can match you before getting back in your car." image={pin}/>
-        </View>
+        <ScrollView>
+          <View style={styles.sliderContainer}>
+            {spotNewsItems.map((spotNewsItem, index) => {
+              return (
+                <View key={spotNewsItem.id} style={styles.spotNewsContainer}>
+                  <View style={styles.textContainer}>
+                    <Text style={styles.text}>{spotNewsItem.title}</Text>
+                  </View>
+                  <Image style={styles.image} source={spotNewsItem.image} />
+                </View>
+              );
+            })}
+          </View>
+        </ScrollView>
       </SlidingView>
     </View>
   );
