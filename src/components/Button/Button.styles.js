@@ -19,15 +19,24 @@ const styles = StyleSheet.create({
     width: 165,
     height: 55,
     borderRadius: 10,
-    marginRight: 20
+    marginRight: 20,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   icon: {
+    marginLeft: 15,
     width: 25,
-    height: 15,
+    height: 35,
+    // borderWidth: 2,
+    // borderColor: 'red'
   },
   titleSmall: {
     color: '#fff',
-    fontSize: 18
+    fontSize: 18,
+    // borderWidth: 2,
+    // borderColor: 'blue',
+    width: 85,
   }
 });
 
