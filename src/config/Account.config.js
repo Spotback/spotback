@@ -9,29 +9,29 @@ const menuItems = [
     {
       image: transfers,
       title: 'Transfer to Bank',
-      navigationDirection: 'Home',
+      navigationDirection: 'TransferToBank',
       id: 1,
     },
     {
       image: invite,
       title: 'Invite a Friend',
-      navigationDirection: 'Home',
+      navigationDirection: 'InviteAFriend',
       id: 2,
     },
     {
       image: editProfile,
       title: 'Edit Profile',
-      navigationDirection: 'Home',
+      navigationDirection: 'EditProfile',
       id: 3,
     },
-    {image: help, title: 'Help', navigationDirection: 'Home', id: 4},
+    {image: help, title: 'Help', navigationDirection: 'Help', id: 4},
     {
       image: creditCard,
       title: 'Payment Information',
       navigationDirection: 'Home',
       id: 5,
     },
-    {image: exit, title: 'Sign Out', navigationDirection: 'Home', id: 6},
+    {image: exit, title: 'Sign Out', navigationDirection: 'Onboarding', id: 6},
   ];
 
   export default menuItems;

@@ -20,8 +20,7 @@ const Home = () => {
 
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
-    const spotNewsItems = spotNewsItems;
-  }, [spotNewsItems]);
+  }, []);
 
   return (
     <View style={styles.mainContainer}>

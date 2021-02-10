@@ -27,10 +27,12 @@ const Account = () => {
         <Text style={styles.subText}>BMW 3 Series 2013 Black</Text>
       </View>
       <ScrollView>
-        { menuItems?.map((menuItem, index) => {
+        {menuItems?.map((menuItem, index) => {
           return (
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-              <View key={menuItem.id} style={styles.iconContainer}>
+            <TouchableOpacity
+              key={menuItem.id}
+              onPress={() => navigation.navigate(menuItem.navigationDirection)}>
+              <View style={styles.iconContainer}>
                 <Image style={styles.image} source={menuItem.image} />
                 <Text style={styles.text}>{menuItem.title}</Text>
               </View>

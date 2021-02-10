@@ -10,6 +10,8 @@ import Login from '../../views/Login/Login';
 import Home from '../../views/Home/Home';
 import FindMeASpot from '../../views/FindMeASpot/FindMeASpot'
 import Account from '../../views/Account/Account';
+import TransferToBank from '../../views/TransferToBank/TransferToBank';
+import InviteAFriend from '../../views/InviteAFriend/InviteAFriend';
 
 const Stack = createStackNavigator();
 
@@ -91,6 +93,62 @@ const StackNavigator = () => {
               borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Home" />,
+          }}
+          />
+           <Stack.Screen
+          name="TransferToBank"
+          component={TransferToBank}
+          options={{
+            title: null,
+            headerStyle: {
+              backgroundColor: '#FDFFFD',
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 0,
+            },
+            headerLeft: () => <BackArrow navigationDirection="Account" />,
+          }}
+          />
+          <Stack.Screen
+          name="InviteAFriend"
+          component={InviteAFriend}
+          options={{
+            title: null,
+            headerStyle: {
+              backgroundColor: '#FDFFFD',
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 0,
+            },
+            headerLeft: () => <BackArrow navigationDirection="Account" />,
+          }}
+          />
+          <Stack.Screen
+          name="EditProfile"
+          component={Home}
+          options={{
+            title: null,
+            headerStyle: {
+              backgroundColor: '#FDFFFD',
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 0,
+            },
+            headerLeft: () => <BackArrow navigationDirection="Account" />,
+          }}
+          />
+          <Stack.Screen
+          name="Help"
+          component={Home}
+          options={{
+            title: null,
+            headerStyle: {
+              backgroundColor: '#FDFFFD',
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 0,
+            },
+            headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
           />
       </Stack.Navigator>
