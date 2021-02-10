@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: 'row',
     position: 'absolute',
-    top: 100,
+    top: 120,
     width: 352,
   },
   centerContainer: {
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
     backgroundColor: '#343A40',
-    // backgroundColor: 'transparent',
     width: 352,
     height: 246,
     borderRadius: 10,

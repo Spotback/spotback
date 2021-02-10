@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
     padding: 8,
     width: 315,
     height: 50,
-    borderRadius: 10
+    borderRadius: 10,
+    elevation: 5
   },
   titleLarge: {
     color: '#fff',
@@ -23,20 +24,38 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
+    elevation: 5,
   },
   icon: {
     marginLeft: 15,
-    width: 25,
-    height: 35,
-    // borderWidth: 2,
-    // borderColor: 'red'
+    width: 30,
+    height: 40,
   },
   titleSmall: {
     color: '#fff',
     fontSize: 18,
-    // borderWidth: 2,
-    // borderColor: 'blue',
     width: 85,
+  },
+  buttonColors: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#343A40',
+    width: 165,
+    height: 55,
+    borderRadius: 10,
+    elevation: 5
+  },
+  buttonRed: {
+    color: '#FF0000',
+    fontSize: 20
+  },
+  buttonGreen: {
+    color: '#70B81D',
+    fontSize: 20
+  },
+  buttonWhite: {
+    color: '#FFF',
+    fontSize: 20
   }
 });
 

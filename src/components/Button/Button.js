@@ -18,7 +18,22 @@ const Button = ({ title, onPress, size, icon, color }) => {
         size && size === 'small' && (
           <View style={styles.buttonSmall}>
             <Text style={styles.titleSmall}>{title}</Text>
-            <Image style={styles.icon} source={icon} />
+            <Image style={title === "EV Spot" ? "" : styles.icon} source={icon} />
+          </View>
+        )
+      }
+      {
+        color && (
+          <View style={styles.buttonColors}>
+            <Text
+              style={
+                color === 'red' ? 
+                styles.buttonRed : 
+                color === 'green' ? 
+                styles.buttonGreen :
+                styles.buttonWhite
+              }
+            >{title}</Text>
           </View>
         )
       }

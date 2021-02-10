@@ -6,7 +6,8 @@ import Input from '../../components/Input/Input';
 
 import styles from './FindMeASpot.styles';
 
-import pinIcon from '../../images/spotPin.png'
+import pinIcon from '../../images/spotPin2.png';
+import EVIcon from '../../images/evCar.png'
 
 const FindMeASpot = () => {
     return (
@@ -28,6 +29,7 @@ const FindMeASpot = () => {
                 <Button
                     title="EV Spot"
                     size='small'
+                    icon={EVIcon}
                 />
             </View>
             <View style={styles.centerContainer}>
