@@ -11,12 +11,8 @@ const styles = StyleSheet.create({
     width: 40,
   },
   centerContainer: {
-    width: 310,
-    height: 150,
-    marginVertical: 50,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
+    marginVertical: 20,
+    alignItems: 'flex-end', 
   },
   subText: {
     color: '#000000',
@@ -26,8 +22,10 @@ const styles = StyleSheet.create({
     padding: 10
   },
   itemContainer: {
-    padding: 10
-  }
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+  },
 });
 
 export default styles;

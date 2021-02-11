@@ -6,12 +6,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FDFFFD',
   },
-  titleContainer: {
-    top: -10,
-    display: 'flex',
-    alignItems: 'center',
-    textAlign: 'center',
-  },
   titleText: {
     color: '#000000',
     fontFamily: 'PT Sans',

@@ -13,9 +13,6 @@ const Account = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>Account</Text>
-      </View>
       <Image style={styles.profilePicImage} source={profilePic} />
       <View style={styles.starContainer}>
         <Stars />

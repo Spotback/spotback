@@ -14,9 +14,6 @@ const FindMeASpot = () => {
         <View style={styles.container}>
             <View style={styles.titleContainer}>
                 <Text style={styles.titleText}>
-                    Find Me A Spot
-                </Text>
-                <Text style={styles.titleText}>
                     Pay $6
                 </Text>
             </View>

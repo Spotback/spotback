@@ -2,8 +2,8 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 65,
-    paddingLeft: 25,
+    paddingTop: 2.5,
+    paddingLeft: 5,
   },
   image: {
     width: 45,

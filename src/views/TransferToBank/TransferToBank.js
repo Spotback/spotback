@@ -1,12 +1,26 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import {View, Text, Image} from 'react-native';
+
+import Button from '../../components/Button/Button';
+import Input from '../../components/Input/Input';
+import transfers from '../../images/transfers.png';
+import styles from './TransferToBank.styles';
 
 const TransferToBank = () => {
-    return (
-        <View>
-            <Text>Transfer to Bank</Text>
+  return (
+    <View style={styles.container}>
+      <Image style={styles.image} source={transfers} />
+      <View style={styles.centerContainer}>
+        <Text style={styles.subText}>Spot Balance: $0</Text>
+        <View style={styles.itemContainer}>
+          <Input inputStyle="long" />
         </View>
-    )
-}
+        <View style={styles.itemContainer}>
+          <Button title="Cash Out" size="large" />
+        </View>
+      </View>
+    </View>
+  );
+};
 
 export default TransferToBank;

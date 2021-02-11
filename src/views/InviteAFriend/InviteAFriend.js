@@ -20,10 +20,7 @@ const InviteAFriend = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>Invite a Friend</Text>
         <Image style={styles.image} source={friends} />
-      </View>
       <View style={styles.centerContainer}>
         <Text style={styles.subText}>
           Share this code with your friends and recieve a free spot on thier

@@ -8,10 +8,11 @@ import Onboarding from '../../views/Onboarding/Onboarding';
 import Signup from '../../views/Signup/Signup';
 import Login from '../../views/Login/Login';
 import Home from '../../views/Home/Home';
-import FindMeASpot from '../../views/FindMeASpot/FindMeASpot'
+import FindMeASpot from '../../views/FindMeASpot/FindMeASpot';
 import Account from '../../views/Account/Account';
 import TransferToBank from '../../views/TransferToBank/TransferToBank';
 import InviteAFriend from '../../views/InviteAFriend/InviteAFriend';
+import EditProfile from '../../views/EditProfile/EditProfile';
 import Help from '../../views/Help/Help';
 
 const Stack = createStackNavigator();
@@ -65,14 +66,23 @@ const StackNavigator = () => {
           name="Home"
           component={Home}
           options={{
-            headerShown: false
+            headerShown: false,
           }}
-          />
-          <Stack.Screen
+        />
+        <Stack.Screen
           name="FindMeASpot"
           component={FindMeASpot}
           options={{
-            title: null,
+            title: 'Find Me A Spot',
+            headerTitleStyle: {
+              color: '#000000',
+              fontFamily: 'PT Sans',
+              fontWeight: 'bold',
+              fontSize: 24,
+              textAlign: 'center',
+              paddingTop: 2.5,
+              marginRight: 55,
+            },
             headerStyle: {
               backgroundColor: '#FDFFFD',
               elevation: 0,
@@ -81,12 +91,21 @@ const StackNavigator = () => {
             },
             headerLeft: () => <BackArrow navigationDirection="Home" />,
           }}
-          />
-           <Stack.Screen
+        />
+        <Stack.Screen
           name="Account"
           component={Account}
           options={{
-            title: null,
+            title: 'Account',
+            headerTitleStyle: {
+              color: '#000000',
+              fontFamily: 'PT Sans',
+              fontWeight: 'bold',
+              fontSize: 24,
+              textAlign: 'center',
+              paddingTop: 2.5,
+              marginRight: 55,
+            },
             headerStyle: {
               backgroundColor: '#FDFFFD',
               elevation: 0,
@@ -95,12 +114,21 @@ const StackNavigator = () => {
             },
             headerLeft: () => <BackArrow navigationDirection="Home" />,
           }}
-          />
-           <Stack.Screen
+        />
+        <Stack.Screen
           name="TransferToBank"
           component={TransferToBank}
           options={{
-            title: null,
+            title: 'Transfer to Bank',
+            headerTitleStyle: {
+              color: '#000000',
+              fontFamily: 'PT Sans',
+              fontWeight: 'bold',
+              fontSize: 24,
+              textAlign: 'center',
+              paddingTop: 2.5,
+              marginRight: 55,
+            },
             headerStyle: {
               backgroundColor: '#FDFFFD',
               elevation: 0,
@@ -109,12 +137,21 @@ const StackNavigator = () => {
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
-          />
-          <Stack.Screen
+        />
+        <Stack.Screen
           name="InviteAFriend"
           component={InviteAFriend}
           options={{
-            title: null,
+            title: 'Invite a Friend',
+            headerTitleStyle: {
+              color: '#000000',
+              fontFamily: 'PT Sans',
+              fontWeight: 'bold',
+              fontSize: 24,
+              textAlign: 'center',
+              paddingTop: 2.5,
+              marginRight: 55,
+            },
             headerStyle: {
               backgroundColor: '#FDFFFD',
               elevation: 0,
@@ -123,12 +160,21 @@ const StackNavigator = () => {
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
-          />
-          <Stack.Screen
+        />
+        <Stack.Screen
           name="EditProfile"
-          component={Home}
+          component={EditProfile}
           options={{
-            title: null,
+            title: 'Edit Profile',
+            headerTitleStyle: {
+              color: '#000000',
+              fontFamily: 'PT Sans',
+              fontWeight: 'bold',
+              fontSize: 24,
+              textAlign: 'center',
+              paddingTop: 2.5,
+              marginRight: 55,
+            },
             headerStyle: {
               backgroundColor: '#FDFFFD',
               elevation: 0,
@@ -137,12 +183,21 @@ const StackNavigator = () => {
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
-          />
-          <Stack.Screen
+        />
+        <Stack.Screen
           name="Help"
           component={Help}
           options={{
-            title: null,
+            title: 'Help',
+            headerTitleStyle: {
+              color: '#000000',
+              fontFamily: 'PT Sans',
+              fontWeight: 'bold',
+              fontSize: 24,
+              textAlign: 'center',
+              paddingTop: 2.5,
+              marginRight: 50,
+            },
             headerStyle: {
               backgroundColor: '#FDFFFD',
               elevation: 0,
@@ -151,7 +206,7 @@ const StackNavigator = () => {
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
-          />
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
