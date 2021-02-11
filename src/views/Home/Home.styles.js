@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   mapView: {
     ...StyleSheet.absoluteFillObject,
-    height: height - 150,
+    height: height,
     width: 400,
     justifyContent: 'flex-end',
     alignItems: 'center',

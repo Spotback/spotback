@@ -26,7 +26,7 @@ const Signup = () => {
         <View style={styles.input}>
           <Input placeholder="Password" inputStyle="short" />
         </View>
-        <Input placeholder="Referal Code" inputStyle="long" />
+        <Input placeholder="Referral Code" inputStyle="long" />
         <View style={styles.button}>
           <Button title="Sign Up" size='large' onPress={() => navigation.navigate('Home')} />
         </View>

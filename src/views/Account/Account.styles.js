@@ -2,16 +2,21 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    position: 'relative',
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#FDFFFD',
   },
   titleContainer: {
-    top: -5,
+    top: -10,
     display: 'flex',
     alignItems: 'center',
     textAlign: 'center',
+  },
+  titleText: {
+    color: '#000000',
+    fontFamily: 'PT Sans',
+    fontWeight: 'bold',
+    fontSize: 24,
   },
   centerContainer: {
     width: 310,
@@ -36,12 +41,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     margin: 5,
-  },
-  titleText: {
-    color: '#000000',
-    fontFamily: 'PT Sans',
-    fontWeight: 'bold',
-    fontSize: 24,
   },
   subText: {
     color: '#000000',

@@ -12,6 +12,7 @@ import FindMeASpot from '../../views/FindMeASpot/FindMeASpot'
 import Account from '../../views/Account/Account';
 import TransferToBank from '../../views/TransferToBank/TransferToBank';
 import InviteAFriend from '../../views/InviteAFriend/InviteAFriend';
+import Help from '../../views/Help/Help';
 
 const Stack = createStackNavigator();
 
@@ -78,7 +79,7 @@ const StackNavigator = () => {
               shadowOpacity: 0,
               borderBottomWidth: 0,
             },
-            headerLeft: () => <BackArrow navigationDirection="Login" />,
+            headerLeft: () => <BackArrow navigationDirection="Home" />,
           }}
           />
            <Stack.Screen
@@ -139,7 +140,7 @@ const StackNavigator = () => {
           />
           <Stack.Screen
           name="Help"
-          component={Home}
+          component={Help}
           options={{
             title: null,
             headerStyle: {

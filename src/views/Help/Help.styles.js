@@ -24,29 +24,9 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   centerContainer: {
-    width: 310,
-    height: 150,
-    marginVertical: 50,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
-  },
-  secondaryContainer: {
-    marginTop: 80,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
-  },
-  subText: {
-    color: '#000000',
-    fontFamily: 'PT Sans',
-    padding: 2,
-    fontSize: 20,
-  },
-  sendArrow: {
-      position: 'absolute',
-      left: 260,
-      top: 35
+    marginTop: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 });
 
