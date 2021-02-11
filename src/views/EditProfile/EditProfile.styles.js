@@ -10,21 +10,26 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
   },
-  centerContainer: {
+  profilePicImage: {
     marginVertical: 20,
-    alignItems: 'flex-end', 
+  },
+  centerContainer: {
+    alignItems: 'flex-end',
   },
   subText: {
     color: '#000000',
     fontFamily: 'PT Sans',
     padding: 2,
     fontSize: 20,
-    padding: 10
+    padding: 10,
   },
   itemContainer: {
-    padding: 10,
+    padding: 5,
     flexDirection: 'row',
-    alignItems: 'flex-end',
+  },
+  buttonContainer: {
+    bottom: 30,
+    position: 'absolute',
   },
 });
 

@@ -19,7 +19,6 @@ const EditProfile = () => {
         </View>
         <View style={styles.itemContainer}>
           <Text style={styles.subText}>License Plate: </Text>
-
           <Input inputStyle="small" />
         </View>
         <View style={styles.itemContainer}>
@@ -30,7 +29,8 @@ const EditProfile = () => {
           <Text style={styles.subText}>Vehicle Size: </Text>
           <Input inputStyle="small" />
         </View>
-
+      </View>
+      <View style={styles.buttonContainer}>
         <Button title="Save" size="large" />
       </View>
     </View>
