@@ -9,6 +9,7 @@ import Signup from '../../views/Signup/Signup';
 import Login from '../../views/Login/Login';
 import Home from '../../views/Home/Home';
 import FindMeASpot from '../../views/FindMeASpot/FindMeASpot';
+import PostMySpot from '../../views/PostMySpot/PostMySpot';
 import Account from '../../views/Account/Account';
 import TransferToBank from '../../views/TransferToBank/TransferToBank';
 import InviteAFriend from '../../views/InviteAFriend/InviteAFriend';
@@ -74,6 +75,29 @@ const StackNavigator = () => {
           component={FindMeASpot}
           options={{
             title: 'Find Me A Spot',
+            headerTitleStyle: {
+              color: '#000000',
+              fontFamily: 'PT Sans',
+              fontWeight: 'bold',
+              fontSize: 24,
+              textAlign: 'center',
+              paddingTop: 2.5,
+              marginRight: 55,
+            },
+            headerStyle: {
+              backgroundColor: '#FDFFFD',
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 0,
+            },
+            headerLeft: () => <BackArrow navigationDirection="Home" />,
+          }}
+        />
+        <Stack.Screen
+          name="PostMySpot"
+          component={PostMySpot}
+          options={{
+            title: 'Post My Spot',
             headerTitleStyle: {
               color: '#000000',
               fontFamily: 'PT Sans',

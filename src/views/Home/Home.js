@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, ScrollView, Image} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+import React, { useState, useEffect } from 'react';
+import { View, Text, ScrollView, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import SlidingView from 'rn-sliding-view';
-import {LogBox} from 'react-native';
+import { LogBox } from 'react-native';
 
 import spotNewsItems from '../../config/Home.config';
 import Header from '../../components/Header/Header';
@@ -42,7 +42,7 @@ const Home = () => {
               longitudeDelta: 0.0121,
             }}>
             <Marker
-              coordinate={{latitude: 37.78825, longitude: -122.4324}}
+              coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
               image={require('../../images/spotPin.png')}
             />
           </MapView>
@@ -56,7 +56,11 @@ const Home = () => {
             />
           </View>
           <View style={styles.spacing}>
-            <Button title="Post My Spot" size="large" />
+            <Button
+              title="Post My Spot"
+              size="large"
+              onPress={() => navigation.navigate('PostMySpot')}
+            />
           </View>
         </View>
       </View>
