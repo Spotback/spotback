@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import {View, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -7,14 +7,15 @@ import styles from './Onboarding.styles';
 import Button from '../../components/Button/Button';
 import Link from '../../components/Link/Link';
 
-import Loader from '../../components/Loader/Loader';
+// import Loader from '../../components/Loader/Loader';
 
 const Onboarding = () => {
   const navigation = useNavigation();
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   return (
     <View style={styles.container}>
-      {loading === false ? (
+    {/* for testing the loader */}
+      {/* {loading === false ? ( */}
         <>
           <Image
             style={styles.image}
@@ -33,9 +34,9 @@ const Onboarding = () => {
             onPress={() => navigation.navigate('Login')}
           />
         </>
-      ) : (
+      {/* ) : (
         <Loader />
-      )}
+      )} */}
     </View>
   );
 };
