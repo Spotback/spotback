@@ -11,7 +11,8 @@ import Loader from '../../components/Loader/Loader';
 
 const Onboarding = () => {
   const navigation = useNavigation();
-  const [loading, setLoading] = useState(true);
+  // true for loader
+  const [loading, setLoading] = useState(false);
 
   return (
     <View style={styles.container}>
