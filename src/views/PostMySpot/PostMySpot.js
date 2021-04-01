@@ -1,16 +1,17 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 import {View, Text} from 'react-native';
+import {Picker} from '@react-native-picker/picker';
+import {useNavigation} from '@react-navigation/native';
 
 import Button from '../../components/Button/Button';
 
 import styles from './PostMySpot.styles';
 
 const PostMySpot = () => {
-  const [where, setWhere] = useState(0);
-  const [when, setWhen] = useState(0);
-
-  let optionList1 = ['Street', 'Parking Lot', 'Driveway', 'EV Spot'];
-  let optionList2 = ['Now', '5 min', '10 min', '15 min'];
+  const navigation = useNavigation();
+  
+  const [where, setWhere] = useState('');
+  const [when, setWhen] = useState('');
 
   return (
     <View style={styles.container}>
@@ -20,22 +21,46 @@ const PostMySpot = () => {
       </View>
       <View style={styles.centerContainer}>
         <View style={styles.subContainer}>
-          <Text style={styles.subText}>Where did you park?</Text>
+          <Text style={styles.subText}>Where did</Text>
+          <Text style={styles.subText}>you park?</Text>
         </View>
-        <View>
-          <Text>list</Text>
+        <View style={styles.subPicker}>
+          <Picker
+            dropdownIconColor="#ffff"
+            style={{color: '#fff', width: 160}}
+            selectedValue={where}
+            onValueChange={(itemValue, itemIndex) =>
+              setWhere(itemValue)
+            }>
+            <Picker.Item label="Street" value="street" />
+            <Picker.Item label="Parking Lot" value="parking" />
+            <Picker.Item label="Driveway" value="driveway" />
+            <Picker.Item label="EV Spot" value="ev" />
+          </Picker>
         </View>
       </View>
       <View style={styles.centerContainer}>
         <View style={styles.subContainer}>
-          <Text style={styles.subText}>When will you get to your car?</Text>
+          <Text style={styles.subText}>When will you</Text>
+          <Text style={styles.subText}>get to your car?</Text>
         </View>
-        <View>
-          <Text>list</Text>
+        <View style={styles.subPicker}>
+          <Picker
+            dropdownIconColor="#ffff"
+            style={{color: '#fff', width: 160}}
+            selectedValue={when}
+            onValueChange={(itemValue, itemIndex) =>
+              setWhen(itemValue)
+            }>
+            <Picker.Item label="Now" value="now" />
+            <Picker.Item label="5 min" value="5" />
+            <Picker.Item label="10 min" value="10" />
+            <Picker.Item label="15 min" value="15" />
+          </Picker>
         </View>
       </View>
       <View style={styles.buttonsContainer}>
-        <Button title="Post Spot" size="large" />
+        <Button title="Post Spot" size="large" onPress={() => navigation.navigate('SearchingForMatch')}/>
       </View>
     </View>
   );

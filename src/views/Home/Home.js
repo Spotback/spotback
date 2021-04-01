@@ -12,11 +12,11 @@ import Button from '../../components/Button/Button';
 import styles from './Home.styles';
 
 const Home = () => {
+  const navigation = useNavigation();
+  
   const [spotNewsVisible, setspotNewsVisible] = useState(false);
 
   const toggleSpotNewsVisibility = () => setspotNewsVisible(!spotNewsVisible);
-
-  const navigation = useNavigation();
 
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
