@@ -19,7 +19,7 @@ const SearchingForMatch = () => {
           <Button
             title="Cancel"
             size="large"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('SpotExchange')}
           />
         </View>
 

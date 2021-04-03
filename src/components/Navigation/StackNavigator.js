@@ -16,6 +16,7 @@ import InviteAFriend from '../../views/InviteAFriend/InviteAFriend';
 import EditProfile from '../../views/EditProfile/EditProfile';
 import Help from '../../views/Help/Help';
 import SearchingForMatch from '../../views/SearchingForMatch/SearchingForMatch';
+import SpotExchange from '../../views/SpotExchange/SpotExchange';
 
 const Stack = createStackNavigator();
 
@@ -232,12 +233,20 @@ const StackNavigator = () => {
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="SearchingForMatch"
           component={SearchingForMatch}
           options={{
             headerShown: false,
-          }} />
+          }}
+        />
+        <Stack.Screen
+          name="SpotExchange"
+          component={SpotExchange}
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
