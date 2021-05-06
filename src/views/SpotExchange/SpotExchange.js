@@ -13,7 +13,7 @@ import styles from './SpotExchange.styles';
 
 const SpotExchange = () => {
   const navigation = useNavigation();
-  
+
   const [spotNewsVisible, setspotNewsVisible] = useState(false);
 
   const toggleSpotNewsVisibility = () => setspotNewsVisible(!spotNewsVisible);
@@ -24,8 +24,8 @@ const SpotExchange = () => {
 
   return (
     <View style={styles.mainContainer}>
-    {/* @TODO: create one more header version with boolean  */}
-        <Header
+      {/* @TODO: create one more header version with boolean  */}
+      <Header
         title="Arriving in 5 min"
         profilePic={profilePic}
         balance={15}
@@ -49,8 +49,8 @@ const SpotExchange = () => {
           </MapView>
         </View>
         <View style={styles.buttonContainer}>
-         {/* @TODO: create text messaging view  */}
-        <Text>TEXT MESSAGING</Text>
+          {/* @TODO: create text messaging view  */}
+          <Text>TEXT MESSAGING</Text>
           {/* <View style={styles.spacing}>
             <Button
               title="Find Me A Spot"

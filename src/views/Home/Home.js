@@ -13,7 +13,7 @@ import styles from './Home.styles';
 
 const Home = () => {
   const navigation = useNavigation();
-  
+
   const [spotNewsVisible, setspotNewsVisible] = useState(false);
 
   const toggleSpotNewsVisibility = () => setspotNewsVisible(!spotNewsVisible);
@@ -72,7 +72,11 @@ const Home = () => {
         height={styles.slider.height}
         containerStyle={styles.slider}
         disableDrag={true}>
-        <Header title="SpotNews" flip={true} onPress={toggleSpotNewsVisibility} />
+        <Header
+          title="SpotNews"
+          flip={true}
+          onPress={toggleSpotNewsVisibility}
+        />
         <ScrollView>
           <View style={styles.sliderContainer}>
             {spotNewsItems?.map((spotNewsItem, index) => {
