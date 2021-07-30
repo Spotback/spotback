@@ -1,10 +1,23 @@
-import React from 'react';
-
-import {View, Text, Image, TouchableOpacity} from 'react-native';
-
+import React, { FC } from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import styles from './Header.styles';
 
-const Header = ({title, profilePic, balance, onPress, flip, radius}) => {
+interface HeaderProps {
+  title: string;
+  profilePic: number;
+  balance: number;
+  onPress: any;
+  flip: boolean;
+  radius: boolean;
+}
+const Header: FC<HeaderProps> = ({
+  title,
+  profilePic,
+  balance,
+  onPress,
+  flip,
+  radius,
+}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       {flip && !radius && (

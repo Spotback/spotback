@@ -36,7 +36,7 @@ const menuItems = [
     navigationDirection: 'Home',
     id: 5,
   },
-  {image: exit, title: 'Sign Out', navigationDirection: 'Onboarding', id: 6},
+  { image: exit, title: 'Sign Out', navigationDirection: 'Onboarding', id: 6 },
 ];
 
 export default menuItems;
