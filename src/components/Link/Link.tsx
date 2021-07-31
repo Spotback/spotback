@@ -1,10 +1,14 @@
-import React from 'react';
-
-import {View, Text, TouchableOpacity} from 'react-native';
-
+import React, { FC } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './Link.styles';
 
-const Link = ({extraText, linkText, onPress}) => {
+interface LinkProps {
+  extraText: string;
+  linkText: string;
+  onPress: any;
+}
+
+const Link: FC<LinkProps> = ({ extraText, linkText, onPress }) => {
   return (
     <View style={styles.container}>
       {extraText && <Text style={styles.extraText}>{extraText}</Text>}

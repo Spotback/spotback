@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
 import BackArrow from '../BackArrow/BackArrow';
 import Onboarding from '../../views/Onboarding/Onboarding';
 import Signup from '../../views/Signup/Signup';

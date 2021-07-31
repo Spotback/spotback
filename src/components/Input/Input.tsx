@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
-
-import {TextInput} from 'react-native';
-
+import React, { FC, useState } from 'react';
+import { TextInput } from 'react-native';
 import styles from './Input.styles';
 
-const Input = ({placeholder, inputStyle}) => {
+interface Inputprops {
+  placeholder: string;
+  inputStyle: string;
+}
+const Input: FC<Inputprops> = ({ placeholder, inputStyle }) => {
   const [value, onChangeText] = useState('');
 
   return (

@@ -5,9 +5,9 @@ import styles from './Button.styles';
 interface ButtonProps {
   title: string;
   onPress: any;
-  size: any;
+  size: string;
   icon: any;
-  color: any;
+  color: string;
 }
 
 const Button: FC<ButtonProps> = ({ title, onPress, size, icon, color }) => {
