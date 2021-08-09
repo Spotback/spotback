@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,18 +16,17 @@ const styles = StyleSheet.create({
     marginVertical: 50,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   subText: {
     color: '#000000',
     fontFamily: 'PT Sans',
-    padding: 2,
     fontSize: 20,
-    padding: 10
+    padding: 10,
   },
   itemContainer: {
-    padding: 10
-  }
+    padding: 10,
+  },
 });
 
 export default styles;

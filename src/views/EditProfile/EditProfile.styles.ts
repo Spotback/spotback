@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   subText: {
     color: '#000000',
     fontFamily: 'PT Sans',
-    padding: 2,
     fontSize: 20,
     padding: 10,
   },

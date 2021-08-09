@@ -1,8 +1,6 @@
 import React from 'react';
-import {View} from 'react-native';
-
-import {useNavigation} from '@react-navigation/native';
-
+import { View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Link from '../../components/Link/Link';
@@ -10,7 +8,6 @@ import Link from '../../components/Link/Link';
 import styles from './Login.styles';
 
 const Login = () => {
-
   const navigation = useNavigation();
 
   return (
@@ -25,7 +22,7 @@ const Login = () => {
         </View>
       </View>
       <View style={styles.button}>
-        <Button title="Log In" size='large' onPress={() => navigation.navigate('Home') }/>
+        <Button title="Log In" size="large" onPress={() => navigation.navigate('Home')} />
       </View>
     </View>
   );

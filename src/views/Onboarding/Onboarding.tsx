@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import {View, Image} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { View, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import styles from './Onboarding.styles';
 import Button from '../../components/Button/Button';
@@ -16,13 +16,10 @@ const Onboarding = () => {
 
   return (
     <View style={styles.container}>
-  {/* for testing the loader  */}
-     {loading === false ? ( 
+      {/* for testing the loader  */}
+      {loading === false ? (
         <>
-          <Image
-            style={styles.image}
-            source={require('../../images/spotbackLogoFull.png')}
-          />
+          <Image style={styles.image} source={require('../../images/spotbackLogoFull.png')} />
           <View style={styles.button}>
             <Button
               title="Sign Up With Email"

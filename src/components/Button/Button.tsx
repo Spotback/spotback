@@ -4,10 +4,10 @@ import styles from './Button.styles';
 
 interface ButtonProps {
   title: string;
-  onPress: any;
+  onPress?: any;
   size: string;
-  icon: any;
-  color: string;
+  icon?: any;
+  color?: string;
 }
 
 const Button: FC<ButtonProps> = ({ title, onPress, size, icon, color }) => {
@@ -21,10 +21,7 @@ const Button: FC<ButtonProps> = ({ title, onPress, size, icon, color }) => {
       {size && size === 'small' && (
         <View style={styles.buttonSmall}>
           <Text style={styles.titleSmall}>{title}</Text>
-          <Image
-            style={title === 'EV Spot' ? '' : (styles.icon as any)}
-            source={icon}
-          />
+          <Image style={title === 'EV Spot' ? '' : (styles.icon as any)} source={icon} />
         </View>
       )}
       {color && (

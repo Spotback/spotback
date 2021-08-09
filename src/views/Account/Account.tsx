@@ -1,11 +1,9 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-
+import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import menuItems from '../../config/Account.config';
 import Stars from '../../components/Stars/Stars';
 import profilePic from '../../images/profilePic.png';
-
 import styles from './Account.styles';
 
 const Account = () => {

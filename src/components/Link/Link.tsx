@@ -3,9 +3,9 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './Link.styles';
 
 interface LinkProps {
-  extraText: string;
+  extraText?: string;
   linkText: string;
-  onPress: any;
+  onPress?: any;
 }
 
 const Link: FC<LinkProps> = ({ extraText, linkText, onPress }) => {

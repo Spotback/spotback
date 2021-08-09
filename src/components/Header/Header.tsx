@@ -4,20 +4,13 @@ import styles from './Header.styles';
 
 interface HeaderProps {
   title: string;
-  profilePic: number;
-  balance: number;
+  profilePic?: number;
+  balance?: number;
   onPress: any;
-  flip: boolean;
-  radius: boolean;
+  flip?: boolean;
+  radius?: boolean;
 }
-const Header: FC<HeaderProps> = ({
-  title,
-  profilePic,
-  balance,
-  onPress,
-  flip,
-  radius,
-}) => {
+const Header: FC<HeaderProps> = ({ title, profilePic, balance, onPress, flip, radius }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       {flip && !radius && (
@@ -29,7 +22,7 @@ const Header: FC<HeaderProps> = ({
       )}
       {!flip && !radius && (
         <View style={styles.header}>
-          <Image style={styles.profilePic} source={profilePic} />
+          {profilePic && <Image style={styles.profilePic} source={profilePic} />}
           <Text style={styles.headerTitle}>{title}</Text>
           <Text style={styles.balance}>{`$${balance}`}</Text>
         </View>

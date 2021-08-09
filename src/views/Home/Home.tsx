@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
-
 import spotNewsItems from '../../config/Home.config';
 import Header from '../../components/Header/Header';
 import profilePic from '../../images/profilePic.png';
@@ -72,11 +71,7 @@ const Home = () => {
         height={styles.slider.height}
         containerStyle={styles.slider}
         disableDrag={true}>
-        <Header
-          title="SpotNews"
-          flip={true}
-          onPress={toggleSpotNewsVisibility}
-        />
+        <Header title="SpotNews" flip={true} onPress={toggleSpotNewsVisibility} />
         <ScrollView>
           <View style={styles.sliderContainer}>
             {spotNewsItems?.map((spotNewsItem, index) => {

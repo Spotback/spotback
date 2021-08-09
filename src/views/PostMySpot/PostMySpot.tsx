@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {View, Text} from 'react-native';
-import {Picker} from '@react-native-picker/picker';
-import {useNavigation} from '@react-navigation/native';
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
+import { useNavigation } from '@react-navigation/native';
 
 import Button from '../../components/Button/Button';
 
@@ -9,7 +9,7 @@ import styles from './PostMySpot.styles';
 
 const PostMySpot = () => {
   const navigation = useNavigation();
-  
+
   const [where, setWhere] = useState('');
   const [when, setWhen] = useState('');
 
@@ -27,11 +27,9 @@ const PostMySpot = () => {
         <View style={styles.subPicker}>
           <Picker
             dropdownIconColor="#ffff"
-            style={{color: '#fff', width: 160}}
+            style={{ color: '#fff', width: 160 }}
             selectedValue={where}
-            onValueChange={(itemValue, itemIndex) =>
-              setWhere(itemValue)
-            }>
+            onValueChange={(itemValue, itemIndex) => setWhere(itemValue)}>
             <Picker.Item label="Street" value="street" />
             <Picker.Item label="Parking Lot" value="parking" />
             <Picker.Item label="Driveway" value="driveway" />
@@ -47,11 +45,9 @@ const PostMySpot = () => {
         <View style={styles.subPicker}>
           <Picker
             dropdownIconColor="#ffff"
-            style={{color: '#fff', width: 160}}
+            style={{ color: '#fff', width: 160 }}
             selectedValue={when}
-            onValueChange={(itemValue, itemIndex) =>
-              setWhen(itemValue)
-            }>
+            onValueChange={(itemValue, itemIndex) => setWhen(itemValue)}>
             <Picker.Item label="Now" value="now" />
             <Picker.Item label="5 min" value="5" />
             <Picker.Item label="10 min" value="10" />
@@ -60,7 +56,11 @@ const PostMySpot = () => {
         </View>
       </View>
       <View style={styles.buttonsContainer}>
-        <Button title="Post Spot" size="large" onPress={() => navigation.navigate('SearchingForMatch')}/>
+        <Button
+          title="Post Spot"
+          size="large"
+          onPress={() => navigation.navigate('SearchingForMatch')}
+        />
       </View>
     </View>
   );

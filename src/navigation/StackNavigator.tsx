@@ -1,20 +1,20 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import BackArrow from '../BackArrow/BackArrow';
-import Onboarding from '../../views/Onboarding/Onboarding';
-import Signup from '../../views/Signup/Signup';
-import Login from '../../views/Login/Login';
-import Home from '../../views/Home/Home';
-import FindMeASpot from '../../views/FindMeASpot/FindMeASpot';
-import PostMySpot from '../../views/PostMySpot/PostMySpot';
-import Account from '../../views/Account/Account';
-import TransferToBank from '../../views/TransferToBank/TransferToBank';
-import InviteAFriend from '../../views/InviteAFriend/InviteAFriend';
-import EditProfile from '../../views/EditProfile/EditProfile';
-import Help from '../../views/Help/Help';
-import SearchingForMatch from '../../views/SearchingForMatch/SearchingForMatch';
-import SpotExchange from '../../views/SpotExchange/SpotExchange';
+import BackArrow from '../components/BackArrow/BackArrow';
+import Onboarding from '../views/Onboarding/Onboarding';
+import Signup from '../views/Signup/Signup';
+import Login from '../views/Login/Login';
+import Home from '../views/Home/Home';
+import FindMeASpot from '../views/FindMeASpot/FindMeASpot';
+import PostMySpot from '../views/PostMySpot/PostMySpot';
+import Account from '../views/Account/Account';
+import TransferToBank from '../views/TransferToBank/TransferToBank';
+import InviteAFriend from '../views/InviteAFriend/InviteAFriend';
+import EditProfile from '../views/EditProfile/EditProfile';
+import Help from '../views/Help/Help';
+import SearchingForMatch from '../views/SearchingForMatch/SearchingForMatch';
+import SpotExchange from '../views/SpotExchange/SpotExchange';
 
 const Stack = createStackNavigator();
 
@@ -26,7 +26,7 @@ const StackNavigator = () => {
           name="Onboarding"
           component={Onboarding}
           options={{
-            title: null,
+            title: '',
             headerStyle: {
               backgroundColor: '#FDFFFD',
               elevation: 0,
@@ -39,7 +39,7 @@ const StackNavigator = () => {
           name="Signup"
           component={Signup}
           options={{
-            title: null,
+            title: '',
             headerStyle: {
               backgroundColor: '#FDFFFD',
               elevation: 0,
@@ -53,7 +53,7 @@ const StackNavigator = () => {
           name="Login"
           component={Login}
           options={{
-            title: null,
+            title: '',
             headerStyle: {
               backgroundColor: '#FDFFFD',
               elevation: 0,

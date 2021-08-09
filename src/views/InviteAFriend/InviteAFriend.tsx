@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, Text, Image, Share} from 'react-native';
-
+import { View, Text, Image, Share } from 'react-native';
 import Button from '../../components/Button/Button';
 import friends from '../../images/friends.png';
 import sendArrow from '../../images/sendArrow.png';
@@ -12,7 +11,7 @@ const InviteAFriend = () => {
       title: 'Spotback App',
       message:
         'One of your friends has given you 1 free Spot or $2 account credit. Use this link to download the app, https://play.google.com/store/apps/details?id=nic.goi.aarogyasetu&hl=en',
-    }).then(({action, activityType}) => {
+    }).then(({ action }) => {
       if (action === Share.sharedAction) console.log('Share was successful');
       else console.log('Share was dismissed');
     });
@@ -20,20 +19,16 @@ const InviteAFriend = () => {
 
   return (
     <View style={styles.container}>
-        <Image style={styles.image} source={friends} />
+      <Image style={styles.image} source={friends} />
       <View style={styles.centerContainer}>
         <Text style={styles.subText}>
-          Share this code with your friends and recieve a free spot on thier
-          first spot exchange.Their first spot exchange is on us!
+          Share this code with your friends and recieve a free spot on thier first spot
+          exchange.Their first spot exchange is on us!
         </Text>
 
         <View style={styles.secondaryContainer}>
           <Text style={styles.subText}>Share your referral code</Text>
-          <Button
-            title="joeyC4568"
-            size="large"
-            onPress={() => shareReferralCode()}
-          />
+          <Button title="joeyC4568" size="large" onPress={() => shareReferralCode()} />
           <Image style={styles.sendArrow} source={sendArrow} />
         </View>
       </View>

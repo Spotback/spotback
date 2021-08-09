@@ -3,7 +3,7 @@ import { TextInput } from 'react-native';
 import styles from './Input.styles';
 
 interface Inputprops {
-  placeholder: string;
+  placeholder?: string;
   inputStyle: string;
 }
 const Input: FC<Inputprops> = ({ placeholder, inputStyle }) => {

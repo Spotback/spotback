@@ -1,9 +1,9 @@
-import React, {useRef, useEffect} from 'react';
-import {Animated, Text, View, Image, Easing, animatedValue} from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { Animated, View, Image, Easing } from 'react-native';
 import styles from './Loader.styles';
-import {LogBox} from 'react-native';
+import { LogBox } from 'react-native';
 
-const Loader = (props) => {
+const Loader = () => {
   let animatedValue = new Animated.Value(0);
 
   const bounce = animatedValue.interpolate({
@@ -21,6 +21,7 @@ const Loader = (props) => {
     Animated.timing(animatedValue, {
       toValue: 1,
       duration: 4000,
+      useNativeDriver: true,
       easing: Easing.linear,
     }).start(() => animate());
   };
@@ -29,7 +30,7 @@ const Loader = (props) => {
     <View style={styles.container}>
       <Animated.View
         style={{
-          transform: [{scale: bounce}],
+          transform: [{ scale: bounce }],
         }}>
         <Image
           style={styles.image}
