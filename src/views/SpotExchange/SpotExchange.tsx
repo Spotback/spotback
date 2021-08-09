@@ -13,17 +13,13 @@ import styles from './SpotExchange.styles';
 const SpotExchange = () => {
   const navigation = useNavigation();
 
-  const [spotNewsVisible, setspotNewsVisible] = useState(false);
-
-  const toggleSpotNewsVisibility = () => setspotNewsVisible(!spotNewsVisible);
-
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   }, []);
 
   return (
     <View style={styles.mainContainer}>
-      {/* @TODO: create one more header version with boolean  */}
+      {/* @TODO: create one more header version with boolean to show host/client info plus cancelation options */}
       <Header
         title="Arriving in 5 min"
         profilePic={profilePic}
@@ -40,56 +36,14 @@ const SpotExchange = () => {
               longitude: -122.4324,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
-            }}>
-            {/* <Marker
-              coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
-              image={require('../../images/spotPin.png')}
-            /> */}
-          </MapView>
+            }}
+          />
         </View>
         <View style={styles.buttonContainer}>
-          {/* @TODO: create text messaging view  */}
+          {/* @TODO: create text messaging component  */}
           <Text>TEXT MESSAGING</Text>
-          {/* <View style={styles.spacing}>
-            <Button
-              title="Find Me A Spot"
-              size="large"
-              onPress={() => navigation.navigate('FindMeASpot')}
-            />
-          </View>
-          <View style={styles.spacing}>
-            <Button
-              title="Post My Spot"
-              size="large"
-              onPress={() => navigation.navigate('PostMySpot')}
-            />
-          </View> */}
         </View>
       </View>
-      {/* <Header title="SpotNews" flip={true} onPress={toggleSpotNewsVisibility} />
-      <SlidingView
-        componentVisible={spotNewsVisible}
-        changeVisibilityCallback={toggleSpotNewsVisibility}
-        useNativeDriver={true}
-        height={styles.slider.height}
-        containerStyle={styles.slider}
-        disableDrag={true}>
-        <Header title="SpotNews" flip onPress={toggleSpotNewsVisibility} />
-        <ScrollView>
-          <View style={styles.sliderContainer}>
-            {spotNewsItems?.map((spotNewsItem, index) => {
-              return (
-                <View key={spotNewsItem.id} style={styles.spotNewsContainer}>
-                  <View style={styles.textContainer}>
-                    <Text style={styles.text}>{spotNewsItem.title}</Text>
-                  </View>
-                  <Image style={styles.image} source={spotNewsItem.image} />
-                </View>
-              );
-            })}
-          </View>
-        </ScrollView>
-      </SlidingView> */}
     </View>
   );
 };
