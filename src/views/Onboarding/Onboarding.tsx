@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-
 import { View, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
 import styles from './Onboarding.styles';
 import Button from '../../components/Button/Button';
 import Link from '../../components/Link/Link';
-
 import Loader from '../../components/Loader/Loader';
 
 const Onboarding = () => {

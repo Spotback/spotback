@@ -32,10 +32,7 @@ const Loader = () => {
         style={{
           transform: [{ scale: bounce }],
         }}>
-        <Image
-          style={styles.image}
-          source={require('../../images/spotbackLogoFull.png')}
-        />
+        <Image style={styles.image} source={require('../../images/spotbackLogoFull.png')} />
       </Animated.View>
     </View>
   );

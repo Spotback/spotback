@@ -1,8 +1,6 @@
 import React from 'react';
-
-import {View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-
+import { View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import styles from './Signup.styles';
@@ -28,7 +26,7 @@ const Signup = () => {
         </View>
         <Input placeholder="Referral Code" inputStyle="long" />
         <View style={styles.button}>
-          <Button title="Sign Up" size='large' onPress={() => navigation.navigate('Home')} />
+          <Button title="Sign Up" size="large" onPress={() => navigation.navigate('Home')} />
         </View>
       </View>
     </View>

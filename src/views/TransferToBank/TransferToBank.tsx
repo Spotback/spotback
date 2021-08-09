@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
-
+import { View, Text, Image } from 'react-native';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import transfers from '../../images/transfers.png';
