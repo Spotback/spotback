@@ -11,7 +11,6 @@ const Onboarding = () => {
   const navigation = useNavigation();
   // true for loader
   const [loading, setLoading] = useState(false);
-  console.log('users base url ', USERS_BASE_URL);
   return (
     <View style={styles.container}>
       {/* for testing the loader  */}
