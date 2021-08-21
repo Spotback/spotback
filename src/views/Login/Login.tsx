@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Link from '../../components/Link/Link';
-
 import styles from './Login.styles';
 
 const Login = () => {
