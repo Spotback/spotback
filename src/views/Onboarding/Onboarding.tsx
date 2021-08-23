@@ -5,7 +5,6 @@ import styles from './Onboarding.styles';
 import Button from '../../components/Button/Button';
 import Link from '../../components/Link/Link';
 import Loader from '../../components/Loader/Loader';
-import { USERS_BASE_URL, SPOTS_BASE_URL } from '@env';
 
 const Onboarding = () => {
   const navigation = useNavigation();
