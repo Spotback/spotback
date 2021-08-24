@@ -5,6 +5,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
+import { signUp } from '../../redux/services/users/actions';
 import styles from './Signup.styles';
 
 const Signup = () => {
@@ -17,7 +18,8 @@ const Signup = () => {
   } = useForm();
   const onSubmit = (inputText) => {
     console.log('the data from submit', inputText);
-    dispatch({ type: 'SIGN_UP', payload: inputText });
+    const { email, firstName, lastName, password, phoneNumber } = inputText;
+    dispatch(signUp(email, firstName, lastName, password, phoneNumber));
   };
 
   return (

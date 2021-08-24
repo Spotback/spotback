@@ -1,9 +1,8 @@
 import axios from 'axios';
-import * as RootNavigation from '../../../navigation/RootNavigation';
-import { storeData, getData } from '../../../utils/asyncStorage';
 import { USERS_BASE_URL } from '@env';
 
 export const signUp = (email, firstName, lastName, password, phone) => {
+  console.log('signup params ', email, firstName, lastName, password, phone);
   return (dispatch) => {
     axios
       .post(`${USERS_BASE_URL}/createAccount`, {
@@ -14,13 +13,12 @@ export const signUp = (email, firstName, lastName, password, phone) => {
         phone,
       })
       .then((res) => {
-        const response = res.data;
-        storeData(response.user._id);
-        dispatch({
-          type: 'SIGN_UP',
-          payload: response,
-        });
-        RootNavigation.navigate('Home');
+        const response = res;
+        console.log('the response ', response);
+        // dispatch({
+        //   type: 'SIGN_UP',
+        //   payload: response,
+        // });
       })
       .catch((err) => {
         console.log('signUp err ', err);
