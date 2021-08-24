@@ -19,6 +19,8 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'SIGN_UP':
+      console.log('reducer ', action);
     default:
       return state;
   }

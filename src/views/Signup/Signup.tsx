@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View, TextInput, Alert } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/Button/Button';
@@ -8,12 +9,16 @@ import styles from './Signup.styles';
 
 const Signup = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log('data', data);
+  const onSubmit = (inputText) => {
+    console.log('the data from submit', inputText);
+    dispatch({ type: 'SIGN_UP', payload: inputText });
+  };
 
   return (
     <View style={styles.container}>
@@ -115,7 +120,7 @@ const Signup = () => {
         <Controller
           control={control}
           rules={{
-            required: true,
+            required: false,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <View style={styles.input}>
