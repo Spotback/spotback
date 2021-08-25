@@ -18,8 +18,8 @@ const Signup = () => {
   } = useForm();
   const onSubmit = (inputText) => {
     console.log('the data from submit', inputText);
-    const { email, firstName, lastName, password, phoneNumber } = inputText;
-    dispatch(signUp(email, firstName, lastName, password, phoneNumber));
+    const { email, firstName, lastName, password, phone} = inputText;
+    dispatch(signUp(email, firstName, lastName, password, phone));
   };
 
   return (
@@ -89,7 +89,7 @@ const Signup = () => {
           render={({ field: { onChange, onBlur, value } }) => (
             <View style={styles.input}>
               <Input
-                placeholder={errors.phoneNumber ? 'This is required.' : 'Phone Number'}
+                placeholder={errors.phone ? 'This is required.' : 'Phone Number'}
                 inputStyle="short"
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -97,7 +97,7 @@ const Signup = () => {
               />
             </View>
           )}
-          name="phoneNumber"
+          name="phone"
           defaultValue=""
         />
         <Controller

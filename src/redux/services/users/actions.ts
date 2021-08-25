@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { USERS_BASE_URL } from '@env';
-
+console.log(`${USERS_BASE_URL}/createAccount`);
 export const signUp = (email, firstName, lastName, password, phone) => {
   console.log('signup params ', email, firstName, lastName, password, phone);
   return (dispatch) => {
