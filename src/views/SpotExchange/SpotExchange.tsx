@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
-import spotNewsItems from '../../config/Home.config';
 import Header from '../../components/Header/Header';
 import profilePic from '../../images/profilePic.png';
-import Button from '../../components/Button/Button';
 import styles from './SpotExchange.styles';
 
 const SpotExchange = () => {

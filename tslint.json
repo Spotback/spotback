@@ -14,7 +14,7 @@
     "member-ordering": [false],
     "no-floating-promises": false,
     "trailing-comma": [
-      true,
+     false,
       {
         "singleline": "never",
         "multiline": "always"
@@ -26,7 +26,7 @@
     "no-constant-condition": false,
     "triple-equals": [true, "allow-undefined-check"],
     "ter-indent": [
-      true,
+      false,
       2,
       {
         "SwitchCase": 1

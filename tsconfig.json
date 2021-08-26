@@ -12,7 +12,7 @@
     "skipLibCheck": true,
     "declaration": true,
     "noUnusedLocals": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true
   },
   "include": ["./src/", "declarations.d.ts"],
   "exclude": ["node_modules"]

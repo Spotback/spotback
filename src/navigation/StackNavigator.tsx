@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { navigationRef } from './RootNavigation';
 import BackArrow from '../components/BackArrow/BackArrow';
 import Onboarding from '../views/Onboarding/Onboarding';
 import Signup from '../views/Signup/Signup';
@@ -20,7 +21,7 @@ const Stack = createStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
         <Stack.Screen
           name="Onboarding"
