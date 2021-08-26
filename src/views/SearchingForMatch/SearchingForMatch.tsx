@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './SearchingForMatch.styles';
 import Button from '../../components/Button/Button';

@@ -4,7 +4,7 @@ import styles from './Loader.styles';
 import { LogBox } from 'react-native';
 
 const Loader = () => {
-  let animatedValue = new Animated.Value(0);
+  const animatedValue = new Animated.Value(0);
 
   const bounce = animatedValue.interpolate({
     inputRange: [0, 0.5, 1],

@@ -8,3 +8,4 @@ declare module '@env' {
   export const PAYMENTS_BASE_URLS: string;
   export const SUPPORT_BASE_URL: string;
 }
+declare module 'rn-sliding-view';

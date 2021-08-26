@@ -1,24 +1,22 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import { signUp } from '../../redux/services/users/actions';
 import styles from './Signup.styles';
 
 const Signup = () => {
-  const navigation = useNavigation();
   const dispatch = useDispatch();
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (inputText) => {
-    console.log('the data from submit', inputText);
-    const { email, firstName, lastName, password, phone} = inputText;
+
+  const onSubmit = (formFields: Record<string, any>) => {
+    const { email, firstName, lastName, password, phone } = formFields;
     dispatch(signUp(email, firstName, lastName, password, phone));
   };
 
