@@ -28,7 +28,7 @@ export const signUp = (
         }
       )
       .then((res) => {
-        console.log('the res', res);
+        console.log('res', res);
         // response doesnt send back user info
         dispatch({
           type: 'SIGN_UP',
@@ -37,7 +37,34 @@ export const signUp = (
         RootNavigation.navigate('Home');
       })
       .catch((err) => {
-        console.log('signUp err mesg', err.response.data);
+        console.log('err ', err.response.data);
+      });
+  };
+};
+
+export const logIn = (email: string, password: string) => {
+  return (dispatch: any) => {
+    axios
+      .post(
+        `${USERS_BASE_URL}/readAccount`,
+        {
+          email,
+          password,
+        },
+        {
+          headers: { 'spotback-correlation-id': uuidv4() },
+        }
+      )
+      .then((res) => {
+        console.log('res', res);
+        dispatch({
+          type: 'LOG_IN',
+          payload: res.data,
+        });
+        RootNavigation.navigate('Home');
+      })
+      .catch((err) => {
+        console.log('err ', err.response.data);
       });
   };
 };
