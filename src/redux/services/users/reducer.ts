@@ -1,29 +1,58 @@
 const initialState = {
   loggedIn: false,
-  userId: '',
-  user: {
-    car: {
-      carType: '',
-      color: '',
-      make: '',
-      model: '',
-      year: '',
-    },
-    email: '',
-    firstName: '',
-    lastName: '',
-    password: '',
-    phone: '',
+  referrals: [],
+  verified: false,
+  freeSpots: 0,
+  balance: 0,
+  rating: 0,
+  _id: '',
+  car: {
+    carType: '',
+    color: '',
+    make: '',
+    model: '',
+    year: '',
   },
+  email: '',
+  firstName: '',
+  lastName: '',
+  phone: '',
+  referralCode: '',
+  stripeToken: '',
 };
 
 const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case 'SIGN_UP':
       console.log('reducer ', action);
+    case 'LOG_IN':
+      console.log('reducer ', action);
+      return {
+        ...state,
+        loggedIn: true,
+        referrals: action.payload.referrals,
+        verified: action.payload.verified,
+        freeSpots: action.payload.freeSpots,
+        balance: action.payload.balance,
+        rating: action.payload.rating,
+        _id: action.payload._id,
+        car: {
+          carType: action.payload.car.carType,
+          color: action.payload.car.color,
+          make: action.payload.car.make,
+          model: action.payload.car.model,
+          year: action.payload.car.year,
+        },
+        email: action.payload.email,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName,
+        phone: action.payload.phone,
+        referralCode: action.payload.referralCode,
+        stripeToken: action.payload.stripeToken,
+      };
     default:
       return state;
   }
 };
-
+console.log('userReducer', initialState);
 export default userReducer;

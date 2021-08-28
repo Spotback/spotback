@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { View, Text, ScrollView, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
@@ -13,6 +14,9 @@ import styles from './Home.styles';
 const Home = () => {
   const navigation = useNavigation();
 
+  const user = useSelector((state) => state);
+  console.log('userSelector ', user);
+  
   const [spotNewsVisible, setspotNewsVisible] = useState(false);
 
   const toggleSpotNewsVisibility = () => setspotNewsVisible(!spotNewsVisible);
