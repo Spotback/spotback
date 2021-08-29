@@ -2,23 +2,25 @@ import * as RootNavigation from '../navigation/RootNavigation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const storeData = async (value: string) => {
-  console.log('stored?');
   try {
-    await AsyncStorage.setItem('@storage_Key', value);
-  } catch (e) {
-    console.log('store data err ', e);
+    await AsyncStorage.setItem('@spotback_storage_key', value);
+    console.log('storeData? TRY ', value);
+  } catch (err) {
+    console.log('store data err ', err);
   }
 };
 
 const getData = async (key: string) => {
   try {
-    const value = await AsyncStorage.getItem('@storage_Key');
-    if (value !== null && value === 'userId') {
-    } else {
-      RootNavigation.navigate('OnBoarding');
+    const value = await AsyncStorage.getItem('@spotback_storage_key');
+    if (value !== null) {
+      console.log('getData? TRY ', value);
+      return value;
+      // } else {
+      //   RootNavigation.navigate('Onboarding');
     }
-  } catch (e) {
-    console.log('get data err ', e);
+  } catch (err) {
+    console.log('get data err ', err);
   }
 };
 
