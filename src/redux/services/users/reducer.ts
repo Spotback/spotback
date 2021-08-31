@@ -1,5 +1,5 @@
 const initialState = {
-  loggedIn: false,
+  isloggedIn: false,
   referrals: [],
   verified: false,
   freeSpots: 0,
@@ -29,7 +29,7 @@ const userReducer = (state = initialState, action: any) => {
       console.log('reducer ', action);
       return {
         ...state,
-        loggedIn: true,
+        isloggedIn: true,
         referrals: action.payload.referrals,
         verified: action.payload.verified,
         freeSpots: action.payload.freeSpots,
