@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { logIn } from '../../redux/services/users/actions';
 import Button from '../../components/Button/Button';
@@ -20,7 +20,7 @@ const Login = () => {
     const { email, password } = formFields;
     dispatch(logIn(email, password));
   };
-  
+
   return (
     <View style={styles.container}>
       <Controller

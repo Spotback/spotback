@@ -70,3 +70,45 @@ export const logIn = (email: string, password: string) => {
       });
   };
 };
+
+export const update = (
+  carType: string,
+  color: string,
+  make: string,
+  model: string,
+  year: string,
+  email: string,
+  password: string,
+) => {
+  return (dispatch: any) => {
+    axios
+      .post(
+        `${USERS_BASE_URL}/updateAccount`,
+        {
+          car: {
+            carType,
+            color,
+            make,
+            model,
+            year,
+          },
+          email,
+          password,
+        },
+        {
+          headers: { 'spotback-correlation-id': uuidv4() },
+        }
+      )
+      .then((res) => {
+        console.log('res', res);
+        dispatch({
+          type: 'UPDATE',
+          payload: res.data,
+        });
+        RootNavigation.navigate('Account');
+      })
+      .catch((err) => {
+        console.log('err ', err.response.data);
+      });
+  };
+};

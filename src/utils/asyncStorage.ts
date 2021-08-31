@@ -16,8 +16,8 @@ const getData = async (key: string) => {
     if (value !== null) {
       console.log('getData? TRY ', value);
       return value;
-      // } else {
-      //   RootNavigation.navigate('Onboarding');
+      } else {
+        RootNavigation.navigate('Onboarding');
     }
   } catch (err) {
     console.log('get data err ', err);
