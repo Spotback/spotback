@@ -10,14 +10,15 @@ const storeData = async (value: string) => {
   }
 };
 
-const getData = async (key: string) => {
+const getData = async (key?: string) => {
   try {
     const value = await AsyncStorage.getItem('@spotback_storage_key');
     if (value !== null) {
       console.log('getData? TRY ', value);
+      RootNavigation.navigate('Home');
       return value;
-      } else {
-        RootNavigation.navigate('Onboarding');
+    } else {
+      RootNavigation.navigate('Onboarding');
     }
   } catch (err) {
     console.log('get data err ', err);

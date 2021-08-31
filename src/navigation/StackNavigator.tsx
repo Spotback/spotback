@@ -16,6 +16,7 @@ import EditProfile from '../views/EditProfile/EditProfile';
 import Help from '../views/Help/Help';
 import SearchingForMatch from '../views/SearchingForMatch/SearchingForMatch';
 import SpotExchange from '../views/SpotExchange/SpotExchange';
+import AuthLoading from '../views/AuthLoading/AuthLoading';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,19 @@ const StackNavigator = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
+        <Stack.Screen
+          name="AuthLoading"
+          component={AuthLoading}
+          options={{
+            title: '',
+            headerStyle: {
+              backgroundColor: '#FDFFFD',
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 0,
+            },
+          }}
+        />
         <Stack.Screen
           name="Onboarding"
           component={Onboarding}
