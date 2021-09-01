@@ -2,9 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { signUp } from '../../redux/services/users/actions';
-import Button from '../../components/Button/Button';
-import Input from '../../components/Input/Input';
+import { signUp } from '@redux/services/users/actions';
+import { Button, Input } from '@components/index';
 import styles from './Signup.styles';
 
 const Signup = () => {

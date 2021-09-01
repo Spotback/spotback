@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Button from '../../components/Button/Button';
-import Input from '../../components/Input/Input';
+import { Button, Input } from '@components/index';
 import styles from './FindMeASpot.styles';
 import pinIcon from '../../images/spotPin2.png';
 import EVIcon from '../../images/evCar.png';

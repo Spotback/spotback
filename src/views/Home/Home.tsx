@@ -6,9 +6,8 @@ import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
 import spotNewsItems from '../../config/Home.config';
-import Header from '../../components/Header/Header';
+import { Header, Button } from '@components/index';
 import profilePic from '../../images/profilePic.png';
-import Button from '../../components/Button/Button';
 import styles from './Home.styles';
 
 const Home = () => {

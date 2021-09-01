@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
-import { getData } from '../../utils/asyncStorage';
-import Loader from '../../components/Loader/Loader';
+import { Loader } from '@components/index';
+import { storeData, getData } from '@utils/asyncStorage';
 import styles from './AuthLoading.styles';
 
 const AuthLoading = () => {

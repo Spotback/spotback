@@ -2,10 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
-import { logIn } from '../../redux/services/users/actions';
-import Button from '../../components/Button/Button';
-import Input from '../../components/Input/Input';
-import Link from '../../components/Link/Link';
+import { logIn } from '@redux/services/users/actions';
+import { Button, Input, Link } from '@components/index';
 import styles from './Login.styles';
 
 const Login = () => {

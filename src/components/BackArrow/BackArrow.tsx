@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import backArrow from '../../images/backArrow.png';
 import styles from './BackArrow.styles';
 
 interface BackArrowProps {
@@ -20,7 +21,7 @@ const BackArrow: FC<BackArrowProps> = ({ navigationDirection }) => {
       }}
       onPress={() => navigation.navigate(navigationDirection)}>
       <View style={styles.container}>
-        <Image style={styles.image} source={require('../../images/backArrow.png')} />
+        <Image style={styles.image} source={backArrow} />
       </View>
     </TouchableOpacity>
   );

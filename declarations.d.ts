@@ -1,6 +1,7 @@
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
+declare module '*.svg';
 declare module '@env' {
   export const USERS_BASE_URL: string;
   export const SPOTS_BASE_URL: string;
