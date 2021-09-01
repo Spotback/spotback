@@ -25,4 +25,14 @@ const getData = async (key?: string) => {
   }
 };
 
-export { storeData, getData };
+const removeData = async () => {
+  try {
+    await AsyncStorage.removeItem('@spotback_storage_key');
+    console.log('removeData? TRY ');
+    RootNavigation.navigate('Onboarding');
+  } catch (err) {
+    console.log('get data err ', err);
+  }
+};
+
+export { storeData, getData, removeData };

@@ -35,6 +35,7 @@ const StackNavigator = () => {
               shadowOpacity: 0,
               borderBottomWidth: 0,
             },
+            headerLeft: () => null,
           }}
         />
         <Stack.Screen
@@ -48,6 +49,7 @@ const StackNavigator = () => {
               shadowOpacity: 0,
               borderBottomWidth: 0,
             },
+            headerLeft: () => null,
           }}
         />
         <Stack.Screen

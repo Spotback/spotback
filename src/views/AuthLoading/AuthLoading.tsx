@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator, StatusBar, View, Text } from 'react-native';
-import { storeData, getData } from '../../utils/asyncStorage';
+import { View } from 'react-native';
+import { getData } from '../../utils/asyncStorage';
+import Loader from '../../components/Loader/Loader';
+import styles from './AuthLoading.styles';
 
 const AuthLoading = () => {
   useEffect(() => {
     getData();
   }, []);
   return (
-    <View>
-      <Text>Spotback auth loading</Text>
-      <ActivityIndicator />
+    <View style={styles.container}>
+      <Loader />
     </View>
   );
 };
