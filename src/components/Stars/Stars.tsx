@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import StarRating from 'react-native-star-rating';
 import styles from './Stars.styles';
-import fullStar from '../../images/fullStar.png';
-import emptyStar from '../../images/emptyStar.png';
+import { fullStar, emptyStar } from '@assets/images/index';
 
-const Stars = () => {
+const Stars: FC = () => {
   const [starCount, setStarCount] = useState(4);
 
   const onStarRatingPress = (rating: number) => {

@@ -1,4 +1,4 @@
-import * as RootNavigation from '../navigation/RootNavigation';
+import * as RootNavigation from '@navigation/RootNavigation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const storeData = async (value: string) => {

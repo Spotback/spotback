@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { USERS_BASE_URL } from '@env';
-import * as RootNavigation from '../../../navigation/RootNavigation';
+import * as RootNavigation from '@navigation/RootNavigation';
 import { v4 as uuidv4 } from 'uuid';
-import { storeData, getData } from '../../../utils/asyncStorage';
+import { storeData, getData } from '@utils/asyncStorage';
 
 console.log(`${USERS_BASE_URL}/createAccount`);
 

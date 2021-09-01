@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, Text, Image, Share } from 'react-native';
 import Button from '../../components/Button/Button';
-import friends from '../../images/friends.png';
-import sendArrow from '../../images/sendArrow.png';
+import { sendArrow, friends } from '@assets/images/index';
 import styles from './InviteAFriend.styles';
 
 const InviteAFriend = () => {

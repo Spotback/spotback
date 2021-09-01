@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Button, Loader } from '@components/index';
 import styles from './SearchingForMatch.styles';
-import Button from '../../components/Button/Button';
-import Loader from '../../components/Loader/Loader';
 
 const SearchingForMatch = () => {
   const navigation = useNavigation();

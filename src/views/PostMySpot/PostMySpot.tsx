@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
-import Button from '../../components/Button/Button';
+import { Button } from '@components/index';
 import styles from './PostMySpot.styles';
 
 const PostMySpot = () => {

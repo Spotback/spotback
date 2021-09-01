@@ -2,11 +2,8 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
-import { update } from '../../redux/services/users/actions';
-import Button from '../../components/Button/Button';
-import Input from '../../components/Input/Input';
-import editProfile from '../../images/editProfile.png';
-import profilePic from '../../images/profilePic.png';
+import { Button, Input } from '@components/index';
+import { editProfile, profilePic } from '@assets/images/index';
 import styles from './EditProfile.styles';
 
 const EditProfile = () => {

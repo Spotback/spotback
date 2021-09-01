@@ -6,9 +6,9 @@ import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
 import spotNewsItems from '../../config/Home.config';
-import Header from '../../components/Header/Header';
-import profilePic from '../../images/profilePic.png';
-import Button from '../../components/Button/Button';
+import { Header, Button } from '@components/index';
+import { profilePic } from '@assets/images/index';
+import { spotPin } from '@assets/images/index';
 import styles from './Home.styles';
 
 const Home = () => {
@@ -43,10 +43,7 @@ const Home = () => {
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}>
-            <Marker
-              coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
-              image={require('../../images/spotPin.png')}
-            />
+            <Marker coordinate={{ latitude: 37.78825, longitude: -122.4324 }} image={spotPin} />
           </MapView>
         </View>
         <View style={styles.buttonContainer}>
