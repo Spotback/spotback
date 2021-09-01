@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import backArrow from '../../images/backArrow.png';
+import { backArrow } from '@assets/images/index';
 import styles from './BackArrow.styles';
 
 interface BackArrowProps {

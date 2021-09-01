@@ -3,6 +3,7 @@ import { Animated, View, Image, Easing } from 'react-native';
 import styles from './Loader.styles';
 import { LogBox } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
+import { spotbackLogoFull } from '@assets/images/index';
 
 const Loader: FC = () => {
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
@@ -35,7 +36,7 @@ const Loader: FC = () => {
         style={{
           transform: [{ scale: bounce }],
         }}>
-        <Image style={styles.image} source={require('../../images/spotbackLogoFull.png')} />
+        <Image style={styles.image} source={spotbackLogoFull} />
       </Animated.View>
     </View>
   );

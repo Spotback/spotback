@@ -3,13 +3,15 @@ import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { removeData } from '../../utils/asyncStorage';
 import Stars from '../../components/Stars/Stars';
-import profilePic from '../../images/profilePic.png';
-import transfers from '../../images/transfers.png';
-import invite from '../../images/invite.png';
-import editProfile from '../../images/editProfile.png';
-import help from '../../images/help.png';
-import creditCard from '../../images/creditCard.png';
-import exit from '../../images/exit.png';
+import {
+  profilePic,
+  transfers,
+  invite,
+  editProfile,
+  help,
+  creditCard,
+  exit,
+} from '@assets/images/index';
 import styles from './Account.styles';
 
 const Account = () => {

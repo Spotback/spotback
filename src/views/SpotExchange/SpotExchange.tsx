@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { LogBox } from 'react-native';
 import { Header } from '@components/index';
-import profilePic from '../../images/profilePic.png';
+import { profilePic } from '@assets/images/index';
 import styles from './SpotExchange.styles';
 
 const SpotExchange = () => {

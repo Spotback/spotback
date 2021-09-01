@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { Button, Input } from '@components/index';
-import transfers from '../../images/transfers.png';
+import { transfers } from '@assets/images/index';
 import styles from './TransferToBank.styles';
 
 const TransferToBank = () => {

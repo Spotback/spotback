@@ -3,8 +3,7 @@ import { View, Text, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, Input } from '@components/index';
-import editProfile from '../../images/editProfile.png';
-import profilePic from '../../images/profilePic.png';
+import { editProfile, profilePic } from '@assets/images/index';
 import styles from './EditProfile.styles';
 
 const EditProfile = () => {

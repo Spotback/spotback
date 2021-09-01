@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Loader, Button, Link } from '@components/index';
+import { spotbackLogoFull } from '@assets/images/index';
 import styles from './Onboarding.styles';
 
 const Onboarding = () => {
@@ -14,7 +15,7 @@ const Onboarding = () => {
       {/* for testing the loader  */}
       {loading === false ? (
         <>
-          <Image style={styles.image} source={require('../../images/spotbackLogoFull.png')} />
+          <Image style={styles.image} source={spotbackLogoFull} />
           <View style={styles.button}>
             <Button
               title="Sign Up With Email"

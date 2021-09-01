@@ -22,6 +22,7 @@ module.exports = {
           '@utils': './src/utils',
           '@navigation': './src/navigation',
           '@redux': './src/redux',
+          '@assets': './src/assets',
         },
       },
     ],

@@ -1,8 +1,4 @@
-import handShake from '../images/handShake.png';
-import friends from '../images/friends.png';
-import pin from '../images/pin.png';
-import money from '../images/money.png';
-import five from '../images/five.png';
+import { handShake, friends, pin, money, five } from '@assets/images/index';
 
 const spotNewsItems = [
   {
