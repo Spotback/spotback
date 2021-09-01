@@ -1,9 +1,15 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import menuItems from '../../config/Account.config';
+import { removeData } from '../../utils/asyncStorage';
 import Stars from '../../components/Stars/Stars';
 import profilePic from '../../images/profilePic.png';
+import transfers from '../../images/transfers.png';
+import invite from '../../images/invite.png';
+import editProfile from '../../images/editProfile.png';
+import help from '../../images/help.png';
+import creditCard from '../../images/creditCard.png';
+import exit from '../../images/exit.png';
 import styles from './Account.styles';
 
 const Account = () => {
@@ -22,18 +28,42 @@ const Account = () => {
         <Text style={styles.subText}>BMW 3 Series 2013 Black</Text>
       </View>
       <ScrollView>
-        {menuItems?.map((menuItem, index) => {
-          return (
-            <TouchableOpacity
-              key={menuItem.id}
-              onPress={() => navigation.navigate(menuItem.navigationDirection)}>
-              <View style={styles.iconContainer}>
-                <Image style={styles.image} source={menuItem.image} />
-                <Text style={styles.text}>{menuItem.title}</Text>
-              </View>
-            </TouchableOpacity>
-          );
-        })}
+        <TouchableOpacity onPress={() => navigation.navigate('TransferToBank')}>
+          <View style={styles.iconContainer}>
+            <Image style={styles.image} source={transfers} />
+            <Text style={styles.text}>Transfer to Bank</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('InviteAFriend')}>
+          <View style={styles.iconContainer}>
+            <Image style={styles.image} source={invite} />
+            <Text style={styles.text}>Invite a Friend</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
+          <View style={styles.iconContainer}>
+            <Image style={styles.image} source={editProfile} />
+            <Text style={styles.text}>Edit Profile</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Help')}>
+          <View style={styles.iconContainer}>
+            <Image style={styles.image} source={help} />
+            <Text style={styles.text}>Help</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <View style={styles.iconContainer}>
+            <Image style={styles.image} source={creditCard} />
+            <Text style={styles.text}>Payment Information</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => removeData()}>
+          <View style={styles.iconContainer}>
+            <Image style={styles.image} source={exit} />
+            <Text style={styles.text}>Sign Out</Text>
+          </View>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
