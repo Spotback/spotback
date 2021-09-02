@@ -16,11 +16,11 @@ const FindMeASpot = () => {
       <View style={styles.buttonsContainer}>
         <Button
           title="Find Spot here"
-          size="small"
+          size="medium"
           icon={spotPin2}
           onPress={() => navigation.navigate('SearchingForMatch')}
         />
-        <Button title="EV Spot" size="small" icon={evCar} />
+        <Button title="EV Spot" size="medium" icon={evCar} />
       </View>
       <View style={styles.centerContainer}>
         <View>
