@@ -2,10 +2,11 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Input } from '@components/index';
-import styles from './FindMeASpot.styles';
+import useStyles from './FindMeASpot.styles';
 import { spotPin2, evCar } from '@assets/images/index';
 
 const FindMeASpot = () => {
+  const styles = useStyles();
   const navigation = useNavigation();
 
   return (

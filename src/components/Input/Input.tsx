@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { TextInput } from 'react-native';
-import styles from './Input.styles';
+import useStyles from './Input.styles';
 
 interface Inputprops {
   placeholder?: any;
@@ -10,6 +10,7 @@ interface Inputprops {
   value?: any;
 }
 const Input: FC<Inputprops> = ({ placeholder, inputStyle, onBlur, onChangeText, value }) => {
+  const styles = useStyles();
   return (
     <TextInput
       onChangeText={onChangeText}

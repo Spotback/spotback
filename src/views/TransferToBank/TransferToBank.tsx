@@ -2,9 +2,11 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { Button, Input } from '@components/index';
 import { transfers } from '@assets/images/index';
-import styles from './TransferToBank.styles';
+import useStyles from './TransferToBank.styles';
 
 const TransferToBank = () => {
+  const styles = useStyles();
+
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={transfers} />

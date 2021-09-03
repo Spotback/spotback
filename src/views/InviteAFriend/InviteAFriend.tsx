@@ -2,9 +2,10 @@ import React from 'react';
 import { View, Text, Image, Share } from 'react-native';
 import Button from '../../components/Button/Button';
 import { sendArrow, friends } from '@assets/images/index';
-import styles from './InviteAFriend.styles';
+import useStyles from './InviteAFriend.styles';
 
 const InviteAFriend = () => {
+  const styles = useStyles();
   const shareReferralCode = () => {
     Share.share({
       title: 'Spotback App',

@@ -2,13 +2,14 @@ import React, { FC } from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { backArrow } from '@assets/images/index';
-import styles from './BackArrow.styles';
+import useStyles from './BackArrow.styles';
 
 interface BackArrowProps {
   navigationDirection: string;
 }
 
 const BackArrow: FC<BackArrowProps> = ({ navigationDirection }) => {
+  const styles = useStyles();
   const navigation = useNavigation();
 
   return (

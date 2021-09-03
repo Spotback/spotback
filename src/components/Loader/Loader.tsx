@@ -1,11 +1,12 @@
 import React, { FC, useRef, useEffect } from 'react';
 import { Animated, View, Image, Easing } from 'react-native';
-import styles from './Loader.styles';
+import useStyles from './Loader.styles';
 import { LogBox } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import { spotbackLogoFull } from '@assets/images/index';
 
 const Loader: FC = () => {
+  const styles = useStyles();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   console.log('userSelector loader ', user);
   const animatedValue = new Animated.Value(0);

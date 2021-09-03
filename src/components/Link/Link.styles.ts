@@ -1,18 +1,21 @@
 import { StyleSheet } from 'react-native';
+import { makeStyles } from 'react-native-elements';
 
-const styles = StyleSheet.create({
-      container: {
-        flexDirection: "row",
-        flexWrap: "wrap"
-      },
-      extraText: {
-          fontSize: 20,
-          marginRight: 5
-      },
-      linkText: {
-        fontSize: 20,
-        color: "#70B81D",
-      }
-  });
+const useStyles = makeStyles((theme: any) =>
+  StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+    },
+    extraText: {
+      fontSize: 20,
+      marginRight: 5,
+    },
+    linkText: {
+      fontSize: 20,
+      color: theme.colors.success,
+    },
+  })
+);
 
-  export default styles;
+export default useStyles;

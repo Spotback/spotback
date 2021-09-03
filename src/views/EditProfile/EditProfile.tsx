@@ -4,9 +4,10 @@ import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, Input } from '@components/index';
 import { editProfile, profilePic } from '@assets/images/index';
-import styles from './EditProfile.styles';
+import useStyles from './EditProfile.styles';
 
 const EditProfile = () => {
+  const styles = useStyles();
   const dispatch = useDispatch();
   const {
     control,

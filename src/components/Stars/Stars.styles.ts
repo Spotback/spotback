@@ -1,12 +1,15 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
+import { makeStyles } from 'react-native-elements';
 
-const styles = StyleSheet.create({
-  orange: {
-    color: 'orange',
-  },
-  starStyle: {
-      marginHorizontal: 5
-  }
-});
+const useStyles = makeStyles((theme: any) =>
+  StyleSheet.create({
+    orange: {
+      color: theme.colors.warning,
+    },
+    starStyle: {
+      marginHorizontal: 5,
+    },
+  })
+);
 
-export default styles;
+export default useStyles;

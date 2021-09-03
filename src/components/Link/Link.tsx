@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import styles from './Link.styles';
+import useStyles from './Link.styles';
 
 interface LinkProps {
   extraText?: string;
@@ -9,6 +9,7 @@ interface LinkProps {
 }
 
 const Link: FC<LinkProps> = ({ extraText, linkText, onPress }) => {
+  const styles = useStyles();
   return (
     <View style={styles.container}>
       {extraText && <Text style={styles.extraText}>{extraText}</Text>}
