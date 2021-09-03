@@ -4,9 +4,10 @@ import { View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { signUp } from '@redux/services/users/actions';
 import { Button, Input } from '@components/index';
-import styles from './Signup.styles';
+import useStyles from './Signup.styles';
 
 const Signup = () => {
+  const styles = useStyles();
   const dispatch = useDispatch();
   const {
     control,

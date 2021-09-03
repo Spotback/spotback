@@ -1,12 +1,16 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './src/redux/store';
+import { ThemeProvider } from 'react-native-elements';
+import { theme } from './src/utils/theme';
 import StackNavigator from './src/navigation/StackNavigator';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <StackNavigator />
+      <ThemeProvider theme={theme}>
+        <StackNavigator />
+      </ThemeProvider>
     </Provider>
   );
 };

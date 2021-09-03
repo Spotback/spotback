@@ -2,9 +2,10 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import { Button } from '@components/index';
 import { help } from '@assets/images/index';
-import styles from './Help.styles';
+import useStyles from './Help.styles';
 
 const Help = () => {
+  const styles = useStyles();
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={help} />

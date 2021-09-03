@@ -1,26 +1,29 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
+import { makeStyles } from 'react-native-elements';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FDFFFD',
-  },
-  centerContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: 10
-  },
- input: {
+const useStyles = makeStyles((theme: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: theme.colors.background,
+    },
+    centerContainer: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginHorizontal: 10,
+    },
+    input: {
       marginVertical: 5,
-      marginHorizontal: 10
-  },
-  button: {
-    margin: 10
-  }
-});
+      marginHorizontal: 10,
+    },
+    button: {
+      margin: 10,
+    },
+  })
+);
 
-export default styles;
+export default useStyles;

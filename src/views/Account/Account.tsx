@@ -12,9 +12,10 @@ import {
   creditCard,
   exit,
 } from '@assets/images/index';
-import styles from './Account.styles';
+import useStyles from './Account.styles';
 
 const Account = () => {
+  const styles = useStyles();
   const navigation = useNavigation();
 
   return (

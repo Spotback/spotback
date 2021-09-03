@@ -9,9 +9,10 @@ import spotNewsItems from '../../config/Home.config';
 import { Header, Button } from '@components/index';
 import { profilePic } from '@assets/images/index';
 import { spotPin } from '@assets/images/index';
-import styles from './Home.styles';
+import useStyles from './Home.styles';
 
 const Home = () => {
+  const styles = useStyles();
   const navigation = useNavigation();
 
   const user = useSelector((state: RootStateOrAny) => state.userReducer);

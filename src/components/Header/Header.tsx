@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import styles from './Header.styles';
+import useStyles from './Header.styles';
 
 interface HeaderProps {
   title: string;
@@ -11,6 +11,7 @@ interface HeaderProps {
   radius?: boolean;
 }
 const Header: FC<HeaderProps> = ({ title, profilePic, balance, onPress, flip, radius }) => {
+  const styles = useStyles();
   return (
     <TouchableOpacity onPress={onPress}>
       {flip && !radius && (

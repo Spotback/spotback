@@ -4,9 +4,10 @@ import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { logIn } from '@redux/services/users/actions';
 import { Button, Input, Link } from '@components/index';
-import styles from './Login.styles';
+import useStyles from './Login.styles';
 
 const Login = () => {
+  const styles = useStyles();
   const dispatch = useDispatch();
   const {
     control,

@@ -3,9 +3,10 @@ import { View, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Loader, Button, Link } from '@components/index';
 import { spotbackLogoFull } from '@assets/images/index';
-import styles from './Onboarding.styles';
+import useStyles from './Onboarding.styles';
 
 const Onboarding = () => {
+  const styles = useStyles();
   const navigation = useNavigation();
   // true for loader
   const [loading, setLoading] = useState(false);
