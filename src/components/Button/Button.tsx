@@ -12,44 +12,23 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({ title, onPress, size, icon, titleColor, backgroundColor }) => {
+  const classes = styles(titleColor, backgroundColor);
   return (
     <TouchableOpacity onPress={onPress}>
       {size && size === 'large' && (
-        <View style={styles.buttonLarge}>
-          <Text style={styles.titleLarge}>{title}</Text>
+        <View style={classes.buttonLarge}>
+          <Text style={classes.titleLarge}>{title}</Text>
         </View>
       )}
       {size && size === 'medium' && (
-        <View style={titleColor ? styles.buttonColors : styles.buttonMedium}>
-          <Text
-            style={
-              titleColor === 'red'
-                ? styles.redTitle
-                : titleColor === 'green'
-                ? styles.greenTitle
-                : titleColor === 'white'
-                ? styles.whiteTitle
-                : styles.titleMedium
-            }>
-            {title}
-          </Text>
-          {icon && <Image style={title === 'EV Spot' ? '' : (styles.icon as any)} source={icon} />}
+        <View style={classes.buttonMedium}>
+          <Text style={classes.titleMedium}>{title}</Text>
+          {icon && <Image style={title === 'EV Spot' ? '' : (classes.icon as any)} source={icon} />}
         </View>
       )}
       {size && size === 'small' && (
-        <View style={backgroundColor === 'gray' ? styles.buttonSmallGray : styles.buttonSmallWhite}>
-          <Text
-            style={
-              titleColor === 'red'
-                ? styles.redTitle
-                : titleColor === 'green'
-                ? styles.greenTitle
-                : titleColor === 'white'
-                ? styles.whiteTitle
-                : styles.titleMedium
-            }>
-            {title}
-          </Text>
+        <View style={classes.buttonSmall}>
+          <Text style={classes.titleSmall}>{title}</Text>
         </View>
       )}
     </TouchableOpacity>

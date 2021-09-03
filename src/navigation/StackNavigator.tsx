@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { navigationRef } from './RootNavigation';
+import { theme } from './theme';
 import BackArrow from '../components/BackArrow/BackArrow';
 import Onboarding from '../views/Onboarding/Onboarding';
 import Signup from '../views/Signup/Signup';
@@ -22,7 +23,7 @@ const Stack = createStackNavigator();
 
 const StackNavigator = () => {
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer ref={navigationRef} theme={theme}>
       <Stack.Navigator>
         <Stack.Screen
           name="AuthLoading"
