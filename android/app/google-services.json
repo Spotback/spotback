@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1087463722247",
+    "firebase_url": "https://spotback-3ad6a.firebaseio.com",
+    "project_id": "spotback-3ad6a",
+    "storage_bucket": "spotback-3ad6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087463722247:android:13b6242c507afb1ca6c9a2",
+        "android_client_info": {
+          "package_name": "com.spotback"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087463722247-n7tblo8dmbaih9rp34gu19juamdftfdc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.spotback",
+            "certificate_hash": "fe1d2ba0fc25ebf315982508dcedbfaf6972ab6b"
+          }
+        },
+        {
+          "client_id": "1087463722247-r5evtpl5meu3kcthfu1n67culq5u5c8t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8k0Yso_A54PoV-BXen28pjv5YsLo0x1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087463722247-r5evtpl5meu3kcthfu1n67culq5u5c8t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1087463722247-aqos1ne4n80cfb75qqqogbj5ce3ejp1d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.spotback.Spotback-ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
