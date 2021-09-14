@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -7,13 +7,15 @@ import storage from '@react-native-firebase/storage';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, Input } from '@components/index';
 import { editProfile, profilePic } from '@assets/images/index';
+import { Icon } from 'react-native-elements';
 import useStyles from './EditProfile.styles';
+import { theme } from '@utils/theme';
 
 const EditProfile = () => {
   const styles = useStyles();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   console.log('userSelector ', user);
-  const [imageSource, setImageSource] = useState({});
+  const [imageSource, setImageSource] = useState('');
 
   const dispatch = useDispatch();
   const {
@@ -22,7 +24,21 @@ const EditProfile = () => {
     formState: { errors },
   } = useForm();
 
-  const selectImage = () => {
+  useEffect(() => {
+    getProfilePic();
+  }, []);
+
+  const getProfilePic = async () => {
+    storage()
+      .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
+      .getDownloadURL()
+      .then((url: string) => {
+        url ? setImageSource(url) : setImageSource('');
+      })
+      .catch((e) => console.log('getting downloadURL of image error => ', e));
+  };
+
+  const uploadProfilePic = () => {
     const options: any = {
       title: 'Pick a new profile pick',
       maxWidth: 256,
@@ -36,12 +52,9 @@ const EditProfile = () => {
 
     launchImageLibrary(options, (response: any) => {
       if (response.didCancel) {
-        console.log('User cancelled photo picker');
         Alert.alert('You did not select any image');
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
-      } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
       } else {
         const image = response.assets[0].uri;
         setImageSource(image);
@@ -49,7 +62,7 @@ const EditProfile = () => {
         storage()
           .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
           .putFile(image)
-          .then((snapshot) => {
+          .then(() => {
             console.log(`${image} has been successfully uploaded.`);
           })
           .catch((e) => console.log('uploading image error => ', e));
@@ -60,9 +73,22 @@ const EditProfile = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={editProfile} />
-      <TouchableOpacity onPress={selectImage}>
-        <Image style={styles.profilePicImage} source={profilePic} />
-      </TouchableOpacity>
+      <View style={styles.proflePicContainer}>
+        <TouchableOpacity onPress={uploadProfilePic}>
+          <Text style={styles.editText}>Edit</Text>
+          {imageSource === '' ? (
+            <Icon
+              name="user-circle-o"
+              type="font-awesome"
+              size={100}
+              containerStyle={styles.noProfilePicImage}
+              backgroundColor={theme.colors.shadow}
+            />
+          ) : (
+            <Image style={styles.profilePicImage} source={{ uri: imageSource }} />
+          )}
+        </TouchableOpacity>
+      </View>
 
       <View style={styles.centerContainer}>
         <View style={styles.itemContainer}>

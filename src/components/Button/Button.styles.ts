@@ -12,6 +12,10 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
         height: 50,
         borderRadius: 10,
         elevation: 5,
+        shadowColor: theme.colors.shadow,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
       },
       buttonMedium: {
         alignItems: 'center',
@@ -23,6 +27,10 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
         flexDirection: 'row',
         justifyContent: 'center',
         elevation: 5,
+        shadowColor: theme.colors.shadow,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
       },
       buttonSmall: {
         alignItems: 'center',
@@ -34,6 +42,10 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
         flexDirection: 'row',
         justifyContent: 'center',
         elevation: 5,
+        shadowColor: theme.colors.shadow,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
       },
       titleLarge: {
         color: titleColor ? titleColor : theme.colors.light,
