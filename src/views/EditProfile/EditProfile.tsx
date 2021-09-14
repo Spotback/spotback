@@ -24,11 +24,7 @@ const EditProfile = () => {
     formState: { errors },
   } = useForm();
 
-  useEffect(() => {
-    getProfilePic();
-  }, []);
-
-  const getProfilePic = async () => {
+  const getProfilePic = () => {
     storage()
       .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
       .getDownloadURL()
@@ -37,6 +33,10 @@ const EditProfile = () => {
       })
       .catch((e) => console.log('getting downloadURL of image error => ', e));
   };
+
+  useEffect(() => {
+    getProfilePic();
+  });
 
   const uploadProfilePic = () => {
     const options: any = {

@@ -25,6 +25,7 @@ const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case 'SIGN_UP':
       console.log('reducer ', action);
+      break;
     case 'LOG_IN':
       console.log('reducer ', action);
       return {
