@@ -31,7 +31,7 @@ const EditProfile = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  console.log(control);
+
   const getProfilePic = () => {
     storage()
       .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
@@ -180,9 +180,12 @@ const EditProfile = () => {
           />
         </View>
       </View>
-      <View style={styles.buttonContainer}>
+      <KeyboardAvoidingView
+        behavior="position"
+        keyboardVerticalOffset={-550}
+        style={styles.buttonContainer}>
         <Button title="Save" size="large" />
-      </View>
+      </KeyboardAvoidingView>
     </View>
   );
 };
