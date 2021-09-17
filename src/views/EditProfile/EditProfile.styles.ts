@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: any) =>
       color: theme.colors.dark,
       fontFamily: 'PT Sans',
       fontSize: 20,
-      paddingRight: 30,
+      paddingRight: 50,
     },
     itemContainer: {
       padding: 5,
@@ -56,6 +56,12 @@ const useStyles = makeStyles((theme: any) =>
     buttonContainer: {
       bottom: 30,
       position: 'absolute',
+    },
+    bottom: {
+      flex: 1,
+      justifyContent: 'flex-end',
+      marginTop: 200,
+      alignItems: 'center',
     },
   })
 );

@@ -180,12 +180,11 @@ const EditProfile = () => {
           />
         </View>
       </View>
-      <KeyboardAvoidingView
-        behavior="position"
-        keyboardVerticalOffset={-550}
-        style={styles.buttonContainer}>
-        <Button title="Save" size="large" />
-      </KeyboardAvoidingView>
+      <View style={styles.bottom}>
+        <View style={styles.buttonContainer}>
+          <Button title="Save" size="large" />
+        </View>
+      </View>
     </View>
   );
 };
