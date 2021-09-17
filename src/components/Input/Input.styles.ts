@@ -31,6 +31,20 @@ const useStyles = makeStyles((theme: any) =>
       shadowRadius: 2,
       elevation: 10,
     },
+    miniInput: {
+      backgroundColor: theme.colors.light,
+      padding: 10,
+      width: 124,
+      height: 31,
+      borderRadius: 10,
+      borderWidth: 4,
+      borderColor: theme.colors.primary,
+      shadowColor: theme.colors.shadow,
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      elevation: 10,
+    },
   })
 );
 

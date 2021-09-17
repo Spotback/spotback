@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: any) =>
       color: theme.colors.dark,
       fontFamily: 'PT Sans',
       fontSize: 20,
-      padding: 10,
+      paddingRight: 30,
     },
     itemContainer: {
       padding: 5,

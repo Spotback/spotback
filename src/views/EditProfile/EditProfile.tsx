@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { launchImageLibrary } from 'react-native-image-picker';
@@ -23,7 +31,7 @@ const EditProfile = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  console.log(control);
   const getProfilePic = () => {
     storage()
       .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
@@ -101,7 +109,7 @@ const EditProfile = () => {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 placeholder={errors.email ? 'This is required.' : ''}
-                inputStyle="small"
+                inputStyle="mini"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -121,7 +129,7 @@ const EditProfile = () => {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 placeholder={errors.licencePlate ? 'This is required.' : ''}
-                inputStyle="small"
+                inputStyle="mini"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -141,7 +149,7 @@ const EditProfile = () => {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 placeholder={errors.vehicleMake ? 'This is required.' : ''}
-                inputStyle="small"
+                inputStyle="mini"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -161,7 +169,7 @@ const EditProfile = () => {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 placeholder={errors.vehicleSize ? 'This is required.' : ''}
-                inputStyle="small"
+                inputStyle="mini"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
