@@ -72,13 +72,12 @@ export const logIn = (email: string, password: string) => {
 };
 
 export const update = (
-  carType: string,
-  color: string,
-  make: string,
-  model: string,
-  year: string,
-  email: string,
-  password: string,
+  carType?: string,
+  color?: string,
+  make?: string,
+  model?: string,
+  year?: string,
+  email?: string,
 ) => {
   return (dispatch: any) => {
     axios
@@ -93,7 +92,6 @@ export const update = (
             year,
           },
           email,
-          password,
         },
         {
           headers: { 'spotback-correlation-id': uuidv4() },

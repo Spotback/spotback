@@ -5,11 +5,10 @@ import {
   Image,
   TouchableOpacity,
   Alert,
-  KeyboardAvoidingView,
-  Platform,
 } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { update } from '@redux/services/users/actions';
 import { launchImageLibrary } from 'react-native-image-picker';
 import storage from '@react-native-firebase/storage';
 import { useForm, Controller } from 'react-hook-form';
@@ -76,6 +75,11 @@ const EditProfile = () => {
           .catch((e) => console.log('uploading image error => ', e));
       }
     });
+  };
+
+  const onSubmit = (formFields: Record<string, any>) => {
+    const { carType, color, make, model, year, email } = formFields;
+    dispatch(update(carType, color, make, model, year, email));
   };
 
   return (

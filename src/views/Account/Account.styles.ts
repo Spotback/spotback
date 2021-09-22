@@ -23,14 +23,18 @@ const useStyles = makeStyles((theme: any) =>
       flexWrap: 'wrap',
       justifyContent: 'center',
       backgroundColor: theme.colors.light,
-      borderColor:  theme.colors.primary,
+      borderColor: theme.colors.primary,
       borderWidth: 4,
       borderRadius: 10,
       elevation: 5,
     },
     profilePicImage: {
-      width: 100,
       height: 100,
+      width: 100,
+      borderRadius: 50,
+    },
+    noProfilePicImage: {
+      borderRadius: 50,
     },
     starContainer: {
       alignItems: 'center',
@@ -39,7 +43,7 @@ const useStyles = makeStyles((theme: any) =>
       margin: 5,
     },
     subText: {
-      color:  theme.colors.black,
+      color: theme.colors.black,
       fontFamily: 'PT Sans',
       padding: 2,
       fontSize: 20,

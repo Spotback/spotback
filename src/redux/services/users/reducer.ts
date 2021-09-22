@@ -51,6 +51,19 @@ const userReducer = (state = initialState, action: any) => {
         referralCode: action.payload.referralCode,
         stripeToken: action.payload.stripeToken,
       };
+    case 'UPDATE':
+      console.log('reducer ', action);
+      return {
+        ...state,
+        car: {
+          carType: action.payload.car.carType,
+          color: action.payload.car.color,
+          make: action.payload.car.make,
+          model: action.payload.car.model,
+          year: action.payload.car.year,
+        },
+        email: action.payload.email,
+      };
     default:
       return state;
   }

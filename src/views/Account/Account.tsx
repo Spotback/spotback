@@ -1,34 +1,62 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { useSelector, RootStateOrAny } from 'react-redux';
+import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import { removeData } from '../../utils/asyncStorage';
 import Stars from '../../components/Stars/Stars';
-import {
-  profilePic,
-  transfers,
-  invite,
-  editProfile,
-  help,
-  creditCard,
-  exit,
-} from '@assets/images/index';
+import { transfers, invite, editProfile, help, creditCard, exit } from '@assets/images/index';
+import { Icon } from 'react-native-elements';
 import useStyles from './Account.styles';
+import { theme } from '@utils/theme';
 
 const Account = () => {
   const styles = useStyles();
   const navigation = useNavigation();
+  const [imageSource, setImageSource] = useState('');
+
+  const user = useSelector((state: RootStateOrAny) => state.userReducer);
+  console.log('userSelector ', user);
+
+  const getProfilePic = () => {
+    storage()
+      .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
+      .getDownloadURL()
+      .then((url: string) => {
+        url ? setImageSource(url) : setImageSource('');
+      })
+      .catch((e) => console.log('getting downloadURL of image error => ', e));
+  };
+
+  useEffect(() => {
+    getProfilePic();
+  });
 
   return (
     <View style={styles.container}>
-      <Image style={styles.profilePicImage} source={profilePic} />
+      {imageSource === '' ? (
+        <Icon
+          name="user-circle-o"
+          type="font-awesome"
+          size={100}
+          containerStyle={styles.noProfilePicImage}
+          backgroundColor={theme.colors.shadow}
+        />
+      ) : (
+        <Image style={styles.profilePicImage} source={{ uri: imageSource }} />
+      )}
       <View style={styles.starContainer}>
         <Stars />
       </View>
       <View style={styles.centerContainer}>
-        <Text style={styles.titleText}>Walter White</Text>
-        <Text style={styles.subText}>ww.white@gmail.com</Text>
-        <Text style={styles.subText}>408-379-6732</Text>
-        <Text style={styles.subText}>BMW 3 Series 2013 Black</Text>
+        <Text style={styles.titleText}>
+          {user.firstName} {user.lastName}
+        </Text>
+        <Text style={styles.subText}>{user.email}</Text>
+        <Text style={styles.subText}>{user.phone}</Text>
+        <Text style={styles.subText}>
+          {user.car.make} {user.car.model} {user.car.year} {user.car.color}
+        </Text>
       </View>
       <ScrollView>
         <TouchableOpacity onPress={() => navigation.navigate('TransferToBank')}>

@@ -19,7 +19,7 @@ const Input: FC<Inputprops> = ({ placeholder, inputStyle, onBlur, onChangeText, 
       style={
         inputStyle === 'long'
           ? styles.longInput
-          : inputStyle === 'small'
+          : inputStyle === 'short'
           ? styles.smallInput
           : styles.miniInput
       }
