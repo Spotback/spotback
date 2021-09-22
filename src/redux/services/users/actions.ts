@@ -77,7 +77,7 @@ export const update = (
   make?: string,
   model?: string,
   year?: string,
-  email?: string,
+  email?: string
 ) => {
   return (dispatch: any) => {
     axios
