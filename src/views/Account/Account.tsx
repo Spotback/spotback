@@ -16,7 +16,6 @@ const Account = () => {
   const [imageSource, setImageSource] = useState('');
 
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  console.log('userSelector ', user);
 
   const getProfilePic = () => {
     storage()
@@ -34,7 +33,7 @@ const Account = () => {
 
   return (
     <View style={styles.container}>
-      {imageSource === '' ? (
+      {imageSource === '' || undefined ? (
         <Icon
           name="user-circle-o"
           type="font-awesome"

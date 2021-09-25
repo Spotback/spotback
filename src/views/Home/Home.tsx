@@ -5,9 +5,9 @@ import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
+import storage from '@react-native-firebase/storage';
 import spotNewsItems from '../../config/Home.config';
 import { Header, Button } from '@components/index';
-import { profilePic } from '@assets/images/index';
 import { spotPin } from '@assets/images/index';
 import useStyles from './Home.styles';
 
@@ -17,19 +17,35 @@ const Home = () => {
 
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   console.log('userSelector ', user);
+  const [imageSource, setImageSource] = useState('');
+
   const [spotNewsVisible, setspotNewsVisible] = useState(false);
 
   const toggleSpotNewsVisibility = () => setspotNewsVisible(!spotNewsVisible);
 
+  const getProfilePic = () => {
+    storage()
+      .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
+      .getDownloadURL()
+      .then((url: string) => {
+        url ? setImageSource(url) : setImageSource('');
+      })
+      .catch((e) => {
+        setImageSource('');
+        console.log('getting downloadURL of image error => ', e);
+      });
+  };
+
   useEffect(() => {
+    getProfilePic();
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
-  }, []);
+  });
 
   return (
     <View style={styles.mainContainer}>
       <Header
         title="Account"
-        profilePic={profilePic}
+        imageSource={imageSource}
         balance={15}
         onPress={() => navigation.navigate('Account')}
       />

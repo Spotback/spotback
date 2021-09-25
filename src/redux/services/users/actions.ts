@@ -80,6 +80,7 @@ export const update = (
   email?: string
 ) => {
   return (dispatch: any) => {
+    console.log('email ', email);
     axios
       .post(
         `${USERS_BASE_URL}/updateAccount`,
@@ -96,17 +97,17 @@ export const update = (
         {
           headers: { 'spotback-correlation-id': uuidv4() },
         }
-      )
-      .then((res) => {
-        console.log('res', res);
-        dispatch({
-          type: 'UPDATE',
-          payload: res.data,
-        });
-        RootNavigation.navigate('Account');
-      })
-      .catch((err) => {
-        console.log('err ', err.response.data);
+    )
+    .then((res) => {
+      console.log('res', res);
+      dispatch({
+        type: 'UPDATE',
+        payload: res.data,
       });
+      RootNavigation.navigate('Account');
+    })
+    .catch((err) => {
+      console.log('err ', err.response.data);
+    });
   };
 };

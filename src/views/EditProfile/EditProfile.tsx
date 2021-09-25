@@ -18,8 +18,11 @@ const EditProfile = () => {
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   console.log('userSelector ', user);
   const [imageSource, setImageSource] = useState('');
-  const [where, setWhere] = useState('');
-  const [when, setWhen] = useState('');
+  const [make, setmMake] = useState('');
+  const [model, setmModel] = useState('');
+  const [year, setYear] = useState('');
+  const [color, setColor] = useState('');
+  const [size, setSize] = useState('');
 
   const dispatch = useDispatch();
   const {
@@ -28,6 +31,12 @@ const EditProfile = () => {
     formState: { errors },
   } = useForm();
 
+  const onSubmit = (formFields: Record<string, any>) => {
+    const { carType, color, make, model, year, email } = formFields;
+    console.log('onSumbit ', email);
+    dispatch(update(carType, color, make, model, year, email));
+  };
+
   const getProfilePic = () => {
     storage()
       .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
@@ -35,7 +44,10 @@ const EditProfile = () => {
       .then((url: string) => {
         url ? setImageSource(url) : setImageSource('');
       })
-      .catch((e) => console.log('getting downloadURL of image error => ', e));
+      .catch((e) => {
+        setImageSource('');
+        console.log('getting downloadURL of image error => ', e);
+      });
   };
 
   useEffect(() => {
@@ -74,18 +86,13 @@ const EditProfile = () => {
     });
   };
 
-  const onSubmit = (formFields: Record<string, any>) => {
-    const { carType, color, make, model, year, email } = formFields;
-    dispatch(update(carType, color, make, model, year, email));
-  };
-
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={editProfile} />
       <View style={styles.proflePicContainer}>
         <TouchableOpacity onPress={uploadProfilePic}>
           <Text style={styles.editText}>Edit</Text>
-          {imageSource === '' ? (
+          {imageSource === '' || undefined ? (
             <Icon
               name="user-circle-o"
               type="font-awesome"
@@ -105,7 +112,7 @@ const EditProfile = () => {
           <Controller
             control={control}
             rules={{
-              required: true,
+              required: false,
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
@@ -125,7 +132,7 @@ const EditProfile = () => {
           <Controller
             control={control}
             rules={{
-              required: true,
+              required: false,
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
@@ -141,73 +148,75 @@ const EditProfile = () => {
           />
         </View>
         <View style={styles.itemContainer}>
-          <Text style={styles.subText}>Vehicle Make: </Text>
           <View style={styles.picker}>
             <Picker
               dropdownIconColor={theme.colors.dark}
               style={styles.dropDown}
-              selectedValue={where}
-              onValueChange={(itemValue, itemIndex) => setWhere(itemValue)}>
-              <Picker.Item label="Street" value="street" />
+              selectedValue={make}
+              onValueChange={(itemValue, itemIndex) => setmMake(itemValue)}>
+              <Picker.Item label="Make" value="make" />
               <Picker.Item label="Parking Lot" value="parking" />
               <Picker.Item label="Driveway" value="driveway" />
               <Picker.Item label="EV Spot" value="ev" />
             </Picker>
           </View>
-          {/* <Controller
-            control={control}
-            rules={{
-              required: true,
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                placeholder={errors.vehicleMake ? 'This is required.' : ''}
-                inputStyle="mini"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-            name="vehicleMake"
-            defaultValue=""
-          /> */}
-        </View>
-        <View style={styles.itemContainer}>
-          <Text style={styles.subText}>Vehicle Size: </Text>
           <View style={styles.picker}>
             <Picker
               dropdownIconColor={theme.colors.dark}
               style={styles.dropDown}
-              selectedValue={when}
-              onValueChange={(itemValue, itemIndex) => setWhen(itemValue)}>
-              <Picker.Item label="Now" value="now" />
-              <Picker.Item label="5 min" value="5" />
-              <Picker.Item label="10 min" value="10" />
-              <Picker.Item label="15 min" value="15" />
+              selectedValue={model}
+              onValueChange={(itemValue, itemIndex) => setmModel(itemValue)}>
+              <Picker.Item label="Model" value="model" />
+              <Picker.Item label="Parking Lot" value="parking" />
+              <Picker.Item label="Driveway" value="driveway" />
+              <Picker.Item label="EV Spot" value="ev" />
             </Picker>
           </View>
-          {/* <Controller
-            control={control}
-            rules={{
-              required: true,
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                placeholder={errors.vehicleSize ? 'This is required.' : ''}
-                inputStyle="mini"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-            name="vehicleSize"
-            defaultValue=""
-          /> */}
+        </View>
+        <View style={styles.itemContainer}>
+          <View style={styles.picker}>
+            <Picker
+              dropdownIconColor={theme.colors.dark}
+              style={styles.dropDown}
+              selectedValue={year}
+              onValueChange={(itemValue, itemIndex) => setYear(itemValue)}>
+              <Picker.Item label="Year" value="year" />
+              <Picker.Item label="Parking Lot" value="parking" />
+              <Picker.Item label="Driveway" value="driveway" />
+              <Picker.Item label="EV Spot" value="ev" />
+            </Picker>
+          </View>
+          <View style={styles.picker}>
+            <Picker
+              dropdownIconColor={theme.colors.dark}
+              style={styles.dropDown}
+              selectedValue={color}
+              onValueChange={(itemValue, itemIndex) => setColor(itemValue)}>
+              <Picker.Item label="Color" value="color" />
+              <Picker.Item label="Parking Lot" value="parking" />
+              <Picker.Item label="Driveway" value="driveway" />
+              <Picker.Item label="EV Spot" value="ev" />
+            </Picker>
+          </View>
+        </View>
+        <View style={styles.itemContainer}>
+          <Text style={styles.sizeSubText}>Vehicle Size: </Text>
+          <View style={styles.picker}>
+            <Picker
+              dropdownIconColor={theme.colors.dark}
+              style={styles.dropDown}
+              selectedValue={size}
+              onValueChange={(itemValue, itemIndex) => setSize(itemValue)}>
+              <Picker.Item label="Small" value="small" />
+              <Picker.Item label="Midsized" value="medium" />
+              <Picker.Item label="Large" value="large" />
+            </Picker>
+          </View>
         </View>
       </View>
       <View style={styles.bottom}>
         <View style={styles.buttonContainer}>
-          <Button title="Save" size="large" />
+          <Button title="Save" size="large" onPress={handleSubmit(onSubmit)} />
         </View>
       </View>
     </View>

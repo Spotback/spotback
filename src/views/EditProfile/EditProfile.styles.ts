@@ -40,13 +40,14 @@ const useStyles = makeStyles((theme: any) =>
       borderRadius: 50,
     },
     picker: {
-      flex: 1,
+      // flex: 1,
       // alignItems: 'center',
       // justifyContent: 'center',
     },
     dropDown: {
       color: theme.colors.dark,
-      width: 160,
+      width: 130,
+      height: 35,
     },
     centerContainer: {
       alignItems: 'flex-end',
@@ -56,6 +57,13 @@ const useStyles = makeStyles((theme: any) =>
       fontFamily: 'PT Sans',
       fontSize: 20,
       paddingRight: 50,
+    },
+    sizeSubText: {
+      color: theme.colors.dark,
+      fontFamily: 'PT Sans',
+      fontSize: 20,
+      paddingRight: 50,
+      marginTop: 10,
     },
     itemContainer: {
       padding: 5,
