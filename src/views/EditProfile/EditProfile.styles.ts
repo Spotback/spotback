@@ -39,7 +39,15 @@ const useStyles = makeStyles((theme: any) =>
       marginVertical: 20,
       borderRadius: 50,
     },
-
+    picker: {
+      flex: 1,
+      // alignItems: 'center',
+      // justifyContent: 'center',
+    },
+    dropDown: {
+      color: theme.colors.dark,
+      width: 160,
+    },
     centerContainer: {
       alignItems: 'flex-end',
     },

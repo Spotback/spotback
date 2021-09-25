@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { update } from '@redux/services/users/actions';
 import { launchImageLibrary } from 'react-native-image-picker';
 import storage from '@react-native-firebase/storage';
+import { Picker } from '@react-native-picker/picker';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, Input } from '@components/index';
 import { editProfile, profilePic } from '@assets/images/index';
@@ -23,6 +18,8 @@ const EditProfile = () => {
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   console.log('userSelector ', user);
   const [imageSource, setImageSource] = useState('');
+  const [where, setWhere] = useState('');
+  const [when, setWhen] = useState('');
 
   const dispatch = useDispatch();
   const {
@@ -145,7 +142,19 @@ const EditProfile = () => {
         </View>
         <View style={styles.itemContainer}>
           <Text style={styles.subText}>Vehicle Make: </Text>
-          <Controller
+          <View style={styles.picker}>
+            <Picker
+              dropdownIconColor={theme.colors.dark}
+              style={styles.dropDown}
+              selectedValue={where}
+              onValueChange={(itemValue, itemIndex) => setWhere(itemValue)}>
+              <Picker.Item label="Street" value="street" />
+              <Picker.Item label="Parking Lot" value="parking" />
+              <Picker.Item label="Driveway" value="driveway" />
+              <Picker.Item label="EV Spot" value="ev" />
+            </Picker>
+          </View>
+          {/* <Controller
             control={control}
             rules={{
               required: true,
@@ -161,11 +170,23 @@ const EditProfile = () => {
             )}
             name="vehicleMake"
             defaultValue=""
-          />
+          /> */}
         </View>
         <View style={styles.itemContainer}>
           <Text style={styles.subText}>Vehicle Size: </Text>
-          <Controller
+          <View style={styles.picker}>
+            <Picker
+              dropdownIconColor={theme.colors.dark}
+              style={styles.dropDown}
+              selectedValue={when}
+              onValueChange={(itemValue, itemIndex) => setWhen(itemValue)}>
+              <Picker.Item label="Now" value="now" />
+              <Picker.Item label="5 min" value="5" />
+              <Picker.Item label="10 min" value="10" />
+              <Picker.Item label="15 min" value="15" />
+            </Picker>
+          </View>
+          {/* <Controller
             control={control}
             rules={{
               required: true,
@@ -181,7 +202,7 @@ const EditProfile = () => {
             )}
             name="vehicleSize"
             defaultValue=""
-          />
+          /> */}
         </View>
       </View>
       <View style={styles.bottom}>
