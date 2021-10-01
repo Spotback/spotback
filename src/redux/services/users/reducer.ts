@@ -24,13 +24,13 @@ const initialState = {
 const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case 'SIGN_UP':
-      console.log('reducer ', action);
+      console.log('sign up reducer ', action);
       return {
         ...state,
         isloggedIn: true,
       };
     case 'LOG_IN':
-      console.log('reducer ', action);
+      console.log('log in reducer ', action);
       return {
         ...state,
         isloggedIn: true,
@@ -55,7 +55,7 @@ const userReducer = (state = initialState, action: any) => {
         stripeToken: action.payload.stripeToken,
       };
     case 'UPDATE':
-      console.log('reducer ', action);
+      console.log('update reducer ', action);
       return {
         ...state,
         car: {
