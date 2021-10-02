@@ -28,9 +28,14 @@ const FindMeASpot = () => {
         </View>
       </View>
       <View style={styles.centerContainer}>
-        <View>
-          <Input placeholder="Enter destination" inputStyle="long" />
-        </View>
+        <Input
+          placeholder="Enter destination"
+          inputStyle="large"
+          autoComplete
+          onPress={(data: any) => {
+            console.log('DATA DETAILS on Press', data);
+          }}
+        />
       </View>
     </View>
   );

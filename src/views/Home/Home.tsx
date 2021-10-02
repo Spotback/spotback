@@ -63,7 +63,23 @@ const Home = () => {
             <Marker coordinate={{ latitude: 37.78825, longitude: -122.4324 }} image={spotPin} />
           </MapView>
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={styles.smallButtonContainer}>
+          <View style={styles.spacing}>
+            <Button
+              title="Pin Spot"
+              size="small"
+              onPress={() => navigation.navigate('FindMeASpot')}
+            />
+          </View>
+          <View style={styles.spacing}>
+            <Button
+              title="Remove Pin"
+              size="small"
+              onPress={() => navigation.navigate('PostMySpot')}
+            />
+          </View>
+        </View>
+        <View style={styles.largeButtonContainer}>
           <View style={styles.spacing}>
             <Button
               title="Find Me A Spot"

@@ -8,5 +8,6 @@ declare module '@env' {
   export const MATCHING_BASE_URL: string;
   export const PAYMENTS_BASE_URLS: string;
   export const SUPPORT_BASE_URL: string;
+  export const GOOGLE_API_KEY: string;
 }
 declare module 'rn-sliding-view';

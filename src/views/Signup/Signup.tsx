@@ -30,7 +30,7 @@ const Signup = () => {
         render={({ field: { onChange, onBlur, value } }) => (
           <Input
             placeholder={errors.email ? 'This is required.' : 'Your Email'}
-            inputStyle="long"
+            inputStyle="large"
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
@@ -50,7 +50,7 @@ const Signup = () => {
             <View style={styles.input}>
               <Input
                 placeholder={errors.firstName ? 'This is required.' : 'First Name'}
-                inputStyle="short"
+                inputStyle="medium"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -69,7 +69,7 @@ const Signup = () => {
             <View style={styles.input}>
               <Input
                 placeholder={errors.lastName ? 'This is required.' : 'Last Name'}
-                inputStyle="short"
+                inputStyle="medium"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -88,7 +88,7 @@ const Signup = () => {
             <View style={styles.input}>
               <Input
                 placeholder={errors.phone ? 'This is required.' : 'Phone Number'}
-                inputStyle="short"
+                inputStyle="medium"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -107,7 +107,7 @@ const Signup = () => {
             <View style={styles.input}>
               <Input
                 placeholder={errors.password ? 'This is required.' : 'Password'}
-                inputStyle="short"
+                inputStyle="medium"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -126,7 +126,7 @@ const Signup = () => {
             <View style={styles.input}>
               <Input
                 placeholder={errors.referralCode ? 'This is required.' : 'Referral Code'}
-                inputStyle="long"
+                inputStyle="large"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}

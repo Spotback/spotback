@@ -1,5 +1,7 @@
 import React, { FC, useState } from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, View } from 'react-native';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { GOOGLE_API_KEY } from '@env';
 import useStyles from './Input.styles';
 
 interface Inputprops {
@@ -8,23 +10,47 @@ interface Inputprops {
   onBlur?: any;
   onChangeText?: any;
   value?: any;
+  autoComplete?: boolean;
+  onPress?: any;
 }
-const Input: FC<Inputprops> = ({ placeholder, inputStyle, onBlur, onChangeText, value }) => {
+const Input: FC<Inputprops> = ({
+  placeholder,
+  inputStyle,
+  onBlur,
+  onChangeText,
+  value,
+  autoComplete,
+  onPress,
+}) => {
   const styles = useStyles();
   return (
-    <TextInput
-      onChangeText={onChangeText}
-      value={value}
-      placeholder={placeholder}
-      style={
-        inputStyle === 'long'
-          ? styles.longInput
-          : inputStyle === 'short'
-          ? styles.smallInput
-          : styles.miniInput
-      }
-      onBlur={onBlur}
-    />
+    <>
+      {autoComplete ? (
+        <GooglePlacesAutocomplete
+          currentLocation
+          placeholder={placeholder}
+          onPress={onPress}
+          query={{
+            key: GOOGLE_API_KEY,
+            language: 'en',
+          }}
+        />
+      ) : (
+        <TextInput
+          placeholder={placeholder}
+          onChangeText={onChangeText}
+          value={value}
+          style={
+            inputStyle === 'large'
+              ? styles.largeInput
+              : inputStyle === 'medium'
+              ? styles.mediumlInput
+              : styles.smallInput
+          }
+          onBlur={onBlur}
+        />
+      )}
+    </>
   );
 };
 

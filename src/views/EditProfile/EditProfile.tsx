@@ -117,7 +117,7 @@ const EditProfile = () => {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 placeholder={errors.email ? 'This is required.' : ''}
-                inputStyle="mini"
+                inputStyle="small"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -137,7 +137,7 @@ const EditProfile = () => {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 placeholder={errors.licencePlate ? 'This is required.' : ''}
-                inputStyle="mini"
+                inputStyle="small"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}

@@ -3,7 +3,7 @@ import { makeStyles } from 'react-native-elements';
 
 const useStyles = makeStyles((theme: any) =>
   StyleSheet.create({
-    longInput: {
+    largeInput: {
       backgroundColor: theme.colors.light,
       padding: 10,
       width: 315,
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: any) =>
       shadowRadius: 2,
       elevation: 10,
     },
-    smallInput: {
+    mediumlInput: {
       backgroundColor: theme.colors.light,
       padding: 10,
       width: 149,
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: any) =>
       shadowRadius: 2,
       elevation: 10,
     },
-    miniInput: {
+    smallInput: {
       backgroundColor: theme.colors.light,
       padding: 10,
       width: 124,

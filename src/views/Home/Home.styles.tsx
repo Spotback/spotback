@@ -17,8 +17,13 @@ const useStyles = makeStyles((theme: any) =>
       backgroundColor: theme.colors.background,
       zIndex: -1,
     },
-    buttonContainer: {
+    largeButtonContainer: {
       bottom: 50,
+      position: 'absolute',
+    },
+    smallButtonContainer: {
+      top: 20,
+      right: 20,
       position: 'absolute',
     },
     spacing: {
