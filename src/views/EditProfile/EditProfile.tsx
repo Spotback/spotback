@@ -21,7 +21,7 @@ const EditProfile = () => {
   const [model, setModel] = useState('');
   const [year, setYear] = useState('');
   const [color, setColor] = useState('');
-  const [size, setSize] = useState('');
+  const [carType, setCarType] = useState('');
 
   const dispatch = useDispatch();
   const {
@@ -32,8 +32,8 @@ const EditProfile = () => {
   } = useForm();
 
   const onSubmit = (formFields: Record<string, any>) => {
-    console.log('onSumbit ', formFields, make, model, year, color, size);
-    // dispatch(update(carType, color, make, model, year, email));
+    console.log('onSumbit ', formFields, make, model, year, color, carType);
+    dispatch(update(make, model, year, color, carType));
   };
 
   const getProfilePic = () => {
@@ -185,8 +185,8 @@ const EditProfile = () => {
             <Picker
               dropdownIconColor={theme.colors.dark}
               style={styles.dropDown}
-              selectedValue={size}
-              onValueChange={(itemValue, itemIndex) => setSize(itemValue)}>
+              selectedValue={carType}
+              onValueChange={(itemValue, itemIndex) => setCarType(itemValue)}>
               <Picker.Item label="Small" value="small" />
               <Picker.Item label="Midsized" value="medium" />
               <Picker.Item label="Large" value="large" />

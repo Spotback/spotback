@@ -72,15 +72,14 @@ export const logIn = (email: string, password: string) => {
 };
 
 export const update = (
-  carType?: string,
-  color?: string,
   make?: string,
   model?: string,
   year?: string,
-  email?: string
+  color?: string,
+  carType?: string
 ) => {
   return (dispatch: any) => {
-    console.log('email ', email);
+    console.log('update ', make, model, year, color, carType);
     axios
       .post(
         `${USERS_BASE_URL}/updateAccount`,
@@ -92,7 +91,6 @@ export const update = (
             model,
             year,
           },
-          email,
         },
         {
           headers: {
