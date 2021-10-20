@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme: any) =>
     },
     dropDown: {
       color: theme.colors.dark,
-      width: 130,
+      width: 150,
       height: 35,
     },
     centerContainer: {
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme: any) =>
       marginTop: 10,
     },
     itemContainer: {
-      padding: 5,
+      padding: 2,
       flexDirection: 'row',
     },
     buttonContainer: {
@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme: any) =>
     bottom: {
       flex: 1,
       justifyContent: 'flex-end',
-      marginTop: 200,
+      marginTop: 100,
       alignItems: 'center',
     },
   })
