@@ -19,6 +19,7 @@ const initialState = {
   phone: '',
   referralCode: '',
   stripeToken: '',
+  bearer: '',
 };
 
 const userReducer = (state = initialState, action: any) => {
@@ -53,6 +54,7 @@ const userReducer = (state = initialState, action: any) => {
         phone: action.payload.phone,
         referralCode: action.payload.referralCode,
         stripeToken: action.payload.stripeToken,
+        bearer: action.headers.bearer
       };
     case 'UPDATE':
       console.log('update reducer ', action);
@@ -65,7 +67,6 @@ const userReducer = (state = initialState, action: any) => {
           model: action.payload.car.model,
           year: action.payload.car.year,
         },
-        email: action.payload.email,
       };
     default:
       return state;

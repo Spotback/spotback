@@ -16,13 +16,14 @@ import { theme } from '@utils/theme';
 const EditProfile = () => {
   const styles = useStyles();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
+  console.log('user ', user);
   const [imageSource, setImageSource] = useState('');
-  const [make, setMake] = useState('');
-  const [model, setModel] = useState('');
-  const [year, setYear] = useState('');
-  const [color, setColor] = useState('');
-  const [carType, setCarType] = useState('');
-
+  const [make, setMake] = useState(user.car.make);
+  const [model, setModel] = useState(user.car.model);
+  const [year, setYear] = useState(user.car.year);
+  const [color, setColor] = useState(user.car.color);
+  const [carType, setCarType] = useState(user.car.carType);
+  console.log('state', make, model, year, color, carType);
   const dispatch = useDispatch();
   const {
     control,
@@ -33,7 +34,7 @@ const EditProfile = () => {
 
   const onSubmit = (formFields: Record<string, any>) => {
     console.log('onSumbit ', formFields, make, model, year, color, carType);
-    dispatch(update(make, model, year, color, carType));
+    dispatch(update(user.bearer, make, model, year, color, carType));
   };
 
   const getProfilePic = () => {
@@ -64,7 +65,6 @@ const EditProfile = () => {
         skipBackup: true,
       },
     };
-
     launchImageLibrary(options, (response: any) => {
       if (response.didCancel) {
         Alert.alert('You did not select any image');
@@ -128,7 +128,6 @@ const EditProfile = () => {
         </View>
         <View style={styles.itemContainer}>
           <Text style={styles.sizeSubText}>Make: </Text>
-
           <Picker
             dropdownIconColor={theme.colors.dark}
             style={styles.dropDown}
@@ -138,6 +137,8 @@ const EditProfile = () => {
             <Picker.Item label="BMW" value="bmw" />
             <Picker.Item label="Mercedez" value="mercedez" />
             <Picker.Item label="Ford" value="ford" />
+            <Picker.Item label="Chevy" value="chevy" />
+            <Picker.Item label="Honda" value="honda" />
           </Picker>
         </View>
         <View style={styles.itemContainer}>
@@ -151,6 +152,8 @@ const EditProfile = () => {
             <Picker.Item label="2 series" value="2 series" />
             <Picker.Item label="3 series" value="3 series" />
             <Picker.Item label="4 series" value="4 series" />
+            <Picker.Item label="Raptor" value="raptor" />
+            <Picker.Item label="Tahoe" value="tahoe" />
           </Picker>
         </View>
         <View style={styles.itemContainer}>
@@ -164,6 +167,8 @@ const EditProfile = () => {
             <Picker.Item label="2020" value="2020" />
             <Picker.Item label="2019" value="2019" />
             <Picker.Item label="2018" value="2018" />
+            <Picker.Item label="2017" value="2018" />
+            <Picker.Item label="2016" value="2016" />
           </Picker>
         </View>
         <View style={styles.itemContainer}>
@@ -188,7 +193,7 @@ const EditProfile = () => {
               selectedValue={carType}
               onValueChange={(itemValue, itemIndex) => setCarType(itemValue)}>
               <Picker.Item label="Small" value="small" />
-              <Picker.Item label="Midsized" value="medium" />
+              <Picker.Item label="Medium" value="medium" />
               <Picker.Item label="Large" value="large" />
             </Picker>
           </View>
