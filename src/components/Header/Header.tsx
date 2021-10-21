@@ -13,7 +13,6 @@ interface HeaderProps {
   radius?: boolean;
 }
 const Header: FC<HeaderProps> = ({ title, imageSource, balance, onPress, flip, radius }) => {
-  console.log('imagesource ', imageSource);
   const styles = useStyles();
   return (
     <TouchableOpacity onPress={onPress}>
