@@ -39,7 +39,16 @@ const useStyles = makeStyles((theme: any) =>
       marginVertical: 20,
       borderRadius: 50,
     },
-
+    picker: {
+      // flex: 1,
+      // alignItems: 'center',
+      // justifyContent: 'center',
+    },
+    dropDown: {
+      color: theme.colors.dark,
+      width: 150,
+      height: 35,
+    },
     centerContainer: {
       alignItems: 'flex-end',
     },
@@ -49,8 +58,15 @@ const useStyles = makeStyles((theme: any) =>
       fontSize: 20,
       paddingRight: 50,
     },
+    sizeSubText: {
+      color: theme.colors.dark,
+      fontFamily: 'PT Sans',
+      fontSize: 20,
+      paddingRight: 50,
+      marginTop: 10,
+    },
     itemContainer: {
-      padding: 5,
+      padding: 2,
       flexDirection: 'row',
     },
     buttonContainer: {
@@ -60,7 +76,7 @@ const useStyles = makeStyles((theme: any) =>
     bottom: {
       flex: 1,
       justifyContent: 'flex-end',
-      marginTop: 200,
+      marginTop: 100,
       alignItems: 'center',
     },
   })

@@ -62,6 +62,7 @@ export const logIn = (email: string, password: string) => {
         dispatch({
           type: 'LOG_IN',
           payload: res.data,
+          headers: res.headers,
         });
         RootNavigation.navigate('Home');
       })
@@ -72,14 +73,26 @@ export const logIn = (email: string, password: string) => {
 };
 
 export const update = (
-  carType?: string,
-  color?: string,
+  bearer: string,
   make?: string,
   model?: string,
   year?: string,
-  email?: string
+  color?: string,
+  carType?: string
 ) => {
   return (dispatch: any) => {
+    console.log(
+      'make',
+      make,
+      'model',
+      model,
+      'year',
+      year,
+      'color',
+      color,
+      'carType',
+      carType
+    );
     axios
       .post(
         `${USERS_BASE_URL}/updateAccount`,
@@ -91,10 +104,12 @@ export const update = (
             model,
             year,
           },
-          email,
         },
         {
-          headers: { 'spotback-correlation-id': uuidv4() },
+          headers: {
+            'spotback-correlation-id': uuidv4(),
+            Bearer: bearer,
+          },
         }
       )
       .then((res) => {

@@ -15,18 +15,27 @@ const FindMeASpot = () => {
         <Text style={styles.titleText}>Pay $6</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <Button
-          title="Find Spot here"
-          size="medium"
-          icon={spotPin2}
-          onPress={() => navigation.navigate('SearchingForMatch')}
-        />
-        <Button title="EV Spot" size="medium" icon={evCar} />
+        <View style={styles.spacing}>
+          <Button
+            title="Find Spot here"
+            size="medium"
+            icon={spotPin2}
+            onPress={() => navigation.navigate('SearchingForMatch')}
+          />
+        </View>
+        <View style={styles.spacing}>
+          <Button title="EV Spot" size="medium" icon={evCar} />
+        </View>
       </View>
       <View style={styles.centerContainer}>
-        <View>
-          <Input placeholder="Enter destination" inputStyle="long" />
-        </View>
+        <Input
+          placeholder="Enter destination"
+          inputStyle="large"
+          autoComplete
+          onPress={(data: any) => {
+            console.log('DATA DETAILS on Press', data);
+          }}
+        />
       </View>
     </View>
   );

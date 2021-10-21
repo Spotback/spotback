@@ -32,6 +32,20 @@ const useStyles = makeStyles((theme: any) =>
       width: 65,
       height: 65,
     },
+    profilePicImage: {
+      position: 'absolute',
+      left: 25,
+      top: 40,
+      width: 65,
+      height: 65,
+      borderRadius: 50,
+    },
+    noProfilePicImage: {
+      position: 'absolute',
+      left: 25,
+      top: 40,
+      borderRadius: 50,
+    },
     headerTitle: {
       color: theme.colors.light,
       fontSize: 24,

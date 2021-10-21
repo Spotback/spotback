@@ -13,7 +13,7 @@ const TransferToBank = () => {
       <View style={styles.centerContainer}>
         <Text style={styles.subText}>Spot Balance: $0</Text>
         <View style={styles.itemContainer}>
-          <Input inputStyle="long" />
+          <Input inputStyle="large" />
         </View>
         <View style={styles.itemContainer}>
           <Button title="Cash Out" size="large" />

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, RootStateOrAny } from 'react-redux';
-import { View, Text, ScrollView, Image } from 'react-native';
+import { View, Text, ScrollView, Image, PermissionsAndroid } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import Geolocation from '@react-native-community/geolocation';
 import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
+import storage from '@react-native-firebase/storage';
 import spotNewsItems from '../../config/Home.config';
 import { Header, Button } from '@components/index';
-import { profilePic } from '@assets/images/index';
-import { spotPin } from '@assets/images/index';
+import { spotPin, spotbackLogoIcon } from '@assets/images/index';
 import useStyles from './Home.styles';
 
 const Home = () => {
@@ -16,20 +17,77 @@ const Home = () => {
   const navigation = useNavigation();
 
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  console.log('userSelector ', user);
+  const [imageSource, setImageSource] = useState('');
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
   const [spotNewsVisible, setspotNewsVisible] = useState(false);
-
+  console.log(latitude, longitude);
   const toggleSpotNewsVisibility = () => setspotNewsVisible(!spotNewsVisible);
 
+  const getCurrentLocation = () => {
+    Geolocation.getCurrentPosition(
+      (position) => {
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+      },
+      (error) => {
+        console.log('error ', error);
+      },
+      {
+        enableHighAccuracy: false,
+        timeout: 30000,
+        maximumAge: 1000,
+      }
+    );
+  };
+
+  const requestLocationPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          title: 'Location Access Required',
+          message: 'Spotback needs to Access your location',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        }
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        getCurrentLocation();
+        console.log(granted);
+      } else {
+        console.log('not granted');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
+  const getProfilePic = () => {
+    storage()
+      .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
+      .getDownloadURL()
+      .then((url: string) => {
+        url ? setImageSource(url) : setImageSource('');
+      })
+      .catch((e) => {
+        setImageSource('');
+        console.log('getting downloadURL of image error => ', e);
+      });
+  };
+
   useEffect(() => {
+    getProfilePic();
+    requestLocationPermission();
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
-  }, []);
+  });
 
   return (
     <View style={styles.mainContainer}>
       <Header
         title="Account"
-        profilePic={profilePic}
+        imageSource={imageSource}
         balance={15}
         onPress={() => navigation.navigate('Account')}
       />
@@ -39,15 +97,36 @@ const Home = () => {
             provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
-              latitude: 37.78825,
-              longitude: -122.4324,
+              latitude: latitude,
+              longitude: longitude,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}>
-            <Marker coordinate={{ latitude: 37.78825, longitude: -122.4324 }} image={spotPin} />
+            <Marker coordinate={{ latitude: latitude, longitude: longitude }} image={spotPin} />
           </MapView>
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={styles.smallButtonContainer}>
+          <View style={styles.spacing}>
+            <Button
+              title="Pin Spot"
+              size="medium"
+              icon={spotbackLogoIcon}
+              customButtonStyles={styles.customTopButton}
+              customTextStyles={styles.customTopText}
+              onPress={() => navigation.navigate('FindMeASpot')}
+            />
+          </View>
+          <View style={styles.spacing}>
+            <Button
+              title="Remove Pin"
+              size="small"
+              customButtonStyles={styles.customBottomButton}
+              customTextStyles={styles.customBottomText}
+              onPress={() => navigation.navigate('PostMySpot')}
+            />
+          </View>
+        </View>
+        <View style={styles.largeButtonContainer}>
           <View style={styles.spacing}>
             <Button
               title="Find Me A Spot"

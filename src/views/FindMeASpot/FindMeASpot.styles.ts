@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme: any) =>
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor:  theme.colors.background,
+      backgroundColor: theme.colors.background,
     },
     titleContainer: {
       position: 'absolute',
@@ -17,10 +17,13 @@ const useStyles = makeStyles((theme: any) =>
       textAlign: 'center',
     },
     titleText: {
-      color:  theme.colors.dark,
+      color: theme.colors.dark,
       fontFamily: 'PT Sans',
       fontWeight: 'bold',
       fontSize: 24,
+    },
+    spacing: {
+      marginHorizontal: 5,
     },
     buttonsContainer: {
       flexDirection: 'row',
@@ -32,10 +35,11 @@ const useStyles = makeStyles((theme: any) =>
       position: 'absolute',
       top: 180,
       padding: 5,
+      margin: 5,
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'center',
-      backgroundColor:  theme.colors.primary,
+      backgroundColor: theme.colors.primary,
       width: 352,
       height: 246,
       borderRadius: 10,

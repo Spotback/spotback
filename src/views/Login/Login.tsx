@@ -30,7 +30,7 @@ const Login = () => {
         render={({ field: { onChange, onBlur, value } }) => (
           <Input
             placeholder={errors.email ? 'This is required.' : 'Your Email'}
-            inputStyle="long"
+            inputStyle="large"
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
@@ -49,7 +49,7 @@ const Login = () => {
             <View style={styles.input}>
               <Input
                 placeholder={errors.password ? 'This is required.' : 'Password'}
-                inputStyle="short"
+                inputStyle="medium"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}

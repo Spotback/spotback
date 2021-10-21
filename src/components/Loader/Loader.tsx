@@ -8,18 +8,12 @@ import { spotbackLogoFull } from '@assets/images/index';
 const Loader: FC = () => {
   const styles = useStyles();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  console.log('userSelector loader ', user);
   const animatedValue = new Animated.Value(0);
 
   const bounce = animatedValue.interpolate({
     inputRange: [0, 0.5, 1],
     outputRange: [0.8, 1.2, 0.8],
   });
-
-  useEffect(() => {
-    LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
-    animate();
-  }, []);
 
   const animate = () => {
     animatedValue.setValue(0);
@@ -30,6 +24,11 @@ const Loader: FC = () => {
       easing: Easing.linear,
     }).start(() => animate());
   };
+
+  useEffect(() => {
+    LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+    animate();
+  }, []);
 
   return (
     <View style={styles.container}>

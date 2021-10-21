@@ -19,18 +19,19 @@ const initialState = {
   phone: '',
   referralCode: '',
   stripeToken: '',
+  bearer: '',
 };
 
 const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case 'SIGN_UP':
-      console.log('reducer ', action);
+      console.log('sign up reducer ', action);
       return {
         ...state,
         isloggedIn: true,
       };
     case 'LOG_IN':
-      console.log('reducer ', action);
+      console.log('log in reducer ', action);
       return {
         ...state,
         isloggedIn: true,
@@ -53,9 +54,10 @@ const userReducer = (state = initialState, action: any) => {
         phone: action.payload.phone,
         referralCode: action.payload.referralCode,
         stripeToken: action.payload.stripeToken,
+        bearer: action.headers.bearer
       };
     case 'UPDATE':
-      console.log('reducer ', action);
+      console.log('update reducer ', action);
       return {
         ...state,
         car: {
@@ -65,7 +67,6 @@ const userReducer = (state = initialState, action: any) => {
           model: action.payload.car.model,
           year: action.payload.car.year,
         },
-        email: action.payload.email,
       };
     default:
       return state;

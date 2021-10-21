@@ -61,7 +61,6 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
         fontSize: 10,
       },
       icon: {
-        marginLeft: 15,
         width: 30,
         height: 40,
       },

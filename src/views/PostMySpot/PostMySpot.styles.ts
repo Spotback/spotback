@@ -27,10 +27,14 @@ const useStyles = makeStyles((theme: any) =>
       // alignItems: 'center',
       // justifyContent: 'center',
     },
-    subPicker: {
+    picker: {
       flex: 1,
       // alignItems: 'center',
       // justifyContent: 'center',
+    },
+    dropDown: {
+      color: theme.colors.light,
+      width: 160,
     },
     titleContainer: {
       position: 'absolute',
