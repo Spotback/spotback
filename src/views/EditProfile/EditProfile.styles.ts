@@ -12,13 +12,14 @@ const useStyles = makeStyles((theme: any) =>
       height: 40,
       width: 40,
     },
-    proflePicContainer: {
+    profilePicContainer: {
       position: 'relative',
+      padding: 10,
     },
     editText: {
       fontSize: 24,
       color: theme.colors.light,
-      top: 50,
+      top: 35,
       left: 30,
       position: 'absolute',
       zIndex: 1,
@@ -27,22 +28,6 @@ const useStyles = makeStyles((theme: any) =>
       shadowOpacity: 0.8,
       shadowRadius: 2,
       elevation: 10,
-    },
-    profilePicImage: {
-      marginVertical: 20,
-      height: 100,
-      width: 100,
-      borderRadius: 50,
-      opacity: 0.7,
-    },
-    noProfilePicImage: {
-      marginVertical: 20,
-      borderRadius: 50,
-    },
-    picker: {
-      // flex: 1,
-      // alignItems: 'center',
-      // justifyContent: 'center',
     },
     dropDown: {
       color: theme.colors.dark,

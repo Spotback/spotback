@@ -26,14 +26,6 @@ const useStyles = makeStyles((theme: any) =>
       borderRadius: 10,
       elevation: 5,
     },
-    profilePicImage: {
-      height: 100,
-      width: 100,
-      borderRadius: 50,
-    },
-    noProfilePicImage: {
-      borderRadius: 50,
-    },
     starContainer: {
       alignItems: 'center',
       justifyContent: 'center',

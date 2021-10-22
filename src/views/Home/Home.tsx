@@ -8,7 +8,7 @@ import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
 import storage from '@react-native-firebase/storage';
 import spotNewsItems from '../../config/Home.config';
-import { Header, Button } from '@components/index';
+import { Hub, Button } from '@components/index';
 import { spotPin, spotbackLogoIcon } from '@assets/images/index';
 import useStyles from './Home.styles';
 
@@ -85,8 +85,9 @@ const Home = () => {
 
   return (
     <View style={styles.mainContainer}>
-      <Header
+      <Hub
         title="Account"
+        top
         imageSource={imageSource}
         balance={15}
         onPress={() => navigation.navigate('Account')}
@@ -143,7 +144,7 @@ const Home = () => {
           </View>
         </View>
       </View>
-      <Header title="SpotNews" flip={true} onPress={toggleSpotNewsVisibility} />
+      <Hub title="SpotNews" bottom onPress={toggleSpotNewsVisibility} />
       <SlidingView
         componentVisible={spotNewsVisible}
         changeVisibilityCallback={toggleSpotNewsVisibility}
@@ -151,7 +152,7 @@ const Home = () => {
         height={styles.slider.height}
         containerStyle={styles.slider}
         disableDrag={true}>
-        <Header title="SpotNews" flip={true} onPress={toggleSpotNewsVisibility} />
+        <Hub title="SpotNews" bottom onPress={toggleSpotNewsVisibility} />
         <ScrollView>
           <View style={styles.sliderContainer}>
             {spotNewsItems?.map((spotNewsItem, index) => {

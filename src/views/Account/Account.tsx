@@ -4,8 +4,16 @@ import { useSelector, RootStateOrAny } from 'react-redux';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import { removeData } from '../../utils/asyncStorage';
-import Stars from '../../components/Stars/Stars';
-import { transfers, invite, editProfile, help, creditCard, exit } from '@assets/images/index';
+import { Stars, ProfilePic } from '@components/index';
+import {
+  transfers,
+  invite,
+  editProfile,
+  help,
+  creditCard,
+  exit,
+  noProfilePic,
+} from '@assets/images/index';
 import { Icon } from 'react-native-elements';
 import useStyles from './Account.styles';
 import { theme } from '@utils/theme';
@@ -33,17 +41,7 @@ const Account = () => {
 
   return (
     <View style={styles.container}>
-      {imageSource === '' || undefined ? (
-        <Icon
-          name="user-circle-o"
-          type="font-awesome"
-          size={100}
-          containerStyle={styles.noProfilePicImage}
-          backgroundColor={theme.colors.shadow}
-        />
-      ) : (
-        <Image style={styles.profilePicImage} source={{ uri: imageSource }} />
-      )}
+      <ProfilePic imageSource={imageSource} size="medium" />
       <View style={styles.starContainer}>
         <Stars />
       </View>

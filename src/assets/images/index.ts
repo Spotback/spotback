@@ -19,3 +19,4 @@ export { default as spotbackLogoIcon } from './spotbackLogoIcon.png';
 export { default as spotPin } from './spotPin.png';
 export { default as spotPin2 } from './spotPin2.png';
 export { default as transfers } from './transfers.png';
+export { default as noProfilePic } from './noProfilePic.png';

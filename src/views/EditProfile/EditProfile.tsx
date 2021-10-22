@@ -7,8 +7,8 @@ import { launchImageLibrary } from 'react-native-image-picker';
 import storage from '@react-native-firebase/storage';
 import { Picker } from '@react-native-picker/picker';
 import { useForm, Controller } from 'react-hook-form';
-import { Button, Input } from '@components/index';
-import { editProfile, profilePic } from '@assets/images/index';
+import { Button, Input, ProfilePic } from '@components/index';
+import { editProfile, noProfilePic } from '@assets/images/index';
 import { Icon } from 'react-native-elements';
 import useStyles from './EditProfile.styles';
 import { theme } from '@utils/theme';
@@ -88,23 +88,12 @@ const EditProfile = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={editProfile} />
-      <View style={styles.proflePicContainer}>
+      <View style={styles.profilePicContainer}>
         <TouchableOpacity onPress={uploadProfilePic}>
           <Text style={styles.editText}>Edit</Text>
-          {imageSource === '' || undefined ? (
-            <Icon
-              name="user-circle-o"
-              type="font-awesome"
-              size={100}
-              containerStyle={styles.noProfilePicImage}
-              backgroundColor={theme.colors.shadow}
-            />
-          ) : (
-            <Image style={styles.profilePicImage} source={{ uri: imageSource }} />
-          )}
+          <ProfilePic imageSource={imageSource} size="medium" blured />
         </TouchableOpacity>
       </View>
-
       <View style={styles.centerContainer}>
         <View style={styles.itemContainer}>
           <Text style={styles.subText}>License Plate: </Text>
@@ -186,17 +175,15 @@ const EditProfile = () => {
         </View>
         <View style={styles.itemContainer}>
           <Text style={styles.sizeSubText}>Vehicle Size: </Text>
-          <View style={styles.picker}>
-            <Picker
-              dropdownIconColor={theme.colors.dark}
-              style={styles.dropDown}
-              selectedValue={carType}
-              onValueChange={(itemValue, itemIndex) => setCarType(itemValue)}>
-              <Picker.Item label="Small" value="small" />
-              <Picker.Item label="Medium" value="medium" />
-              <Picker.Item label="Large" value="large" />
-            </Picker>
-          </View>
+          <Picker
+            dropdownIconColor={theme.colors.dark}
+            style={styles.dropDown}
+            selectedValue={carType}
+            onValueChange={(itemValue, itemIndex) => setCarType(itemValue)}>
+            <Picker.Item label="Small" value="small" />
+            <Picker.Item label="Medium" value="medium" />
+            <Picker.Item label="Large" value="large" />
+          </Picker>
         </View>
       </View>
       <View style={styles.bottom}>
