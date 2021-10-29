@@ -41,7 +41,7 @@ const Account = () => {
 
   return (
     <View style={styles.container}>
-      <ProfilePic imageSource={imageSource} size="medium" />
+      <ProfilePic imageSource={imageSource} size="large" />
       <View style={styles.starContainer}>
         <Stars />
       </View>

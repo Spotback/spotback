@@ -49,6 +49,18 @@ const Hub: FC<HeaderProps> = ({
             </View>
           </>
         )}
+        {host && (
+          <>
+            <View style={styles.topHubSpacing}>
+              <Text style={styles.hubTitle}>{title}</Text>
+            </View>
+            <View style={styles.topHubSpacing}>
+              <View style={styles.profilePicImage}>
+                <ProfilePic imageSource={imageSource} size="medium" />
+              </View>
+            </View>
+          </>
+        )}
       </View>
     </TouchableOpacity>
   );

@@ -91,7 +91,7 @@ const EditProfile = () => {
       <View style={styles.profilePicContainer}>
         <TouchableOpacity onPress={uploadProfilePic}>
           <Text style={styles.editText}>Edit</Text>
-          <ProfilePic imageSource={imageSource} size="medium" blured />
+          <ProfilePic imageSource={imageSource} size="large" blured />
         </TouchableOpacity>
       </View>
       <View style={styles.centerContainer}>
