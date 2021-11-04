@@ -2,7 +2,7 @@ import axios from 'axios';
 import { USERS_BASE_URL } from '@env';
 import * as RootNavigation from '@navigation/RootNavigation';
 import { v4 as uuidv4 } from 'uuid';
-import { storeData, getData } from '@utils/asyncStorage';
+import { setAsyncStorage, getAsyncStorage } from '@utils/asyncStorage';
 
 console.log(`${USERS_BASE_URL}/createAccount`);
 
@@ -30,7 +30,7 @@ export const signUp = (
       )
       .then((res) => {
         console.log('res', res);
-        // response doesnt send back user info
+        //TODO: response doesnt send back user info
         dispatch({
           type: 'SIGN_UP',
           payload: { email, firstName, lastName, password, phone },
@@ -58,7 +58,7 @@ export const logIn = (email: string, password: string) => {
       )
       .then((res) => {
         console.log('res', res);
-        storeData(res.data._id);
+        setAsyncStorage(res.data._id);
         dispatch({
           type: 'LOG_IN',
           payload: res.data,
@@ -74,6 +74,7 @@ export const logIn = (email: string, password: string) => {
 
 export const update = (
   bearer: string,
+  licencePlate?: string,
   make?: string,
   model?: string,
   year?: string,
@@ -81,23 +82,12 @@ export const update = (
   carType?: string
 ) => {
   return (dispatch: any) => {
-    console.log(
-      'make',
-      make,
-      'model',
-      model,
-      'year',
-      year,
-      'color',
-      color,
-      'carType',
-      carType
-    );
     axios
       .post(
         `${USERS_BASE_URL}/updateAccount`,
         {
           car: {
+            licencePlate,
             carType,
             color,
             make,

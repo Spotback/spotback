@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
-import { removeData } from '../../utils/asyncStorage';
+import { removeAsyncStorage } from '../../utils/asyncStorage';
 import { Stars, ProfilePic } from '@components/index';
 import {
   transfers,
@@ -86,7 +86,7 @@ const Account = () => {
             <Text style={styles.text}>Payment Information</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => removeData()}>
+        <TouchableOpacity onPress={() => removeAsyncStorage()}>
           <View style={styles.iconContainer}>
             <Image style={styles.image} source={exit} />
             <Text style={styles.text}>Sign Out</Text>

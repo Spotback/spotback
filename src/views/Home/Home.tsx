@@ -55,7 +55,6 @@ const Home = () => {
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         getCurrentLocation();
-        console.log(granted);
       } else {
         console.log('not granted');
       }

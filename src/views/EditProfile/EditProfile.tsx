@@ -16,7 +16,7 @@ import { theme } from '@utils/theme';
 const EditProfile = () => {
   const styles = useStyles();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  console.log('user ', user);
+  console.log('user ', user.car.licencePlate);
   const [imageSource, setImageSource] = useState('');
   const [make, setMake] = useState(user.car.make);
   const [model, setModel] = useState(user.car.model);
@@ -33,8 +33,9 @@ const EditProfile = () => {
   } = useForm();
 
   const onSubmit = (formFields: Record<string, any>) => {
-    console.log('onSumbit ', formFields, make, model, year, color, carType);
-    dispatch(update(user.bearer, make, model, year, color, carType));
+    const { licencePlate } = formFields;
+    console.log('onSumbit ', licencePlate, make, model, year, color, carType);
+    dispatch(update(user.bearer, licencePlate, make, model, year, color, carType));
   };
 
   const getProfilePic = () => {
@@ -104,7 +105,7 @@ const EditProfile = () => {
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
-                placeholder={errors.licencePlate ? 'This is required.' : ''}
+                placeholder={user.car.licencePlate}
                 inputStyle="small"
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -112,7 +113,7 @@ const EditProfile = () => {
               />
             )}
             name="licencePlate"
-            defaultValue=""
+            defaultValue=''
           />
         </View>
         <View style={styles.itemContainer}>
