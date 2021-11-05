@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import useStyles from './Hub.styles';
 import { ProfilePic } from '@components/index';
 
-interface HeaderProps {
+interface HubProps {
   title: string;
   imageSource?: any;
   balance?: number;
@@ -13,16 +13,7 @@ interface HeaderProps {
   host?: boolean;
   client?: boolean;
 }
-const Hub: FC<HeaderProps> = ({
-  title,
-  imageSource,
-  balance,
-  onPress,
-  top,
-  bottom,
-  host,
-  client,
-}) => {
+const Hub: FC<HubProps> = ({ title, imageSource, balance, onPress, top, bottom, host, client }) => {
   const styles = useStyles();
   return (
     <TouchableOpacity onPress={onPress}>
@@ -51,10 +42,22 @@ const Hub: FC<HeaderProps> = ({
         )}
         {host && (
           <>
-            <View style={styles.topHubSpacing}>
+            <View style={styles.hostTitleSpacing}>
               <Text style={styles.hubTitle}>{title}</Text>
             </View>
-            <View style={styles.topHubSpacing}>
+            <View style={styles.hostHubSpacing}>
+              <View style={styles.profilePicImage}>
+                <ProfilePic imageSource={imageSource} size="medium" />
+              </View>
+            </View>
+          </>
+        )}
+        {client && (
+          <>
+            <View style={styles.hostTitleSpacing}>
+              <Text style={styles.hubTitle}>{title}</Text>
+            </View>
+            <View style={styles.hostHubSpacing}>
               <View style={styles.profilePicImage}>
                 <ProfilePic imageSource={imageSource} size="medium" />
               </View>

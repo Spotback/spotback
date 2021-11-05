@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
-import { Button, Hub } from '@components/index';
+import { Button, Hub, Messenger } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { LogBox } from 'react-native';
@@ -38,8 +38,8 @@ const SpotExchange = () => {
   return (
     <View style={styles.mainContainer}>
       <Hub
-        title="Spot"
-        host
+        title="Arrving in 5 Minutes"
+        client
         imageSource={imageSource}
         balance={15}
         onPress={() => navigation.navigate('Home')}
@@ -59,8 +59,7 @@ const SpotExchange = () => {
         </View>
 
         <View style={styles.buttonContainer}>
-          {/* @TODO: create text messaging component  */}
-          <Text>TEXT MESSAGING</Text>
+          <Messenger />
         </View>
       </View>
     </View>

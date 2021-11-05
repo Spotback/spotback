@@ -44,7 +44,7 @@ const Input: FC<Inputprops> = ({
             inputStyle === 'large'
               ? styles.largeInput
               : inputStyle === 'medium'
-              ? styles.mediumlInput
+              ? styles.mediumInput
               : styles.smallInput
           }
           onBlur={onBlur}

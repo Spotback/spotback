@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: any) =>
       zIndex: -1,
     },
     buttonContainer: {
-      bottom: 50,
+      bottom: 20,
       position: 'absolute',
     },
     spacing: {
