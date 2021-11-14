@@ -17,12 +17,9 @@ const useStyles = makeStyles((theme: any) =>
       backgroundColor: theme.colors.background,
       zIndex: -1,
     },
-    buttonContainer: {
-      bottom: 20,
-      position: 'absolute',
-    },
-    spacing: {
-      padding: 5,
+    spotSwitchCompleteContainer: {
+      marginLeft: 'auto',
+      marginBottom: 5,
     },
     mapView: {
       ...StyleSheet.absoluteFillObject,
@@ -34,45 +31,114 @@ const useStyles = makeStyles((theme: any) =>
     map: {
       ...StyleSheet.absoluteFillObject,
     },
-    slider: {
-      backgroundColor: theme.colors.background,
-      height: height - 200,
-      borderTopLeftRadius: 20,
-      borderTopRightRadius: 20,
+
+    // modal
+    modalContainer: {
+      height: 200,
     },
-    sliderContainer: {
+    centeredView: {
+      flex: 1,
+      alignItems: 'center',
+      marginTop: 10,
+    },
+    modalView: {
+      width: 360,
+      height: 150,
+      backgroundColor: theme.colors.primary,
+      borderRadius: 15,
+      padding: 15,
+      // alignItems: 'center',
+      elevation: 5,
+      shadowColor: theme.colors.shadow,
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+    },
+    textStyle: {
+      color: 'white',
+      fontWeight: 'bold',
+      // textAlign: 'center',
+    },
+    starContainer: {
+      justifyContent: 'center',
+      flexDirection: 'row',
+      margin: 5,
+    },
+    cancelTransaction: {
+      marginLeft: 20,
+      marginBottom: 5,
+    },
+
+    // messenger
+    messengerContainer: {
+      bottom: 20,
+      position: 'absolute',
+    },
+    container: {
       justifyContent: 'center',
       alignItems: 'center',
-      paddingTop: 20,
     },
-    spotNewsContainer: {
-      backgroundColor: theme.colors.light,
+    incomingText: {
+      opacity: 0.5,
+      backgroundColor: theme.colors.primary,
       padding: 10,
-      width: 319,
-      height: 126,
+      width: 324,
+      height: 50,
       borderRadius: 10,
-      borderWidth: 4,
+      borderWidth: 2,
       borderColor: theme.colors.primary,
       shadowColor: theme.colors.shadow,
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.8,
       shadowRadius: 2,
       elevation: 10,
-      marginVertical: 5,
-      alignItems: 'center',
-      justifyContent: 'center',
+    },
+    input: {
+      backgroundColor: theme.colors.light,
+      fontSize: 10,
+      fontWeight: 'bold',
+      padding: 10,
+      margin: 5,
+      width: 291,
+      height: 30,
+      borderRadius: 10,
+      borderWidth: 2,
+      borderColor: theme.colors.primary,
+      shadowColor: theme.colors.shadow,
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      elevation: 10,
+    },
+    buttonContainer: {
       flexDirection: 'row',
-      flexWrap: 'wrap',
     },
-    textContainer: {
-      width: 220,
+    button: {
+      marginHorizontal: 2,
+      flex: 1,
+      alignItems: 'center',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      backgroundColor: theme.colors.light,
+      width: 63,
+      height: 41,
+      borderRadius: 20,
+      borderWidth: 2,
+      borderColor: theme.colors.primary,
+
+      elevation: 5,
+      shadowColor: theme.colors.shadow,
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
     },
-    text: {
-      fontSize: 20,
+    buttonTitle: {
+      color: theme.colors.dark,
+      fontSize: 10,
     },
-    image: {
-      height: 60,
-      width: 60,
+    icon: {
+      width: 30,
+      height: 40,
     },
   })
 );
