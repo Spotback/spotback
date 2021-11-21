@@ -75,11 +75,14 @@ const SpotExchange = () => {
           <View style={styles.centeredView}>
             <TouchableOpacity onPress={() => modalVisability()}>
               <View style={styles.modalView}>
-                <Text style={styles.textStyle}>Walter White</Text>
-                <Text style={styles.textStyle}>BMW, 3 Series, Black</Text>
-                <Text style={styles.textStyle}>FF35DG2</Text>
+                <View style={styles.modalTextContainer}>
+                  <Text style={styles.modalText}>Walter White</Text>
+                  <Text style={styles.modalText}>BMW, 3 Series, Black</Text>
+                  <Text style={styles.modalText}>FF35DG2</Text>
+                </View>
+
                 <View style={styles.starContainer}>
-                  <Stars />
+                  <Stars starSize={20} starWidth={3} />
                 </View>
               </View>
             </TouchableOpacity>

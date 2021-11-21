@@ -54,15 +54,21 @@ const useStyles = makeStyles((theme: any) =>
       shadowOpacity: 0.8,
       shadowRadius: 2,
     },
-    textStyle: {
+    modalTextContainer: {
+      position: 'absolute',
+      top: 35,
+      left: 20,
+    },
+    modalText: {
       color: 'white',
       fontWeight: 'bold',
+      marginVertical: 4,
       // textAlign: 'center',
     },
     starContainer: {
-      justifyContent: 'center',
-      flexDirection: 'row',
-      margin: 5,
+      position: 'absolute',
+      bottom: 15,
+      right: 20,
     },
     cancelTransaction: {
       marginLeft: 20,
