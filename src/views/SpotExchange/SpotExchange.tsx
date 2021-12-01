@@ -8,7 +8,6 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
-  Pressable,
 } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import { Button, Hub, Stars } from '@components/index';
@@ -80,7 +79,6 @@ const SpotExchange = () => {
                   <Text style={styles.modalText}>BMW, 3 Series, Black</Text>
                   <Text style={styles.modalText}>FF35DG2</Text>
                 </View>
-
                 <View style={styles.starContainer}>
                   <Stars starSize={20} starWidth={3} />
                 </View>
@@ -93,11 +91,11 @@ const SpotExchange = () => {
               title="Cancel Transaction"
               backgroundColor={theme.colors.light}
               titleColor={theme.colors.error}
+              onPress={() => navigation.navigate('Home')}
             />
           </View>
         </View>
       </Modal>
-
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
           <MapView
@@ -128,20 +126,29 @@ const SpotExchange = () => {
               //   onChangeText={onChangeText} value={value}
             />
             <View style={styles.buttonContainer}>
-              {/* TODO: Use Button component with custom button styles */}
-              <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonTitle}>On My Way!</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonTitle}>Almost There</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonTitle}>I'm Here</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.button}>
-                <Image source={phone} />
-              </TouchableOpacity>
+              <Button
+                size="small"
+                title="On My Way!"
+                customButtonStyles={styles.button}
+                customTextStyles={styles.buttonTitle}
+              />
+              <Button
+                size="small"
+                title="Almost There"
+                customButtonStyles={styles.button}
+                customTextStyles={styles.buttonTitle}
+              />
+              <Button
+                size="small"
+                title="I'm Here"
+                customButtonStyles={styles.button}
+                customTextStyles={styles.buttonTitle}
+              />
+              <Button
+                icon={phone}
+                customButtonStyles={styles.button}
+                customTextStyles={styles.buttonTitle}
+              />
             </View>
           </View>
         </View>

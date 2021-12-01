@@ -126,12 +126,11 @@ const useStyles = makeStyles((theme: any) =>
       flexDirection: 'row',
       justifyContent: 'center',
       backgroundColor: theme.colors.light,
-      width: 63,
+      width: 75,
       height: 41,
       borderRadius: 20,
       borderWidth: 2,
       borderColor: theme.colors.primary,
-
       elevation: 5,
       shadowColor: theme.colors.shadow,
       shadowOffset: { width: 0, height: 1 },
