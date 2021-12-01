@@ -6,6 +6,7 @@ const width = Dimensions.get('window').width;
 
 const useStyles = makeStyles((theme: any) =>
   StyleSheet.create({
+    // generic
     hub: {
       alignItems: 'center',
       justifyContent: 'center',
@@ -34,6 +35,14 @@ const useStyles = makeStyles((theme: any) =>
       borderTopColor: 'white',
       borderTopWidth: 3,
       marginTop: 10,
+    },
+    // host
+    hostHubSpacing: {
+      marginTop: 40,
+      marginHorizontal: 20,
+    },
+    hostTitleSpacing: {
+      marginLeft: 80,
     },
   })
 );

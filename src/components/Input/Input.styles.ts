@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: any) =>
       shadowRadius: 2,
       elevation: 10,
     },
-    mediumlInput: {
+    mediumInput: {
       backgroundColor: theme.colors.light,
       padding: 10,
       width: 149,

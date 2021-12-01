@@ -13,7 +13,7 @@ const ProfilePic: FC<ProfilePicProps> = ({ imageSource, size, blured }) => {
   const styles = useStyles(blured)();
   return (
     <Image
-      style={size === 'small' ? styles.small : styles.medium}
+      style={size === 'small' ? styles.small : size === 'medium' ? styles.medium : styles.large}
       source={imageSource === '' || undefined ? noProfilePic : { uri: imageSource }}
     />
   );

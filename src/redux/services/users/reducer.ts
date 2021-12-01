@@ -7,6 +7,7 @@ const initialState = {
   rating: 0,
   _id: '',
   car: {
+    licencePlate: '',
     carType: '',
     color: '',
     make: '',
@@ -42,6 +43,7 @@ const userReducer = (state = initialState, action: any) => {
         rating: action.payload.rating,
         _id: action.payload._id,
         car: {
+          licencePlate: action.payload.car.licencePlate,
           carType: action.payload.car.carType,
           color: action.payload.car.color,
           make: action.payload.car.make,
@@ -54,13 +56,14 @@ const userReducer = (state = initialState, action: any) => {
         phone: action.payload.phone,
         referralCode: action.payload.referralCode,
         stripeToken: action.payload.stripeToken,
-        bearer: action.headers.bearer
+        bearer: action.headers.bearer,
       };
     case 'UPDATE':
       console.log('update reducer ', action);
       return {
         ...state,
         car: {
+          licencePlate: action.payload.car.licencePlate,
           carType: action.payload.car.carType,
           color: action.payload.car.color,
           make: action.payload.car.make,
