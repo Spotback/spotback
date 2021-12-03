@@ -12,21 +12,13 @@ const useStyles = makeStyles((theme: any) =>
     },
     subContainer: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
       backgroundColor: theme.colors.background,
       zIndex: -1,
     },
-    spotSwitchCompleteContainer: {
-      marginLeft: 'auto',
-      marginBottom: 5,
-    },
+
     mapView: {
       ...StyleSheet.absoluteFillObject,
       height,
-      width: 400,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
     },
     map: {
       ...StyleSheet.absoluteFillObject,
@@ -47,7 +39,6 @@ const useStyles = makeStyles((theme: any) =>
       backgroundColor: theme.colors.primary,
       borderRadius: 15,
       padding: 15,
-      // alignItems: 'center',
       elevation: 5,
       shadowColor: theme.colors.shadow,
       shadowOffset: { width: 0, height: 1 },
@@ -63,7 +54,6 @@ const useStyles = makeStyles((theme: any) =>
       color: 'white',
       fontWeight: 'bold',
       marginVertical: 4,
-      // textAlign: 'center',
     },
     starContainer: {
       position: 'absolute',
@@ -75,10 +65,63 @@ const useStyles = makeStyles((theme: any) =>
       marginBottom: 5,
     },
 
+    // secondaryModal
+    secondaryModalContainer: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      justifyContent: 'center',
+      alignItems: 'center',
+      // marginBottom: 50
+    },
+    secondaryModalView: {
+      width: 333,
+      height: 112,
+      backgroundColor: theme.colors.primary,
+      borderRadius: 15,
+      elevation: 5,
+      shadowColor: theme.colors.shadow,
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      //  marginBottom: 50
+    },
+    secondaryModalTextContainer: {
+      position: 'absolute',
+      top: 15,
+      left: 0,
+      marginBottom: 50
+    },
+    secondaryModalText: {
+      color: 'white',
+      fontWeight: 'bold',
+      marginVertical: 4,
+      marginLeft: 15,
+    },
+    options: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 1,
+    },
+    buttonSpacing: {
+      marginHorizontal: 1,
+    },
+
     // messenger
+    spotSwitchCompleteContainer: {
+      marginLeft: 'auto',
+      marginBottom: 5,
+      marginRight: 30,
+    },
     messengerContainer: {
+      flex: 1,
       bottom: 20,
       position: 'absolute',
+      left: 0,
+      right: 0,
     },
     container: {
       justifyContent: 'center',

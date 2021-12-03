@@ -41,92 +41,8 @@ const SpotExchange = () => {
     getProfilePic();
   });
 
-  const SecondaryModal = () => {
-    return (
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={secondaryModalVis}
-        onRequestClose={() => {
-          setSecondaryModalVis(!secondaryModalVis);
-        }}>
-        <View style={styles.modalContainer}>
-          <View style={styles.centeredView}>
-            <TouchableOpacity onPress={() => setSecondaryModalVis(!secondaryModalVis)}>
-              <View style={styles.modalView}>
-                <View style={styles.modalTextContainer}>
-                  <Text style={styles.modalText}>
-                    If you cancel during this transaction a fee may apply.
-                  </Text>
-                  <Text style={styles.modalText}>Are you sure you want to cancel?</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
-    );
-  };
-
   return (
     <View style={styles.mainContainer}>
-      <Hub
-        title="Arriving in 5 Minutes"
-        client
-        imageSource={imageSource}
-        balance={15}
-        onPress={() => {
-          setModalVis(!modalVis);
-          setHubVis(!hubVis);
-        }}
-        hide={hubVis}
-      />
-
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVis}
-        onRequestClose={() => {
-          setModalVis(!modalVis);
-          setHubVis(!hubVis);
-        }}>
-        <View style={styles.modalContainer}>
-          <View style={styles.centeredView}>
-            <TouchableOpacity
-              onPress={() => {
-                setModalVis(!modalVis);
-                setHubVis(!hubVis);
-              }}>
-              <View style={styles.modalView}>
-                <View style={styles.modalTextContainer}>
-                  <Text style={styles.modalText}>Walter White</Text>
-                  <Text style={styles.modalText}>BMW, 3 Series, Black</Text>
-                  <Text style={styles.modalText}>FF35DG2</Text>
-                </View>
-                <View style={styles.starContainer}>
-                  <Stars starSize={20} starWidth={3} />
-                </View>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.cancelTransaction}>
-            <Button
-              size="small"
-              title="Cancel Transaction"
-              backgroundColor={theme.colors.light}
-              titleColor={theme.colors.error}
-              onPress={() => {
-                setModalVis(!modalVis);
-                setHubVis(!hubVis);
-                setTimeout(() => {
-                  setSecondaryModalVis(!secondaryModalVis);
-                }, 0.7);
-              }}
-            />
-          </View>
-        </View>
-      </Modal>
-
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
           <MapView
@@ -140,7 +56,95 @@ const SpotExchange = () => {
             }}
           />
         </View>
-        {SecondaryModal()}
+        <Hub
+          title="Arriving in 5 Minutes"
+          client
+          imageSource={imageSource}
+          balance={15}
+          onPress={() => {
+            setHubVis(!hubVis);
+              setModalVis(!modalVis);
+          }}
+          hide={hubVis}
+        />
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVis}
+          onRequestClose={() => {
+            setModalVis(!modalVis);
+            setHubVis(!hubVis);
+          }}>
+          <View style={styles.modalContainer}>
+            <View style={styles.centeredView}>
+              <TouchableOpacity
+                onPress={() => {
+                  setModalVis(!modalVis);
+                  setHubVis(!hubVis);
+                }}>
+                <View style={styles.modalView}>
+                  <View style={styles.modalTextContainer}>
+                    <Text style={styles.modalText}>Walter White</Text>
+                    <Text style={styles.modalText}>BMW, 3 Series, Black</Text>
+                    <Text style={styles.modalText}>FF35DG2</Text>
+                  </View>
+                  <View style={styles.starContainer}>
+                    <Stars starSize={20} starWidth={3} />
+                  </View>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.cancelTransaction}>
+              <Button
+                size="small"
+                title="Cancel Transaction"
+                backgroundColor={theme.colors.light}
+                titleColor={theme.colors.error}
+                onPress={() => {
+                  setModalVis(!modalVis);
+                  setHubVis(!hubVis);
+                    setSecondaryModalVis(!secondaryModalVis);
+                }}
+              />
+            </View>
+          </View>
+        </Modal>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={secondaryModalVis}
+          onRequestClose={() => {
+            setSecondaryModalVis(!secondaryModalVis);
+          }}>
+          <View style={styles.secondaryModalContainer}>
+            <View style={styles.secondaryModalView}>
+              <View style={styles.secondaryModalTextContainer}>
+                <Text style={styles.secondaryModalText}>
+                  If you cancel during this transaction a fee may apply.
+                </Text>
+                <Text style={styles.secondaryModalText}>Are you sure you want to cancel?</Text>
+                <View style={styles.options}>
+                  <View style={styles.buttonSpacing}>
+                    <Button
+                      title="Yes"
+                      size="medium"
+                      titleColor={theme.colors.error}
+                      onPress={() => setSecondaryModalVis(!secondaryModalVis)}
+                    />
+                  </View>
+                  <View style={styles.buttonSpacing}>
+                    <Button
+                      title="No"
+                      size="medium"
+                      titleColor={theme.colors.success}
+                      onPress={() => setSecondaryModalVis(!secondaryModalVis)}
+                    />
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </Modal>
         <View style={styles.messengerContainer}>
           <View style={styles.spotSwitchCompleteContainer}>
             <Button

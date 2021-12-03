@@ -12,17 +12,26 @@ const useStyles = makeStyles((theme: any) =>
     },
     subContainer: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
       backgroundColor: theme.colors.background,
       zIndex: -1,
     },
+    mapView: {
+      ...StyleSheet.absoluteFillObject,
+      height,
+    },
+    map: {
+      ...StyleSheet.absoluteFillObject,
+    },
     largeButtonContainer: {
-      bottom: 50,
       position: 'absolute',
+      left: 0,
+      right: 0,
+      bottom: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     smallButtonContainer: {
-      top: 20,
+      top: 90,
       right: 20,
       position: 'absolute',
     },
@@ -68,16 +77,7 @@ const useStyles = makeStyles((theme: any) =>
     spacing: {
       marginVertical: 5,
     },
-    mapView: {
-      ...StyleSheet.absoluteFillObject,
-      height,
-      width: 400,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-    },
-    map: {
-      ...StyleSheet.absoluteFillObject,
-    },
+
     slider: {
       backgroundColor: theme.colors.background,
       height: height - 200,
