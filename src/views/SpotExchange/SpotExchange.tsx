@@ -63,7 +63,7 @@ const SpotExchange = () => {
           balance={15}
           onPress={() => {
             setHubVis(!hubVis);
-              setModalVis(!modalVis);
+            setModalVis(!modalVis);
           }}
           hide={hubVis}
         />
@@ -103,7 +103,7 @@ const SpotExchange = () => {
                 onPress={() => {
                   setModalVis(!modalVis);
                   setHubVis(!hubVis);
-                    setSecondaryModalVis(!secondaryModalVis);
+                  setSecondaryModalVis(!secondaryModalVis);
                 }}
               />
             </View>
@@ -118,30 +118,27 @@ const SpotExchange = () => {
           }}>
           <View style={styles.secondaryModalContainer}>
             <View style={styles.secondaryModalView}>
-              <View style={styles.secondaryModalTextContainer}>
-                <Text style={styles.secondaryModalText}>
-                  If you cancel during this transaction a fee may apply.
-                </Text>
-                <Text style={styles.secondaryModalText}>Are you sure you want to cancel?</Text>
-                <View style={styles.options}>
-                  <View style={styles.buttonSpacing}>
-                    <Button
-                      title="Yes"
-                      size="medium"
-                      titleColor={theme.colors.error}
-                      onPress={() => setSecondaryModalVis(!secondaryModalVis)}
-                    />
-                  </View>
-                  <View style={styles.buttonSpacing}>
-                    <Button
-                      title="No"
-                      size="medium"
-                      titleColor={theme.colors.success}
-                      onPress={() => setSecondaryModalVis(!secondaryModalVis)}
-                    />
-                  </View>
-                </View>
-              </View>
+              <Text style={styles.secondaryModalText}>
+                If you cancel during this transaction a fee may apply.
+              </Text>
+              <Text style={styles.secondaryModalText}>Are you sure you want to cancel?</Text>
+            </View>
+            <View style={styles.options}>
+              <Button
+                title="Yes"
+                size="medium"
+                titleColor={theme.colors.error}
+                onPress={() => setSecondaryModalVis(!secondaryModalVis)}
+              />
+              {/* @TODO: Issue from height and width in options */}
+              <View style={{ marginLeft: 1, marginRight: 1 }} />
+
+              <Button
+                title="No"
+                size="medium"
+                titleColor={theme.colors.success}
+                onPress={() => setSecondaryModalVis(!secondaryModalVis)}
+              />
             </View>
           </View>
         </Modal>

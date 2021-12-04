@@ -65,16 +65,12 @@ const useStyles = makeStyles((theme: any) =>
       marginBottom: 5,
     },
 
-    // secondaryModal
+    // secondary modal
     secondaryModalContainer: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
+      flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      // marginBottom: 50
+      height: 400,
     },
     secondaryModalView: {
       width: 333,
@@ -86,25 +82,20 @@ const useStyles = makeStyles((theme: any) =>
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.8,
       shadowRadius: 2,
-      //  marginBottom: 50
     },
-    secondaryModalTextContainer: {
-      position: 'absolute',
-      top: 15,
-      left: 0,
-      marginBottom: 50
-    },
+
     secondaryModalText: {
       color: 'white',
       fontWeight: 'bold',
-      marginVertical: 4,
+      marginTop: 15,
       marginLeft: 15,
     },
     options: {
       flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      zIndex: 1,
+      // @TODO: height and width affecting buttons height and width, strange issue.
+      height: 60,
+      width: 333,
+      marginTop: 2,
     },
     buttonSpacing: {
       marginHorizontal: 1,

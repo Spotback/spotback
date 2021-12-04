@@ -16,12 +16,14 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.8,
         shadowRadius: 2,
+        zIndex: 1,
       },
       buttonMedium: {
         alignItems: 'center',
-        flexDirection: 'row',
+        // flexDirection: 'row',
         justifyContent: 'center',
         backgroundColor: backgroundColor ? backgroundColor : theme.colors.primary,
+        padding: 8,
         width: 165,
         height: 55,
         borderRadius: 10,
@@ -31,6 +33,7 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.8,
         shadowRadius: 2,
+        zIndex: 1,
       },
       buttonSmall: {
         alignItems: 'center',
@@ -53,16 +56,16 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
       titleMedium: {
         color: titleColor ? titleColor : theme.colors.light,
         fontSize: 18,
-        width: 85,
+        // width: 85,
       },
       titleSmall: {
         color: titleColor ? titleColor : theme.colors.light,
         fontSize: 10,
       },
-      icon: {
-        width: 30,
-        height: 40,
-      },
+      // icon: {
+      //   width: 30,
+      //   height: 40,
+      // },
     })
   );
 

@@ -34,7 +34,8 @@ const Button: FC<ButtonProps> = ({
       {size === 'medium' && (
         <View style={customButtonStyles ? customButtonStyles : styles.buttonMedium}>
           <Text style={customTextStyles ? customTextStyles : styles.titleMedium}>{title}</Text>
-          {icon && <Image style={title === 'EV Spot' ? '' : (styles.icon as any)} source={icon} />}
+          {/* @TODO: Figure out issue with icon sizing */}
+          {/* {icon && <Image style={title === 'EV Spot' ? '' : (styles.icon as any)} source={icon} />} */}
         </View>
       )}
       {size === 'small' && (
