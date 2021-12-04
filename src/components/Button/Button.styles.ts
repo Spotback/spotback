@@ -20,7 +20,7 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
       },
       buttonMedium: {
         alignItems: 'center',
-        // flexDirection: 'row',
+        flexDirection: 'row',
         justifyContent: 'center',
         backgroundColor: backgroundColor ? backgroundColor : theme.colors.primary,
         padding: 8,
@@ -56,16 +56,17 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
       titleMedium: {
         color: titleColor ? titleColor : theme.colors.light,
         fontSize: 18,
-        // width: 85,
+        // @TODO: Remove this when fixing ev image
+        width: 85,
       },
       titleSmall: {
         color: titleColor ? titleColor : theme.colors.light,
         fontSize: 10,
       },
-      // icon: {
-      //   width: 30,
-      //   height: 40,
-      // },
+      icon: {
+        width: 30,
+        height: 40,
+      },
     })
   );
 
