@@ -22,31 +22,33 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      <Controller
-        control={control}
-        rules={{
-          required: true,
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            placeholder={errors.email ? 'This is required.' : 'Your Email'}
-            inputStyle="large"
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
-        )}
-        name="email"
-        defaultValue=""
-      />
-      <View style={styles.centerContainer}>
+      <View>
         <Controller
           control={control}
           rules={{
             required: true,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <View style={styles.input}>
+            <Input
+              placeholder={errors.email ? 'This is required.' : 'Your Email'}
+              inputStyle="large"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+          name="email"
+          defaultValue=""
+        />
+      </View>
+      <View style={styles.centerContainer}>
+        <View>
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 placeholder={errors.password ? 'This is required.' : 'Password'}
                 inputStyle="medium"
@@ -54,11 +56,11 @@ const Login = () => {
                 onChangeText={onChange}
                 value={value}
               />
-            </View>
-          )}
-          name="password"
-          defaultValue=""
-        />
+            )}
+            name="password"
+            defaultValue=""
+          />
+        </View>
         <View style={styles.link}>
           <Link linkText="Forgot Password" />
         </View>
