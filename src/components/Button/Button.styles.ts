@@ -23,7 +23,7 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
         flexDirection: 'row',
         justifyContent: 'center',
         backgroundColor: backgroundColor ? backgroundColor : theme.colors.primary,
-        padding: 8,
+        padding: 5,
         width: 165,
         height: 55,
         borderRadius: 10,
@@ -64,7 +64,7 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
         fontSize: 10,
       },
       icon: {
-        width: 30,
+        width: 32,
         height: 40,
       },
     })

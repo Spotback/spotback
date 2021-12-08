@@ -24,7 +24,7 @@ const FindMeASpot = () => {
           />
         </View>
         <View style={styles.spacing}>
-          <Button title="Yes" size="medium" icon={evCar} />
+          <Button title="EV Spot" size="medium" icon={evCar} />
         </View>
       </View>
       <View style={styles.centerContainer}>
