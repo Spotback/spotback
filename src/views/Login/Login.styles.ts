@@ -11,17 +11,15 @@ const useStyles = makeStyles((theme: any) =>
     },
     centerContainer: {
       flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      marginHorizontal: 10,
-    },
-    input: {
-      marginVertical: 10,
-      marginHorizontal: 10,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      width: 315,
+      marginTop: 10,
     },
     link: {
-      marginTop: 20,
-      marginHorizontal: 10,
+      height: 50,
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
     },
     button: {
       margin: 30,
