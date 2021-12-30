@@ -15,7 +15,10 @@ const SpotExchange = () => {
   const styles = useStyles();
   const navigation = useNavigation();
   const [modalVis, setModalVis] = useState(false);
-  const [secondaryModalVis, setSecondaryModalVis] = useState(false);
+  const [secondaryModalVis, setSecondaryModalVis] = useState({
+    visible: false,
+    type: '',
+  });
   const [hubVis, setHubVis] = useState(false);
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   const [imageSource, setImageSource] = useState('');
@@ -40,6 +43,78 @@ const SpotExchange = () => {
   useEffect(() => {
     getProfilePic();
   });
+
+  const SecondaryModalView = () => {
+    return (
+      <View style={styles.secondaryModalContainer}>
+        {secondaryModalVis.type === 'one' ? (
+          <>
+            <View style={styles.secondaryModalView}>
+              <Text style={styles.secondaryModalText}>
+                If you cancel during this transaction a fee may apply.
+              </Text>
+              <Text style={styles.secondaryModalText}>Are you sure you want to cancel?</Text>
+            </View>
+            <View style={styles.options}>
+              <Button
+                title="Yes"
+                size="medium"
+                titleColor={theme.colors.error}
+                // onPress={() => setSecondaryModalVis(!secondaryModalVis)}
+                onPress={() =>
+                  setSecondaryModalVis({ visible: !secondaryModalVis.visible, type: 'one' })
+                }
+              />
+              {/* @TODO: Issue from height and width in options */}
+              <View style={{ marginLeft: 1, marginRight: 1 }} />
+
+              <Button
+                title="No"
+                size="medium"
+                titleColor={theme.colors.success}
+                // onPress={() => setSecondaryModalVis(!secondaryModalVis)}
+                onPress={() =>
+                  setSecondaryModalVis({ visible: !secondaryModalVis.visible, type: 'one' })
+                }
+              />
+            </View>
+          </>
+        ) : (
+          <>
+            <View style={styles.secondaryModalView}>
+              <Text style={styles.secondaryModalText}>
+                Are you sure this spot exchange is complete?
+              </Text>
+              {/* <Text style={styles.secondaryModalText}>Are you sure you want to cancel?</Text> */}
+            </View>
+            <View style={styles.options}>
+              <Button
+                title="Yes"
+                size="medium"
+                titleColor={theme.colors.error}
+                // onPress={() => setSecondaryModalVis(!secondaryModalVis)}
+                onPress={() =>
+                  setSecondaryModalVis({ visible: !secondaryModalVis.visible, type: 'one' })
+                }
+              />
+              {/* @TODO: Issue from height and width in options */}
+              <View style={{ marginLeft: 1, marginRight: 1 }} />
+
+              <Button
+                title="No"
+                size="medium"
+                titleColor={theme.colors.success}
+                // onPress={() => setSecondaryModalVis(!secondaryModalVis)}
+                onPress={() =>
+                  setSecondaryModalVis({ visible: !secondaryModalVis.visible, type: 'one' })
+                }
+              />
+            </View>
+          </>
+        )}
+      </View>
+    );
+  };
 
   return (
     <View style={styles.mainContainer}>
@@ -103,7 +178,8 @@ const SpotExchange = () => {
                 onPress={() => {
                   setModalVis(!modalVis);
                   setHubVis(!hubVis);
-                  setSecondaryModalVis(!secondaryModalVis);
+                  // setSecondaryModalVis(!secondaryModalVis);
+                  setSecondaryModalVis({ visible: !secondaryModalVis.visible, type: 'one' });
                 }}
               />
             </View>
@@ -112,42 +188,23 @@ const SpotExchange = () => {
         <Modal
           animationType="fade"
           transparent={true}
-          visible={secondaryModalVis}
+          visible={secondaryModalVis.visible}
           onRequestClose={() => {
-            setSecondaryModalVis(!secondaryModalVis);
+            // setSecondaryModalVis(!secondaryModalVis);
+            setSecondaryModalVis({ visible: !secondaryModalVis.visible, type: 'one' });
           }}>
-          <View style={styles.secondaryModalContainer}>
-            <View style={styles.secondaryModalView}>
-              <Text style={styles.secondaryModalText}>
-                If you cancel during this transaction a fee may apply.
-              </Text>
-              <Text style={styles.secondaryModalText}>Are you sure you want to cancel?</Text>
-            </View>
-            <View style={styles.options}>
-              <Button
-                title="Yes"
-                size="medium"
-                titleColor={theme.colors.error}
-                onPress={() => setSecondaryModalVis(!secondaryModalVis)}
-              />
-              {/* @TODO: Issue from height and width in options */}
-              <View style={{ marginLeft: 1, marginRight: 1 }} />
-
-              <Button
-                title="No"
-                size="medium"
-                titleColor={theme.colors.success}
-                onPress={() => setSecondaryModalVis(!secondaryModalVis)}
-              />
-            </View>
-          </View>
+          {SecondaryModalView()}
         </Modal>
         <View style={styles.messengerContainer}>
           <View style={styles.spotSwitchCompleteContainer}>
+            {/* @TODO extra modal causin problems try re use that secondary model */}
             <Button
               title="Spot Switch complete"
               size="small"
-              onPress={() => navigation.navigate('Home')}
+              onPress={() => {
+                // setSecondaryModalVis(!secondaryModalVis);
+                setSecondaryModalVis({ visible: !secondaryModalVis.visible, type: 'two' });
+              }}
             />
           </View>
 
