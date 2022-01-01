@@ -65,42 +65,6 @@ const useStyles = makeStyles((theme: any) =>
       marginBottom: 5,
     },
 
-    // secondary modal
-    secondaryModalContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: 400,
-    },
-    secondaryModalView: {
-      width: 333,
-      height: 112,
-      backgroundColor: theme.colors.primary,
-      borderRadius: 15,
-      elevation: 5,
-      shadowColor: theme.colors.shadow,
-      shadowOffset: { width: 0, height: 1 },
-      shadowOpacity: 0.8,
-      shadowRadius: 2,
-    },
-
-    secondaryModalText: {
-      color: 'white',
-      fontWeight: 'bold',
-      marginTop: 15,
-      marginLeft: 15,
-    },
-    options: {
-      flexDirection: 'row',
-      // @TODO: height and width affecting buttons height and width, strange issue.
-      height: 60,
-      width: 333,
-      marginTop: 2,
-    },
-    buttonSpacing: {
-      marginHorizontal: 1,
-    },
-
     // messenger
     spotSwitchCompleteContainer: {
       marginLeft: 'auto',

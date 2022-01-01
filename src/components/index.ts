@@ -6,3 +6,4 @@ export { default as Link } from './Link/Link';
 export { default as Loader } from './Loader/Loader';
 export { default as ProfilePic } from './ProfilePic/ProfilePic';
 export { default as Stars } from './Stars/Stars';
+export { default as Options } from './Options/Options';
