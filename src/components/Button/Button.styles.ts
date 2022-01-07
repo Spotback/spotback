@@ -22,12 +22,12 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center',
+        paddingHorizontal: 15,
         backgroundColor: backgroundColor ? backgroundColor : theme.colors.primary,
-        padding: 5,
+        // flex: 1,
         width: 165,
         height: 55,
         borderRadius: 10,
-        flex: 1,
         elevation: 5,
         shadowColor: theme.colors.shadow,
         shadowOffset: { width: 0, height: 1 },
@@ -56,8 +56,9 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
       titleMedium: {
         color: titleColor ? titleColor : theme.colors.light,
         fontSize: 18,
-        // @TODO: Remove this when fixing ev image
-        width: 85,
+        flexWrap: 'wrap',
+        flex: 1,
+        textAlign: 'center',
       },
       titleSmall: {
         color: titleColor ? titleColor : theme.colors.light,

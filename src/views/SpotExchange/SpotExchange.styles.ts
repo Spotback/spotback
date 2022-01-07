@@ -64,6 +64,13 @@ const useStyles = makeStyles((theme: any) =>
       marginLeft: 20,
       marginBottom: 5,
     },
+    // secondary Modal
+    innerModalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      // height: 400,
+    },
 
     // messenger
     spotSwitchCompleteContainer: {

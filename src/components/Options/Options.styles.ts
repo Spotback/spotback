@@ -6,13 +6,9 @@ const width = Dimensions.get('window').width;
 
 const useStyles = makeStyles((theme: any) =>
   StyleSheet.create({
-    container: {
-      flex: 1,
+    cancelContainer: {
       justifyContent: 'center',
-      alignItems: 'center',
-      height: 400,
-    },
-    subContainer: {
+      padding: 20,
       width: 333,
       height: 112,
       backgroundColor: theme.colors.primary,
@@ -23,18 +19,44 @@ const useStyles = makeStyles((theme: any) =>
       shadowOpacity: 0.8,
       shadowRadius: 2,
     },
-    text: {
-      color: 'white',
-      fontWeight: 'bold',
-      marginTop: 15,
-      marginLeft: 15,
+    completeContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 20,
+      width: 333,
+      height: 112,
+      backgroundColor: theme.colors.primary,
+      borderRadius: 15,
+      elevation: 5,
+      shadowColor: theme.colors.shadow,
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
     },
-    centerText: {
-      // @TODO: fix centering
-      color: 'white',
+    commentsContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 333,
+      height: 112,
+      padding: 10,
+      marginVertical: 5,
+      backgroundColor: theme.colors.light,
+      borderColor: theme.colors.primary,
+      borderWidth: 2,
+      borderRadius: 10,
+      elevation: 5,
+    },
+    text: {
+      color: theme.colors.light,
       fontWeight: 'bold',
-      marginTop: 45,
-      marginLeft: 15,
+    },
+    commentsText: {
+      color: theme.colors.shadow,
+    },
+    bottomText: {
+      color: theme.colors.light,
+      fontWeight: 'bold',
+      marginTop: 10,
     },
     options: {
       flexDirection: 'row',

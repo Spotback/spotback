@@ -36,14 +36,15 @@ const useStyles = makeStyles((theme: any) =>
       position: 'absolute',
     },
     customTopButton: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'center',
       alignItems: 'center',
+      paddingHorizontal: 10,
       backgroundColor: theme.colors.primary,
       width: 105,
       height: 55,
       borderRadius: 10,
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'center',
       elevation: 5,
       shadowColor: theme.colors.shadow,
       shadowOffset: { width: 0, height: 1 },
@@ -53,7 +54,8 @@ const useStyles = makeStyles((theme: any) =>
     customTopText: {
       color: theme.colors.light,
       fontSize: 18,
-      width: 55,
+      flexWrap: 'wrap',
+      flex: 1,
     },
     customBottomButton: {
       alignItems: 'center',

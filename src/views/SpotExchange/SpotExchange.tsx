@@ -11,7 +11,6 @@ import { phone } from '@assets/images/index';
 import useStyles from './SpotExchange.styles';
 import { theme } from '@utils/theme';
 
-
 const SpotExchange = () => {
   const styles = useStyles();
   const navigation = useNavigation();
@@ -127,21 +126,38 @@ const SpotExchange = () => {
               type: 'cancelTransaction',
             });
           }}>
-          <Options
-            type={secondaryModalVis.type}
-            onPressLeft={() =>
-              setSecondaryModalVis({
-                visible: !secondaryModalVis.visible,
-                type: 'cancelTransaction',
-              })
-            }
-            onPressRight={() =>
-              setSecondaryModalVis({
-                visible: !secondaryModalVis.visible,
-                type: 'cancelTransaction',
-              })
-            }
-          />
+          <View style={styles.innerModalContainer}>
+            <Options
+              leftButtonColor={
+                secondaryModalVis.type === 'cancelTransaction'
+                  ? theme.colors.error
+                  : theme.colors.light
+              }
+              rightButtonColor={
+                secondaryModalVis.type === 'cancelTransaction'
+                  ? theme.colors.success
+                  : theme.colors.light
+              }
+              leftButtonTitle={secondaryModalVis.type === 'cancelTransaction' ? 'Yes' : 'Complete'}
+              rightButtonTitle={
+                secondaryModalVis.type === 'cancelTransaction' ? 'No' : 'Not Yet'
+              }
+              type={secondaryModalVis.type}
+              onPressLeft={() => {
+                setSecondaryModalVis({
+                  visible: !secondaryModalVis.visible,
+                  type: 'cancelTransaction',
+                }),
+                  navigation.navigate('SpotExchangeComplete');
+              }}
+              onPressRight={() =>
+                setSecondaryModalVis({
+                  visible: !secondaryModalVis.visible,
+                  type: 'cancelTransaction',
+                })
+              }
+            />
+          </View>
         </Modal>
         <View style={styles.messengerContainer}>
           <View style={styles.spotSwitchCompleteContainer}>
