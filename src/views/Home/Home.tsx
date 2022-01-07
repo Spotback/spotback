@@ -85,13 +85,6 @@ const Home = () => {
 
   return (
     <View style={styles.mainContainer}>
-      <Hub
-        title="Account"
-        top
-        imageSource={imageSource}
-        balance={15}
-        onPress={() => navigation.navigate('Account')}
-      />
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
           <MapView
@@ -106,6 +99,13 @@ const Home = () => {
             <Marker coordinate={{ latitude: latitude, longitude: longitude }} image={spotPin} />
           </MapView>
         </View>
+        <Hub
+          title="Account"
+          top
+          imageSource={imageSource}
+          balance={15}
+          onPress={() => navigation.navigate('Account')}
+        />
         <View style={styles.smallButtonContainer}>
           <View style={styles.spacing}>
             <Button

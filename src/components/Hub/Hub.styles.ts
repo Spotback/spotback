@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme: any) =>
       width,
       height: 75,
       flexDirection: 'row',
+      zIndex: 1,
     },
     profilePicImage: {
       marginTop: 20,

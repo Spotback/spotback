@@ -16,6 +16,7 @@ import EditProfile from '../views/EditProfile/EditProfile';
 import Help from '../views/Help/Help';
 import SearchingForMatch from '../views/SearchingForMatch/SearchingForMatch';
 import SpotExchange from '../views/SpotExchange/SpotExchange';
+import SpotExchangeComplete from '../views/SpotExchangeComplete/SpotExchangeComplete';
 import AuthLoading from '../views/AuthLoading/AuthLoading';
 
 const Stack = createStackNavigator();
@@ -258,6 +259,13 @@ const StackNavigator = () => {
         <Stack.Screen
           name="SpotExchange"
           component={SpotExchange}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="SpotExchangeComplete"
+          component={SpotExchangeComplete}
           options={{
             headerShown: false,
           }}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Input } from '@components/index';
+import { Button, Input, Options } from '@components/index';
 import useStyles from './FindMeASpot.styles';
 import { spotPin2, evCar } from '@assets/images/index';
 
@@ -23,6 +23,7 @@ const FindMeASpot = () => {
             onPress={() => navigation.navigate('SearchingForMatch')}
           />
         </View>
+
         <View style={styles.spacing}>
           <Button title="EV Spot" size="medium" icon={evCar} />
         </View>

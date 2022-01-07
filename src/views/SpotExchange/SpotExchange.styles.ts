@@ -12,21 +12,13 @@ const useStyles = makeStyles((theme: any) =>
     },
     subContainer: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
       backgroundColor: theme.colors.background,
       zIndex: -1,
     },
-    spotSwitchCompleteContainer: {
-      marginLeft: 'auto',
-      marginBottom: 5,
-    },
+
     mapView: {
       ...StyleSheet.absoluteFillObject,
       height,
-      width: 400,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
     },
     map: {
       ...StyleSheet.absoluteFillObject,
@@ -47,7 +39,6 @@ const useStyles = makeStyles((theme: any) =>
       backgroundColor: theme.colors.primary,
       borderRadius: 15,
       padding: 15,
-      // alignItems: 'center',
       elevation: 5,
       shadowColor: theme.colors.shadow,
       shadowOffset: { width: 0, height: 1 },
@@ -63,7 +54,6 @@ const useStyles = makeStyles((theme: any) =>
       color: 'white',
       fontWeight: 'bold',
       marginVertical: 4,
-      // textAlign: 'center',
     },
     starContainer: {
       position: 'absolute',
@@ -74,11 +64,26 @@ const useStyles = makeStyles((theme: any) =>
       marginLeft: 20,
       marginBottom: 5,
     },
+    // secondary Modal
+    innerModalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      // height: 400,
+    },
 
     // messenger
+    spotSwitchCompleteContainer: {
+      marginLeft: 'auto',
+      marginBottom: 5,
+      marginRight: 30,
+    },
     messengerContainer: {
+      flex: 1,
       bottom: 20,
       position: 'absolute',
+      left: 0,
+      right: 0,
     },
     container: {
       justifyContent: 'center',

@@ -12,29 +12,39 @@ const useStyles = makeStyles((theme: any) =>
     },
     subContainer: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
       backgroundColor: theme.colors.background,
       zIndex: -1,
     },
+    mapView: {
+      ...StyleSheet.absoluteFillObject,
+      height,
+    },
+    map: {
+      ...StyleSheet.absoluteFillObject,
+    },
     largeButtonContainer: {
-      bottom: 50,
       position: 'absolute',
+      left: 0,
+      right: 0,
+      bottom: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     smallButtonContainer: {
-      top: 20,
+      top: 90,
       right: 20,
       position: 'absolute',
     },
     customTopButton: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'center',
       alignItems: 'center',
+      paddingHorizontal: 10,
       backgroundColor: theme.colors.primary,
       width: 105,
       height: 55,
       borderRadius: 10,
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'center',
       elevation: 5,
       shadowColor: theme.colors.shadow,
       shadowOffset: { width: 0, height: 1 },
@@ -44,7 +54,8 @@ const useStyles = makeStyles((theme: any) =>
     customTopText: {
       color: theme.colors.light,
       fontSize: 18,
-      width: 55,
+      flexWrap: 'wrap',
+      flex: 1,
     },
     customBottomButton: {
       alignItems: 'center',
@@ -68,16 +79,7 @@ const useStyles = makeStyles((theme: any) =>
     spacing: {
       marginVertical: 5,
     },
-    mapView: {
-      ...StyleSheet.absoluteFillObject,
-      height,
-      width: 400,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-    },
-    map: {
-      ...StyleSheet.absoluteFillObject,
-    },
+
     slider: {
       backgroundColor: theme.colors.background,
       height: height - 200,
