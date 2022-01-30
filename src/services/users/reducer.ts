@@ -1,3 +1,5 @@
+import { UserTypes } from './types';
+
 const initialState = {
   isloggedIn: false,
   referrals: [],
@@ -25,13 +27,13 @@ const initialState = {
 
 const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case 'SIGN_UP':
+    case UserTypes.SIGN_UP:
       console.log('sign up reducer ', action);
       return {
         ...state,
         isloggedIn: true,
       };
-    case 'LOG_IN':
+    case UserTypes.LOG_IN:
       console.log('log in reducer ', action);
       return {
         ...state,
@@ -58,7 +60,7 @@ const userReducer = (state = initialState, action: any) => {
         stripeToken: action.payload.stripeToken,
         bearer: action.headers.bearer,
       };
-    case 'UPDATE':
+    case UserTypes.UPDATE:
       console.log('update reducer ', action);
       return {
         ...state,
