@@ -21,7 +21,7 @@ module.exports = {
           '@components': './src/components',
           '@utils': './src/utils',
           '@navigation': './src/navigation',
-          '@redux': './src/redux',
+          '@services': './src/services',
           '@assets': './src/assets',
         },
       },

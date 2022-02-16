@@ -7,10 +7,46 @@ import Geolocation from '@react-native-community/geolocation';
 import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
 import storage from '@react-native-firebase/storage';
-import spotNewsItems from '../../config/Home.config';
 import { Hub, Button } from '@components/index';
-import { spotPin, spotbackLogoIcon } from '@assets/images/index';
+import {
+  spotPin,
+  spotbackLogoIcon,
+  spotPin2,
+  handShake,
+  friends,
+  pin,
+  money,
+  five,
+} from '@assets/images/index';
 import useStyles from './Home.styles';
+
+const spotNewsItems = [
+  {
+    image: handShake,
+    title: 'Welcome to the Spotback parking app!',
+    id: 1,
+  },
+  {
+    image: friends,
+    title: 'Invite your friends and recieve a free spot',
+    id: 2,
+  },
+  {
+    image: pin,
+    title: 'Pin you location after parking so we can match you before getting back in your car',
+    id: 3,
+  },
+  {
+    image: money,
+    title: 'This week only make an extra dollar per spot given and save a dollar on spot taken',
+    id: 4,
+  },
+  {
+    image: five,
+    title: 'Hold 10 spots this month and make an extra $5 dollars',
+    id: 5,
+  },
+];
 
 const Home = () => {
   const styles = useStyles();
@@ -27,6 +63,7 @@ const Home = () => {
   const getCurrentLocation = () => {
     Geolocation.getCurrentPosition(
       (position) => {
+        console.log('position ', position);
         setLatitude(position.coords.latitude);
         setLongitude(position.coords.longitude);
       },
@@ -96,7 +133,7 @@ const Home = () => {
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}>
-            <Marker coordinate={{ latitude: latitude, longitude: longitude }} image={spotPin} />
+            <Marker coordinate={{ latitude: latitude, longitude: longitude }} image={spotPin2} />
           </MapView>
         </View>
         <Hub

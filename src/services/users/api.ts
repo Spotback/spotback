@@ -3,6 +3,7 @@ import { USERS_BASE_URL } from '@env';
 import * as RootNavigation from '@navigation/RootNavigation';
 import { v4 as uuidv4 } from 'uuid';
 import { setAsyncStorage, getAsyncStorage } from '@utils/asyncStorage';
+import { UserTypes } from './types';
 
 console.log(`${USERS_BASE_URL}/createAccount`);
 
@@ -29,11 +30,12 @@ export const signUp = (
         }
       )
       .then((res) => {
-        console.log('res', res);
-        //TODO: response doesnt send back user info
+        console.log('res ', res);
+        setAsyncStorage(res.data.user._id);
         dispatch({
-          type: 'SIGN_UP',
-          payload: { email, firstName, lastName, password, phone },
+          type: UserTypes.SIGN_UP,
+          payload: res.data,
+          headers: res.headers,
         });
         RootNavigation.navigate('Home');
       })
@@ -60,7 +62,7 @@ export const logIn = (email: string, password: string) => {
         console.log('res', res);
         setAsyncStorage(res.data._id);
         dispatch({
-          type: 'LOG_IN',
+          type: UserTypes.LOG_IN,
           payload: res.data,
           headers: res.headers,
         });
@@ -105,7 +107,7 @@ export const update = (
       .then((res) => {
         console.log('res', res);
         dispatch({
-          type: 'UPDATE',
+          type: UserTypes.UPDATE,
           payload: res.data,
         });
         RootNavigation.navigate('Account');
