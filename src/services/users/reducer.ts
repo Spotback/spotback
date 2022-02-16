@@ -39,7 +39,6 @@ const userReducer = (state = initialState, action: any) => {
         balance: action.payload.user.balance,
         rating: action.payload.user.rating,
         _id: action.payload.user._id,
-
         email: action.payload.user.email,
         firstName: action.payload.user.firstName,
         lastName: action.payload.user.lastName,
