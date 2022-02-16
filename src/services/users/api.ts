@@ -30,11 +30,12 @@ export const signUp = (
         }
       )
       .then((res) => {
-        console.log('res', res);
-        //TODO: response doesnt send back user info
+        console.log('res ', res);
+        setAsyncStorage(res.data.user._id);
         dispatch({
           type: UserTypes.SIGN_UP,
-          payload: { email, firstName, lastName, password, phone },
+          payload: res.data,
+          headers: res.headers,
         });
         RootNavigation.navigate('Home');
       })

@@ -32,6 +32,21 @@ const userReducer = (state = initialState, action: any) => {
       return {
         ...state,
         isloggedIn: true,
+        referrals: action.payload.user.referrals,
+        verified: action.payload.user.verified,
+        // // data is returned through user object except for freespots and headers
+        freeSpots: action.payload.freeSpots,
+        balance: action.payload.user.balance,
+        rating: action.payload.user.rating,
+        _id: action.payload.user._id,
+
+        email: action.payload.user.email,
+        firstName: action.payload.user.firstName,
+        lastName: action.payload.user.lastName,
+        phone: action.payload.user.phone,
+        referralCode: action.payload.user.referralCode,
+        stripeToken: action.payload.user.stripeToken,
+        bearer: action.headers.bearer,
       };
     case UserTypes.LOG_IN:
       console.log('log in reducer ', action);
