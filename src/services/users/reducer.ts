@@ -29,12 +29,13 @@ const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case UserTypes.SIGN_UP:
       console.log('sign up reducer ', action);
+      // // data is returned through user object except for freespots and headers
       return {
         ...state,
         isloggedIn: true,
         referrals: action.payload.user.referrals,
         verified: action.payload.user.verified,
-        // // data is returned through user object except for freespots and headers
+
         freeSpots: action.payload.freeSpots,
         balance: action.payload.user.balance,
         rating: action.payload.user.rating,
