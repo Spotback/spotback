@@ -25,7 +25,7 @@ export const getAsyncStorage = async (key?: string) => {
   }
 };
 
-export const removeAsyncStorage = async () => {
+export const removeAsyncStorage = async (key?: string) => {
   try {
     await AsyncStorage.removeItem('@spotback_storage_key');
     console.log('removeAsyncStorage TRY ');

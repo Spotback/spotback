@@ -23,6 +23,8 @@ const initialState = {
   referralCode: '',
   stripeToken: '',
   bearer: '',
+  latitude: 0,
+  longitude: 0,
 };
 
 const userReducer = (state = initialState, action: any) => {
@@ -87,6 +89,13 @@ const userReducer = (state = initialState, action: any) => {
           model: action.payload.car.model,
           year: action.payload.car.year,
         },
+      };
+    case UserTypes.COORDINATES:
+      console.log('coordinates reducer ', action);
+      return {
+        ...state,
+        latitude: action.latitude,
+        longitude: action.longitude,
       };
     default:
       return state;
