@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, RootStateOrAny } from 'react-redux';
+import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
 import { View, Text, ScrollView, Image, PermissionsAndroid } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
@@ -8,6 +8,7 @@ import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
 import storage from '@react-native-firebase/storage';
 import { Hub, Button } from '@components/index';
+import { UserTypes } from '@services/users/types';
 import {
   spotPin,
   spotbackLogoIcon,
@@ -51,14 +52,32 @@ const spotNewsItems = [
 const Home = () => {
   const styles = useStyles();
   const navigation = useNavigation();
-
+  const dispatch = useDispatch();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   const [imageSource, setImageSource] = useState('');
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
+  const [markerVis, setMarkerVis] = useState(false);
   const [spotNewsVisible, setspotNewsVisible] = useState(false);
   console.log(latitude, longitude);
-  const toggleSpotNewsVisibility = () => setspotNewsVisible(!spotNewsVisible);
+  console.log(UserTypes.COORDINATES);
+  const toggleMarker = (flag: boolean) => {
+    if (flag) {
+      setMarkerVis(true);
+      dispatch({
+        type: UserTypes.COORDINATES,
+        latitude: latitude,
+        longitude: longitude,
+      });
+    } else {
+      setMarkerVis(false);
+      dispatch({
+        type: UserTypes.COORDINATES,
+        latitude: 0,
+        longitude: 0,
+      });
+    }
+  };
 
   const getCurrentLocation = () => {
     Geolocation.getCurrentPosition(
@@ -133,7 +152,9 @@ const Home = () => {
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}>
-            <Marker coordinate={{ latitude: latitude, longitude: longitude }} image={spotPin2} />
+            {markerVis ? (
+              <Marker coordinate={{ latitude: latitude, longitude: longitude }} image={spotPin2} />
+            ) : null}
           </MapView>
         </View>
         <Hub
@@ -151,7 +172,7 @@ const Home = () => {
               icon={spotbackLogoIcon}
               customButtonStyles={styles.customTopButton}
               customTextStyles={styles.customTopText}
-              onPress={() => navigation.navigate('FindMeASpot')}
+              onPress={() => toggleMarker(true)}
             />
           </View>
           <View style={styles.spacing}>
@@ -160,7 +181,7 @@ const Home = () => {
               size="small"
               customButtonStyles={styles.customBottomButton}
               customTextStyles={styles.customBottomText}
-              onPress={() => navigation.navigate('PostMySpot')}
+              onPress={() => toggleMarker(false)}
             />
           </View>
         </View>
@@ -181,15 +202,15 @@ const Home = () => {
           </View>
         </View>
       </View>
-      <Hub title="SpotNews" bottom onPress={toggleSpotNewsVisibility} />
+      <Hub title="SpotNews" bottom onPress={() => setspotNewsVisible(!spotNewsVisible)} />
       <SlidingView
         componentVisible={spotNewsVisible}
-        changeVisibilityCallback={toggleSpotNewsVisibility}
+        changeVisibilityCallback={() => setspotNewsVisible(!spotNewsVisible)}
         useNativeDriver={true}
         height={styles.slider.height}
         containerStyle={styles.slider}
         disableDrag={true}>
-        <Hub title="SpotNews" bottom onPress={toggleSpotNewsVisibility} />
+        <Hub title="SpotNews" bottom onPress={() => setspotNewsVisible(!spotNewsVisible)} />
         <ScrollView>
           <View style={styles.sliderContainer}>
             {spotNewsItems?.map((spotNewsItem, index) => {

@@ -24,7 +24,7 @@ const Account = () => {
   const [imageSource, setImageSource] = useState('');
 
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-
+  console.log('user', user);
   const getProfilePic = () => {
     storage()
       .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
