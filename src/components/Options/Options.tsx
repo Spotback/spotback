@@ -65,7 +65,7 @@ const Options: FC<OptionsProps> = ({
                 value={value}
               />
             )}
-            name="email"
+            name="comments"
             defaultValue=""
           />
         </View>

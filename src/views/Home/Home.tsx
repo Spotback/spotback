@@ -8,7 +8,7 @@ import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
 import storage from '@react-native-firebase/storage';
 import { Hub, Button } from '@components/index';
-import { UserTypes } from '@services/users/types';
+import { pinnedCoordinates } from '@services/users/thunks';
 import {
   spotPin,
   spotbackLogoIcon,
@@ -54,28 +54,20 @@ const Home = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
+  console.log('user coordiantes pined ', user.pinnedCoordinates);
   const [imageSource, setImageSource] = useState('');
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [markerVis, setMarkerVis] = useState(false);
   const [spotNewsVisible, setspotNewsVisible] = useState(false);
   console.log(latitude, longitude);
-  console.log(UserTypes.COORDINATES);
   const toggleMarker = (flag: boolean) => {
     if (flag) {
-      setMarkerVis(true);
-      dispatch({
-        type: UserTypes.COORDINATES,
-        latitude: latitude,
-        longitude: longitude,
-      });
+      setMarkerVis(flag);
+      dispatch(pinnedCoordinates(`${latitude},${longitude}`));
     } else {
-      setMarkerVis(false);
-      dispatch({
-        type: UserTypes.COORDINATES,
-        latitude: 0,
-        longitude: 0,
-      });
+      setMarkerVis(flag);
+      dispatch(pinnedCoordinates(''));
     }
   };
 
@@ -136,6 +128,9 @@ const Home = () => {
   useEffect(() => {
     getProfilePic();
     requestLocationPermission();
+    // @TODO: might have to setIntervals for fetching user coordinates every second or 2
+    // Could also be done every 5 5o 10 seconds to update the map as the user is moving
+    // or get the latest coordinates when clicking post my spot and double check pinnedcoordinates is empty
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   });
 

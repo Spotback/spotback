@@ -23,8 +23,8 @@ const initialState = {
   referralCode: '',
   stripeToken: '',
   bearer: '',
-  latitude: 0,
-  longitude: 0,
+  pinedCoordinates: '',
+  imageSource: '',
 };
 
 const userReducer = (state = initialState, action: any) => {
@@ -90,13 +90,13 @@ const userReducer = (state = initialState, action: any) => {
           year: action.payload.car.year,
         },
       };
-    case UserTypes.COORDINATES:
+    case UserTypes.PINNED_COORDINATES:
       console.log('coordinates reducer ', action);
       return {
         ...state,
-        latitude: action.latitude,
-        longitude: action.longitude,
+        pinnedCoordinates: action.payload,
       };
+
     default:
       return state;
   }

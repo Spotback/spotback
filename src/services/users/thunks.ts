@@ -117,3 +117,12 @@ export const update = (
       });
   };
 };
+
+export const pinnedCoordinates = (pinnedCoordinates: string) => {
+  return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.PINNED_COORDINATES,
+      payload: pinnedCoordinates,
+    });
+  };
+};
