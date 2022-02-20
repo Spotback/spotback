@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { update } from '@services/users/api';
+import { update } from '@services/users/thunks';
 import { launchImageLibrary } from 'react-native-image-picker';
 import storage from '@react-native-firebase/storage';
 import { Picker } from '@react-native-picker/picker';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, Input, ProfilePic } from '@components/index';
 import { editProfile, noProfilePic } from '@assets/images/index';
-import { Icon } from 'react-native-elements';
 import useStyles from './EditProfile.styles';
 import { theme } from '@utils/theme';
 

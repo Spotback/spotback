@@ -8,7 +8,7 @@ import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
 import storage from '@react-native-firebase/storage';
 import { Hub, Button } from '@components/index';
-import { UserTypes } from '@services/users/types';
+import { pinnedCoordinates } from '@services/users/thunks';
 import {
   spotPin,
   spotbackLogoIcon,
@@ -54,28 +54,22 @@ const Home = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
+  console.log('user car ', user.car);
   const [imageSource, setImageSource] = useState('');
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [markerVis, setMarkerVis] = useState(false);
   const [spotNewsVisible, setspotNewsVisible] = useState(false);
+  const [profileComplete, setProfileComplete] = useState(false);
+
   console.log(latitude, longitude);
-  console.log(UserTypes.COORDINATES);
   const toggleMarker = (flag: boolean) => {
     if (flag) {
-      setMarkerVis(true);
-      dispatch({
-        type: UserTypes.COORDINATES,
-        latitude: latitude,
-        longitude: longitude,
-      });
+      setMarkerVis(flag);
+      dispatch(pinnedCoordinates(`${latitude},${longitude}`));
     } else {
-      setMarkerVis(false);
-      dispatch({
-        type: UserTypes.COORDINATES,
-        latitude: 0,
-        longitude: 0,
-      });
+      setMarkerVis(flag);
+      dispatch(pinnedCoordinates(''));
     }
   };
 
@@ -136,6 +130,12 @@ const Home = () => {
   useEffect(() => {
     getProfilePic();
     requestLocationPermission();
+    Object.values(user.car).map((item) => {
+      item === '' || item === undefined ? setProfileComplete(false) : setProfileComplete(true);
+    });
+    // @TODO: might have to setIntervals for fetching user coordinates every second or 2
+    // Could also be done every 5 5o 10 seconds to update the map as the user is moving
+    // or get the latest coordinates when clicking post my spot and double check pinnedcoordinates is empty
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   });
 
@@ -185,23 +185,41 @@ const Home = () => {
             />
           </View>
         </View>
-        <View style={styles.largeButtonContainer}>
-          <View style={styles.spacing}>
-            <Button
-              title="Find Me A Spot"
-              size="large"
-              onPress={() => navigation.navigate('FindMeASpot')}
-            />
+
+        {profileComplete ? (
+          <View style={styles.largeButtonContainer}>
+            <View style={styles.spacing}>
+              <Button
+                title="Find Me A Spot"
+                size="large"
+                onPress={() =>
+                  navigation.navigate('FindMeASpot', { coordinates: `${latitude},${longitude}` })
+                }
+              />
+            </View>
+            <View style={styles.spacing}>
+              <Button
+                title="Post My Spot"
+                size="large"
+                onPress={() =>
+                  navigation.navigate('PostMySpot', { coordinates: `${latitude},${longitude}` })
+                }
+              />
+            </View>
           </View>
-          <View style={styles.spacing}>
-            <Button
-              title="Post My Spot"
-              size="large"
-              onPress={() => navigation.navigate('PostMySpot')}
-            />
+        ) : (
+          <View style={styles.completeButtonContainer}>
+            <View style={styles.spacing}>
+              <Button
+                title="Complete Profile"
+                size="large"
+                onPress={() => navigation.navigate('EditProfile')}
+              />
+            </View>
           </View>
-        </View>
+        )}
       </View>
+
       <Hub title="SpotNews" bottom onPress={() => setspotNewsVisible(!spotNewsVisible)} />
       <SlidingView
         componentVisible={spotNewsVisible}

@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import useStyles from './ProfilePic.styles';
-import { theme } from '@utils/theme';
 import { noProfilePic } from '@assets/images/index';
 
 interface ProfilePicProps {

@@ -6,7 +6,7 @@ const width = Dimensions.get('window').width;
 
 const useStyles = makeStyles((theme: any) =>
   StyleSheet.create({
-    cancelContainer: {
+    container: {
       justifyContent: 'center',
       padding: 20,
       width: 333,
@@ -19,21 +19,7 @@ const useStyles = makeStyles((theme: any) =>
       shadowOpacity: 0.8,
       shadowRadius: 2,
     },
-    completeContainer: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: 20,
-      width: 333,
-      height: 112,
-      backgroundColor: theme.colors.primary,
-      borderRadius: 15,
-      elevation: 5,
-      shadowColor: theme.colors.shadow,
-      shadowOffset: { width: 0, height: 1 },
-      shadowOpacity: 0.8,
-      shadowRadius: 2,
-    },
-    commentsContainer: {
+    inputContainer: {
       justifyContent: 'center',
       alignItems: 'center',
       width: 333,
@@ -49,14 +35,10 @@ const useStyles = makeStyles((theme: any) =>
     text: {
       color: theme.colors.light,
       fontWeight: 'bold',
+      marginVertical: 5,
     },
-    commentsText: {
+    inputText: {
       color: theme.colors.shadow,
-    },
-    bottomText: {
-      color: theme.colors.light,
-      fontWeight: 'bold',
-      marginTop: 10,
     },
     options: {
       flexDirection: 'row',

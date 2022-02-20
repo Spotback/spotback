@@ -12,11 +12,8 @@ import {
   help,
   creditCard,
   exit,
-  noProfilePic,
 } from '@assets/images/index';
-import { Icon } from 'react-native-elements';
 import useStyles from './Account.styles';
-import { theme } from '@utils/theme';
 
 const Account = () => {
   const styles = useStyles();

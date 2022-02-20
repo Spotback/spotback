@@ -14,6 +14,7 @@ interface OptionsProps {
   onPressRight?: any;
   rightButtonColor?: string;
   rightButtonTitle?: string;
+  texts: any;
 }
 
 const Options: FC<OptionsProps> = ({
@@ -24,6 +25,7 @@ const Options: FC<OptionsProps> = ({
   onPressRight,
   rightButtonColor,
   rightButtonTitle,
+  texts,
 }) => {
   const styles = useStyles();
   const dispatch = useDispatch();
@@ -37,19 +39,17 @@ const Options: FC<OptionsProps> = ({
 
   return (
     <>
-      {type === 'cancelTransaction' && (
-        <View style={styles.cancelContainer}>
-          <Text style={styles.text}>If you cancel during this transaction a fee may apply.</Text>
-          <Text style={styles.bottomText}>Are you sure you want to cancel?</Text>
+      {type === 'standard' && (
+        <View style={styles.container}>
+          {texts.map((text: string) => (
+            <Text key={text} style={styles.text}>
+              {text}
+            </Text>
+          ))}
         </View>
       )}
-      {type === 'spotSwitchComplete' && (
-        <View style={styles.completeContainer}>
-          <Text style={styles.text}>Are you sure this spot exchange is complete?</Text>
-        </View>
-      )}
-      {type === 'comments' && (
-        <View style={styles.commentsContainer}>
+      {type === 'input' && (
+        <View style={styles.inputContainer}>
           <Controller
             control={control}
             rules={{
@@ -57,15 +57,15 @@ const Options: FC<OptionsProps> = ({
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
-                style={styles.commentsText}
-                placeholder="Comments? (Required)"
+                style={styles.inputText}
+                placeholder={texts[0]}
                 multiline={true}
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
               />
             )}
-            name="email"
+            name="inputText"
             defaultValue=""
           />
         </View>

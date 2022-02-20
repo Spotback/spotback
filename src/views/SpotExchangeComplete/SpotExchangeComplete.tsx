@@ -31,7 +31,7 @@ const SpotExchangeComplete = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Youve just recieved 5 dollars from</Text>
+      <Text style={styles.text}>{'You\'ve just recieved 5 dollars from'}</Text>
       <ProfilePic imageSource={imageSource} size="large" />
       <Text style={styles.text}>Users Name</Text>
       <View style={styles.starContainer}>
@@ -39,7 +39,8 @@ const SpotExchangeComplete = () => {
       </View>
 
       <Options
-        type="comments"
+        type="input"
+        texts={['Comments? (Required)']}
         onPressLeft={() => navigation.navigate('SpotExchange')}
         leftButtonTitle="Report Problem"
         onPressRight={() => navigation.navigate('Home')}
