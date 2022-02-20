@@ -23,7 +23,7 @@ const initialState = {
   referralCode: '',
   stripeToken: '',
   bearer: '',
-  pinedCoordinates: '',
+  pinnedCoordinates: '',
   imageSource: '',
 };
 

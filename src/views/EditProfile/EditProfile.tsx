@@ -9,7 +9,6 @@ import { Picker } from '@react-native-picker/picker';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, Input, ProfilePic } from '@components/index';
 import { editProfile, noProfilePic } from '@assets/images/index';
-import { Icon } from 'react-native-elements';
 import useStyles from './EditProfile.styles';
 import { theme } from '@utils/theme';
 

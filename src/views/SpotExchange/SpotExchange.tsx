@@ -139,10 +139,8 @@ const SpotExchange = () => {
                   : theme.colors.light
               }
               leftButtonTitle={secondaryModalVis.type === 'cancelTransaction' ? 'Yes' : 'Complete'}
-              rightButtonTitle={
-                secondaryModalVis.type === 'cancelTransaction' ? 'No' : 'Not Yet'
-              }
-              type={secondaryModalVis.type}
+              rightButtonTitle={secondaryModalVis.type === 'cancelTransaction' ? 'No' : 'Not Yet'}
+              type='standard'
               onPressLeft={() => {
                 setSecondaryModalVis({
                   visible: !secondaryModalVis.visible,
@@ -155,6 +153,14 @@ const SpotExchange = () => {
                   visible: !secondaryModalVis.visible,
                   type: 'cancelTransaction',
                 })
+              }
+              texts={
+                secondaryModalVis.type === 'cancelTransaction'
+                  ? [
+                      'If you cancel during this transaction a fee may apply.',
+                      'Are you sure you want to cancel?',
+                    ]
+                  : ['Are you sure this spot exchange is complete?']
               }
             />
           </View>

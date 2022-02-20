@@ -30,6 +30,14 @@ const useStyles = makeStyles((theme: any) =>
       justifyContent: 'center',
       alignItems: 'center',
     },
+    completeButtonContainer: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      bottom: 100,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     smallButtonContainer: {
       top: 90,
       right: 20,
