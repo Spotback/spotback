@@ -7,12 +7,13 @@ import { fullStar, emptyStar } from '@assets/images/index';
 interface StarProps {
   starSize: number;
   starWidth: number;
+  disabled?: boolean;
 }
 
-const Stars: FC<StarProps> = ({ starSize, starWidth }) => {
+const Stars: FC<StarProps> = ({ starSize, starWidth, disabled = true, ...rest }) => {
   const styles = useStyles(starWidth)();
   const [starCount, setStarCount] = useState(4);
-
+  console.log('rest ', rest);
   const onStarRatingPress = (rating: number) => {
     setStarCount(rating);
   };
@@ -20,7 +21,9 @@ const Stars: FC<StarProps> = ({ starSize, starWidth }) => {
   return (
     <View style={styles.starContainer}>
       <StarRating
-        disabled={false}
+        // @TODO: extend the props to get rid of the error when using the spread props
+        {...rest}
+        disabled={disabled}
         emptyStar={emptyStar}
         fullStar={fullStar}
         halfStar={fullStar}

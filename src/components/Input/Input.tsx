@@ -21,12 +21,14 @@ const Input: FC<Inputprops> = ({
   value,
   autoComplete,
   onPress,
+  ...rest
 }) => {
   const styles = useStyles();
   return (
     <>
       {autoComplete ? (
         <GooglePlacesAutocomplete
+          {...rest}
           currentLocation
           placeholder={placeholder}
           onPress={onPress}

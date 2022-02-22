@@ -9,6 +9,7 @@ const Onboarding = () => {
   const styles = useStyles();
   const navigation = useNavigation();
   // true for loader
+  // @TODO: implement loader everywhere
   const [loading, setLoading] = useState(false);
 
   return (

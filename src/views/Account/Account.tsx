@@ -5,14 +5,7 @@ import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import { removeAsyncStorage } from '../../utils/asyncStorage';
 import { Stars, ProfilePic } from '@components/index';
-import {
-  transfers,
-  invite,
-  editProfile,
-  help,
-  creditCard,
-  exit,
-} from '@assets/images/index';
+import { transfers, invite, editProfile, help, creditCard, exit } from '@assets/images/index';
 import useStyles from './Account.styles';
 
 const Account = () => {

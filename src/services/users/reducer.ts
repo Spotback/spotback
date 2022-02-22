@@ -1,7 +1,6 @@
 import { UserTypes } from './types';
 
 const initialState = {
-  isloggedIn: false,
   referrals: [],
   verified: false,
   freeSpots: 0,
@@ -25,6 +24,9 @@ const initialState = {
   bearer: '',
   pinnedCoordinates: '',
   imageSource: '',
+  // @TODO: implement loader everywhere
+  spinner: false,
+  error: {}
 };
 
 const userReducer = (state = initialState, action: any) => {
@@ -34,10 +36,8 @@ const userReducer = (state = initialState, action: any) => {
       // // data is returned through user object except for freespots and headers
       return {
         ...state,
-        isloggedIn: true,
         referrals: action.payload.user.referrals,
         verified: action.payload.user.verified,
-
         freeSpots: action.payload.freeSpots,
         balance: action.payload.user.balance,
         rating: action.payload.user.rating,
@@ -54,7 +54,6 @@ const userReducer = (state = initialState, action: any) => {
       console.log('log in reducer ', action);
       return {
         ...state,
-        isloggedIn: true,
         referrals: action.payload.referrals,
         verified: action.payload.verified,
         freeSpots: action.payload.freeSpots,
