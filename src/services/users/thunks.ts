@@ -69,7 +69,11 @@ export const logIn = (email: string, password: string) => {
         RootNavigation.navigate('Home');
       })
       .catch((err) => {
-        console.log('err ', err.response.data);
+        console.log('***** err *****', err.response.data);
+        dispatch({
+          type: UserTypes.ERROR,
+          payload: err.response.data,
+        });
       });
   };
 };
@@ -123,6 +127,15 @@ export const pinnedCoordinates = (pinnedCoordinates: string) => {
     dispatch({
       type: UserTypes.PINNED_COORDINATES,
       payload: pinnedCoordinates,
+    });
+  };
+};
+
+export const clearError = () => {
+  return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.ERROR,
+      payload: {},
     });
   };
 };

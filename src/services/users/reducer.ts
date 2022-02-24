@@ -26,7 +26,7 @@ const initialState = {
   imageSource: '',
   // @TODO: implement loader everywhere
   spinner: false,
-  error: {}
+  error: {},
 };
 
 const userReducer = (state = initialState, action: any) => {
@@ -94,6 +94,12 @@ const userReducer = (state = initialState, action: any) => {
       return {
         ...state,
         pinnedCoordinates: action.payload,
+      };
+    case UserTypes.ERROR:
+      console.log('error reducer ', action);
+      return {
+        ...state,
+        error: action.payload,
       };
 
     default:
