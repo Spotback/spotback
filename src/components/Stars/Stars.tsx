@@ -21,7 +21,6 @@ const Stars: FC<StarProps> = ({ starSize, starWidth, disabled = true, ...rest })
   return (
     <View style={styles.starContainer}>
       <StarRating
-        // @TODO: extend the props to get rid of the error when using the spread props
         {...rest}
         disabled={disabled}
         emptyStar={emptyStar}

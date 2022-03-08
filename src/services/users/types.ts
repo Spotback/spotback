@@ -5,4 +5,5 @@ export enum UserTypes {
   ERROR = 'ERROR',
   SPINNER = 'SPINNER',
   PINNED_COORDINATES = 'PINNED_COORDINATES',
+  POST_SPOT = 'POST_SPOT',
 }

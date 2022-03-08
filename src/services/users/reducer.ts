@@ -24,7 +24,6 @@ const initialState = {
   bearer: '',
   pinnedCoordinates: '',
   imageSource: '',
-  // @TODO: implement loader everywhere
   spinner: false,
   error: {},
 };
@@ -49,6 +48,7 @@ const userReducer = (state = initialState, action: any) => {
         referralCode: action.payload.user.referralCode,
         stripeToken: action.payload.user.stripeToken,
         bearer: action.headers.bearer,
+        spinner: false,
       };
     case UserTypes.LOG_IN:
       console.log('log in reducer ', action);
@@ -89,12 +89,22 @@ const userReducer = (state = initialState, action: any) => {
           model: action.payload.car.model,
           year: action.payload.car.year,
         },
+        spinner: false,
       };
+    case UserTypes.POST_SPOT:
+      console.log('post spot reducer ', action);
+      return { ...state, spinner: false };
     case UserTypes.PINNED_COORDINATES:
       console.log('coordinates reducer ', action);
       return {
         ...state,
         pinnedCoordinates: action.payload,
+      };
+    case UserTypes.SPINNER:
+      console.log('spinner reducer ', action);
+      return {
+        ...state,
+        spinner: action.payload,
       };
     case UserTypes.ERROR:
       console.log('error reducer ', action);
@@ -102,12 +112,6 @@ const userReducer = (state = initialState, action: any) => {
         ...state,
         error: action.payload,
         spinner: false,
-      };
-    case UserTypes.SPINNER:
-      console.log('spinner reducer ', action);
-      return {
-        ...state,
-        spinner: action.payload,
       };
     default:
       return state;

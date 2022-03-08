@@ -6,26 +6,22 @@ import useStyles from './Spinner.styles';
 import { theme } from '@utils/theme';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
 
-// interface SpinnerProps {}
-
 const Spinner = () => {
   const styles = useStyles();
   const userSpinner = useSelector((state: RootStateOrAny) => state.userReducer.spinner);
-  const spotSpinner = useSelector((state: RootStateOrAny) => state.spotsReducer.spinner);
+  console.log('userspinner ', userSpinner);
   return (
-    <>
-      <Modal
-        isVisible={userSpinner || spotSpinner}
-        backdropOpacity={0.7}
-        avoidKeyboard
-        hasBackdrop
-        backdropColor="black">
-        <View style={styles.subContainer}>
-          <ActivityIndicator size="large" color={theme.colors.success} />
-          <Text style={styles.text}>Loading</Text>
-        </View>
-      </Modal>
-    </>
+    <Modal
+      isVisible={userSpinner}
+      backdropOpacity={0.7}
+      avoidKeyboard
+      hasBackdrop
+      backdropColor="black">
+      <View style={styles.subContainer}>
+        <ActivityIndicator size="large" color={theme.colors.success} />
+        <Text style={styles.text}>Loading</Text>
+      </View>
+    </Modal>
   );
 };
 
