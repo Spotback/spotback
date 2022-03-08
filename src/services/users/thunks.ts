@@ -47,6 +47,10 @@ export const signUp = (
 
 export const logIn = (email: string, password: string) => {
   return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.SPINNER,
+      payload: true,
+    });
     axios
       .post(
         `${USERS_BASE_URL}/readAccount`,

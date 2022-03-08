@@ -77,7 +77,7 @@ const Login = () => {
           <Button title="Log In" size="large" onPress={handleSubmit(onSubmit)} />
         </View>
         <Spinner />
-        <ErrorAlert error={user.error} onPress={onClearError} />
+        <ErrorAlert />
       </View>
     </>
   );

@@ -75,6 +75,7 @@ const userReducer = (state = initialState, action: any) => {
         referralCode: action.payload.referralCode,
         stripeToken: action.payload.stripeToken,
         bearer: action.headers.bearer,
+        spinner: false,
       };
     case UserTypes.UPDATE:
       console.log('update reducer ', action);
@@ -100,8 +101,14 @@ const userReducer = (state = initialState, action: any) => {
       return {
         ...state,
         error: action.payload,
+        spinner: false,
       };
-
+    case UserTypes.SPINNER:
+      console.log('spinner reducer ', action);
+      return {
+        ...state,
+        spinner: action.payload,
+      };
     default:
       return state;
   }

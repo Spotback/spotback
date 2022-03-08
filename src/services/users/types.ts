@@ -3,5 +3,6 @@ export enum UserTypes {
   LOG_IN = 'LOG_IN',
   UPDATE = 'UPDATE',
   ERROR = 'ERROR',
+  SPINNER = 'SPINNER',
   PINNED_COORDINATES = 'PINNED_COORDINATES',
 }

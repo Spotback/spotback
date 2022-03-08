@@ -4,25 +4,40 @@ import { View, Text } from 'react-native';
 import Modal from 'react-native-modal';
 import { Button } from '@components/index';
 import useStyles from './ErrorAlert.styles';
+import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
+import { logIn, clearError } from '@services/users/thunks';
 
-interface ErrorAlertProps {
-  error: Record<any, any>;
-  onPress: any;
-}
+// interface ErrorAlertProps {
+//   onPress: any;
+// }
 
-const ErrorAlert: FC<ErrorAlertProps> = ({ error, onPress }: any) => {
+const ErrorAlert = () => {
   const styles = useStyles();
+  const dispatch = useDispatch();
+  const userError = useSelector((state: RootStateOrAny) => state.userReducer.error);
+  const spotsError = useSelector((state: RootStateOrAny) => state.spotsReducer.error);
+
+  const onClearError = () => {
+    dispatch(clearError());
+  };
+
   return (
-    <Modal isVisible={Object.keys(error).length > 0} backdropOpacity={0.5}>
-      <View style={styles.container}>
-        <View style={styles.subContainer}>
-          <Text style={styles.text}>{error.message}</Text>
-          <Button onPress={onPress} size="small" title="OK">
-            <Text>OK</Text>
-          </Button>
+    <>
+      <Modal
+        isVisible={Object.keys(userError ? userError : spotsError).length > 0}
+        backdropOpacity={0.5}>
+        <View style={styles.container}>
+          <View style={styles.subContainer}>
+            <Text style={styles.text}>
+              {userError?.message ? userError?.message : spotsError?.message}
+            </Text>
+            <Button onPress={onClearError} size="small" title="OK">
+              <Text>OK</Text>
+            </Button>
+          </View>
         </View>
-      </View>
-    </Modal>
+      </Modal>
+    </>
   );
 };
 
