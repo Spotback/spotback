@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
-import { View, Text, ScrollView, Image, PermissionsAndroid } from 'react-native';
+import { View, Text, ScrollView, Image, PermissionsAndroid, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
@@ -219,7 +219,7 @@ const Home = () => {
           </View>
         )}
       </View>
-
+ 
       <Hub title="SpotNews" bottom onPress={() => setspotNewsVisible(!spotNewsVisible)} />
       <SlidingView
         componentVisible={spotNewsVisible}

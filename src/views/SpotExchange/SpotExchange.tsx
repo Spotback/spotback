@@ -167,7 +167,6 @@ const SpotExchange = () => {
         </Modal>
         <View style={styles.messengerContainer}>
           <View style={styles.spotSwitchCompleteContainer}>
-            {/* @TODO extra modal causin problems try re use that secondary model */}
             <Button
               title="Spot Switch complete"
               size="small"

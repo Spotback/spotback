@@ -7,7 +7,7 @@ import { launchImageLibrary } from 'react-native-image-picker';
 import storage from '@react-native-firebase/storage';
 import { Picker } from '@react-native-picker/picker';
 import { useForm, Controller } from 'react-hook-form';
-import { Button, Input, ProfilePic } from '@components/index';
+import { Button, Input, ProfilePic, ErrorAlert, Spinner } from '@components/index';
 import { editProfile, noProfilePic } from '@assets/images/index';
 import useStyles from './EditProfile.styles';
 import { theme } from '@utils/theme';
@@ -191,6 +191,8 @@ const EditProfile = () => {
           <Button title="Save" size="large" onPress={handleSubmit(onSubmit)} />
         </View>
       </View>
+      <Spinner />
+      <ErrorAlert />
     </View>
   );
 };

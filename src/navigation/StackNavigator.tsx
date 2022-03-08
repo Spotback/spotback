@@ -18,6 +18,7 @@ import SearchingForMatch from '../views/SearchingForMatch/SearchingForMatch';
 import SpotExchange from '../views/SpotExchange/SpotExchange';
 import SpotExchangeComplete from '../views/SpotExchangeComplete/SpotExchangeComplete';
 import AuthLoading from '../views/AuthLoading/AuthLoading';
+import { theme } from '@utils/theme';
 
 const Stack = createStackNavigator();
 
@@ -31,7 +32,7 @@ const StackNavigator = () => {
           options={{
             title: '',
             headerStyle: {
-              backgroundColor: '#FDFFFD',
+              backgroundColor: theme.colors.background,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -45,7 +46,7 @@ const StackNavigator = () => {
           options={{
             title: '',
             headerStyle: {
-              backgroundColor: '#FDFFFD',
+              backgroundColor: theme.colors.background,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -59,7 +60,7 @@ const StackNavigator = () => {
           options={{
             title: '',
             headerStyle: {
-              backgroundColor: '#FDFFFD',
+              backgroundColor: theme.colors.background,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -73,7 +74,7 @@ const StackNavigator = () => {
           options={{
             title: '',
             headerStyle: {
-              backgroundColor: '#FDFFFD',
+              backgroundColor: theme.colors.background,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -94,7 +95,7 @@ const StackNavigator = () => {
           options={{
             title: 'Find Me A Spot',
             headerTitleStyle: {
-              color: '#000000',
+              color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
@@ -103,7 +104,7 @@ const StackNavigator = () => {
               marginRight: 55,
             },
             headerStyle: {
-              backgroundColor: '#FDFFFD',
+              backgroundColor: theme.colors.background,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -117,7 +118,7 @@ const StackNavigator = () => {
           options={{
             title: 'Post My Spot',
             headerTitleStyle: {
-              color: '#000000',
+              color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
@@ -126,7 +127,7 @@ const StackNavigator = () => {
               marginRight: 55,
             },
             headerStyle: {
-              backgroundColor: '#FDFFFD',
+              backgroundColor: theme.colors.background,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -140,7 +141,7 @@ const StackNavigator = () => {
           options={{
             title: 'Account',
             headerTitleStyle: {
-              color: '#000000',
+              color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
@@ -149,7 +150,7 @@ const StackNavigator = () => {
               marginRight: 55,
             },
             headerStyle: {
-              backgroundColor: '#FDFFFD',
+              backgroundColor: theme.colors.background,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -163,7 +164,7 @@ const StackNavigator = () => {
           options={{
             title: 'Transfer to Bank',
             headerTitleStyle: {
-              color: '#000000',
+              color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
@@ -172,7 +173,7 @@ const StackNavigator = () => {
               marginRight: 55,
             },
             headerStyle: {
-              backgroundColor: '#FDFFFD',
+              backgroundColor: theme.colors.background,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -186,7 +187,7 @@ const StackNavigator = () => {
           options={{
             title: 'Invite a Friend',
             headerTitleStyle: {
-              color: '#000000',
+              color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
@@ -195,7 +196,7 @@ const StackNavigator = () => {
               marginRight: 55,
             },
             headerStyle: {
-              backgroundColor: '#FDFFFD',
+              backgroundColor: theme.colors.background,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -209,7 +210,7 @@ const StackNavigator = () => {
           options={{
             title: 'Edit Profile',
             headerTitleStyle: {
-              color: '#000000',
+              color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
@@ -218,7 +219,7 @@ const StackNavigator = () => {
               marginRight: 55,
             },
             headerStyle: {
-              backgroundColor: '#FDFFFD',
+              backgroundColor: theme.colors.background,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,
@@ -232,7 +233,7 @@ const StackNavigator = () => {
           options={{
             title: 'Help',
             headerTitleStyle: {
-              color: '#000000',
+              color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
@@ -241,7 +242,7 @@ const StackNavigator = () => {
               marginRight: 50,
             },
             headerStyle: {
-              backgroundColor: '#FDFFFD',
+              backgroundColor: theme.colors.background,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 0,

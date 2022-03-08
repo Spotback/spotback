@@ -1,7 +1,6 @@
 import { UserTypes } from './types';
 
 const initialState = {
-  isloggedIn: false,
   referrals: [],
   verified: false,
   freeSpots: 0,
@@ -25,6 +24,8 @@ const initialState = {
   bearer: '',
   pinnedCoordinates: '',
   imageSource: '',
+  spinner: false,
+  error: {},
 };
 
 const userReducer = (state = initialState, action: any) => {
@@ -34,10 +35,8 @@ const userReducer = (state = initialState, action: any) => {
       // // data is returned through user object except for freespots and headers
       return {
         ...state,
-        isloggedIn: true,
         referrals: action.payload.user.referrals,
         verified: action.payload.user.verified,
-
         freeSpots: action.payload.freeSpots,
         balance: action.payload.user.balance,
         rating: action.payload.user.rating,
@@ -49,12 +48,12 @@ const userReducer = (state = initialState, action: any) => {
         referralCode: action.payload.user.referralCode,
         stripeToken: action.payload.user.stripeToken,
         bearer: action.headers.bearer,
+        spinner: false,
       };
     case UserTypes.LOG_IN:
       console.log('log in reducer ', action);
       return {
         ...state,
-        isloggedIn: true,
         referrals: action.payload.referrals,
         verified: action.payload.verified,
         freeSpots: action.payload.freeSpots,
@@ -76,6 +75,7 @@ const userReducer = (state = initialState, action: any) => {
         referralCode: action.payload.referralCode,
         stripeToken: action.payload.stripeToken,
         bearer: action.headers.bearer,
+        spinner: false,
       };
     case UserTypes.UPDATE:
       console.log('update reducer ', action);
@@ -89,14 +89,30 @@ const userReducer = (state = initialState, action: any) => {
           model: action.payload.car.model,
           year: action.payload.car.year,
         },
+        spinner: false,
       };
+    case UserTypes.POST_SPOT:
+      console.log('post spot reducer ', action);
+      return { ...state, spinner: false };
     case UserTypes.PINNED_COORDINATES:
       console.log('coordinates reducer ', action);
       return {
         ...state,
         pinnedCoordinates: action.payload,
       };
-
+    case UserTypes.SPINNER:
+      console.log('spinner reducer ', action);
+      return {
+        ...state,
+        spinner: action.payload,
+      };
+    case UserTypes.ERROR:
+      console.log('error reducer ', action);
+      return {
+        ...state,
+        error: action.payload,
+        spinner: false,
+      };
     default:
       return state;
   }

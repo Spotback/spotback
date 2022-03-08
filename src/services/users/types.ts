@@ -2,5 +2,8 @@ export enum UserTypes {
   SIGN_UP = 'SIGN_UP',
   LOG_IN = 'LOG_IN',
   UPDATE = 'UPDATE',
+  ERROR = 'ERROR',
+  SPINNER = 'SPINNER',
   PINNED_COORDINATES = 'PINNED_COORDINATES',
+  POST_SPOT = 'POST_SPOT',
 }

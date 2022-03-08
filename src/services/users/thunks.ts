@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USERS_BASE_URL } from '@env';
+import { USERS_BASE_URL, SPOTS_BASE_URL } from '@env';
 import * as RootNavigation from '@navigation/RootNavigation';
 import { v4 as uuidv4 } from 'uuid';
 import { setAsyncStorage, getAsyncStorage } from '@utils/asyncStorage';
@@ -15,6 +15,10 @@ export const signUp = (
   phone: string
 ) => {
   return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.SPINNER,
+      payload: true,
+    });
     axios
       .post(
         `${USERS_BASE_URL}/createAccount`,
@@ -41,12 +45,20 @@ export const signUp = (
       })
       .catch((err) => {
         console.log('err ', err.response.data);
+        dispatch({
+          type: UserTypes.ERROR,
+          payload: err.response.data,
+        });
       });
   };
 };
 
 export const logIn = (email: string, password: string) => {
   return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.SPINNER,
+      payload: true,
+    });
     axios
       .post(
         `${USERS_BASE_URL}/readAccount`,
@@ -69,7 +81,11 @@ export const logIn = (email: string, password: string) => {
         RootNavigation.navigate('Home');
       })
       .catch((err) => {
-        console.log('err ', err.response.data);
+        console.log('***** err *****', err.response.data);
+        dispatch({
+          type: UserTypes.ERROR,
+          payload: err.response.data,
+        });
       });
   };
 };
@@ -84,6 +100,10 @@ export const update = (
   carType?: string
 ) => {
   return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.SPINNER,
+      payload: true,
+    });
     axios
       .post(
         `${USERS_BASE_URL}/updateAccount`,
@@ -110,10 +130,57 @@ export const update = (
           type: UserTypes.UPDATE,
           payload: res.data,
         });
-        RootNavigation.navigate('Account');
       })
       .catch((err) => {
         console.log('err ', err.response.data);
+        dispatch({
+          type: UserTypes.ERROR,
+          payload: err.response.data,
+        });
+      });
+  };
+};
+
+export const postSpot = (
+  bearer: string,
+  coordinates: string,
+  car: Record<string, any>,
+  spotType: string,
+  leaveTime: number
+) => {
+  return (dispatch: any) => {
+    console.log('spots thunk ', bearer, 'coordinates ', coordinates, car, spotType, leaveTime);
+    dispatch({
+      type: UserTypes.SPINNER,
+      payload: true,
+    });
+    axios
+      .post(
+        `${SPOTS_BASE_URL}/createSpot`,
+        {
+          coordinates,
+          car,
+          spotType,
+          leaveTime,
+        },
+        {
+          headers: { 'spotback-correlation-id': uuidv4(), Bearer: bearer },
+        }
+      )
+      .then((res) => {
+        console.log('res ', res);
+        dispatch({
+          type: UserTypes.POST_SPOT,
+          payload: res.data,
+        });
+        RootNavigation.navigate('SearchingForMatch');
+      })
+      .catch((err) => {
+        console.log('err ', err.response.data);
+        dispatch({
+          type: UserTypes.ERROR,
+          payload: err.response.data,
+        });
       });
   };
 };
@@ -123,6 +190,15 @@ export const pinnedCoordinates = (pinnedCoordinates: string) => {
     dispatch({
       type: UserTypes.PINNED_COORDINATES,
       payload: pinnedCoordinates,
+    });
+  };
+};
+
+export const clearUserError = () => {
+  return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.ERROR,
+      payload: {},
     });
   };
 };

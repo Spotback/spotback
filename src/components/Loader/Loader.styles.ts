@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme: any) =>
       // flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: theme.colors.background,
+      // backgroundColor: theme.colors.background,
     },
     image: {
       width: 273,

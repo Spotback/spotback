@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
 import { View, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import { Button } from '@components/index';
-import { postSpot } from '@services/spots/thunks';
+import { Button, ErrorAlert, Spinner } from '@components/index';
+import { postSpot } from '@services/users/thunks';
 import { theme } from '@utils/theme';
 import useStyles from './PostMySpot.styles';
 
@@ -82,6 +82,8 @@ const PostMySpot = ({ route: { params } }: Record<any, any>) => {
       <View style={styles.buttonsContainer}>
         <Button title="Post Spot" size="large" onPress={onSubmit} />
       </View>
+      <Spinner />
+      <ErrorAlert />
     </View>
   );
 };

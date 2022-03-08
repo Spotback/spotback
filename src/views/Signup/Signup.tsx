@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { signUp } from '@services/users/thunks';
-import { Button, Input } from '@components/index';
+import { Button, Input, ErrorAlert, Spinner } from '@components/index';
 import useStyles from './Signup.styles';
 
 const Signup = () => {
@@ -140,6 +140,8 @@ const Signup = () => {
           <Button title="Sign Up" size="large" onPress={handleSubmit(onSubmit)} />
         </View>
       </View>
+      <Spinner />
+      <ErrorAlert />
     </View>
   );
 };
