@@ -51,7 +51,7 @@ To enter profile do => open ~/.zshrc
 In android studio find your path in the android SDK location
 Copy Paste this below =>
 
-export ANDROID_HOME=/Users/josephcaruana/Library/Android/sdk
+export ANDROID_HOME=/Your/Path/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
