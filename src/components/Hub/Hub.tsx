@@ -34,7 +34,7 @@ const Hub: FC<HubProps> = ({
             {top && (
               <>
                 <View style={styles.topHubSpacing}>
-                  <View style={styles.profilePicImage}>
+                  <View>
                     <ProfilePic imageSource={imageSource} size="small" />
                   </View>
                 </View>
@@ -59,7 +59,7 @@ const Hub: FC<HubProps> = ({
                   <Text style={styles.hubTitle}>{title}</Text>
                 </View>
                 <View style={styles.hostHubSpacing}>
-                  <View style={styles.profilePicImage}>
+                  <View style={styles.HostClientprofilePicImage}>
                     <ProfilePic imageSource={imageSource} size="medium" />
                   </View>
                 </View>
@@ -71,7 +71,7 @@ const Hub: FC<HubProps> = ({
                   <Text style={styles.hubTitle}>{title}</Text>
                 </View>
                 <View style={styles.hostHubSpacing}>
-                  <View style={styles.profilePicImage}>
+                  <View style={styles.HostClientprofilePicImage}>
                     <ProfilePic imageSource={imageSource} size="medium" />
                   </View>
                 </View>

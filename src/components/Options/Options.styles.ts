@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme: any) =>
   StyleSheet.create({
     container: {
       justifyContent: 'center',
+      alignItems: 'center',
       padding: 20,
       width: 333,
       height: 112,
@@ -32,9 +33,13 @@ const useStyles = makeStyles((theme: any) =>
       borderRadius: 10,
       elevation: 5,
     },
-    text: {
+    boldText: {
       color: theme.colors.light,
       fontWeight: 'bold',
+      marginVertical: 5,
+    },
+    text: {
+      color: theme.colors.light,
       marginVertical: 5,
     },
     inputText: {
