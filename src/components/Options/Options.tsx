@@ -41,8 +41,8 @@ const Options: FC<OptionsProps> = ({
     <>
       {type === 'standard' && (
         <View style={styles.container}>
-          {texts.map((text: string) => (
-            <Text key={text} style={styles.text}>
+          {texts.map((text: string, index: number) => (
+            <Text key={text} style={index === 0 ? styles.boldText: styles.text}>
               {text}
             </Text>
           ))}

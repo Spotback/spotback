@@ -4,6 +4,7 @@ import { makeStyles } from 'react-native-elements';
 const useStyles = (blured?: string) =>
   makeStyles((theme: any) =>
     StyleSheet.create({
+  
       small: {
         width: 50,
         height: 50,

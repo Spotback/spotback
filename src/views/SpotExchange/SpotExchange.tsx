@@ -140,7 +140,7 @@ const SpotExchange = () => {
               }
               leftButtonTitle={secondaryModalVis.type === 'cancelTransaction' ? 'Yes' : 'Complete'}
               rightButtonTitle={secondaryModalVis.type === 'cancelTransaction' ? 'No' : 'Not Yet'}
-              type='standard'
+              type="standard"
               onPressLeft={() => {
                 setSecondaryModalVis({
                   visible: !secondaryModalVis.visible,
@@ -157,10 +157,13 @@ const SpotExchange = () => {
               texts={
                 secondaryModalVis.type === 'cancelTransaction'
                   ? [
-                      'If you cancel during this transaction a fee may apply.',
                       'Are you sure you want to cancel?',
+                      'If you cancel during this transaction a fee may apply.',
                     ]
-                  : ['Are you sure this spot exchange is complete?']
+                  : [
+                      'Spot Exchange Complete?',
+                      'Please make sure that you and the other driver have switched.',
+                    ]
               }
             />
           </View>

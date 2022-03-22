@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: any) =>
       flexDirection: 'row',
       zIndex: 1,
     },
-    profilePicImage: {
+    HostClientprofilePicImage: {
       marginTop: 20,
     },
     hubTitle: {
@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme: any) =>
       fontSize: 24,
     },
     topHubSpacing: {
-      marginTop: 40,
       marginHorizontal: 40,
     },
     itemContainer: {

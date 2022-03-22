@@ -102,4 +102,8 @@ npm cache clear --force
 
 Adb devices
 adb -s emulator-5554 emu kill
+
+adb shell input keyevent 82
+
+with ES7+ React/Redux/React-Native snippets installed run rnfe in editor
 ```
