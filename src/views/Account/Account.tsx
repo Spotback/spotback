@@ -70,7 +70,7 @@ const Account = () => {
             <Text style={styles.text}>Help</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Payments')}>
           <View style={styles.iconContainer}>
             <Image style={styles.image} source={creditCard} />
             <Text style={styles.text}>Payment Information</Text>

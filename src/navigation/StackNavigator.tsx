@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { RootStackParamsList } from './types';
 import { navigationRef } from './RootNavigation';
 import BackArrow from '../components/BackArrow/BackArrow';
 import Onboarding from '../views/Onboarding/Onboarding';
@@ -14,19 +15,21 @@ import TransferToBank from '../views/TransferToBank/TransferToBank';
 import InviteAFriend from '../views/InviteAFriend/InviteAFriend';
 import EditProfile from '../views/EditProfile/EditProfile';
 import Help from '../views/Help/Help';
+import Payments from '../views/Payments/Payments';
 import SearchingForMatch from '../views/SearchingForMatch/SearchingForMatch';
 import SpotExchange from '../views/SpotExchange/SpotExchange';
 import SpotExchangeComplete from '../views/SpotExchangeComplete/SpotExchangeComplete';
 import AuthLoading from '../views/AuthLoading/AuthLoading';
 import { theme } from '@utils/theme';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamsList>();
 
 const StackNavigator = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
         <Stack.Screen
+        // @TODO: figure out why name has been off centered for all headers
           name="AuthLoading"
           component={AuthLoading}
           options={{
@@ -232,6 +235,29 @@ const StackNavigator = () => {
           component={Help}
           options={{
             title: 'Help',
+            headerTitleStyle: {
+              color: theme.colors.dark,
+              fontFamily: 'PT Sans',
+              fontWeight: 'bold',
+              fontSize: 24,
+              textAlign: 'center',
+              paddingTop: 2.5,
+              marginRight: 50,
+            },
+            headerStyle: {
+              backgroundColor: theme.colors.background,
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 0,
+            },
+            headerLeft: () => <BackArrow navigationDirection="Account" />,
+          }}
+        />
+        <Stack.Screen
+          name="Payments"
+          component={Payments}
+          options={{
+            title: 'Payment Information',
             headerTitleStyle: {
               color: theme.colors.dark,
               fontFamily: 'PT Sans',
