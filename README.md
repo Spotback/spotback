@@ -95,7 +95,11 @@ cd android && ./gradlew assembleRelease && cd ..
 
 cd android &&  ./gradlew cleanBuildCache && cd ..
 
-cd android && ./gradlew --stop && cd .. && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd android/app && rm -rf build && cd .. && cd .. && cd android && ./gradlew clean && cd .. && npm install && npm start --reset-cache
+cd android && ./gradlew --stop && cd ..
+
+rm -Rfv ~/.gradle/
+
+rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd android/app && rm -rf build && cd .. && cd .. && npm install && npm start --reset-cache
 
 npm cache clear --force
 
@@ -105,4 +109,5 @@ adb -s emulator-5554 emu kill
 adb shell input keyevent 82
 
 with ES7+ React/Redux/React-Native snippets installed run rnfe in editor
+
 ```
