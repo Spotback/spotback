@@ -29,16 +29,12 @@ const StackNavigator = () => {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
         <Stack.Screen
-        // @TODO: figure out why name has been off centered for all headers
           name="AuthLoading"
           component={AuthLoading}
           options={{
             title: '',
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => null,
           }}
@@ -50,9 +46,6 @@ const StackNavigator = () => {
             title: '',
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => null,
           }}
@@ -64,9 +57,6 @@ const StackNavigator = () => {
             title: '',
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Onboarding" />,
           }}
@@ -78,9 +68,6 @@ const StackNavigator = () => {
             title: '',
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Onboarding" />,
           }}
@@ -97,20 +84,15 @@ const StackNavigator = () => {
           component={FindMeASpot}
           options={{
             title: 'Find Me A Spot',
+            headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
-              textAlign: 'center',
-              paddingTop: 2.5,
-              marginRight: 55,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Home" />,
           }}
@@ -120,20 +102,15 @@ const StackNavigator = () => {
           component={PostMySpot}
           options={{
             title: 'Post My Spot',
+            headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
-              textAlign: 'center',
-              paddingTop: 2.5,
-              marginRight: 55,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Home" />,
           }}
@@ -143,20 +120,15 @@ const StackNavigator = () => {
           component={Account}
           options={{
             title: 'Account',
+            headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
-              textAlign: 'center',
-              paddingTop: 2.5,
-              marginRight: 55,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Home" />,
           }}
@@ -166,20 +138,15 @@ const StackNavigator = () => {
           component={TransferToBank}
           options={{
             title: 'Transfer to Bank',
+            headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
-              textAlign: 'center',
-              paddingTop: 2.5,
-              marginRight: 55,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
@@ -189,20 +156,15 @@ const StackNavigator = () => {
           component={InviteAFriend}
           options={{
             title: 'Invite a Friend',
+            headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
-              textAlign: 'center',
-              paddingTop: 2.5,
-              marginRight: 55,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
@@ -212,20 +174,15 @@ const StackNavigator = () => {
           component={EditProfile}
           options={{
             title: 'Edit Profile',
+            headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
-              textAlign: 'center',
-              paddingTop: 2.5,
-              marginRight: 55,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
@@ -235,20 +192,15 @@ const StackNavigator = () => {
           component={Help}
           options={{
             title: 'Help',
+            headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
-              textAlign: 'center',
-              paddingTop: 2.5,
-              marginRight: 50,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
@@ -258,20 +210,15 @@ const StackNavigator = () => {
           component={Payments}
           options={{
             title: 'Payment Information',
+            headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
               fontFamily: 'PT Sans',
               fontWeight: 'bold',
               fontSize: 24,
-              textAlign: 'center',
-              paddingTop: 2.5,
-              marginRight: 50,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderBottomWidth: 0,
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
