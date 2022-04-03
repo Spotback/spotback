@@ -4,11 +4,9 @@ import { makeStyles } from 'react-native-elements';
 const useStyles = makeStyles((theme: any) =>
   StyleSheet.create({
     container: {
-      paddingLeft: 5,
-    },
-    image: {
-      width: 45,
-      height: 45,
+      flex: 1,
+      alignItems: 'center',
+      backgroundColor: theme.colors.background,
     },
   })
 );
