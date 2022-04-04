@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
-import { View, Text } from 'react-native';
 import store from './src/services/redux/store';
 import { ThemeProvider } from 'react-native-elements';
 import { theme } from './src/utils/theme';
