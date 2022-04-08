@@ -30,6 +30,7 @@ const Input: FC<Inputprops> = ({
         <GooglePlacesAutocomplete
           {...rest}
           currentLocation
+          fetchDetails={true}
           placeholder={placeholder}
           onPress={onPress}
           query={{

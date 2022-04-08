@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button, Input, Options } from '@components/index';
@@ -8,7 +8,9 @@ import { spotPin2, evCar } from '@assets/images/index';
 const FindMeASpot = () => {
   const styles = useStyles();
   const navigation = useNavigation();
-
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
+  console.log('coords ', latitude, longitude);
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -33,8 +35,11 @@ const FindMeASpot = () => {
           placeholder="Enter destination"
           inputStyle="large"
           autoComplete
-          onPress={(data: any) => {
-            console.log('DATA DETAILS on Press', data);
+          onPress={(data: any, details: any) => {
+            console.log('DATA on Press', data);
+            console.log('DETAILS on Press, details ', details);
+            setLatitude(details.geometry.location.lat);
+            setLongitude(details.geometry.location.lng);
           }}
         />
       </View>

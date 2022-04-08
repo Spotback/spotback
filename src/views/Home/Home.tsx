@@ -8,7 +8,7 @@ import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
 import storage from '@react-native-firebase/storage';
 import { Hub, Button } from '@components/index';
-import { pinnedCoordinates } from '@services/users/thunks';
+import { pinnedCoordinates } from '@services/thunks';
 import {
   spotPin,
   spotbackLogoIcon,

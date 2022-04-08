@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { signUp } from '@services/users/thunks';
+import { signUp } from '@services/thunks';
 import { Button, Input, ErrorAlert, Spinner } from '@components/index';
 import useStyles from './Signup.styles';
 
