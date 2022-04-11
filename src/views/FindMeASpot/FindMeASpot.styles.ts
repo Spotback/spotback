@@ -25,13 +25,17 @@ const useStyles = makeStyles((theme: any) =>
     spacing: {
       marginHorizontal: 5,
     },
-    buttonsContainer: {
+    topButtonsContainer: {
       flexDirection: 'row',
       position: 'absolute',
       top: 120,
       width: 352,
     },
-    centerContainer: {
+    bottomButtonContainer: {
+      top: 450,
+      position: 'absolute',
+    },
+    searchBoxContainer: {
       position: 'absolute',
       top: 180,
       padding: 5,

@@ -28,7 +28,7 @@ const initialState = {
   error: {},
 };
 
-const userReducer = (state = initialState, action: any) => {
+const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case UserTypes.SIGN_UP:
       console.log('sign up reducer ', action);
@@ -94,6 +94,9 @@ const userReducer = (state = initialState, action: any) => {
     case UserTypes.POST_SPOT:
       console.log('post spot reducer ', action);
       return { ...state, spinner: false };
+    case UserTypes.MATCH:
+      console.log('match reducer ', action);
+      return { ...state, spinner: false };
     case UserTypes.PINNED_COORDINATES:
       console.log('coordinates reducer ', action);
       return {
@@ -117,5 +120,5 @@ const userReducer = (state = initialState, action: any) => {
       return state;
   }
 };
-console.log('userReducer', initialState);
-export default userReducer;
+console.log('reducer', initialState);
+export default reducer;

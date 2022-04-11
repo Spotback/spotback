@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USERS_BASE_URL, SPOTS_BASE_URL } from '@env';
+import { USERS_BASE_URL, SPOTS_BASE_URL, MATCHING_BASE_URL } from '@env';
 import * as RootNavigation from '@navigation/RootNavigation';
 import { v4 as uuidv4 } from 'uuid';
 import { setAsyncStorage, getAsyncStorage } from '@utils/asyncStorage';
@@ -182,6 +182,41 @@ export const postSpot = (
           payload: err.response.data,
         });
       });
+  };
+};
+
+export const match = (bearer: string, coordinateSet: Record<string, any>) => {
+  return (dispatch: any) => {
+    console.log('spots thunk ', bearer, 'coordinates ', coordinateSet);
+    // dispatch({
+    //   type: UserTypes.SPINNER,
+    //   payload: true,
+    // });
+    // axios
+    //   .post(
+    //     `${MATCHING_BASE_URL}/match`,
+    //     {
+    //       coordinateSet,
+    //     },
+    //     {
+    //       headers: { 'spotback-correlation-id': uuidv4(), Bearer: bearer },
+    //     }
+    //   )
+    //   .then((res) => {
+    //     console.log('res ', res);
+    //     dispatch({
+    //       type: UserTypes.POST_SPOT,
+    //       payload: res.data,
+    //     });
+    //     RootNavigation.navigate('SearchingForMatch');
+    //   })
+    //   .catch((err) => {
+    //     console.log('err ', err.response.data);
+    //     dispatch({
+    //       type: UserTypes.ERROR,
+    //       payload: err.response.data,
+    //     });
+    //   });
   };
 };
 

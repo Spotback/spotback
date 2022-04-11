@@ -12,7 +12,7 @@
     "skipLibCheck": true,
     "declaration": true,
     "noUnusedLocals": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
       "@components/*": ["./src/components/*"],
