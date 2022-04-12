@@ -3,7 +3,7 @@ import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
 import { View, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Button, ErrorAlert, Spinner } from '@components/index';
-import { postSpot } from '@services/users/thunks';
+import { postSpot } from '@services/thunks';
 import { theme } from '@utils/theme';
 import useStyles from './PostMySpot.styles';
 

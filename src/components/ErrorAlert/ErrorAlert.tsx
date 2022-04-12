@@ -5,7 +5,7 @@ import Modal from 'react-native-modal';
 import { Button } from '@components/index';
 import useStyles from './ErrorAlert.styles';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
-import { clearUserError } from '@services/users/thunks';
+import { clearUserError } from '@services/thunks';
 
 const ErrorAlert = () => {
   const styles = useStyles();

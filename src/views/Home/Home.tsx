@@ -8,7 +8,7 @@ import SlidingView from 'rn-sliding-view';
 import { LogBox } from 'react-native';
 import storage from '@react-native-firebase/storage';
 import { Hub, Button } from '@components/index';
-import { pinnedCoordinates } from '@services/users/thunks';
+import { pinnedCoordinates } from '@services/thunks';
 import {
   spotPin,
   spotbackLogoIcon,
@@ -54,7 +54,6 @@ const Home = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  console.log('user car ', user.car);
   const [imageSource, setImageSource] = useState('');
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);

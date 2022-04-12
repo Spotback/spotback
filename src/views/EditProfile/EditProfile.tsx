@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { update } from '@services/users/thunks';
+import { update } from '@services/thunks';
 import { launchImageLibrary } from 'react-native-image-picker';
 import storage from '@react-native-firebase/storage';
 import { Picker } from '@react-native-picker/picker';

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Alert } from 'react-native';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
-import { logIn } from '@services/users/thunks';
+import { logIn } from '@services/thunks';
 import { Button, Input, Link, ErrorAlert, Spinner } from '@components/index';
 import useStyles from './Login.styles';
 

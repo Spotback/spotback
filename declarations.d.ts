@@ -12,10 +12,10 @@ declare module '@env' {
   export const SUPPORT_BASE_URL: string;
   export const GOOGLE_API_KEY: string;
 }
-declare module 'rn-sliding-view';
 declare global {
   namespace ReactNavigation {
     // eslint-disable-next-line @typescript-eslint/no-empty-interface
     interface RootParamList extends RootStackParamsList {}
   }
 }
+declare module 'rn-sliding-view';
