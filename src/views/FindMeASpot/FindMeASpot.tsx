@@ -4,7 +4,7 @@ import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
 import Geolocation from '@react-native-community/geolocation';
 import { match } from '@services/thunks';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Input, Options } from '@components/index';
+import { Button, Input, Options, Spinner, ErrorAlert } from '@components/index';
 import useStyles from './FindMeASpot.styles';
 import { spotPin2, evCar } from '@assets/images/index';
 
@@ -58,12 +58,7 @@ const FindMeASpot = () => {
 
   const onSubmit = (flag: boolean) => {
     console.log('coordiantes on submit ', user.bearer, flag, currentLocation, desiredLocation);
-    dispatch(
-      match(user.bearer, {
-        currentLocation: currentLocation,
-        desiredLocation: flag ? desiredLocation : currentLocation,
-      })
-    );
+    dispatch(match(user.bearer, currentLocation, flag ? desiredLocation : currentLocation));
   };
 
   useEffect(() => {
@@ -102,6 +97,8 @@ const FindMeASpot = () => {
       <View style={styles.bottomButtonContainer}>
         <Button title="Find Spot" size="large" onPress={() => onSubmit(true)} />
       </View>
+      <Spinner />
+      <ErrorAlert />
     </View>
   );
 };
