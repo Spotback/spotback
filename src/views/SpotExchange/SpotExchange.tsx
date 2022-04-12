@@ -183,7 +183,20 @@ const SpotExchange = () => {
           </View>
 
           <View style={styles.container}>
-            <ScrollView style={styles.incomingText}></ScrollView>
+            <ScrollView style={styles.messagingContainer}>
+              <View style={styles.incomingTextLeft}>
+                <Text style={styles.incomingTextMsg}>testing</Text>
+              </View>
+              <View style={styles.incomingTextRight}>
+                <Text style={styles.incomingTextMsg}>testing</Text>
+              </View>
+              <View style={styles.incomingTextLeft}>
+                <Text style={styles.incomingTextMsg}>testing</Text>
+              </View>
+              <View style={styles.incomingTextRight}>
+                <Text style={styles.incomingTextMsg}>testing</Text>
+              </View>
+            </ScrollView>
             <TextInput
               style={styles.input}
               placeholder="Type a message..."

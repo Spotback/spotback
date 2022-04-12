@@ -89,9 +89,8 @@ const useStyles = makeStyles((theme: any) =>
       justifyContent: 'center',
       alignItems: 'center',
     },
-    incomingText: {
-      opacity: 0.5,
-      backgroundColor: theme.colors.primary,
+    messagingContainer: {
+      backgroundColor: theme.colors.primaryNoChildOpacity,
       padding: 10,
       width: 324,
       height: 50,
@@ -103,6 +102,25 @@ const useStyles = makeStyles((theme: any) =>
       shadowOpacity: 0.8,
       shadowRadius: 2,
       elevation: 10,
+    },
+    incomingTextLeft: {
+      padding: 5,
+      width: 100,
+      height: 30,
+      borderRadius: 10,
+      backgroundColor: 'red',
+    },
+
+    incomingTextRight: {
+      padding: 5,
+      width: 100,
+      height: 30,
+      borderRadius: 10,
+      backgroundColor: 'green',
+    },
+    incomingTextMsg: {
+      color: theme.colors.dark,
+      fontSize: 10,
     },
     input: {
       backgroundColor: theme.colors.light,
