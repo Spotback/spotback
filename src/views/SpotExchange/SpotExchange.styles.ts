@@ -78,20 +78,20 @@ const useStyles = makeStyles((theme: any) =>
       marginBottom: 5,
       marginRight: 30,
     },
-    messengerContainer: {
+    bottomContainer: {
       flex: 1,
       bottom: 20,
       position: 'absolute',
       left: 0,
       right: 0,
     },
-    container: {
+    chatContainer: {
       justifyContent: 'center',
       alignItems: 'center',
     },
-    messagingContainer: {
+    scrollMessagingContainer: {
       backgroundColor: theme.colors.primaryNoChildOpacity,
-      padding: 10,
+      padding: 4,
       width: 324,
       height: 50,
       borderRadius: 10,
@@ -103,20 +103,26 @@ const useStyles = makeStyles((theme: any) =>
       shadowRadius: 2,
       elevation: 10,
     },
+    scrollItemsContainer: {
+      paddingBottom: 10,
+      paddingHorizontal: 5,
+    },
     incomingTextLeft: {
-      padding: 5,
-      width: 100,
-      height: 30,
+      flexDirection: 'row',
+      alignSelf: 'flex-start',
+      backgroundColor: theme.colors.light,
+      padding: 4,
       borderRadius: 10,
-      backgroundColor: 'red',
+      marginVertical: 1,
     },
 
     incomingTextRight: {
-      padding: 5,
-      width: 100,
-      height: 30,
+      flexDirection: 'row',
+      alignSelf: 'flex-end',
+      backgroundColor: theme.colors.success,
+      padding: 4,
       borderRadius: 10,
-      backgroundColor: 'green',
+      marginVertical: 1,
     },
     incomingTextMsg: {
       color: theme.colors.dark,

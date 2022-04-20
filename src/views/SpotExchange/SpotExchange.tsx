@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, Modal, ScrollView, TouchableOpacity, TextInput } from 'react-native';
@@ -7,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { LogBox } from 'react-native';
 import storage from '@react-native-firebase/storage';
+import database from '@react-native-firebase/database';
 import { phone } from '@assets/images/index';
 import useStyles from './SpotExchange.styles';
 import { theme } from '@utils/theme';
@@ -41,8 +43,29 @@ const SpotExchange = () => {
       });
   };
 
+  const retrieveRealTimeMessages = () => {
+    database()
+      .ref('/chat_rooms/-2048459048/messages')
+      .on('value', (messages) => {
+        console.log('Users chat data: ', messages.val());
+      });
+  };
+  // @TODO: might need to use the update method over the set method, push causes issues?
+  const pushRealTimeMessage = () => {
+    database()
+      .ref('/chat_rooms/-2048459048/messages')
+      .set({
+        created: 1234567890,
+        sender_id: 'jcaruana614@gmail.com',
+        text: 'did I push a message?!!!!!!',
+      })
+      .then((data) => console.log('data ', data))
+      .catch((error) => console.log('error ', error));
+  };
   useEffect(() => {
     getProfilePic();
+    pushRealTimeMessage();
+    retrieveRealTimeMessages()
   });
 
   return (
@@ -168,7 +191,7 @@ const SpotExchange = () => {
             />
           </View>
         </Modal>
-        <View style={styles.messengerContainer}>
+        <View style={styles.bottomContainer}>
           <View style={styles.spotSwitchCompleteContainer}>
             <Button
               title="Spot Switch complete"
@@ -182,19 +205,24 @@ const SpotExchange = () => {
             />
           </View>
 
-          <View style={styles.container}>
-            <ScrollView style={styles.messagingContainer}>
-              <View style={styles.incomingTextLeft}>
-                <Text style={styles.incomingTextMsg}>testing</Text>
-              </View>
-              <View style={styles.incomingTextRight}>
-                <Text style={styles.incomingTextMsg}>testing</Text>
-              </View>
-              <View style={styles.incomingTextLeft}>
-                <Text style={styles.incomingTextMsg}>testing</Text>
-              </View>
-              <View style={styles.incomingTextRight}>
-                <Text style={styles.incomingTextMsg}>testing</Text>
+          <View style={styles.chatContainer}>
+            <ScrollView style={styles.scrollMessagingContainer}>
+              <View style={styles.scrollItemsContainer}>
+                <View style={styles.incomingTextLeft}>
+                  <Text style={styles.incomingTextMsg}>testing 123</Text>
+                </View>
+                <View style={styles.incomingTextRight}>
+                  <Text style={styles.incomingTextMsg}>testing</Text>
+                </View>
+                <View style={styles.incomingTextLeft}>
+                  <Text style={styles.incomingTextMsg}>testing</Text>
+                </View>
+                <View style={styles.incomingTextRight}>
+                  <Text style={styles.incomingTextMsg}>testing testing</Text>
+                </View>
+                <View style={styles.incomingTextRight}>
+                  <Text style={styles.incomingTextMsg}>testing testing right 1234</Text>
+                </View>
               </View>
             </ScrollView>
             <TextInput
