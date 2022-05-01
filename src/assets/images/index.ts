@@ -21,3 +21,4 @@ export { default as spotPin2 } from './spotPin2.png';
 export { default as transfers } from './transfers.png';
 export { default as noProfilePic } from './noProfilePic.png';
 export { default as phone } from './phone.png';
+export { default as sendMessage } from './sendMessage.png';

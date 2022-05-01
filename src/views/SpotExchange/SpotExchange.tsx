@@ -9,7 +9,7 @@ import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { LogBox } from 'react-native';
 import storage from '@react-native-firebase/storage';
 import database from '@react-native-firebase/database';
-import { phone } from '@assets/images/index';
+import { phone, sendMessage } from '@assets/images/index';
 import useStyles from './SpotExchange.styles';
 import { theme } from '@utils/theme';
 
@@ -25,7 +25,9 @@ const SpotExchange = () => {
   const [hubVis, setHubVis] = useState(false);
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   const [imageSource, setImageSource] = useState('');
-
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState({});
+  console.log('user email ', user.email);
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   }, []);
@@ -45,28 +47,32 @@ const SpotExchange = () => {
 
   const retrieveRealTimeMessages = () => {
     database()
-      .ref('/chat_rooms/-2048459048/messages')
-      .on('value', (messages) => {
+      .ref('/chat_rooms/-2016579967/messages')
+      .once('value', (messages) => {
         console.log('Users chat data: ', messages.val());
+        setMessages(messages.val());
       });
   };
-  // @TODO: might need to use the update method over the set method, push causes issues?
+
   const pushRealTimeMessage = () => {
     database()
-      .ref('/chat_rooms/-2048459048/messages')
-      .set({
-        created: 1234567890,
-        sender_id: 'jcaruana614@gmail.com',
-        text: 'did I push a message?!!!!!!',
-      })
-      .then((data) => console.log('data ', data))
-      .catch((error) => console.log('error ', error));
+      .ref('/chat_rooms/-2016579967/messages')
+      .push({
+        created: Math.floor(Date.now() / 1000),
+        sender_id: user.email,
+        text: message,
+      });
+    // .then((data) => console.log('data ', data))
+    // .catch((error) => console.log('error ', error));
   };
   useEffect(() => {
     getProfilePic();
-    pushRealTimeMessage();
-    retrieveRealTimeMessages()
-  });
+    retrieveRealTimeMessages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () =>
+      database().ref('/chat_rooms/-2016579967/messages').off('value', retrieveRealTimeMessages);
+  }),
+    [retrieveRealTimeMessages];
 
   return (
     <View style={styles.mainContainer}>
@@ -208,28 +214,38 @@ const SpotExchange = () => {
           <View style={styles.chatContainer}>
             <ScrollView style={styles.scrollMessagingContainer}>
               <View style={styles.scrollItemsContainer}>
-                <View style={styles.incomingTextLeft}>
-                  <Text style={styles.incomingTextMsg}>testing 123</Text>
-                </View>
-                <View style={styles.incomingTextRight}>
-                  <Text style={styles.incomingTextMsg}>testing</Text>
-                </View>
-                <View style={styles.incomingTextLeft}>
-                  <Text style={styles.incomingTextMsg}>testing</Text>
-                </View>
-                <View style={styles.incomingTextRight}>
-                  <Text style={styles.incomingTextMsg}>testing testing</Text>
-                </View>
-                <View style={styles.incomingTextRight}>
-                  <Text style={styles.incomingTextMsg}>testing testing right 1234</Text>
-                </View>
+                {Object.values(messages).length
+                  ? Object.values(messages).map((item: any, index: number) => {
+                      return (
+                        <View
+                          key={index}
+                          style={
+                            item.sender_id === user.email
+                              ? styles.incomingTextRight
+                              : styles.incomingTextLeft
+                          }>
+                          <Text style={styles.incomingTextMsg}>{item.text}</Text>
+                        </View>
+                      );
+                    })
+                  : null}
               </View>
             </ScrollView>
-            <TextInput
-              style={styles.input}
-              placeholder="Type a message..."
-              //   onChangeText={onChangeText} value={value}
-            />
+            <View style={styles.messageChat}>
+              <TextInput
+                style={styles.input}
+                placeholder="Type a message..."
+                onChangeText={(text) => setMessage(text)}
+                value={message}
+              />
+              {message.length ? (
+                <TouchableOpacity
+                  style={styles.sendMessageButton}
+                  onPress={() => pushRealTimeMessage()}>
+                  <Image source={sendMessage} />
+                </TouchableOpacity>
+              ) : null}
+            </View>
 
             <View style={styles.buttonContainer}>
               <Button
