@@ -9,7 +9,6 @@ const Onboarding = () => {
   const styles = useStyles();
   const navigation = useNavigation();
 
-
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={spotbackLogoFull} />

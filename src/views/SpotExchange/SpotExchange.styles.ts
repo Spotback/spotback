@@ -78,21 +78,20 @@ const useStyles = makeStyles((theme: any) =>
       marginBottom: 5,
       marginRight: 30,
     },
-    messengerContainer: {
+    bottomContainer: {
       flex: 1,
       bottom: 20,
       position: 'absolute',
       left: 0,
       right: 0,
     },
-    container: {
+    chatContainer: {
       justifyContent: 'center',
       alignItems: 'center',
     },
-    incomingText: {
-      opacity: 0.5,
-      backgroundColor: theme.colors.primary,
-      padding: 10,
+    scrollMessagingContainer: {
+      backgroundColor: theme.colors.primaryNoChildOpacity,
+      padding: 4,
       width: 324,
       height: 50,
       borderRadius: 10,
@@ -104,6 +103,31 @@ const useStyles = makeStyles((theme: any) =>
       shadowRadius: 2,
       elevation: 10,
     },
+    scrollItemsContainer: {
+      paddingBottom: 10,
+      paddingHorizontal: 5,
+    },
+    incomingTextLeft: {
+      flexDirection: 'row',
+      alignSelf: 'flex-start',
+      backgroundColor: theme.colors.light,
+      padding: 4,
+      borderRadius: 10,
+      marginVertical: 1,
+    },
+
+    incomingTextRight: {
+      flexDirection: 'row',
+      alignSelf: 'flex-end',
+      backgroundColor: theme.colors.success,
+      padding: 4,
+      borderRadius: 10,
+      marginVertical: 1,
+    },
+    incomingTextMsg: {
+      color: theme.colors.dark,
+      fontSize: 10,
+    },
     input: {
       backgroundColor: theme.colors.light,
       fontSize: 10,
@@ -112,14 +136,23 @@ const useStyles = makeStyles((theme: any) =>
       margin: 5,
       width: 291,
       height: 30,
-      borderRadius: 10,
+      borderRadius: 20,
       borderWidth: 2,
       borderColor: theme.colors.primary,
       shadowColor: theme.colors.shadow,
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.8,
       shadowRadius: 2,
-      elevation: 10,
+    },
+    messageChat: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+    },
+    sendMessageButton: {
+      position: 'absolute',
+      right: 15,
+      top: 10,
     },
     buttonContainer: {
       flexDirection: 'row',

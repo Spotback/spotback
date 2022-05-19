@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, Modal, ScrollView, TouchableOpacity, TextInput } from 'react-native';
@@ -7,7 +8,8 @@ import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { LogBox } from 'react-native';
 import storage from '@react-native-firebase/storage';
-import { phone } from '@assets/images/index';
+import database from '@react-native-firebase/database';
+import { phone, sendMessage } from '@assets/images/index';
 import useStyles from './SpotExchange.styles';
 import { theme } from '@utils/theme';
 
@@ -23,7 +25,9 @@ const SpotExchange = () => {
   const [hubVis, setHubVis] = useState(false);
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   const [imageSource, setImageSource] = useState('');
-
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState({});
+  console.log('user email ', user.email);
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   }, []);
@@ -41,9 +45,36 @@ const SpotExchange = () => {
       });
   };
 
+  const retrieveRealTimeMessages = () => {
+    database()
+      .ref('/chat_rooms/-2016579967/messages')
+      .once('value', (messages) => {
+        console.log('Users chat data: ', messages.val());
+        setMessages(messages.val());
+      });
+  };
+
+  const pushRealTimeMessage = () => {
+    database()
+      //  would need to repalce number dynamically
+      .ref('/chat_rooms/-2016579967/messages')
+      .push({
+        created: Math.floor(Date.now() / 1000),
+        sender_id: user.email,
+        text: message,
+      });
+    // messaes line up entierly on one side for each user
+    // .then((data) => console.log('data ', data))
+    // .catch((error) => console.log('error ', error));
+  };
   useEffect(() => {
     getProfilePic();
-  });
+    retrieveRealTimeMessages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () =>
+      database().ref('/chat_rooms/-2016579967/messages').off('value', retrieveRealTimeMessages);
+  }),
+    [retrieveRealTimeMessages];
 
   return (
     <View style={styles.mainContainer}>
@@ -168,7 +199,7 @@ const SpotExchange = () => {
             />
           </View>
         </Modal>
-        <View style={styles.messengerContainer}>
+        <View style={styles.bottomContainer}>
           <View style={styles.spotSwitchCompleteContainer}>
             <Button
               title="Spot Switch complete"
@@ -182,13 +213,41 @@ const SpotExchange = () => {
             />
           </View>
 
-          <View style={styles.container}>
-            <ScrollView style={styles.incomingText}></ScrollView>
-            <TextInput
-              style={styles.input}
-              placeholder="Type a message..."
-              //   onChangeText={onChangeText} value={value}
-            />
+          <View style={styles.chatContainer}>
+            <ScrollView style={styles.scrollMessagingContainer}>
+              <View style={styles.scrollItemsContainer}>
+                {Object.values(messages).length
+                  ? Object.values(messages).map((item: any, index: number) => {
+                      return (
+                        <View
+                          key={index}
+                          style={
+                            item.sender_id === user.email
+                              ? styles.incomingTextRight
+                              : styles.incomingTextLeft
+                          }>
+                          <Text style={styles.incomingTextMsg}>{item.text}</Text>
+                        </View>
+                      );
+                    })
+                  : null}
+              </View>
+            </ScrollView>
+            <View style={styles.messageChat}>
+              <TextInput
+                style={styles.input}
+                placeholder="Type a message..."
+                onChangeText={(text) => setMessage(text)}
+                value={message}
+              />
+              {message.length ? (
+                <TouchableOpacity
+                  style={styles.sendMessageButton}
+                  onPress={() => pushRealTimeMessage()}>
+                  <Image source={sendMessage} />
+                </TouchableOpacity>
+              ) : null}
+            </View>
 
             <View style={styles.buttonContainer}>
               <Button

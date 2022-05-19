@@ -186,36 +186,36 @@ export const postSpot = (
 
 export const match = (bearer: string, currentLocation: string, desiredLocation: string) => {
   return (dispatch: any) => {
-    dispatch({
-      type: UserTypes.SPINNER,
-      payload: true,
-    });
-    axios
-      .post(
-        `${MATCHING_BASE_URL}/match`,
-        {
-          currentLocation,
-          desiredLocation,
-        },
-        {
-          headers: { 'spotback-correlation-id': uuidv4(), Bearer: bearer },
-        }
-      )
-      .then((res) => {
-        console.log('res ', res);
-        dispatch({
-          type: UserTypes.POST_SPOT,
-          payload: res.data,
-        });
-        RootNavigation.navigate('SearchingForMatch');
-      })
-      .catch((err) => {
-        console.log('err ', err.response.data);
-        dispatch({
-          type: UserTypes.ERROR,
-          payload: err.response.data,
-        });
-      });
+    // dispatch({
+    //   type: UserTypes.SPINNER,
+    //   payload: true,
+    // });
+    // axios
+    //   .post(
+    //     `${MATCHING_BASE_URL}/match`,
+    //     {
+    //       currentLocation,
+    //       desiredLocation,
+    //     },
+    //     {
+    //       headers: { 'spotback-correlation-id': uuidv4(), Bearer: bearer },
+    //     }
+    //   )
+    //   .then((res) => {
+    //     console.log('res ', res);
+    //     dispatch({
+    //       type: UserTypes.POST_SPOT,
+    //       payload: res.data,
+    //     });
+    RootNavigation.navigate('SearchingForMatch');
+    // })
+    // .catch((err) => {
+    //   console.log('err ', err.response.data);
+    //   dispatch({
+    //     type: UserTypes.ERROR,
+    //     payload: err.response.data,
+    //   });
+    // });
   };
 };
 
