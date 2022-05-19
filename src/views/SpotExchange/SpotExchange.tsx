@@ -56,12 +56,14 @@ const SpotExchange = () => {
 
   const pushRealTimeMessage = () => {
     database()
+      //  would need to repalce number dynamically
       .ref('/chat_rooms/-2016579967/messages')
       .push({
         created: Math.floor(Date.now() / 1000),
         sender_id: user.email,
         text: message,
       });
+    // messaes line up entierly on one side for each user
     // .then((data) => console.log('data ', data))
     // .catch((error) => console.log('error ', error));
   };
