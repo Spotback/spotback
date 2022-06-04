@@ -1,6 +1,7 @@
 # spotback
 
 Spotback React Native for Android
+Full React Native Environment Set Up Here: https://reactnative.dev/docs/environment-setup
 
 ## First
 

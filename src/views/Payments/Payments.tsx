@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import useStyles from './Payments.styles';
-import { CardField, CardFieldInput, useStripe } from '@stripe/stripe-react-native';
+// import { CardField, CardFieldInput, useStripe } from '@stripe/stripe-react-native';
 
 const Payments = () => {
   const styles = useStyles();
-  const [card, setCard] = useState(CardFieldInput.ValidationState);
+  // const [card, setCard] = useState(CardFieldInput.ValidationState);
   // const { confirmPayment, handleCardAction } = useStripe();
   return (
     <View style={styles.container}>
-      <CardField
+      {/* <CardField
         postalCodeEnabled={true}
         placeholder={{
           number: '4242 4242 4242 4242',
@@ -29,7 +29,7 @@ const Payments = () => {
         onFocus={(focusedField) => {
           console.log('focusField', focusedField);
         }}
-      />
+      /> */}
     </View>
   );
 };
