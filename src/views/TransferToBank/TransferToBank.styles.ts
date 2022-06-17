@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: any) =>
     },
     subText: {
       color: theme.colors.dark,
-      fontFamily: 'PT Sans',
+      
       fontSize: 20,
       padding: 10,
     },

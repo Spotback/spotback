@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme: any) =>
     },
     titleText: {
       color: theme.colors.dark,
-      fontFamily: 'PT Sans',
+      
       fontWeight: 'bold',
       fontSize: 24,
     },
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: any) =>
     },
     subText: {
       color: theme.colors.dark,
-      fontFamily: 'PT Sans',
+      
       padding: 2,
       fontSize: 20,
     },

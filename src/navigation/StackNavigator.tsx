@@ -35,6 +35,7 @@ const StackNavigator = () => {
             title: '',
             headerStyle: {
               backgroundColor: theme.colors.background,
+              // TODO: Remove PT Sans Font would crash IOS
             },
             headerLeft: () => null,
           }}
@@ -87,7 +88,7 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              fontFamily: 'PT Sans',
+              
               fontWeight: 'bold',
               fontSize: 24,
             },
@@ -105,7 +106,7 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              fontFamily: 'PT Sans',
+              
               fontWeight: 'bold',
               fontSize: 24,
             },
@@ -123,7 +124,7 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              fontFamily: 'PT Sans',
+              
               fontWeight: 'bold',
               fontSize: 24,
             },
@@ -141,7 +142,7 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              fontFamily: 'PT Sans',
+              
               fontWeight: 'bold',
               fontSize: 24,
             },
@@ -159,7 +160,7 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              fontFamily: 'PT Sans',
+              
               fontWeight: 'bold',
               fontSize: 24,
             },
@@ -177,7 +178,7 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              fontFamily: 'PT Sans',
+              
               fontWeight: 'bold',
               fontSize: 24,
             },
@@ -195,7 +196,7 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              fontFamily: 'PT Sans',
+              
               fontWeight: 'bold',
               fontSize: 24,
             },
@@ -213,7 +214,7 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              fontFamily: 'PT Sans',
+              
               fontWeight: 'bold',
               fontSize: 24,
             },

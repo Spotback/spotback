@@ -11,14 +11,14 @@ const useStyles = makeStyles((theme: any) =>
 
     text: {
       color: theme.colors.dark,
-      fontFamily: 'PT Sans',
+      
       fontSize: 20,
       fontWeight: 'bold',
       padding: 10,
     },
     titleText: {
       color: theme.colors.dark,
-      fontFamily: 'PT Sans',
+      
       fontWeight: 'bold',
       fontSize: 24,
     },
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: any) =>
     },
     subText: {
       color: theme.colors.black,
-      fontFamily: 'PT Sans',
+      
       padding: 2,
       fontSize: 20,
     },

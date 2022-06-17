@@ -44,13 +44,13 @@ const useStyles = makeStyles((theme: any) =>
     },
     titleText: {
       color: theme.colors.dark,
-      fontFamily: 'PT Sans',
+      
       fontWeight: 'bold',
       fontSize: 24,
     },
     subText: {
       color: theme.colors.light,
-      fontFamily: 'PT Sans',
+      
       fontSize: 20,
       // flex: 1,
       // flexWrap: 'wrap',

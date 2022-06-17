@@ -39,13 +39,13 @@ const useStyles = makeStyles((theme: any) =>
     },
     subText: {
       color: theme.colors.dark,
-      fontFamily: 'PT Sans',
+      
       fontSize: 20,
       paddingRight: 50,
     },
     sizeSubText: {
       color: theme.colors.dark,
-      fontFamily: 'PT Sans',
+      
       fontSize: 20,
       paddingRight: 50,
       marginTop: 10,
