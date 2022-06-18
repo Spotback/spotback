@@ -6,7 +6,7 @@ import { CardField, CardFieldInput, useStripe } from '@stripe/stripe-react-nativ
 const Payments = () => {
   const styles = useStyles();
   const [card, setCard] = useState(CardFieldInput.ValidationState);
-  // const { confirmPayment, handleCardAction } = useStripe();
+  const { confirmPayment, handleCardAction } = useStripe();
   return (
     <View style={styles.container}>
       <CardField

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
-import { View, Text, ScrollView, Image, PermissionsAndroid, Alert } from 'react-native';
+import { View, Text, ScrollView, Image, Platform } from 'react-native';
+import { check, PERMISSIONS, request, RESULTS } from 'react-native-permissions';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
@@ -19,6 +20,7 @@ import {
   money,
   five,
 } from '@assets/images/index';
+
 import useStyles from './Home.styles';
 
 const spotNewsItems = [
@@ -91,25 +93,24 @@ const Home = () => {
   };
 
   const requestLocationPermission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-        {
-          title: 'Location Access Required',
-          message: 'Spotback needs to Access your location',
-          buttonNeutral: 'Ask Me Later',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        }
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        getCurrentLocation();
-        console.log(granted);
-      } else {
-        console.log('not granted');
+    const granted = await request(
+      Platform.select({
+        ios: PERMISSIONS.IOS.LOCATION_ALWAYS,
+        android: PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      }),
+      {
+        title: 'Location Access Required',
+        message: 'Spotback needs to Access your location',
+        buttonNeutral: 'Ask Me Later',
+        buttonNegative: 'Cancel',
+        buttonPositive: 'OK',
       }
-    } catch (err) {
-      console.warn(err);
+    );
+    if (granted === RESULTS.GRANTED) {
+      console.log(granted);
+      getCurrentLocation();
+    } else {
+      console.log('not granted');
     }
   };
 
@@ -143,7 +144,8 @@ const Home = () => {
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
           <MapView
-            provider={PROVIDER_GOOGLE}
+            // provider={PROVIDER_GOOGLE}
+            provider={Platform.OS === 'ios' ? null : PROVIDER_GOOGLE}
             style={styles.map}
             region={{
               latitude: latitude,
@@ -218,7 +220,7 @@ const Home = () => {
           </View>
         )}
       </View>
- 
+
       <Hub title="SpotNews" bottom onPress={() => setspotNewsVisible(!spotNewsVisible)} />
       <SlidingView
         componentVisible={spotNewsVisible}

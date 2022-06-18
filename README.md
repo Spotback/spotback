@@ -1,13 +1,17 @@
 # spotback
 
 Spotback React Native for Android
+Full React Native Environment Set Up Here: https://reactnative.dev/docs/environment-setup
 
 ## First
 
 ```sh
 brew install node
 brew install watchman
+sudo gem install cocoapods
+
 ```
+
 
 ## Second
 
@@ -66,7 +70,8 @@ Please make sure you use the correct Android SDK path. You can find the actual l
 ## Sixth
 
 ```sh
-$ npm install
+npm install
+cd ios && pod install
 ```
 
 ## Seventh
@@ -80,14 +85,15 @@ KEY=VALUE
 ## Eigth
 
 ```sh
-$ npx react-native run-android
+npx react-native run-android
+
+npx react-native run-ios
 ```
 
 
-## Common Commands
+## Common Commands Android 
 
 ```sh
-npx react-native run-android 
 
 cd android && ./gradlew clean && cd ..
 
@@ -107,6 +113,33 @@ Adb devices
 adb -s emulator-5554 emu kill
 
 adb shell input keyevent 82
+
+with ES7+ React/Redux/React-Native snippets installed run rnfe in editor
+
+```
+
+## Common Commands IOS
+
+```sh
+
+Open Xcode go to product 
+Clean build folder 
+rm -rf node_modules
+Npm install
+Cd ios 
+Pod deintegrate
+Pod install 
+Pod update
+Pod install
+
+Npm start --reset-cache
+
+IOS NUKE
+rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && cd .. && npm install --force && cd ios && pod install && cd .. && npm start --reset-cache
+
+IOS/ANDROID NUKE
+rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && cd .. && cd android/app && rm -rf build && cd .. && cd .. && npm install --force && cd ios && pod install && cd .. && npm start --reset-cache
+
 
 with ES7+ React/Redux/React-Native snippets installed run rnfe in editor
 
