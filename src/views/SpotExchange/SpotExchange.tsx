@@ -1,7 +1,16 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, Modal, ScrollView, TouchableOpacity, TextInput } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Modal,
+  ScrollView,
+  TouchableOpacity,
+  TextInput,
+  Platform,
+} from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import { Button, Hub, Stars, Options } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
@@ -81,7 +90,7 @@ const SpotExchange = () => {
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
           <MapView
-            provider={PROVIDER_GOOGLE}
+            provider={Platform.OS === 'ios' ? null : PROVIDER_GOOGLE}
             style={styles.map}
             region={{
               latitude: 37.78825,

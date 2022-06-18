@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, PermissionsAndroid } from 'react-native';
+import { View, Text, PermissionsAndroid, Platform } from 'react-native';
+import { check, PERMISSIONS, request, RESULTS } from 'react-native-permissions';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
 import Geolocation from '@react-native-community/geolocation';
 import { match } from '@services/thunks';
@@ -34,25 +35,24 @@ const FindMeASpot = () => {
   };
 
   const requestLocationPermission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-        {
-          title: 'Location Access Required',
-          message: 'Spotback needs to Access your location',
-          buttonNeutral: 'Ask Me Later',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        }
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        getCurrentLocation();
-        console.log(granted);
-      } else {
-        console.log('not granted');
+    const granted = await request(
+      Platform.select({
+        ios: PERMISSIONS.IOS.LOCATION_ALWAYS,
+        android: PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      }),
+      {
+        title: 'Location Access Required',
+        message: 'Spotback needs to Access your location',
+        buttonNeutral: 'Ask Me Later',
+        buttonNegative: 'Cancel',
+        buttonPositive: 'OK',
       }
-    } catch (err) {
-      console.warn(err);
+    );
+    if (granted === RESULTS.GRANTED) {
+      console.log(granted);
+      getCurrentLocation();
+    } else {
+      console.log('not granted');
     }
   };
 
