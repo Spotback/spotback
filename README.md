@@ -105,6 +105,7 @@ cd android && ./gradlew --stop && cd ..
 
 rm -Rfv ~/.gradle/
 
+ANDROID NUKE
 rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd android/app && rm -rf build && cd .. && cd .. && npm install && npm start --reset-cache
 
 npm cache clear --force
