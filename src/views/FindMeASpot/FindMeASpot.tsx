@@ -79,10 +79,6 @@ const FindMeASpot = () => {
             onPress={() => onSubmit(false)}
           />
         </View>
-
-        <View style={styles.spacing}>
-          <Button title="EV Spot" size="medium" icon={evCar} />
-        </View>
       </View>
       <View style={styles.searchBoxContainer}>
         <Input

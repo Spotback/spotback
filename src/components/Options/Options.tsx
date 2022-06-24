@@ -48,7 +48,7 @@ const Options: FC<OptionsProps> = ({
           ))}
         </View>
       )}
-      {type === 'input' && (
+      {/* {type === 'input' && (
         <View style={styles.inputContainer}>
           <Controller
             control={control}
@@ -69,7 +69,7 @@ const Options: FC<OptionsProps> = ({
             defaultValue=""
           />
         </View>
-      )}
+      )} */}
       <View style={styles.options}>
         <Button
           title={leftButtonTitle ? leftButtonTitle : 'Yes'}

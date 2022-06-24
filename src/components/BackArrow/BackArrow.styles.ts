@@ -4,7 +4,7 @@ import { makeStyles } from 'react-native-elements';
 const useStyles = makeStyles((theme: any) =>
   StyleSheet.create({
     container: {
-      paddingLeft: 5,
+      paddingLeft: 15,
     },
     image: {
       width: 45,

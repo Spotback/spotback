@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { makeStyles } from 'react-native-elements';
 
 const height = Dimensions.get('window').height;
@@ -7,7 +7,16 @@ const width = Dimensions.get('window').width;
 const useStyles = makeStyles((theme: any) =>
   StyleSheet.create({
     // generic
-    hub: {
+    topHub: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: theme.colors.primary,
+      width,
+      height: Platform.OS === 'ios' ? 90 : 75,
+      flexDirection: 'row',
+      zIndex: 1,
+    },
+    bottomHub: {
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: theme.colors.primary,
@@ -17,6 +26,9 @@ const useStyles = makeStyles((theme: any) =>
       zIndex: 1,
     },
     HostClientprofilePicImage: {
+      marginTop: 20,
+    },
+    hubPicture: {
       marginTop: 20,
     },
     hubTitle: {
@@ -38,7 +50,7 @@ const useStyles = makeStyles((theme: any) =>
     },
     // host
     hostHubSpacing: {
-      marginTop: 40,
+      marginTop: 20,
       marginHorizontal: 20,
     },
     hostTitleSpacing: {

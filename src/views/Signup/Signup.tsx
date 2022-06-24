@@ -28,13 +28,15 @@ const Signup = () => {
           required: true,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            placeholder={errors.email ? 'This is required.' : 'Your Email'}
-            inputStyle="large"
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
+          <View style={styles.input}>
+            <Input
+              placeholder={errors.email ? 'This is required.' : 'Your Email'}
+              inputStyle="large"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          </View>
         )}
         name="email"
         defaultValue=""
@@ -115,25 +117,6 @@ const Signup = () => {
             </View>
           )}
           name="password"
-          defaultValue=""
-        />
-        <Controller
-          control={control}
-          rules={{
-            required: false,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <View style={styles.input}>
-              <Input
-                placeholder={errors.referralCode ? 'This is required.' : 'Referral Code'}
-                inputStyle="large"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-              />
-            </View>
-          )}
-          name="referralCode"
           defaultValue=""
         />
         <View style={styles.button}>

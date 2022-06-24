@@ -10,9 +10,9 @@ const App = () => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <StripeProvider publishableKey="pk_test_q4RuLAlmlO8T8Y2u3jpQwvFZ00KoMvVudh">
-          <StackNavigator />
-        </StripeProvider>
+        {/* <StripeProvider publishableKey="pk_test_q4RuLAlmlO8T8Y2u3jpQwvFZ00KoMvVudh"> */}
+        <StackNavigator />
+        {/* </StripeProvider> */}
       </ThemeProvider>
     </Provider>
   );
