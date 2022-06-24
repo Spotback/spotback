@@ -35,6 +35,7 @@ const Signup = () => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
+              autoCapitalize="none"
             />
           </View>
         )}
@@ -113,6 +114,7 @@ const Signup = () => {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                autoCapitalize="none"
               />
             </View>
           )}
