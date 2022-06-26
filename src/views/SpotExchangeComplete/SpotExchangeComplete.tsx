@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import storage from '@react-native-firebase/storage';
@@ -30,7 +30,7 @@ const SpotExchangeComplete = () => {
   });
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{"You've just recieved 5 dollars from"}</Text>
       <ProfilePic imageSource={imageSource} size="large" />
       <Text style={styles.text}>Users Name</Text>
@@ -42,11 +42,11 @@ const SpotExchangeComplete = () => {
         type="input"
         texts={['Comments? (Required)']}
         onPressLeft={() => navigation.navigate('SpotExchange')}
-        leftButtonTitle="Report Problem"
+        leftButtonTitle="Feedback"
         onPressRight={() => navigation.navigate('Home')}
         rightButtonTitle="Finish"
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

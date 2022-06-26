@@ -11,11 +11,10 @@ import Home from '../views/Home/Home';
 import FindMeASpot from '../views/FindMeASpot/FindMeASpot';
 import PostMySpot from '../views/PostMySpot/PostMySpot';
 import Account from '../views/Account/Account';
-import TransferToBank from '../views/TransferToBank/TransferToBank';
 import InviteAFriend from '../views/InviteAFriend/InviteAFriend';
 import EditProfile from '../views/EditProfile/EditProfile';
 import Help from '../views/Help/Help';
-import Payments from '../views/Payments/Payments';
+// import Payments from '../views/Payments/Payments';
 import SearchingForMatch from '../views/SearchingForMatch/SearchingForMatch';
 import SpotExchange from '../views/SpotExchange/SpotExchange';
 import SpotExchangeComplete from '../views/SpotExchangeComplete/SpotExchangeComplete';
@@ -35,7 +34,7 @@ const StackNavigator = () => {
             title: '',
             headerStyle: {
               backgroundColor: theme.colors.background,
-              // TODO: Remove PT Sans Font would crash IOS
+              shadowColor: 'transparent'
             },
             headerLeft: () => null,
           }}
@@ -47,6 +46,7 @@ const StackNavigator = () => {
             title: '',
             headerStyle: {
               backgroundColor: theme.colors.background,
+              shadowColor: 'transparent'
             },
             headerLeft: () => null,
           }}
@@ -58,6 +58,7 @@ const StackNavigator = () => {
             title: '',
             headerStyle: {
               backgroundColor: theme.colors.background,
+              shadowColor: 'transparent',
             },
             headerLeft: () => <BackArrow navigationDirection="Onboarding" />,
           }}
@@ -69,6 +70,7 @@ const StackNavigator = () => {
             title: '',
             headerStyle: {
               backgroundColor: theme.colors.background,
+              shadowColor: 'transparent',
             },
             headerLeft: () => <BackArrow navigationDirection="Onboarding" />,
           }}
@@ -88,12 +90,13 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              
+
               fontWeight: 'bold',
               fontSize: 24,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
+              shadowColor: 'transparent',
             },
             headerLeft: () => <BackArrow navigationDirection="Home" />,
           }}
@@ -106,12 +109,13 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              
+
               fontWeight: 'bold',
               fontSize: 24,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
+              shadowColor: 'transparent',
             },
             headerLeft: () => <BackArrow navigationDirection="Home" />,
           }}
@@ -124,32 +128,15 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              
+
               fontWeight: 'bold',
               fontSize: 24,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
+              shadowColor: 'transparent',
             },
             headerLeft: () => <BackArrow navigationDirection="Home" />,
-          }}
-        />
-        <Stack.Screen
-          name="TransferToBank"
-          component={TransferToBank}
-          options={{
-            title: 'Transfer to Bank',
-            headerTitleAlign: 'center',
-            headerTitleStyle: {
-              color: theme.colors.dark,
-              
-              fontWeight: 'bold',
-              fontSize: 24,
-            },
-            headerStyle: {
-              backgroundColor: theme.colors.background,
-            },
-            headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
         />
         <Stack.Screen
@@ -160,12 +147,13 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              
+
               fontWeight: 'bold',
               fontSize: 24,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
+              shadowColor: 'transparent'
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
@@ -178,12 +166,13 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              
+
               fontWeight: 'bold',
               fontSize: 24,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
+              shadowColor: 'transparent'
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
@@ -196,30 +185,13 @@ const StackNavigator = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: {
               color: theme.colors.dark,
-              
+
               fontWeight: 'bold',
               fontSize: 24,
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-            },
-            headerLeft: () => <BackArrow navigationDirection="Account" />,
-          }}
-        />
-        <Stack.Screen
-          name="Payments"
-          component={Payments}
-          options={{
-            title: 'Payment Information',
-            headerTitleAlign: 'center',
-            headerTitleStyle: {
-              color: theme.colors.dark,
-              
-              fontWeight: 'bold',
-              fontSize: 24,
-            },
-            headerStyle: {
-              backgroundColor: theme.colors.background,
+              shadowColor: 'transparent'
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}

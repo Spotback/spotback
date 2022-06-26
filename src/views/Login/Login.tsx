@@ -39,6 +39,7 @@ const Login = () => {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                autoCapitalize="none"
               />
             )}
             name="email"
@@ -59,6 +60,7 @@ const Login = () => {
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
+                  autoCapitalize="none"
                 />
               )}
               name="password"

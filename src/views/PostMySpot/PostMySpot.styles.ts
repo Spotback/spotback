@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: any) =>
       alignItems: 'center',
       backgroundColor: theme.colors.primary,
       width: 352,
-      height: 161,
+      height: 200,
       borderRadius: 10,
       elevation: 5,
       marginBottom: 5,

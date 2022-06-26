@@ -12,6 +12,7 @@ interface Inputprops {
   value?: any;
   autoComplete?: boolean;
   onPress?: any;
+  autoCapitalize?: any;
 }
 const Input: FC<Inputprops> = ({
   placeholder,
@@ -21,14 +22,14 @@ const Input: FC<Inputprops> = ({
   value,
   autoComplete,
   onPress,
-  ...rest
+  autoCapitalize = 'sentences',
+
 }) => {
   const styles = useStyles();
   return (
     <>
       {autoComplete ? (
         <GooglePlacesAutocomplete
-          {...rest}
           currentLocation
           fetchDetails={true}
           placeholder={placeholder}
@@ -51,6 +52,7 @@ const Input: FC<Inputprops> = ({
               : styles.smallInput
           }
           onBlur={onBlur}
+          autoCapitalize={autoCapitalize}
         />
       )}
     </>

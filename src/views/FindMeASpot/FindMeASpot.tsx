@@ -36,10 +36,9 @@ const FindMeASpot = () => {
 
   const requestLocationPermission = async () => {
     const granted = await request(
-      Platform.select({
-        ios: PERMISSIONS.IOS.LOCATION_ALWAYS,
-        android: PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-      }),
+      Platform.OS === 'ios'
+        ? PERMISSIONS.IOS.LOCATION_ALWAYS
+        : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
       {
         title: 'Location Access Required',
         message: 'Spotback needs to Access your location',
@@ -78,10 +77,6 @@ const FindMeASpot = () => {
             icon={spotPin2}
             onPress={() => onSubmit(false)}
           />
-        </View>
-
-        <View style={styles.spacing}>
-          <Button title="EV Spot" size="medium" icon={evCar} />
         </View>
       </View>
       <View style={styles.searchBoxContainer}>

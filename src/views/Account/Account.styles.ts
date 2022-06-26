@@ -5,12 +5,17 @@ const useStyles = makeStyles((theme: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
+      // alignItems: 'center',
       backgroundColor: theme.colors.background,
+    },
+    subContainer: {
+      // flex: 1,
+      alignItems: 'center',
+      // backgroundColor: theme.colors.background,
     },
     titleText: {
       color: theme.colors.dark,
-      
+
       fontWeight: 'bold',
       fontSize: 24,
     },
@@ -30,21 +35,22 @@ const useStyles = makeStyles((theme: any) =>
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'row',
-      margin: 5,
+      margin: 10,
     },
     subText: {
       color: theme.colors.black,
-      
       padding: 2,
       fontSize: 20,
     },
+    scrollContainer: {
+      marginLeft: 50,
+      marginTop: 20,
+    },
     iconContainer: {
       alignItems: 'center',
-      justifyContent: 'flex-start',
       flexDirection: 'row',
-      flexWrap: 'wrap',
-      marginRight: 50,
-      padding: 2,
+
+      marginVertical: 20,
     },
     text: {
       fontSize: 20,

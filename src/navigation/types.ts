@@ -7,11 +7,9 @@ export type RootStackParamsList = {
   FindMeASpot: object | undefined;
   PostMySpot: object | undefined;
   Account: object | undefined;
-  TransferToBank: object | undefined;
   InviteAFriend: object | undefined;
   EditProfile: object | undefined;
   Help: object | undefined;
-  Payments: object | undefined;
   SearchingForMatch: object | undefined;
   SpotExchange: object | undefined;
   SpotExchangeComplete: object | undefined;

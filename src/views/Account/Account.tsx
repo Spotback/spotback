@@ -31,27 +31,24 @@ const Account = () => {
 
   return (
     <View style={styles.container}>
-      <ProfilePic imageSource={imageSource} size="large" />
-      <View style={styles.starContainer}>
-        <Stars starSize={20} starWidth={5} />
+      <View style={styles.subContainer}>
+        <ProfilePic imageSource={imageSource} size="large" />
+        <View style={styles.starContainer}>
+          <Stars starSize={20} starWidth={5} />
+        </View>
+        <View style={styles.centerContainer}>
+          <Text style={styles.titleText}>
+            {user.firstName} {user.lastName}
+          </Text>
+          <Text style={styles.subText}>{user.email}</Text>
+          <Text style={styles.subText}>{user.phone}</Text>
+          <Text style={styles.subText}>
+            {user.car.make} {user.car.model} {user.car.year} {user.car.color}
+          </Text>
+        </View>
       </View>
-      <View style={styles.centerContainer}>
-        <Text style={styles.titleText}>
-          {user.firstName} {user.lastName}
-        </Text>
-        <Text style={styles.subText}>{user.email}</Text>
-        <Text style={styles.subText}>{user.phone}</Text>
-        <Text style={styles.subText}>
-          {user.car.make} {user.car.model} {user.car.year} {user.car.color}
-        </Text>
-      </View>
-      <ScrollView>
-        <TouchableOpacity onPress={() => navigation.navigate('TransferToBank')}>
-          <View style={styles.iconContainer}>
-            <Image style={styles.image} source={transfers} />
-            <Text style={styles.text}>Transfer to Bank</Text>
-          </View>
-        </TouchableOpacity>
+
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
         <TouchableOpacity onPress={() => navigation.navigate('InviteAFriend')}>
           <View style={styles.iconContainer}>
             <Image style={styles.image} source={invite} />
@@ -68,12 +65,6 @@ const Account = () => {
           <View style={styles.iconContainer}>
             <Image style={styles.image} source={help} />
             <Text style={styles.text}>Help</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Payments')}>
-          <View style={styles.iconContainer}>
-            <Image style={styles.image} source={creditCard} />
-            <Text style={styles.text}>Payment Information</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => removeAsyncStorage()}>

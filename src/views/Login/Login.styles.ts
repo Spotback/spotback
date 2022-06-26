@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: any) =>
       justifyContent: 'flex-end',
     },
     button: {
-      margin: 30,
+      margin: 50,
     },
   })
 );

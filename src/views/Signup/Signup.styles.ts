@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: any) =>
       marginHorizontal: 10,
     },
     button: {
-      margin: 10,
+      margin: 50,
     },
   })
 );

@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: any) =>
       alignItems: 'center',
     },
     smallButtonContainer: {
-      top: 90,
+      top: 110,
       right: 20,
       position: 'absolute',
     },

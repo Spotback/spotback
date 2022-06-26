@@ -10,7 +10,7 @@ const InviteAFriend = () => {
     Share.share({
       title: 'Spotback App',
       message:
-        'One of your friends has given you 1 free Spot or $2 account credit. Use this link to download the app, https://play.google.com/store/apps/details?id=nic.goi.aarogyasetu&hl=en',
+        'One of your friends has invited you to the Spotback Beta. Use this link to download the app. https://play.google.com/store/apps/details?id=nic.goi.aarogyasetu&hl=en',
     }).then(({ action }) => {
       if (action === Share.sharedAction) console.log('Share was successful');
       else console.log('Share was dismissed');
@@ -22,8 +22,7 @@ const InviteAFriend = () => {
       <Image style={styles.image} source={friends} />
       <View style={styles.centerContainer}>
         <Text style={styles.subText}>
-          Share this code with your friends and recieve a free spot on thier first spot
-          exchange.Their first spot exchange is on us!
+          Share this code with your friends and famila to get more people to sign up for our Beta.
         </Text>
 
         <View style={styles.secondaryContainer}>

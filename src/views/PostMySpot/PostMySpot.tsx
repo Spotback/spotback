@@ -45,24 +45,6 @@ const PostMySpot = ({ route: { params } }: Record<any, any>) => {
       </View>
       <View style={styles.centerContainer}>
         <View style={styles.subContainer}>
-          <Text style={styles.subText}>Where did</Text>
-          <Text style={styles.subText}>you park?</Text>
-        </View>
-        <View style={styles.picker}>
-          <Picker
-            dropdownIconColor={theme.colors.light}
-            style={styles.dropDown}
-            selectedValue={spotType}
-            onValueChange={(itemValue, itemIndex) => setSpotType(itemValue)}>
-            <Picker.Item label="Street" value="street" />
-            <Picker.Item label="Parking Lot" value="parking" />
-            <Picker.Item label="Driveway" value="driveway" />
-            <Picker.Item label="EV Spot" value="ev" />
-          </Picker>
-        </View>
-      </View>
-      <View style={styles.centerContainer}>
-        <View style={styles.subContainer}>
           <Text style={styles.subText}>When will you</Text>
           <Text style={styles.subText}>get to your car?</Text>
         </View>

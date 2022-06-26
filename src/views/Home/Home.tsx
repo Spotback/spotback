@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
-import { View, Text, ScrollView, Image, Platform } from 'react-native';
+import { View, SafeAreaView, Text, ScrollView, Image, Platform } from 'react-native';
 import { check, PERMISSIONS, request, RESULTS } from 'react-native-permissions';
 import { useNavigation } from '@react-navigation/native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
@@ -22,34 +22,6 @@ import {
 } from '@assets/images/index';
 
 import useStyles from './Home.styles';
-
-const spotNewsItems = [
-  {
-    image: handShake,
-    title: 'Welcome to the Spotback parking app!',
-    id: 1,
-  },
-  {
-    image: friends,
-    title: 'Invite your friends and recieve a free spot',
-    id: 2,
-  },
-  {
-    image: pin,
-    title: 'Pin you location after parking so we can match you before getting back in your car',
-    id: 3,
-  },
-  {
-    image: money,
-    title: 'This week only make an extra dollar per spot given and save a dollar on spot taken',
-    id: 4,
-  },
-  {
-    image: five,
-    title: 'Hold 10 spots this month and make an extra $5 dollars',
-    id: 5,
-  },
-];
 
 const Home = () => {
   const styles = useStyles();
@@ -139,12 +111,29 @@ const Home = () => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   });
 
+  const spotNewsItems = [
+    {
+      image: handShake,
+      title: 'Welcome to the Spotback parking app!',
+      id: 1,
+    },
+    {
+      image: friends,
+      title: 'Invite your friends to the Spotback Beta under Invite a Friend.',
+      id: 2,
+    },
+    {
+      image: pin,
+      title: 'Pin you location after parking so we can match you before getting back in your car',
+      id: 3,
+    },
+  ];
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
           <MapView
-            // provider={PROVIDER_GOOGLE}
             provider={Platform.OS === 'ios' ? null : PROVIDER_GOOGLE}
             style={styles.map}
             region={{

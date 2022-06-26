@@ -78,7 +78,7 @@ const SpotExchange = () => {
   };
   useEffect(() => {
     getProfilePic();
-    retrieveRealTimeMessages();
+    // retrieveRealTimeMessages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     return () =>
       database().ref('/chat_rooms/-2016579967/messages').off('value', retrieveRealTimeMessages);
