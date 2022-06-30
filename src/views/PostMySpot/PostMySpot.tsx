@@ -43,27 +43,26 @@ const PostMySpot = ({ route: { params } }: Record<any, any>) => {
         <Text style={styles.titleText}>234 San Pedro Sq.</Text>
         <Text style={styles.titleText}>Recieve $5</Text>
       </View>
+      <View style={styles.subContainer}>
+      <Text style={styles.mainText}>When will you get to your car?</Text>
       <View style={styles.centerContainer}>
-        <View style={styles.subContainer}>
-          <Text style={styles.subText}>When will you</Text>
-          <Text style={styles.subText}>get to your car?</Text>
-        </View>
-        <View style={styles.picker}>
-          <Picker
-            dropdownIconColor={theme.colors.light}
-            style={styles.dropDown}
-            selectedValue={leaveTime}
-            onValueChange={(itemValue, itemIndex) => setLeaveTime(itemValue)}>
-            <Picker.Item label="Now" value={0} />
-            <Picker.Item label="5 min" value={300000} />
-            <Picker.Item label="10 min" value={600000} />
-            <Picker.Item label="15 min" value={900000} />
-          </Picker>
-        </View>
+        <Picker
+          dropdownIconColor={theme.colors.light}
+          itemStyle={{ color: theme.colors.light, fontWeight: 'bold', fontSize: 24 }}
+          selectedValue={leaveTime}
+          onValueChange={(itemValue, itemIndex) => setLeaveTime(itemValue)}>
+          <Picker.Item label="Now" value={0} />
+          <Picker.Item label="5 min" value={300000} />
+          <Picker.Item label="10 min" value={600000} />
+          <Picker.Item label="15 min" value={900000} />
+        </Picker>
       </View>
+
       <View style={styles.buttonsContainer}>
         <Button title="Post Spot" size="large" onPress={onSubmit} />
       </View>
+      </View>
+      
       <Spinner />
       <ErrorAlert />
     </View>
