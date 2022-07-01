@@ -1,5 +1,8 @@
+import { Dimensions } from 'react-native';
 import { StyleSheet } from 'react-native';
 import { makeStyles } from 'react-native-elements';
+
+const width = Dimensions.get('window').width;
 
 const useStyles = makeStyles((theme: any) =>
   StyleSheet.create({
@@ -12,9 +15,17 @@ const useStyles = makeStyles((theme: any) =>
       height: 40,
       width: 40,
     },
+    scrollViewStyle: {
+      flexGrow: 1,
+      justifyContent: 'center',
+      width: width,
+      paddingHorizontal: 30,
+    },
     profilePicContainer: {
-      position: 'relative',
-      padding: 10,
+      justifyContent: 'center',
+      alignContent: 'center',
+      alignItems: 'center',
+      margin: 20,
     },
     editText: {
       fontSize: 24,
@@ -29,30 +40,28 @@ const useStyles = makeStyles((theme: any) =>
       shadowRadius: 2,
       elevation: 10,
     },
-    dropDown: {
-      color: theme.colors.dark,
-      width: 150,
-      height: 35,
-    },
-    centerContainer: {
-      alignItems: 'flex-end',
+    licenseContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 20,
     },
     subText: {
       color: theme.colors.dark,
-      
       fontSize: 20,
-      paddingRight: 50,
     },
-    sizeSubText: {
+    pickerContainer: {
+      width: '90%',
+      borderRadius: 10,
+    },
+    pickerSubText: {
       color: theme.colors.dark,
-      
       fontSize: 20,
-      paddingRight: 50,
-      marginTop: 10,
     },
-    itemContainer: {
-      padding: 2,
-      flexDirection: 'row',
+    subContainer: {
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     buttonContainer: {
       bottom: 30,

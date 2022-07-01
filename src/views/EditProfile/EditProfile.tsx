@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Alert, ScrollView, Dimensions } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { update } from '@services/thunks';
@@ -88,14 +88,15 @@ const EditProfile = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={editProfile} />
-      <View style={styles.profilePicContainer}>
-        <TouchableOpacity onPress={uploadProfilePic}>
-          <Text style={styles.editText}>Edit</Text>
-          <ProfilePic imageSource={imageSource} size="large" blured />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.centerContainer}>
-        <View style={styles.itemContainer}>
+      <ScrollView contentContainerStyle={styles.scrollViewStyle}>
+        <View style={styles.profilePicContainer}>
+          <TouchableOpacity onPress={uploadProfilePic}>
+            <Text style={styles.editText}>Edit</Text>
+            <ProfilePic imageSource={imageSource} size="large" blured />
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.licenseContainer}>
           <Text style={styles.subText}>License Plate: </Text>
           <Controller
             control={control}
@@ -105,87 +106,128 @@ const EditProfile = () => {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 placeholder={user.car.licencePlate}
-                inputStyle="small"
+                inputStyle="medium"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
               />
             )}
             name="licencePlate"
-            defaultValue=''
+            defaultValue=""
           />
         </View>
-        <View style={styles.itemContainer}>
-          <Text style={styles.sizeSubText}>Make: </Text>
-          <Picker
-            dropdownIconColor={theme.colors.dark}
-            style={styles.dropDown}
-            selectedValue={make}
-            onValueChange={(itemValue, itemIndex) => setMake(itemValue)}>
-            <Picker.Item label="Audi" value="audi" />
-            <Picker.Item label="BMW" value="bmw" />
-            <Picker.Item label="Mercedez" value="mercedez" />
-            <Picker.Item label="Ford" value="ford" />
-            <Picker.Item label="Chevy" value="chevy" />
-            <Picker.Item label="Honda" value="honda" />
-          </Picker>
+
+        <Text style={styles.pickerSubText}>Make:</Text>
+        <View style={styles.subContainer}>
+          <View style={styles.pickerContainer}>
+            <Picker
+              dropdownIconColor={theme.colors.dark}
+              itemStyle={{
+                color: theme.colors.dark,
+                fontWeight: 'bold',
+                fontSize: 20,
+              }}
+              style={{ color: theme.colors.dark }}
+              mode="dropdown"
+              selectedValue={make}
+              onValueChange={(itemValue, itemIndex) => setMake(itemValue)}>
+              <Picker.Item label="Audi" value="audi" />
+              <Picker.Item label="BMW" value="bmw" />
+              <Picker.Item label="Mercedez" value="mercedez" />
+              <Picker.Item label="Ford" value="ford" />
+              <Picker.Item label="Chevy" value="chevy" />
+              <Picker.Item label="Honda" value="honda" />
+            </Picker>
+          </View>
         </View>
-        <View style={styles.itemContainer}>
-          <Text style={styles.sizeSubText}>Model: </Text>
-          <Picker
-            dropdownIconColor={theme.colors.dark}
-            style={styles.dropDown}
-            selectedValue={model}
-            onValueChange={(itemValue, itemIndex) => setModel(itemValue)}>
-            <Picker.Item label="1 series" value="1 series" />
-            <Picker.Item label="2 series" value="2 series" />
-            <Picker.Item label="3 series" value="3 series" />
-            <Picker.Item label="4 series" value="4 series" />
-            <Picker.Item label="Raptor" value="raptor" />
-            <Picker.Item label="Tahoe" value="tahoe" />
-          </Picker>
+        <Text style={styles.pickerSubText}>Model:</Text>
+        <View style={styles.subContainer}>
+          <View style={styles.pickerContainer}>
+            <Picker
+              dropdownIconColor={theme.colors.dark}
+              itemStyle={{
+                color: theme.colors.dark,
+                fontWeight: 'bold',
+                fontSize: 20,
+              }}
+              style={{ color: theme.colors.dark }}
+              mode="dropdown"
+              selectedValue={model}
+              onValueChange={(itemValue, itemIndex) => setModel(itemValue)}>
+              <Picker.Item label="1 series" value="1 series" />
+              <Picker.Item label="2 series" value="2 series" />
+              <Picker.Item label="3 series" value="3 series" />
+              <Picker.Item label="4 series" value="4 series" />
+              <Picker.Item label="Raptor" value="raptor" />
+              <Picker.Item label="Tahoe" value="tahoe" />
+            </Picker>
+          </View>
         </View>
-        <View style={styles.itemContainer}>
-          <Text style={styles.sizeSubText}>Year: </Text>
-          <Picker
-            dropdownIconColor={theme.colors.dark}
-            style={styles.dropDown}
-            selectedValue={year}
-            onValueChange={(itemValue, itemIndex) => setYear(itemValue)}>
-            <Picker.Item label="2021" value="2021" />
-            <Picker.Item label="2020" value="2020" />
-            <Picker.Item label="2019" value="2019" />
-            <Picker.Item label="2018" value="2018" />
-            <Picker.Item label="2017" value="2018" />
-            <Picker.Item label="2016" value="2016" />
-          </Picker>
+        <Text style={styles.pickerSubText}>Year: </Text>
+        <View style={styles.subContainer}>
+          <View style={styles.pickerContainer}>
+            <Picker
+              dropdownIconColor={theme.colors.dark}
+              itemStyle={{
+                color: theme.colors.dark,
+                fontWeight: 'bold',
+                fontSize: 20,
+              }}
+              style={{ color: theme.colors.dark }}
+              mode="dropdown"
+              selectedValue={year}
+              onValueChange={(itemValue, itemIndex) => setYear(itemValue)}>
+              <Picker.Item label="2021" value="2021" />
+              <Picker.Item label="2020" value="2020" />
+              <Picker.Item label="2019" value="2019" />
+              <Picker.Item label="2018" value="2018" />
+              <Picker.Item label="2017" value="2018" />
+              <Picker.Item label="2016" value="2016" />
+            </Picker>
+          </View>
         </View>
-        <View style={styles.itemContainer}>
-          <Text style={styles.sizeSubText}>Color: </Text>
-          <Picker
-            dropdownIconColor={theme.colors.dark}
-            style={styles.dropDown}
-            selectedValue={color}
-            onValueChange={(itemValue, itemIndex) => setColor(itemValue)}>
-            <Picker.Item label="red" value="red" />
-            <Picker.Item label="black" value="black" />
-            <Picker.Item label="white" value="white" />
-            <Picker.Item label="blue" value="blue" />
-          </Picker>
+        <Text style={styles.pickerSubText}>Color: </Text>
+        <View style={styles.subContainer}>
+          <View style={styles.pickerContainer}>
+            <Picker
+              dropdownIconColor={theme.colors.dark}
+              itemStyle={{
+                color: theme.colors.dark,
+                fontWeight: 'bold',
+                fontSize: 20,
+              }}
+              style={{ color: theme.colors.dark }}
+              mode="dropdown"
+              selectedValue={color}
+              onValueChange={(itemValue, itemIndex) => setColor(itemValue)}>
+              <Picker.Item label="red" value="red" />
+              <Picker.Item label="black" value="black" />
+              <Picker.Item label="white" value="white" />
+              <Picker.Item label="blue" value="blue" />
+            </Picker>
+          </View>
         </View>
-        <View style={styles.itemContainer}>
-          <Text style={styles.sizeSubText}>Vehicle Size: </Text>
-          <Picker
-            dropdownIconColor={theme.colors.dark}
-            style={styles.dropDown}
-            selectedValue={carType}
-            onValueChange={(itemValue, itemIndex) => setCarType(itemValue)}>
-            <Picker.Item label="Small" value="small" />
-            <Picker.Item label="Medium" value="medium" />
-            <Picker.Item label="Large" value="large" />
-          </Picker>
+        <Text style={styles.pickerSubText}>Vehicle Size: </Text>
+        <View style={styles.subContainer}>
+          <View style={styles.pickerContainer}>
+            <Picker
+              dropdownIconColor={theme.colors.dark}
+              itemStyle={{
+                color: theme.colors.dark,
+                fontWeight: 'bold',
+                fontSize: 20,
+              }}
+              style={{ color: theme.colors.dark }}
+              mode="dropdown"
+              selectedValue={carType}
+              onValueChange={(itemValue, itemIndex) => setCarType(itemValue)}>
+              <Picker.Item label="Small" value="small" />
+              <Picker.Item label="Medium" value="medium" />
+              <Picker.Item label="Large" value="large" />
+            </Picker>
+          </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.bottom}>
         <View style={styles.buttonContainer}>
           <Button title="Save" size="large" onPress={handleSubmit(onSubmit)} />

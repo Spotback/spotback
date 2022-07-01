@@ -43,15 +43,14 @@ const PostMySpot = ({ route: { params } }: Record<any, any>) => {
         <Text style={styles.titleText}>234 San Pedro Sq.</Text>
         <Text style={styles.titleText}>Recieve $5</Text>
       </View>
-      <View style={styles.centerContainer}>
-        <View style={styles.subContainer}>
-          <Text style={styles.subText}>When will you</Text>
-          <Text style={styles.subText}>get to your car?</Text>
-        </View>
-        <View style={styles.picker}>
+      <View style={styles.subContainer}>
+        <Text style={styles.mainText}>When will you get to your car?</Text>
+        <View style={styles.pickerContainer}>
           <Picker
             dropdownIconColor={theme.colors.light}
-            style={styles.dropDown}
+            itemStyle={{ color: theme.colors.light, fontWeight: 'bold', fontSize: 24 }}
+            style={{ color: theme.colors.light }}
+            mode="dropdown"
             selectedValue={leaveTime}
             onValueChange={(itemValue, itemIndex) => setLeaveTime(itemValue)}>
             <Picker.Item label="Now" value={0} />
@@ -60,10 +59,12 @@ const PostMySpot = ({ route: { params } }: Record<any, any>) => {
             <Picker.Item label="15 min" value={900000} />
           </Picker>
         </View>
+
+        <View style={styles.buttonsContainer}>
+          <Button title="Post Spot" size="large" onPress={onSubmit} />
+        </View>
       </View>
-      <View style={styles.buttonsContainer}>
-        <Button title="Post Spot" size="large" onPress={onSubmit} />
-      </View>
+
       <Spinner />
       <ErrorAlert />
     </View>
