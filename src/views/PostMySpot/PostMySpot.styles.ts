@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme: any) =>
       flexDirection: 'column',
       justifyContent: 'center',
     },
-    centerContainer: {
+    pickerContainer: {
       backgroundColor: theme.colors.primary,
       width: 352,
       height: 200,
