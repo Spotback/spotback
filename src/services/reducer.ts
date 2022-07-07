@@ -26,6 +26,7 @@ const initialState = {
   imageSource: '',
   spinner: false,
   error: {},
+  transactionId: 'transaction1234'
 };
 
 const reducer = (state = initialState, action: any) => {

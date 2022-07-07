@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
+// Global imports
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -10,33 +11,37 @@ import {
   TouchableOpacity,
   TextInput,
   Platform,
+  LogBox,
 } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
-import { Button, Hub, Stars, Options } from '@components/index';
 import { useNavigation } from '@react-navigation/native';
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { LogBox } from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import storage from '@react-native-firebase/storage';
 import database from '@react-native-firebase/database';
+// Local imports
+import { Button, Hub, Stars, Options } from '@components/index';
 import { phone, sendMessage } from '@assets/images/index';
-import useStyles from './SpotExchange.styles';
 import { theme } from '@utils/theme';
+// Same directory imports
+import useStyles from './SpotExchange.styles';
 
 const SpotExchange = () => {
   const styles = useStyles();
   const navigation = useNavigation();
+  const user = useSelector((state: RootStateOrAny) => state.userReducer);
+  const transactionId = useSelector((state: RootStateOrAny) => state.userReducer.transactionId);
   const [modalVis, setModalVis] = useState(false);
-
+  const [hubVis, setHubVis] = useState(false);
+  const [imageSource, setImageSource] = useState('');
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState({});
   const [secondaryModalVis, setSecondaryModalVis] = useState({
     visible: false,
     type: 'cancelTransaction' || 'spotSwitchComplete',
   });
-  const [hubVis, setHubVis] = useState(false);
-  const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  const [imageSource, setImageSource] = useState('');
-  const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState({});
-  console.log('user email ', user.email);
+
+  const dbChatRoomRef = database().ref(`chat_rooms/-${transactionId}/messages`);
+
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   }, []);
@@ -54,36 +59,51 @@ const SpotExchange = () => {
       });
   };
 
-  const retrieveRealTimeMessages = () => {
-    database()
-      .ref('/chat_rooms/-2016579967/messages')
-      .once('value', (messages) => {
-        console.log('Users chat data: ', messages.val());
-        setMessages(messages.val());
-      });
+  const retrieveTransactionChatRoomMessages = () => {
+    dbChatRoomRef.orderByChild('created').on('value', (messages) => {
+      setMessages(messages.val());
+    });
   };
 
-  const pushRealTimeMessage = () => {
-    database()
-      //  would need to repalce number dynamically
-      .ref('/chat_rooms/-2016579967/messages')
-      .push({
-        created: Math.floor(Date.now() / 1000),
+  const pushTransactionChatRoomMessage = (messageFromButton) => {
+    const newMessage = dbChatRoomRef.push();
+
+    newMessage
+      .set({
+        created: Date.now(),
         sender_id: user.email,
-        text: message,
-      });
-    // messaes line up entierly on one side for each user
-    // .then((data) => console.log('data ', data))
-    // .catch((error) => console.log('error ', error));
+        text: message === '' ? messageFromButton : message,
+      })
+      .then(() => console.log('Message sent!'));
+
+    setMessage('');
   };
+
   useEffect(() => {
     getProfilePic();
-    // retrieveRealTimeMessages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    return () =>
-      database().ref('/chat_rooms/-2016579967/messages').off('value', retrieveRealTimeMessages);
-  }),
-    [retrieveRealTimeMessages];
+  }, []);
+
+  useEffect(() => {
+    retrieveTransactionChatRoomMessages();
+  }, [message]);
+
+  const displayMessages = () => {
+    return messages !== null
+      ? Object.values(messages)
+          .sort((a: any, b: any) => b.created - a.created)
+          .map((item: any, index: number) => {
+            return (
+              <View
+                key={index}
+                style={
+                  item.sender_id === user.email ? styles.incomingTextRight : styles.incomingTextLeft
+                }>
+                <Text style={styles.incomingTextMsg}>{item.text}</Text>
+              </View>
+            );
+          })
+      : null;
+  };
 
   return (
     <View style={styles.mainContainer}>
@@ -224,23 +244,7 @@ const SpotExchange = () => {
 
           <View style={styles.chatContainer}>
             <ScrollView style={styles.scrollMessagingContainer}>
-              <View style={styles.scrollItemsContainer}>
-                {Object.values(messages).length
-                  ? Object.values(messages).map((item: any, index: number) => {
-                      return (
-                        <View
-                          key={index}
-                          style={
-                            item.sender_id === user.email
-                              ? styles.incomingTextRight
-                              : styles.incomingTextLeft
-                          }>
-                          <Text style={styles.incomingTextMsg}>{item.text}</Text>
-                        </View>
-                      );
-                    })
-                  : null}
-              </View>
+              <View style={styles.scrollItemsContainer}>{displayMessages()}</View>
             </ScrollView>
             <View style={styles.messageChat}>
               <TextInput
@@ -252,30 +256,33 @@ const SpotExchange = () => {
               {message.length ? (
                 <TouchableOpacity
                   style={styles.sendMessageButton}
-                  onPress={() => pushRealTimeMessage()}>
+                  onPress={pushTransactionChatRoomMessage}>
                   <Image source={sendMessage} />
                 </TouchableOpacity>
               ) : null}
             </View>
 
-            <View style={styles.buttonContainer}>
+            <View style={styles.buttonsContainer}>
               <Button
                 size="small"
                 title="On My Way!"
                 customButtonStyles={styles.button}
                 customTextStyles={styles.buttonTitle}
+                onPress={() => pushTransactionChatRoomMessage('On My Way!')}
               />
               <Button
                 size="small"
                 title="Almost There"
                 customButtonStyles={styles.button}
                 customTextStyles={styles.buttonTitle}
+                onPress={() => pushTransactionChatRoomMessage('Almost There')}
               />
               <Button
                 size="small"
                 title="I'm Here"
                 customButtonStyles={styles.button}
                 customTextStyles={styles.buttonTitle}
+                onPress={() => pushTransactionChatRoomMessage("I'm Here")}
               />
               <Button
                 icon={phone}
