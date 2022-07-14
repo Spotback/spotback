@@ -10,6 +10,7 @@ interface ProfilePicProps {
 }
 const ProfilePic: FC<ProfilePicProps> = ({ imageSource, size, blured }) => {
   const styles = useStyles(blured)();
+  // TODO: Is not rerendering through out the app properly
   return (
     <Image
       style={size === 'small' ? styles.small : size === 'medium' ? styles.medium : styles.large}

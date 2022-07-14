@@ -17,12 +17,7 @@ const EditProfile = () => {
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   console.log('user ', user.car.licencePlate);
   const [imageSource, setImageSource] = useState('');
-  const [make, setMake] = useState(user.car.make);
-  const [model, setModel] = useState(user.car.model);
-  const [year, setYear] = useState(user.car.year);
-  const [color, setColor] = useState(user.car.color);
   const [carType, setCarType] = useState(user.car.carType);
-  console.log('state', make, model, year, color, carType);
   const dispatch = useDispatch();
   const {
     control,
@@ -32,8 +27,13 @@ const EditProfile = () => {
   } = useForm();
 
   const onSubmit = (formFields: Record<string, any>) => {
-    const { licencePlate } = formFields;
-    console.log('onSumbit ', licencePlate, make, model, year, color, carType);
+    let { licencePlate, make, model, year, color } = formFields;
+    licencePlate.length === 0 ? (licencePlate = user.car.licencePlate) : licencePlate;
+    make.length === 0 ? (make = user.car.make) : make;
+    model.length === 0 ? (model = user.car.model) : model;
+    year.length === 0 ? (year = user.car.year) : year;
+    color.length === 0 ? (color = user.car.color) : color;
+    console.log('onSumbit for edit profile ', licencePlate, make, model, year, color, carType);
     dispatch(update(user.bearer, licencePlate, make, model, year, color, carType));
   };
 
@@ -89,14 +89,22 @@ const EditProfile = () => {
     <View style={styles.container}>
       <Image style={styles.image} source={editProfile} />
       <ScrollView contentContainerStyle={styles.scrollViewStyle}>
-        <View style={styles.profilePicContainer}>
-          <TouchableOpacity onPress={uploadProfilePic}>
-            <Text style={styles.editText}>Edit</Text>
-            <ProfilePic imageSource={imageSource} size="large" blured />
-          </TouchableOpacity>
+        <View style={styles.profileImagesContainer}>
+          <View style={styles.profilePicContainer}>
+            <TouchableOpacity style={styles.profilePicContainer} onPress={uploadProfilePic}>
+              <Text style={styles.editText}>Edit</Text>
+              <ProfilePic imageSource={imageSource} size="large" blured />
+            </TouchableOpacity>
+          </View>
+          {/* TODO: Replace this image with a pic of the users vehicle */}
+          <View style={styles.profilePicContainer}>
+            <TouchableOpacity style={styles.profilePicContainer} onPress={uploadProfilePic}>
+              <ProfilePic imageSource={imageSource} size="large" blured />
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <View style={styles.licenseContainer}>
+        <View style={styles.inputContainer}>
           <Text style={styles.subText}>License Plate: </Text>
           <Controller
             control={control}
@@ -116,96 +124,88 @@ const EditProfile = () => {
             defaultValue=""
           />
         </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.subText}>Make: </Text>
+          <Controller
+            control={control}
+            rules={{
+              required: false,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder={user.car.make}
+                inputStyle="medium"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+            name="make"
+            defaultValue=""
+          />
+        </View>
 
-        <Text style={styles.pickerSubText}>Make:</Text>
-        <View style={styles.subContainer}>
-          <View style={styles.pickerContainer}>
-            <Picker
-              dropdownIconColor={theme.colors.dark}
-              itemStyle={{
-                color: theme.colors.dark,
-                fontWeight: 'bold',
-                fontSize: 20,
-              }}
-              style={{ color: theme.colors.dark }}
-              mode="dropdown"
-              selectedValue={make}
-              onValueChange={(itemValue, itemIndex) => setMake(itemValue)}>
-              <Picker.Item label="Audi" value="audi" />
-              <Picker.Item label="BMW" value="bmw" />
-              <Picker.Item label="Mercedez" value="mercedez" />
-              <Picker.Item label="Ford" value="ford" />
-              <Picker.Item label="Chevy" value="chevy" />
-              <Picker.Item label="Honda" value="honda" />
-            </Picker>
-          </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.subText}>Model: </Text>
+          <Controller
+            control={control}
+            rules={{
+              required: false,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder={user.car.model}
+                inputStyle="medium"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+            name="model"
+            defaultValue=""
+          />
         </View>
-        <Text style={styles.pickerSubText}>Model:</Text>
-        <View style={styles.subContainer}>
-          <View style={styles.pickerContainer}>
-            <Picker
-              dropdownIconColor={theme.colors.dark}
-              itemStyle={{
-                color: theme.colors.dark,
-                fontWeight: 'bold',
-                fontSize: 20,
-              }}
-              style={{ color: theme.colors.dark }}
-              mode="dropdown"
-              selectedValue={model}
-              onValueChange={(itemValue, itemIndex) => setModel(itemValue)}>
-              <Picker.Item label="1 series" value="1 series" />
-              <Picker.Item label="2 series" value="2 series" />
-              <Picker.Item label="3 series" value="3 series" />
-              <Picker.Item label="4 series" value="4 series" />
-              <Picker.Item label="Raptor" value="raptor" />
-              <Picker.Item label="Tahoe" value="tahoe" />
-            </Picker>
-          </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.subText}>Year: </Text>
+          <Controller
+            control={control}
+            rules={{
+              required: false,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder={user.car.year}
+                inputStyle="medium"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+            name="year"
+            defaultValue=""
+          />
         </View>
-        <Text style={styles.pickerSubText}>Year: </Text>
-        <View style={styles.subContainer}>
-          <View style={styles.pickerContainer}>
-            <Picker
-              dropdownIconColor={theme.colors.dark}
-              itemStyle={{
-                color: theme.colors.dark,
-                fontWeight: 'bold',
-                fontSize: 20,
-              }}
-              style={{ color: theme.colors.dark }}
-              mode="dropdown"
-              selectedValue={year}
-              onValueChange={(itemValue, itemIndex) => setYear(itemValue)}>
-              <Picker.Item label="2021" value="2021" />
-              <Picker.Item label="2020" value="2020" />
-              <Picker.Item label="2019" value="2019" />
-              <Picker.Item label="2018" value="2018" />
-              <Picker.Item label="2017" value="2018" />
-              <Picker.Item label="2016" value="2016" />
-            </Picker>
-          </View>
-        </View>
-        <Text style={styles.pickerSubText}>Color: </Text>
-        <View style={styles.subContainer}>
-          <View style={styles.pickerContainer}>
-            <Picker
-              dropdownIconColor={theme.colors.dark}
-              itemStyle={{
-                color: theme.colors.dark,
-                fontWeight: 'bold',
-                fontSize: 20,
-              }}
-              style={{ color: theme.colors.dark }}
-              mode="dropdown"
-              selectedValue={color}
-              onValueChange={(itemValue, itemIndex) => setColor(itemValue)}>
-              <Picker.Item label="red" value="red" />
-              <Picker.Item label="black" value="black" />
-              <Picker.Item label="white" value="white" />
-              <Picker.Item label="blue" value="blue" />
-            </Picker>
-          </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.subText}>Color: </Text>
+          <Controller
+            control={control}
+            rules={{
+              required: false,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder={user.car.color}
+                inputStyle="medium"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+              />
+            )}
+            name="color"
+            defaultValue=""
+          />
         </View>
         <Text style={styles.pickerSubText}>Vehicle Size: </Text>
         <View style={styles.subContainer}>
