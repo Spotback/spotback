@@ -19,13 +19,22 @@ const useStyles = makeStyles((theme: any) =>
       flexGrow: 1,
       justifyContent: 'center',
       width: width,
-      paddingHorizontal: 30,
+      paddingHorizontal: 25,
+    },
+    profileImagesContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginVertical: 20,
+      padding: 30,
+      borderRadius: 10,
+      backgroundColor: theme.colors.primary,
     },
     profilePicContainer: {
       justifyContent: 'center',
       alignContent: 'center',
       alignItems: 'center',
-      margin: 20,
+      // margin: 20,
     },
     editText: {
       fontSize: 24,
@@ -40,7 +49,7 @@ const useStyles = makeStyles((theme: any) =>
       shadowRadius: 2,
       elevation: 10,
     },
-    licenseContainer: {
+    inputContainer: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
