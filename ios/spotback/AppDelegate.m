@@ -49,6 +49,13 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  // Make sure the name matches the one used for the storyboard file
+  UIStoryboard *launchScreenStoryboard = [UIStoryboard storyboardWithName:@"Launch Screen" bundle:nil];
+  // This must match the Storyboard ID we chose for our View Controller
+  UIViewController *SplashScreenViewcontroller = [launchScreenStoryboard instantiateViewControllerWithIdentifier:@"SplashScreenViewcontroller"];
+  UIView *launchScreenView = [SplashScreenViewcontroller view];
+  launchScreenView.frame = self.window.bounds;
+  rootView.loadingView = launchScreenView;
   return YES;
 }
 
