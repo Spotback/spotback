@@ -135,7 +135,7 @@ Pod install
 Pod update
 Pod install
 
-Npm start --reset-cache
+Npm start --reset-cache 
 
 IOS NUKE
 rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && cd .. && npm install --force && cd ios && pod install && cd .. && npm start --reset-cache
