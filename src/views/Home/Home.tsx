@@ -1,26 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
-import { View, SafeAreaView, Text, ScrollView, Image, Platform } from 'react-native';
-import { check, PERMISSIONS, request, RESULTS } from 'react-native-permissions';
-import { useNavigation } from '@react-navigation/native';
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import { friends, handShake, pin, spotbackLogoIcon, spotPin2 } from '@assets/images/index';
+import { Button, Hub } from '@components/index';
 import Geolocation from '@react-native-community/geolocation';
-import SlidingView from 'rn-sliding-view';
-import { LogBox } from 'react-native';
 import storage from '@react-native-firebase/storage';
-import { Hub, Button } from '@components/index';
+import { useNavigation } from '@react-navigation/native';
 import { pinnedCoordinates } from '@services/thunks';
-import {
-  spotPin,
-  spotbackLogoIcon,
-  spotPin2,
-  handShake,
-  friends,
-  pin,
-  money,
-  five,
-} from '@assets/images/index';
-
+import React, { useEffect, useState } from 'react';
+import { Image, LogBox, Platform, ScrollView, Text, View } from 'react-native';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { PERMISSIONS, request, RESULTS } from 'react-native-permissions';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import SlidingView from 'rn-sliding-view';
 import useStyles from './Home.styles';
 
 const Home = () => {
@@ -216,8 +205,7 @@ const Home = () => {
         changeVisibilityCallback={() => setspotNewsVisible(!spotNewsVisible)}
         useNativeDriver={true}
         height={styles.slider.height}
-        containerStyle={styles.slider}
-        disableDrag={true}>
+        containerStyle={styles.slider}>
         <Hub title="SpotNews" bottom onPress={() => setspotNewsVisible(!spotNewsVisible)} />
         <ScrollView>
           <View style={styles.sliderContainer}>

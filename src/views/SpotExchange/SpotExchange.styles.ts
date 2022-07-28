@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { makeStyles } from 'react-native-elements';
 
 const height = Dimensions.get('window').height;
@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme: any) =>
     // modal
     modalContainer: {
       height: 200,
+      marginTop: Platform.OS === 'ios' ? 30 : 0,
     },
     centeredView: {
       alignItems: 'center',

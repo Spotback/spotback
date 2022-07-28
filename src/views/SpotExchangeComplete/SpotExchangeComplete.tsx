@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, SafeAreaView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useSelector, RootStateOrAny } from 'react-redux';
+import { Options, ProfilePic, Stars } from '@components/index';
 import storage from '@react-native-firebase/storage';
-import { Stars, ProfilePic, Options } from '@components/index';
-import { Button, Loader } from '@components/index';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, Text, View } from 'react-native';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import useStyles from './SpotExchangeComplete.styles';
 
 const SpotExchangeComplete = () => {
@@ -31,7 +30,7 @@ const SpotExchangeComplete = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>{"You've just recieved 5 dollars from"}</Text>
+      <Text style={styles.text}>{"You've just recieved 5 points from"}</Text>
       <ProfilePic imageSource={imageSource} size="large" />
       <Text style={styles.text}>Users Name</Text>
       <View style={styles.starContainer}>

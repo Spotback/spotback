@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme: any) =>
       justifyContent: 'center',
       alignContent: 'center',
       alignItems: 'center',
-      // margin: 20,
     },
     editText: {
       fontSize: 24,
@@ -59,18 +58,23 @@ const useStyles = makeStyles((theme: any) =>
       color: theme.colors.dark,
       fontSize: 20,
     },
+    subContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
     pickerContainer: {
-      width: '90%',
+      width: '50%',
+      // height: 20,
       borderRadius: 10,
+      // TODO: fix why it needs negative margin
+      marginTop: -70,
     },
     pickerSubText: {
       color: theme.colors.dark,
       fontSize: 20,
-    },
-    subContainer: {
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
+      // TODO: fix why it needs negative margin
+      marginTop: -70,
     },
     buttonContainer: {
       bottom: 30,
