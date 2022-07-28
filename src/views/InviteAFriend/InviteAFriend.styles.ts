@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme: any) =>
     },
     titleText: {
       color: theme.colors.dark,
-      
       fontWeight: 'bold',
       fontSize: 24,
     },
@@ -26,23 +25,25 @@ const useStyles = makeStyles((theme: any) =>
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'center',
+      alignItems: 'center',
     },
     secondaryContainer: {
-      marginTop: 80,
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
+      alignItems: 'center',
+      position: 'absolute',
+      left: 0,
+      top: 200,
     },
     subText: {
       color: theme.colors.dark,
-      
-      padding: 2,
+      marginBottom: 20,
       fontSize: 20,
     },
     sendArrow: {
       position: 'absolute',
       left: 260,
-      top: 35,
+      top: 5,
+      width: 40,
+      height: 40,
     },
   })
 );

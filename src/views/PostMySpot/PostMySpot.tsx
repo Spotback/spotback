@@ -41,7 +41,7 @@ const PostMySpot = ({ route: { params } }: Record<any, any>) => {
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.titleText}>234 San Pedro Sq.</Text>
-        <Text style={styles.titleText}>Recieve $5</Text>
+        <Text style={styles.titleText}>Recieve 5 points</Text>
       </View>
       <View style={styles.subContainer}>
         <Text style={styles.mainText}>When will you get to your car?</Text>

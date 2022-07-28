@@ -67,7 +67,7 @@ const FindMeASpot = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>Pay $6</Text>
+        {/* <Text style={styles.titleText}>Give 6 Points</Text> */}
       </View>
       <View style={styles.topButtonsContainer}>
         <View style={styles.spacing}>

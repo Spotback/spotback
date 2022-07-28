@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: any) =>
       marginTop: 10,
     },
     centerContainer: {
-      marginTop: 200,
+      marginTop: 300,
       justifyContent: 'center',
       alignItems: 'center',
     },

@@ -41,7 +41,7 @@ const Hub: FC<HubProps> = ({
                 <Text style={styles.hubTitle}>{title}</Text>
               </View>
               <View style={styles.topHubSpacing}>
-                <Text style={styles.hubTitle}>{`$${balance}`}</Text>
+                <Text style={styles.hubTitle}>{`${balance} pt`}</Text>
               </View>
             </SafeAreaView>
           )}

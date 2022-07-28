@@ -207,8 +207,9 @@ const EditProfile = () => {
             defaultValue=""
           />
         </View>
-        <Text style={styles.pickerSubText}>Vehicle Size: </Text>
+
         <View style={styles.subContainer}>
+          <Text style={styles.pickerSubText}>Vehicle Size: </Text>
           <View style={styles.pickerContainer}>
             <Picker
               dropdownIconColor={theme.colors.dark}

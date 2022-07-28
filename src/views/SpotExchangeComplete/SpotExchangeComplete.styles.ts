@@ -6,26 +6,21 @@ const useStyles = makeStyles((theme: any) =>
     container: {
       flex: 1,
       alignItems: 'center',
-      // justifyContent: 'center',
+      justifyContent: 'center',
       backgroundColor: theme.colors.background,
     },
-
     text: {
       color: theme.colors.dark,
       fontSize: 20,
       fontWeight: 'bold',
       padding: 10,
-    },
-    titleText: {
-      color: theme.colors.dark,
-      fontWeight: 'bold',
-      fontSize: 24,
+      marginVertical: 30,
     },
     starContainer: {
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'row',
-      margin: 10,
+      marginBottom: 30,
     },
     subText: {
       color: theme.colors.black,

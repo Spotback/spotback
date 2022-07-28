@@ -24,11 +24,12 @@ const InviteAFriend = () => {
         <Text style={styles.subText}>
           Share this code with your friends and famila to get more people to sign up for our Beta.
         </Text>
-
         <View style={styles.secondaryContainer}>
           <Text style={styles.subText}>Share your referral code</Text>
-          <Button title="joeyC4568" size="large" onPress={() => shareReferralCode()} />
-          <Image style={styles.sendArrow} source={sendArrow} />
+          <View>
+            <Button title="joeyC4568" size="large" onPress={() => shareReferralCode()} />
+            <Image style={styles.sendArrow} source={sendArrow} />
+          </View>
         </View>
       </View>
     </View>

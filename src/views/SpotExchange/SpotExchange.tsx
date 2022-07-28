@@ -12,6 +12,7 @@ import {
   TextInput,
   Platform,
   LogBox,
+  Linking,
 } from 'react-native';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
@@ -103,6 +104,17 @@ const SpotExchange = () => {
             );
           })
       : null;
+  };
+
+  const makeCall = () => {
+    let phoneNumber = '';
+
+    if (Platform.OS === 'android') {
+      phoneNumber = 'tel:4089605472';
+    } else {
+      phoneNumber = 'telprompt:4089605472';
+    }
+    Linking.openURL(phoneNumber);
   };
 
   return (
@@ -288,6 +300,7 @@ const SpotExchange = () => {
                 icon={phone}
                 customButtonStyles={styles.button}
                 customTextStyles={styles.buttonTitle}
+                onPress={() => makeCall()}
               />
             </View>
           </View>
