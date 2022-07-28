@@ -106,17 +106,6 @@ const SpotExchange = () => {
       : null;
   };
 
-  const makeCall = () => {
-    let phoneNumber = '';
-
-    if (Platform.OS === 'android') {
-      phoneNumber = 'tel:4089605472';
-    } else {
-      phoneNumber = 'telprompt:4089605472';
-    }
-    Linking.openURL(phoneNumber);
-  };
-
   return (
     <View style={styles.mainContainer}>
       <View style={styles.subContainer}>
@@ -300,7 +289,6 @@ const SpotExchange = () => {
                 icon={phone}
                 customButtonStyles={styles.button}
                 customTextStyles={styles.buttonTitle}
-                onPress={() => makeCall()}
               />
             </View>
           </View>
