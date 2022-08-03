@@ -1,29 +1,17 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
-// Global imports
-import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  Image,
-  Modal,
-  ScrollView,
-  TouchableOpacity,
-  TextInput,
-  Platform,
-  LogBox,
-  Linking,
-} from 'react-native';
-import { useSelector, RootStateOrAny } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import storage from '@react-native-firebase/storage';
 import database from '@react-native-firebase/database';
-// Local imports
-import { Button, Hub, Stars, Options } from '@components/index';
+import storage from '@react-native-firebase/storage';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import {
+  Image, Linking, LogBox, Modal, Platform, ScrollView, Text, TextInput, TouchableOpacity, View
+} from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { phone, sendMessage } from '@assets/images/index';
+import { Button, Hub, Options, Stars } from '@components/index';
 import { theme } from '@utils/theme';
-// Same directory imports
 import useStyles from './SpotExchange.styles';
 
 const SpotExchange = () => {
@@ -104,6 +92,17 @@ const SpotExchange = () => {
             );
           })
       : null;
+  };
+
+  const makeCall = () => {
+    let phoneNumber = '';
+
+    if (Platform.OS === 'android') {
+      phoneNumber = 'tel:${16508881712}';
+    } else {
+      phoneNumber = 'telprompt:${16508881712}';
+    }
+    Linking.openURL(phoneNumber);
   };
 
   return (
@@ -289,6 +288,7 @@ const SpotExchange = () => {
                 icon={phone}
                 customButtonStyles={styles.button}
                 customTextStyles={styles.buttonTitle}
+                onPress={makeCall}
               />
             </View>
           </View>
