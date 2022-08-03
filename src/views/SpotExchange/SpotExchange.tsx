@@ -5,7 +5,17 @@ import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import {
-  Image, Linking, LogBox, Modal, Platform, ScrollView, Text, TextInput, TouchableOpacity, View
+  Image,
+  Linking,
+  LogBox,
+  Modal,
+  Platform,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  KeyboardAvoidingView,
 } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { RootStateOrAny, useSelector } from 'react-redux';
@@ -228,7 +238,11 @@ const SpotExchange = () => {
             />
           </View>
         </Modal>
-        <View style={styles.bottomContainer}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={10}
+          enabled
+          style={styles.bottomContainer}>
           <View style={styles.spotSwitchCompleteContainer}>
             <Button
               title="Spot Switch complete"
@@ -292,7 +306,7 @@ const SpotExchange = () => {
               />
             </View>
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </View>
     </View>
   );

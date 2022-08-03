@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 import { TextInput, View } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_API_KEY } from '@env';
+import { theme } from '@utils/theme';
 import useStyles from './Input.styles';
 
 interface Inputprops {
@@ -23,7 +24,6 @@ const Input: FC<Inputprops> = ({
   autoComplete,
   onPress,
   autoCapitalize = 'sentences',
-
 }) => {
   const styles = useStyles();
   return (
@@ -51,6 +51,7 @@ const Input: FC<Inputprops> = ({
               ? styles.mediumInput
               : styles.smallInput
           }
+          placeholderTextColor={theme.colors.shadow}
           onBlur={onBlur}
           autoCapitalize={autoCapitalize}
         />
