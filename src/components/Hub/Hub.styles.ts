@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: any) =>
       fontSize: 24,
     },
     topHubSpacing: {
-      marginHorizontal: 40,
+      marginHorizontal: '8%',
     },
     itemContainer: {
       padding: 2,
