@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, Alert, ScrollView, Dimensions } from 'react-native';
-import { useSelector, RootStateOrAny } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { update } from '@services/thunks';
+import { View, Text, Image, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
 import { launchImageLibrary } from 'react-native-image-picker';
-import storage from '@react-native-firebase/storage';
-import { Picker } from '@react-native-picker/picker';
 import { useForm, Controller } from 'react-hook-form';
+import storage from '@react-native-firebase/storage';
+import database from '@react-native-firebase/database';
+import { Picker } from '@react-native-picker/picker';
+
+import { update, fetchCarPicture } from '@services/thunks';
 import { Button, Input, ProfilePic, ErrorAlert, Spinner } from '@components/index';
-import { editProfile, noProfilePic } from '@assets/images/index';
-import useStyles from './EditProfile.styles';
+import { editProfile } from '@assets/images/index';
 import { theme } from '@utils/theme';
+
+import useStyles from './EditProfile.styles';
 
 const EditProfile = () => {
   const styles = useStyles();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  console.log('user ', user.car.licencePlate);
+  const carPicUrlSelector = useSelector((state: RootStateOrAny) => state.userReducer.car.carProfilePictureUrl)
+  const [carImageSource, setCarImageSource] = useState(carPicUrlSelector);
   const [imageSource, setImageSource] = useState('');
   const [carType, setCarType] = useState(user.car.carType);
   const dispatch = useDispatch();
@@ -28,12 +31,18 @@ const EditProfile = () => {
 
   const onSubmit = (formFields: Record<string, any>) => {
     let { licencePlate, make, model, year, color } = formFields;
+
     licencePlate.length === 0 ? (licencePlate = user.car.licencePlate) : licencePlate;
     make.length === 0 ? (make = user.car.make) : make;
     model.length === 0 ? (model = user.car.model) : model;
     year.length === 0 ? (year = user.car.year) : year;
     color.length === 0 ? (color = user.car.color) : color;
-    console.log('onSumbit for edit profile ', licencePlate, make, model, year, color, carType);
+
+    // Only fetch a new car profile picture if the car info is different from the previously saved on db
+    if(make !== user.car.make || model !== user.car.model || color !== user.car.color || year !== user.car.year) {
+    dispatch(fetchCarPicture(make, model, color, year, user.email));
+    }
+
     dispatch(update(user.bearer, licencePlate, make, model, year, color, carType));
   };
 
@@ -50,9 +59,24 @@ const EditProfile = () => {
       });
   };
 
+  const getCarProfilePic = () => {
+    if(carPicUrlSelector === undefined || carPicUrlSelector === ''){
+      const dbCarPictureRef = database().ref(
+        `car_pictures_urls/${user.email.replace('@', '_').replace('.', '_')}/url`
+      );
+      dbCarPictureRef.orderByChild('url').on('value', (url) => {
+        setCarImageSource(url.val());
+      });
+    }
+  };
+
   useEffect(() => {
     getProfilePic();
-  });
+  }, []);
+
+  useEffect(() => {
+    getCarProfilePic();
+  }, []);
 
   const uploadProfilePic = () => {
     const options: any = {
@@ -96,10 +120,13 @@ const EditProfile = () => {
               <ProfilePic imageSource={imageSource} size="large" blured />
             </TouchableOpacity>
           </View>
-          {/* TODO: Replace this image with a pic of the users vehicle */}
           <View style={styles.profilePicContainer}>
             <TouchableOpacity style={styles.profilePicContainer} onPress={uploadProfilePic}>
-              <ProfilePic imageSource={imageSource} size="large" blured />
+              <ProfilePic
+                imageSource= {carImageSource}
+                size="large"
+                blured
+              />
             </TouchableOpacity>
           </View>
         </View>

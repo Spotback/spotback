@@ -14,6 +14,7 @@ const initialState = {
     make: '',
     model: '',
     year: '',
+    carProfilePictureUrl: '',
   },
   email: '',
   firstName: '',
@@ -26,7 +27,7 @@ const initialState = {
   imageSource: '',
   spinner: false,
   error: {},
-  transactionId: 'transaction1234'
+  transactionId: 'transaction1234',
 };
 
 const reducer = (state = initialState, action: any) => {
@@ -116,6 +117,16 @@ const reducer = (state = initialState, action: any) => {
         ...state,
         error: action.payload,
         spinner: false,
+      };
+    case UserTypes.SAVE_CAR_PICTURE:
+      console.log('save car picture reducer', action);
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          carProfilePictureUrl: action.payload,
+          spinner: false,
+        },
       };
     default:
       return state;
