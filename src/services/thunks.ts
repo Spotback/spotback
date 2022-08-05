@@ -1,8 +1,11 @@
-import axios from 'axios';
-import { USERS_BASE_URL, SPOTS_BASE_URL, MATCHING_BASE_URL } from '@env';
+import {
+  CAR_PROFILE_PICTURE_KEY, CAR_PROFILE_PICTURE_URL, SPOTS_BASE_URL, USERS_BASE_URL
+} from '@env';
 import * as RootNavigation from '@navigation/RootNavigation';
+import database from '@react-native-firebase/database';
+import { setAsyncStorage } from '@utils/asyncStorage';
+import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import { setAsyncStorage, getAsyncStorage } from '@utils/asyncStorage';
 import { UserTypes } from './types';
 
 console.log(`${USERS_BASE_URL}/createAccount`);
@@ -133,6 +136,47 @@ export const update = (
       })
       .catch((err) => {
         console.log('err ', err.response.data);
+        dispatch({
+          type: UserTypes.ERROR,
+          payload: err.response.data,
+        });
+      });
+  };
+};
+
+const saveCarPictureToFirebase = (carLink, email) => {
+  const dbCarPictureRef = database().ref(
+    `car_pictures_urls/${email.replace('@', '_').replace('.', '_')}`
+  );
+
+  dbCarPictureRef.set({
+    url: carLink,
+  });
+};
+
+export const fetchCarPicture = (
+  make: string,
+  model: string,
+  color: string,
+  year: number,
+  email: string
+) => {
+  return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.SPINNER,
+      payload: true,
+    });
+    axios
+      .get(
+        `${CAR_PROFILE_PICTURE_URL}/images?key=${CAR_PROFILE_PICTURE_KEY}&year=${year}&make=${make}&model=${model}&color=${color}&photoType=exterior&angle=front`
+      )
+      .then((res) => {
+        const carPictureObject = res.data.images[0];
+        saveCarPictureToFirebase(carPictureObject.link, email);
+        dispatch({ type: UserTypes.SAVE_CAR_PICTURE, payload: carPictureObject.link });
+      })
+      .catch((err) => {
+        console.log('Error retrieving Car Picture from carsxe API ====>', err);
         dispatch({
           type: UserTypes.ERROR,
           payload: err.response.data,
