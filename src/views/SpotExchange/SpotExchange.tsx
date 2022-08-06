@@ -1,11 +1,16 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
+import { phone, sendMessage } from '@assets/images/index';
+import { Button, Hub, Options, Stars } from '@components/index';
+import Polyline from '@mapbox/polyline';
 import database from '@react-native-firebase/database';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
+import { theme } from '@utils/theme';
 import React, { useEffect, useState } from 'react';
 import {
   Image,
+  KeyboardAvoidingView,
   Linking,
   LogBox,
   Modal,
@@ -15,14 +20,11 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  KeyboardAvoidingView,
 } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { RootStateOrAny, useSelector } from 'react-redux';
-import { phone, sendMessage } from '@assets/images/index';
-import { Button, Hub, Options, Stars } from '@components/index';
-import { theme } from '@utils/theme';
 import useStyles from './SpotExchange.styles';
+import { GOOGLE_API_KEY } from '@env';
 
 const SpotExchange = () => {
   const styles = useStyles();
@@ -78,8 +80,31 @@ const SpotExchange = () => {
     setMessage('');
   };
 
+  const getDirections = async (startLoc, destinationLoc) => {
+    try {
+      const resp = await fetch(
+        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=${GOOGLE_API_KEY}`
+      );
+      const respJson = await resp.json();
+      const points = Polyline.decode(respJson.routes[0].overview_polyline.points);
+      const coords = points.map((point, index) => {
+        return {
+          latitude: point[0],
+          longitude: point[1],
+        };
+      });
+      // this.setState({coords: coords})
+      console.log('coords**************** ', coords);
+      // return coords;
+    } catch (error) {
+      console.log('error ', error);
+      // return error;
+    }
+  };
+
   useEffect(() => {
     getProfilePic();
+    getDirections('28.694004, 77.110291', '28.72082, 77.107241)');
   }, []);
 
   useEffect(() => {
@@ -120,7 +145,7 @@ const SpotExchange = () => {
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
           <MapView
-            provider={Platform.OS === 'ios' ? null : PROVIDER_GOOGLE}
+            provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
               latitude: 37.78825,
