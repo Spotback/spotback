@@ -21,16 +21,18 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Polyline as GooglePolyline } from 'react-native-maps';
 import { RootStateOrAny, useSelector } from 'react-redux';
 import useStyles from './SpotExchange.styles';
 import { GOOGLE_API_KEY } from '@env';
+import axios from 'axios';
 
 const SpotExchange = () => {
   const styles = useStyles();
   const navigation = useNavigation();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   const transactionId = useSelector((state: RootStateOrAny) => state.userReducer.transactionId);
+
   const [modalVis, setModalVis] = useState(false);
   const [hubVis, setHubVis] = useState(false);
   const [imageSource, setImageSource] = useState('');
@@ -40,6 +42,17 @@ const SpotExchange = () => {
     visible: false,
     type: 'cancelTransaction' || 'spotSwitchComplete',
   });
+
+  // google maps navigation
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [error, setError] = useState(null);
+  const [concat, setConcat] = useState(null);
+  const [coords, setCoords] = useState([]);
+  const [x, setX] = useState(false);
+  const [cordLatitude, setCordLatitude] = useState(null);
+  const [cordLongitude, setCordLongitude] = useState(null);
+  // google maps navigation
 
   const dbChatRoomRef = database().ref(`chat_rooms/-${transactionId}/messages`);
 
@@ -82,19 +95,20 @@ const SpotExchange = () => {
 
   const getDirections = async (startLoc, destinationLoc) => {
     try {
-      const resp = await fetch(
+      const respJson = await axios.get(
         `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=${GOOGLE_API_KEY}`
       );
-      const respJson = await resp.json();
-      const points = Polyline.decode(respJson.routes[0].overview_polyline.points);
+      console.log('coords**************** ', respJson);
+      const points = Polyline.decode(respJson.data.routes[0].overview_polyline.points);
+      console.log('points **************** ', points);
       const coords = points.map((point, index) => {
         return {
           latitude: point[0],
           longitude: point[1],
         };
       });
-      // this.setState({coords: coords})
-      console.log('coords**************** ', coords);
+      setCoords(coords);
+      console.log('coords **************** ', coords);
       // return coords;
     } catch (error) {
       console.log('error ', error);
@@ -104,7 +118,7 @@ const SpotExchange = () => {
 
   useEffect(() => {
     getProfilePic();
-    getDirections('28.694004, 77.110291', '28.72082, 77.107241)');
+    getDirections('32.946709, -96.952667', '32.970450, -96.960910');
   }, []);
 
   useEffect(() => {
@@ -148,12 +162,13 @@ const SpotExchange = () => {
             provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
-              latitude: 37.78825,
-              longitude: -122.4324,
+              latitude: 32.946709,
+              longitude: -96.952667,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
-            }}
-          />
+            }}>
+            <GooglePolyline coordinates={coords} strokeWidth={3} strokeColor="red" />
+          </MapView>
         </View>
         <Hub
           title="Arriving in 5 Minutes"
