@@ -44,14 +44,7 @@ const SpotExchange = () => {
   });
 
   // google maps navigation
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
-  const [error, setError] = useState(null);
-  const [concat, setConcat] = useState(null);
   const [coords, setCoords] = useState([]);
-  const [x, setX] = useState(false);
-  const [cordLatitude, setCordLatitude] = useState(null);
-  const [cordLongitude, setCordLongitude] = useState(null);
   // google maps navigation
 
   const dbChatRoomRef = database().ref(`chat_rooms/-${transactionId}/messages`);
@@ -98,9 +91,7 @@ const SpotExchange = () => {
       const respJson = await axios.get(
         `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=${GOOGLE_API_KEY}`
       );
-      console.log('coords**************** ', respJson);
       const points = Polyline.decode(respJson.data.routes[0].overview_polyline.points);
-      console.log('points **************** ', points);
       const coords = points.map((point, index) => {
         return {
           latitude: point[0],
@@ -108,11 +99,8 @@ const SpotExchange = () => {
         };
       });
       setCoords(coords);
-      console.log('coords **************** ', coords);
-      // return coords;
     } catch (error) {
       console.log('error ', error);
-      // return error;
     }
   };
 
