@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
+
 import { signUp } from '@services/thunks';
 import { Button, Input, ErrorAlert, Spinner } from '@components/index';
+import { showPassword, hidePassword } from '@assets/images/index';
+
 import useStyles from './Signup.styles';
 
 const Signup = () => {
   const styles = useStyles();
   const dispatch = useDispatch();
+  const [passwordVisible, setPasswordVisible] = useState(true);
+  const [eyeIcon, setEyeIcon] = useState(showPassword);
   const {
     control,
     handleSubmit,
@@ -18,6 +23,11 @@ const Signup = () => {
   const onSubmit = (formFields: Record<string, any>) => {
     const { email, firstName, lastName, password, phone } = formFields;
     dispatch(signUp(email, firstName, lastName, password, phone));
+  };
+
+  const showPasswordToggle = () => {
+    setPasswordVisible(!passwordVisible);
+    passwordVisible ? setEyeIcon(hidePassword) : setEyeIcon(showPassword);
   };
 
   return (
@@ -115,6 +125,10 @@ const Signup = () => {
                 onChangeText={onChange}
                 value={value}
                 autoCapitalize="none"
+                isPasswordInput={true}
+                hidePassword={passwordVisible}
+                toggleEyeIcon={showPasswordToggle}
+                eyeIconSource={eyeIcon}
               />
             </View>
           )}

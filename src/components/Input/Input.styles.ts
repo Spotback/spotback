@@ -45,6 +45,13 @@ const useStyles = makeStyles((theme: any) =>
       shadowRadius: 2,
       elevation: 10,
     },
+    eyeIconStyles: {
+      width: 20,
+      height: 20,
+      position: 'absolute',
+      bottom: 15,
+      right: 11,
+    },
   })
 );
 

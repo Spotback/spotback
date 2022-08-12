@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react';
-import { TextInput, View } from 'react-native';
+import React, { FC } from 'react';
+import { TextInput, TouchableOpacity, Image, View } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_API_KEY } from '@env';
 import { theme } from '@utils/theme';
@@ -14,6 +14,10 @@ interface Inputprops {
   autoComplete?: boolean;
   onPress?: any;
   autoCapitalize?: any;
+  isPasswordInput?: boolean;
+  hidePassword?: boolean;
+  toggleEyeIcon?: any;
+  eyeIconSource?: any;
 }
 const Input: FC<Inputprops> = ({
   placeholder,
@@ -24,6 +28,10 @@ const Input: FC<Inputprops> = ({
   autoComplete,
   onPress,
   autoCapitalize = 'sentences',
+  isPasswordInput,
+  hidePassword,
+  toggleEyeIcon,
+  eyeIconSource,
 }) => {
   const styles = useStyles();
   return (
@@ -40,21 +48,32 @@ const Input: FC<Inputprops> = ({
           }}
         />
       ) : (
-        <TextInput
-          placeholder={placeholder}
-          onChangeText={onChangeText}
-          value={value}
-          style={
-            inputStyle === 'large'
-              ? styles.largeInput
-              : inputStyle === 'medium'
-              ? styles.mediumInput
-              : styles.smallInput
-          }
-          placeholderTextColor={theme.colors.shadow}
-          onBlur={onBlur}
-          autoCapitalize={autoCapitalize}
-        />
+        <View>
+          <TextInput
+            placeholder={placeholder}
+            onChangeText={onChangeText}
+            value={value}
+            style={
+              inputStyle === 'large'
+                ? styles.largeInput
+                : inputStyle === 'medium'
+                ? styles.mediumInput
+                : styles.smallInput
+            }
+            placeholderTextColor={theme.colors.shadow}
+            onBlur={onBlur}
+            autoCapitalize={autoCapitalize}
+            secureTextEntry={hidePassword}
+          />
+          {isPasswordInput ? (
+            <TouchableOpacity onPress={toggleEyeIcon}>
+              <Image
+                style={styles.eyeIconStyles}
+                source={eyeIconSource}
+              />
+            </TouchableOpacity>
+          ) : null}
+        </View>
       )}
     </>
   );
