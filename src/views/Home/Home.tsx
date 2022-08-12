@@ -123,7 +123,7 @@ const Home = () => {
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
           <MapView
-            provider={Platform.OS === 'ios' ? null : PROVIDER_GOOGLE}
+            provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
               latitude: latitude,

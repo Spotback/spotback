@@ -53,12 +53,14 @@ const useStyles = makeStyles((theme: any) =>
       alignItems: 'center',
       justifyContent: 'space-between',
       marginBottom: 20,
+      zIndex: 1,
     },
     subText: {
       color: theme.colors.dark,
       fontSize: 20,
     },
     subContainer: {
+      marginTop: 20,
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',

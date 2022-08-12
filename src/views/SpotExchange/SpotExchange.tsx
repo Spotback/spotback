@@ -1,11 +1,16 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
+import { phone, sendMessage } from '@assets/images/index';
+import { Button, Hub, Options, Stars } from '@components/index';
+import Polyline from '@mapbox/polyline';
 import database from '@react-native-firebase/database';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
+import { theme } from '@utils/theme';
 import React, { useEffect, useState } from 'react';
 import {
   Image,
+  KeyboardAvoidingView,
   Linking,
   LogBox,
   Modal,
@@ -15,20 +20,19 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  KeyboardAvoidingView,
 } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Polyline as GooglePolyline } from 'react-native-maps';
 import { RootStateOrAny, useSelector } from 'react-redux';
-import { phone, sendMessage } from '@assets/images/index';
-import { Button, Hub, Options, Stars } from '@components/index';
-import { theme } from '@utils/theme';
 import useStyles from './SpotExchange.styles';
+import { GOOGLE_API_KEY } from '@env';
+import axios from 'axios';
 
 const SpotExchange = () => {
   const styles = useStyles();
   const navigation = useNavigation();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   const transactionId = useSelector((state: RootStateOrAny) => state.userReducer.transactionId);
+
   const [modalVis, setModalVis] = useState(false);
   const [hubVis, setHubVis] = useState(false);
   const [imageSource, setImageSource] = useState('');
@@ -38,6 +42,10 @@ const SpotExchange = () => {
     visible: false,
     type: 'cancelTransaction' || 'spotSwitchComplete',
   });
+
+  // google maps navigation
+  const [coords, setCoords] = useState([]);
+  // google maps navigation
 
   const dbChatRoomRef = database().ref(`chat_rooms/-${transactionId}/messages`);
 
@@ -78,8 +86,27 @@ const SpotExchange = () => {
     setMessage('');
   };
 
+  const getDirections = async (startLoc, destinationLoc) => {
+    try {
+      const respJson = await axios.get(
+        `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}&key=${GOOGLE_API_KEY}`
+      );
+      const points = Polyline.decode(respJson.data.routes[0].overview_polyline.points);
+      const coords = points.map((point, index) => {
+        return {
+          latitude: point[0],
+          longitude: point[1],
+        };
+      });
+      setCoords(coords);
+    } catch (error) {
+      console.log('error ', error);
+    }
+  };
+
   useEffect(() => {
     getProfilePic();
+    getDirections('32.946709, -96.952667', '32.970450, -96.960910');
   }, []);
 
   useEffect(() => {
@@ -120,15 +147,16 @@ const SpotExchange = () => {
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
           <MapView
-            provider={Platform.OS === 'ios' ? null : PROVIDER_GOOGLE}
+            provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
-              latitude: 37.78825,
-              longitude: -122.4324,
+              latitude: 32.946709,
+              longitude: -96.952667,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
-            }}
-          />
+            }}>
+            <GooglePolyline coordinates={coords} strokeWidth={3} strokeColor="red" />
+          </MapView>
         </View>
         <Hub
           title="Arriving in 5 Minutes"
