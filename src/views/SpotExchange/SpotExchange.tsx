@@ -8,6 +8,7 @@ import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import { theme } from '@utils/theme';
 import React, { useEffect, useState } from 'react';
+import Geolocation from '@react-native-community/geolocation';
 import {
   Image,
   KeyboardAvoidingView,
@@ -21,7 +22,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Polyline as GooglePolyline } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker, Polyline as GooglePolyline } from 'react-native-maps';
 import { RootStateOrAny, useSelector } from 'react-redux';
 import useStyles from './SpotExchange.styles';
 import { GOOGLE_API_KEY } from '@env';
@@ -45,6 +46,8 @@ const SpotExchange = () => {
 
   // google maps navigation
   const [coords, setCoords] = useState([]);
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
   // google maps navigation
 
   const dbChatRoomRef = database().ref(`chat_rooms/-${transactionId}/messages`);
@@ -98,6 +101,7 @@ const SpotExchange = () => {
           longitude: point[1],
         };
       });
+      console.log('coords ', coords);
       setCoords(coords);
     } catch (error) {
       console.log('error ', error);
@@ -155,7 +159,16 @@ const SpotExchange = () => {
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}>
-            <GooglePolyline coordinates={coords} strokeWidth={3} strokeColor="red" />
+            <Marker
+              coordinate={{ latitude: 32.946709, longitude: -96.952667 }}
+              title={'Your Location'}
+            />
+            <Marker
+              coordinate={{ latitude: 32.97045, longitude: -96.96091 }}
+              title={'Your Location'}
+            />
+
+            <GooglePolyline coordinates={coords} strokeWidth={5} strokeColor="#6865FF" />
           </MapView>
         </View>
         <Hub
