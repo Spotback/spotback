@@ -22,3 +22,5 @@ export { default as transfers } from './transfers.png';
 export { default as noProfilePic } from './noProfilePic.png';
 export { default as phone } from './phone.png';
 export { default as sendMessage } from './sendMessage.png';
+export {default as hidePassword} from './hidePassword.png';
+export {default as showPassword} from './showPassword.png';
