@@ -1,4 +1,4 @@
-import { friends, handShake, pin, spotbackLogoIcon, spotPin2 } from '@assets/images/index';
+import { friends, handShake, pin, spotbackLogoIcon, spotPin, spotPinGold } from '@assets/images/index';
 import { Button, Hub } from '@components/index';
 import Geolocation from '@react-native-community/geolocation';
 import storage from '@react-native-firebase/storage';
@@ -132,7 +132,9 @@ const Home = () => {
               longitudeDelta: 0.0121,
             }}>
             {markerVis ? (
-              <Marker coordinate={{ latitude: latitude, longitude: longitude }} image={spotPin2} />
+              <Marker coordinate={{ latitude: latitude, longitude: longitude }}>
+                <Image source={spotPin} />
+              </Marker>
             ) : null}
           </MapView>
         </View>

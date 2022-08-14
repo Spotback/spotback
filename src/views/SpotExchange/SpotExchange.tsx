@@ -147,6 +147,19 @@ const SpotExchange = () => {
     Linking.openURL(phoneNumber);
   };
 
+  const openGoogleMapsIntent = (startLoc, destinationLoc) => {
+    const url = `https://www.google.com/maps/dir/?api=1&origin=${startLoc}&destination=${destinationLoc}&key=${GOOGLE_API_KEY}`;
+    Linking.canOpenURL(url)
+      .then((supported) => {
+        if (!supported) {
+          console.log("Can't handle url: " + url);
+        } else {
+          return Linking.openURL(url);
+        }
+      })
+      .catch((err) => console.error('An error occurred', err));
+  };
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.subContainer}>
@@ -287,6 +300,13 @@ const SpotExchange = () => {
           keyboardVerticalOffset={10}
           enabled
           style={styles.bottomContainer}>
+          <View style={styles.startNavButton}>
+            <Button
+              title="Press to Start Navigation"
+              size="large"
+              onPress={() => openGoogleMapsIntent('32.946709, -96.952667', '32.951520, -96.955670')}
+            />
+          </View>
           <View style={styles.spotSwitchCompleteContainer}>
             <Button
               title="Spot Switch complete"

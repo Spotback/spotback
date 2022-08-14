@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, PermissionsAndroid, Platform } from 'react-native';
+import { View, Text, PermissionsAndroid, Platform, Linking } from 'react-native';
 import { check, PERMISSIONS, request, RESULTS } from 'react-native-permissions';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
 import Geolocation from '@react-native-community/geolocation';
@@ -8,6 +8,8 @@ import { useNavigation } from '@react-navigation/native';
 import { Button, Input, Options, Spinner, ErrorAlert } from '@components/index';
 import useStyles from './FindMeASpot.styles';
 import { spotPin2, evCar } from '@assets/images/index';
+import axios from 'axios';
+import { GOOGLE_API_KEY } from '@env';
 
 const FindMeASpot = () => {
   const styles = useStyles();

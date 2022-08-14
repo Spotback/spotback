@@ -81,6 +81,12 @@ const useStyles = makeStyles((theme: any) =>
       position: 'absolute',
       right: 0,
     },
+
+    startNavButton: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: 50
+    },
     spotSwitchCompleteContainer: {
       marginBottom: 5,
       marginLeft: 'auto',
