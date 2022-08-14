@@ -8,6 +8,7 @@ import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import { theme } from '@utils/theme';
 import React, { useEffect, useState } from 'react';
+import Geolocation from '@react-native-community/geolocation';
 import {
   Image,
   KeyboardAvoidingView,
@@ -21,9 +22,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Polyline as GooglePolyline } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker, Polyline as GooglePolyline } from 'react-native-maps';
 import { RootStateOrAny, useSelector } from 'react-redux';
 import useStyles from './SpotExchange.styles';
+import { driverCar, driverArrow, spotPinGold, spotPin, spotPin2 } from '@assets/images/index';
 import { GOOGLE_API_KEY } from '@env';
 import axios from 'axios';
 
@@ -45,6 +47,8 @@ const SpotExchange = () => {
 
   // google maps navigation
   const [coords, setCoords] = useState([]);
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
   // google maps navigation
 
   const dbChatRoomRef = database().ref(`chat_rooms/-${transactionId}/messages`);
@@ -98,6 +102,7 @@ const SpotExchange = () => {
           longitude: point[1],
         };
       });
+      console.log('coords ', coords);
       setCoords(coords);
     } catch (error) {
       console.log('error ', error);
@@ -106,7 +111,7 @@ const SpotExchange = () => {
 
   useEffect(() => {
     getProfilePic();
-    getDirections('32.946709, -96.952667', '32.970450, -96.960910');
+    getDirections('32.946709, -96.952667', '32.951520, -96.955670');
   }, []);
 
   useEffect(() => {
@@ -155,7 +160,18 @@ const SpotExchange = () => {
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}>
-            <GooglePolyline coordinates={coords} strokeWidth={3} strokeColor="red" />
+            <Marker
+              coordinate={{ latitude: 32.95152, longitude: -96.95567 }}
+              title={'Your Location'}>
+              <Image style={{ width: 40, height: 40 }} source={driverCar} />
+            </Marker>
+            <Marker
+              coordinate={{ latitude: 32.946709, longitude: -96.952667 }}
+              title={'Driver Location'}>
+              <Image source={spotPinGold} />
+            </Marker>
+
+            <GooglePolyline coordinates={coords} strokeWidth={5} strokeColor="#6865FF" />
           </MapView>
         </View>
         <Hub
