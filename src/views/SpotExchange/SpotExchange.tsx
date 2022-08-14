@@ -25,6 +25,7 @@ import {
 import MapView, { PROVIDER_GOOGLE, Marker, Polyline as GooglePolyline } from 'react-native-maps';
 import { RootStateOrAny, useSelector } from 'react-redux';
 import useStyles from './SpotExchange.styles';
+import { driverCar, driverArrow, spotPinGold, spotPin, spotPin2 } from '@assets/images/index';
 import { GOOGLE_API_KEY } from '@env';
 import axios from 'axios';
 
@@ -110,7 +111,7 @@ const SpotExchange = () => {
 
   useEffect(() => {
     getProfilePic();
-    getDirections('32.946709, -96.952667', '32.970450, -96.960910');
+    getDirections('32.946709, -96.952667', '32.951520, -96.955670');
   }, []);
 
   useEffect(() => {
@@ -160,13 +161,15 @@ const SpotExchange = () => {
               longitudeDelta: 0.0121,
             }}>
             <Marker
-              coordinate={{ latitude: 32.946709, longitude: -96.952667 }}
-              title={'Your Location'}
-            />
+              coordinate={{ latitude: 32.95152, longitude: -96.95567 }}
+              title={'Your Location'}>
+              <Image style={{ width: 40, height: 40 }} source={driverCar} />
+            </Marker>
             <Marker
-              coordinate={{ latitude: 32.97045, longitude: -96.96091 }}
-              title={'Your Location'}
-            />
+              coordinate={{ latitude: 32.946709, longitude: -96.952667 }}
+              title={'Driver Location'}>
+              <Image source={spotPinGold} />
+            </Marker>
 
             <GooglePolyline coordinates={coords} strokeWidth={5} strokeColor="#6865FF" />
           </MapView>
