@@ -33,7 +33,7 @@ const Input: FC<Inputprops> = ({
   toggleEyeIcon,
   eyeIconSource,
 }) => {
-  const styles = useStyles();
+  const styles = useStyles(isPasswordInput)();
   return (
     <>
       {autoComplete ? (
@@ -67,10 +67,7 @@ const Input: FC<Inputprops> = ({
           />
           {isPasswordInput ? (
             <TouchableOpacity onPress={toggleEyeIcon}>
-              <Image
-                style={styles.eyeIconStyles}
-                source={eyeIconSource}
-              />
+              <Image style={styles.eyeIconStyles} source={eyeIconSource} />
             </TouchableOpacity>
           ) : null}
         </View>

@@ -1,5 +1,4 @@
-import { Dimensions } from 'react-native';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { makeStyles } from 'react-native-elements';
 
 const width = Dimensions.get('window').width;
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme: any) =>
       alignItems: 'center',
       justifyContent: 'space-between',
       marginVertical: 20,
-      padding: 30,
+      padding: 25,
       borderRadius: 10,
       backgroundColor: theme.colors.primary,
     },
@@ -70,13 +69,13 @@ const useStyles = makeStyles((theme: any) =>
       // height: 20,
       borderRadius: 10,
       // TODO: fix why it needs negative margin
-      marginTop: -70,
+      marginTop: Platform.OS === 'android' ? -30 : -70,
     },
     pickerSubText: {
       color: theme.colors.dark,
       fontSize: 20,
       // TODO: fix why it needs negative margin
-      marginTop: -70,
+      marginTop: Platform.OS === 'android' ? -30 : -70,
     },
     buttonContainer: {
       bottom: 30,
@@ -85,7 +84,7 @@ const useStyles = makeStyles((theme: any) =>
     bottom: {
       flex: 1,
       justifyContent: 'flex-end',
-      marginTop: 100,
+      marginTop: 90,
       alignItems: 'center',
     },
   })
