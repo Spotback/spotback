@@ -1,5 +1,8 @@
 import {
-  CAR_PROFILE_PICTURE_KEY, CAR_PROFILE_PICTURE_URL, SPOTS_BASE_URL, USERS_BASE_URL
+  CAR_PROFILE_PICTURE_KEY,
+  CAR_PROFILE_PICTURE_URL,
+  SPOTS_BASE_URL,
+  USERS_BASE_URL,
 } from '@env';
 import * as RootNavigation from '@navigation/RootNavigation';
 import database from '@react-native-firebase/database';
@@ -278,5 +281,22 @@ export const clearUserError = () => {
       type: UserTypes.ERROR,
       payload: {},
     });
+  };
+};
+
+export const triggerSpinner = () => {
+  // A solution to the profile pic not re rendering on the home page. Also tells the user their pic was saved.
+  return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.SPINNER,
+      payload: true,
+    });
+    setTimeout(() => {
+      console.log('Delayed for 2 second.');
+      dispatch({
+        type: UserTypes.SPINNER,
+        payload: false,
+      });
+    }, 1000);
   };
 };
