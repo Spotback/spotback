@@ -5,12 +5,11 @@ import { noProfilePic } from '@assets/images/index';
 
 interface ProfilePicProps {
   imageSource?: any;
-  size?: any;
+  size?: string;
   blured?: any;
 }
 const ProfilePic: FC<ProfilePicProps> = ({ imageSource, size, blured }) => {
   const styles = useStyles(blured)();
-  // TODO: Is not rerendering through out the app properly
   return (
     <Image
       key={imageSource + Date.now()}

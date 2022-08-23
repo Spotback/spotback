@@ -69,13 +69,13 @@ const useStyles = makeStyles((theme: any) =>
       // height: 20,
       borderRadius: 10,
       // TODO: fix why it needs negative margin
-      marginTop: Platform.OS === 'android' ? -30 : -70,
+      marginTop: Platform.OS === 'android' ? -30 : -60,
     },
     pickerSubText: {
       color: theme.colors.dark,
       fontSize: 20,
       // TODO: fix why it needs negative margin
-      marginTop: Platform.OS === 'android' ? -30 : -70,
+      marginTop: Platform.OS === 'android' ? -30 : -60,
     },
     buttonContainer: {
       bottom: 30,
