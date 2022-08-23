@@ -6,18 +6,18 @@ import { useForm, Controller } from 'react-hook-form';
 import storage from '@react-native-firebase/storage';
 import database from '@react-native-firebase/database';
 import { Picker } from '@react-native-picker/picker';
-
-import { update, fetchCarPicture } from '@services/thunks';
+import { update, fetchCarPicture, triggerSpinner } from '@services/thunks';
 import { Button, Input, ProfilePic, ErrorAlert, Spinner } from '@components/index';
 import { editProfile } from '@assets/images/index';
 import { theme } from '@utils/theme';
-
 import useStyles from './EditProfile.styles';
 
 const EditProfile = () => {
   const styles = useStyles();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  const carPicUrlSelector = useSelector((state: RootStateOrAny) => state.userReducer.car.carProfilePictureUrl)
+  const carPicUrlSelector = useSelector(
+    (state: RootStateOrAny) => state.userReducer.car.carProfilePictureUrl
+  );
   const [carImageSource, setCarImageSource] = useState(carPicUrlSelector);
   const [imageSource, setImageSource] = useState('');
   const [carType, setCarType] = useState(user.car.carType);
@@ -39,8 +39,16 @@ const EditProfile = () => {
     color.length === 0 ? (color = user.car.color) : color;
 
     // Only fetch a new car profile picture if the car info is different from the previously saved on db
-    if(make !== user.car.make || model !== user.car.model || color !== user.car.color || year !== user.car.year) {
-    dispatch(fetchCarPicture(make, model, color, year, user.email));
+    {
+      /* TODO: Car image doesnt change when I click save, maybe problem is here? */
+    }
+    if (
+      make !== user.car.make ||
+      model !== user.car.model ||
+      color !== user.car.color ||
+      year !== user.car.year
+    ) {
+      dispatch(fetchCarPicture(make, model, color, year, user.email));
     }
 
     dispatch(update(user.bearer, licencePlate, make, model, year, color, carType));
@@ -60,7 +68,7 @@ const EditProfile = () => {
   };
 
   const getCarProfilePic = () => {
-    if(carPicUrlSelector === undefined || carPicUrlSelector === ''){
+    if (carPicUrlSelector === undefined || carPicUrlSelector === '') {
       const dbCarPictureRef = database().ref(
         `car_pictures_urls/${user.email.replace('@', '_').replace('.', '_')}/url`
       );
@@ -103,6 +111,10 @@ const EditProfile = () => {
           .putFile(image)
           .then(() => {
             console.log(`${image} has been successfully uploaded.`);
+            dispatch(triggerSpinner());
+            setTimeout(() => {
+              Alert.alert('Your profile pic is saved');
+            }, 2000);
           })
           .catch((e) => console.log('uploading image error => ', e));
       }
@@ -121,12 +133,10 @@ const EditProfile = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.profilePicContainer}>
+            {/* TODO: Why is there an uplaod profile pic option? It should uplaod only when data is saved */}
+            {/* TODO: Car image doesnt change when I click save */}
             <TouchableOpacity style={styles.profilePicContainer} onPress={uploadProfilePic}>
-              <ProfilePic
-                imageSource= {carImageSource}
-                size="large"
-                blured
-              />
+              <ProfilePic imageSource={carImageSource} size="large" blured />
             </TouchableOpacity>
           </View>
         </View>
