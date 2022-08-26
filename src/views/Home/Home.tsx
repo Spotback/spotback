@@ -1,4 +1,11 @@
-import { friends, handShake, pin, spotbackLogoIcon, spotPin, spotPinGold } from '@assets/images/index';
+import {
+  friends,
+  handShake,
+  pin,
+  spotbackLogoIcon,
+  spotPin,
+  spotPinGold,
+} from '@assets/images/index';
 import { Button, Hub } from '@components/index';
 import Geolocation from '@react-native-community/geolocation';
 import storage from '@react-native-firebase/storage';
@@ -11,6 +18,8 @@ import { PERMISSIONS, request, RESULTS } from 'react-native-permissions';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import SlidingView from 'rn-sliding-view';
 import useStyles from './Home.styles';
+// @TODO: for push notification testing purposes
+import { LocalNotification } from '@utils/PushController';
 
 const Home = () => {
   const styles = useStyles();
@@ -23,6 +32,11 @@ const Home = () => {
   const [markerVis, setMarkerVis] = useState(false);
   const [spotNewsVisible, setspotNewsVisible] = useState(false);
   const [profileComplete, setProfileComplete] = useState(false);
+
+  // @TODO: for push notification testing purposes
+  const handlePushNotificationPress = () => {
+    LocalNotification();
+  };
 
   console.log(latitude, longitude);
   const toggleMarker = (flag: boolean) => {
@@ -169,6 +183,14 @@ const Home = () => {
 
         {profileComplete ? (
           <View style={styles.largeButtonContainer}>
+            {/* @TODO: for push notification testing purposes */}
+            <View style={styles.spacing}>
+              <Button
+                title="Trigger Push Notification"
+                size="large"
+                onPress={handlePushNotificationPress}
+              />
+            </View>
             <View style={styles.spacing}>
               <Button
                 title="Find Me A Spot"
@@ -190,6 +212,15 @@ const Home = () => {
           </View>
         ) : (
           <View style={styles.completeButtonContainer}>
+            {/* @TODO: for push notification testing purposes */}
+            <View style={styles.spacing}>
+              <Button
+                title="Trigger Push Notification"
+                size="large"
+                onPress={handlePushNotificationPress}
+              />
+            </View>
+
             <View style={styles.spacing}>
               <Button
                 title="Complete Profile"
