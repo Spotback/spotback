@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { View, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { Button, Link } from '@components/index';
 import { spotbackLogoFull } from '@assets/images/index';
+import { Button, Link } from '@components/index';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { Image, View } from 'react-native';
 import useStyles from './Onboarding.styles';
 
 const Onboarding = () => {

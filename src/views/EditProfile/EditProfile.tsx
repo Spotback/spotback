@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, Alert, ScrollView } from 'react-native';
-import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
-import { launchImageLibrary } from 'react-native-image-picker';
-import { useForm, Controller } from 'react-hook-form';
-import storage from '@react-native-firebase/storage';
-import database from '@react-native-firebase/database';
-import { Picker } from '@react-native-picker/picker';
-import { update, fetchCarPicture, triggerSpinner } from '@services/thunks';
-import { Button, Input, ProfilePic, ErrorAlert, Spinner } from '@components/index';
 import { editProfile } from '@assets/images/index';
+import { Button, ErrorAlert, Input, ProfilePic, Spinner } from '@components/index';
+import database from '@react-native-firebase/database';
+import storage from '@react-native-firebase/storage';
+import { Picker } from '@react-native-picker/picker';
+import { fetchCarPicture, triggerSpinner, update } from '@services/thunks';
 import { theme } from '@utils/theme';
+import React, { useEffect, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { Alert, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { launchImageLibrary } from 'react-native-image-picker';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import useStyles from './EditProfile.styles';
 
 const EditProfile = () => {
@@ -38,10 +38,6 @@ const EditProfile = () => {
     year.length === 0 ? (year = user.car.year) : year;
     color.length === 0 ? (color = user.car.color) : color;
 
-    // Only fetch a new car profile picture if the car info is different from the previously saved on db
-    {
-      /* TODO: Car image doesnt change when I click save, maybe problem is here? */
-    }
     if (
       make !== user.car.make ||
       model !== user.car.model ||
@@ -133,8 +129,6 @@ const EditProfile = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.profilePicContainer}>
-            {/* TODO: Why is there an uplaod profile pic option? It should uplaod only when data is saved */}
-            {/* TODO: Car image doesnt change when I click save */}
             <TouchableOpacity style={styles.profilePicContainer} onPress={uploadProfilePic}>
               <ProfilePic imageSource={carImageSource} size="large" blured />
             </TouchableOpacity>

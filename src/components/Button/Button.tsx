@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Text, TouchableOpacity, View, Image } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import useStyles from './Button.styles';
 
 interface ButtonProps {

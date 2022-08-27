@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
-import { View, Text, TextInput } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { useForm, Controller } from 'react-hook-form';
-import { Button, Input } from '@components/index';
-import useStyles from './Options.styles';
+import { Button } from '@components/index';
 import { theme } from '@utils/theme';
+import React, { FC } from 'react';
+import { useForm } from 'react-hook-form';
+import { Text, View } from 'react-native';
+import { useDispatch } from 'react-redux';
+import useStyles from './Options.styles';
 
 interface OptionsProps {
   type: string;

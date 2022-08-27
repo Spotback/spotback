@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import useStyles from './Link.styles';
 
 interface LinkProps {

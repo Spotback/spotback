@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Image } from 'react-native';
-import { Button } from '@components/index';
 import { help } from '@assets/images/index';
+import { Button } from '@components/index';
+import React from 'react';
+import { Image, View } from 'react-native';
 import useStyles from './Help.styles';
 
 const Help = () => {

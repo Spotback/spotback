@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
-import { phone, sendMessage } from '@assets/images/index';
+import { driverCar, phone, sendMessage, spotPinGold } from '@assets/images/index';
 import { Button, Hub, Options, Stars } from '@components/index';
+import { GOOGLE_API_KEY } from '@env';
 import Polyline from '@mapbox/polyline';
 import database from '@react-native-firebase/database';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import { theme } from '@utils/theme';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Geolocation from '@react-native-community/geolocation';
 import {
   Image,
   KeyboardAvoidingView,
@@ -20,14 +21,11 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Marker, Polyline as GooglePolyline } from 'react-native-maps';
+import MapView, { Marker, Polyline as GooglePolyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import { RootStateOrAny, useSelector } from 'react-redux';
 import useStyles from './SpotExchange.styles';
-import { driverCar, driverArrow, spotPinGold, spotPin, spotPin2 } from '@assets/images/index';
-import { GOOGLE_API_KEY } from '@env';
-import axios from 'axios';
 
 const SpotExchange = () => {
   const styles = useStyles();

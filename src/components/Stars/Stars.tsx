@@ -1,8 +1,8 @@
+import { emptyStar, fullStar } from '@assets/images/index';
 import React, { FC, useState } from 'react';
 import { View } from 'react-native';
 import StarRating from 'react-native-star-rating';
 import useStyles from './Stars.styles';
-import { fullStar, emptyStar } from '@assets/images/index';
 
 interface StarProps {
   starSize: number;
@@ -13,7 +13,6 @@ interface StarProps {
 const Stars: FC<StarProps> = ({ starSize, starWidth, disabled = true, ...rest }) => {
   const styles = useStyles(starWidth)();
   const [starCount, setStarCount] = useState(4);
-  console.log('rest ', rest);
   const onStarRatingPress = (rating: number) => {
     setStarCount(rating);
   };

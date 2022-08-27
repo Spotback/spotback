@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { RootStackParamsList } from './src/navigation/types';
 
 declare module '*.png';
