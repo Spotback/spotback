@@ -1,16 +1,18 @@
-import { friends, handShake, pin, spotbackLogoIcon, spotPin, spotPinGold } from '@assets/images/index';
-import { Button, Hub } from '@components/index';
+import React, { useEffect, useState } from 'react';
+import { Image, LogBox, Platform, ScrollView, Text, View } from 'react-native';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { PERMISSIONS, request, RESULTS } from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import { pinnedCoordinates } from '@services/thunks';
-import React, { useEffect, useState } from 'react';
-import { Image, LogBox, Platform, ScrollView, Text, View } from 'react-native';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { PERMISSIONS, request, RESULTS } from 'react-native-permissions';
-import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import { friends, handShake, pin, spotbackLogoIcon, spotPin } from '@assets/images/index';
+import { Button, Hub } from '@components/index';
 import SlidingView from 'rn-sliding-view';
+import {onDisplayNotification} from '@utils/localPushNotification';
 import useStyles from './Home.styles';
+
 
 const Home = () => {
   const styles = useStyles();
@@ -199,6 +201,15 @@ const Home = () => {
             </View>
           </View>
         )}
+         <View style={styles.pushNotificationButtonContainer}>
+            <View style={styles.spacing}>
+              <Button
+                title="Trigger Push Notification"
+                size="large"
+                onPress={() => onDisplayNotification('default', 'Default Channel', 'Spotback', 'Local push notification')}
+              />
+            </View>
+          </View>
       </View>
 
       <Hub title="SpotNews" bottom onPress={() => setspotNewsVisible(!spotNewsVisible)} />
