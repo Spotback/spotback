@@ -39,47 +39,34 @@
 	</dict>
 
   <!-- Keep only the permissions used in your app -->
-  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
   <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
   <key>NSLocationAlwaysUsageDescription</key>
   <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
-  <key>NSLocationTemporaryUsageDescriptionDictionary</key>
-  <dict>
-    <key>YOUR-PURPOSE-KEY</key>
-    <string>YOUR TEXT</string>
-  </dict>
   <key>NSLocationWhenInUseUsageDescription</key>
   <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
+  <key>NSLocationTemporaryUsageDescriptionDictionary</key>
+  <dict>
+    <key>Spots</key>
+    <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
+  </dict>
+
   <key>NSCameraUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSContactsUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSMicrophoneUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSPhotoLibraryUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSPhotoLibraryAddUsageDescription</key>
   <string>YOUR TEXT</string>
-  <key>NSAppleMusicUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSBluetoothAlwaysUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSBluetoothPeripheralUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSCalendarsUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSFaceIDUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSMotionUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSRemindersUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSSpeechRecognitionUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSSiriUsageDescription</key>
+  <key>NSContactsUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSUserTrackingUsageDescription</key>
   <string>YOUR TEXT</string>
+   <key>NSMicrophoneUsageDescription</key>
+  <string>YOUR TEXT</string>
+  <key>NSSiriUsageDescription</key>
+  <string>YOUR TEXT</string>
+
+
   <!-- Keep only the permissions used in your app -->
 
 	<key>UILaunchStoryboardName</key>
