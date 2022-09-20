@@ -18,6 +18,7 @@ const EditProfile = () => {
   const carPicUrlSelector = useSelector(
     (state: RootStateOrAny) => state.userReducer.car.carProfilePictureUrl
   );
+
   const [carImageSource, setCarImageSource] = useState(carPicUrlSelector);
   const [imageSource, setImageSource] = useState('');
   const [carType, setCarType] = useState(user.car.carType);
