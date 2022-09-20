@@ -1,4 +1,4 @@
-import { friends, handShake, pin, spotbackLogoIcon, spotPin, spotPinGold } from '@assets/images/index';
+import { friends, handShake, pin, spotbackLogoIcon, spotPin } from '@assets/images/index';
 import { Button, Hub } from '@components/index';
 import Geolocation from '@react-native-community/geolocation';
 import storage from '@react-native-firebase/storage';
@@ -24,7 +24,6 @@ const Home = () => {
   const [spotNewsVisible, setspotNewsVisible] = useState(false);
   const [profileComplete, setProfileComplete] = useState(false);
 
-  console.log(latitude, longitude);
   const toggleMarker = (flag: boolean) => {
     if (flag) {
       setMarkerVis(flag);
@@ -55,10 +54,9 @@ const Home = () => {
 
   const requestLocationPermission = async () => {
     const granted = await request(
-      Platform.select({
-        ios: PERMISSIONS.IOS.LOCATION_ALWAYS,
-        android: PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-      }),
+      Platform.OS === 'ios'
+        ? PERMISSIONS.IOS.LOCATION_ALWAYS
+        : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
       {
         title: 'Location Access Required',
         message: 'Spotback needs to Access your location',
@@ -94,9 +92,7 @@ const Home = () => {
     Object.values(user.car).map((item) => {
       item === '' || item === undefined ? setProfileComplete(false) : setProfileComplete(true);
     });
-    // @TODO: might have to setIntervals for fetching user coordinates every second or 2
-    // Could also be done every 5 5o 10 seconds to update the map as the user is moving
-    // or get the latest coordinates when clicking post my spot and double check pinnedcoordinates is empty
+    // @TODO: might have to setIntervals for fetching user coordinates at set intervals
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   });
 

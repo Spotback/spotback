@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
-import { TextInput, TouchableOpacity, Image, View } from 'react-native';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_API_KEY } from '@env';
 import { theme } from '@utils/theme';
+import React, { FC } from 'react';
+import { Image, TextInput, TouchableOpacity, View } from 'react-native';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import useStyles from './Input.styles';
 
 interface Inputprops {

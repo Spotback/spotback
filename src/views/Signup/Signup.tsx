@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { Controller, useForm } from 'react-hook-form';
 import { View } from 'react-native';
-import { useForm, Controller } from 'react-hook-form';
-
+import { useDispatch } from 'react-redux';
+import { hidePassword, showPassword } from '@assets/images/index';
+import { Button, ErrorAlert, Input, Spinner } from '@components/index';
 import { signUp } from '@services/thunks';
-import { Button, Input, ErrorAlert, Spinner } from '@components/index';
-import { showPassword, hidePassword } from '@assets/images/index';
-
 import useStyles from './Signup.styles';
 
 const Signup = () => {
