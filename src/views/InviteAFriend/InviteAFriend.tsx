@@ -6,6 +6,7 @@ import useStyles from './InviteAFriend.styles';
 
 const InviteAFriend = () => {
   const styles = useStyles();
+  
   const shareReferralCode = () => {
     Share.share({
       title: 'Spotback App',
