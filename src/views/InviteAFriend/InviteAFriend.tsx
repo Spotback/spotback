@@ -1,7 +1,7 @@
+import { friends, sendArrow } from '@assets/images/index';
 import React from 'react';
-import { View, Text, Image, Share } from 'react-native';
+import { Image, Share, Text, View } from 'react-native';
 import Button from '../../components/Button/Button';
-import { sendArrow, friends } from '@assets/images/index';
 import useStyles from './InviteAFriend.styles';
 
 const InviteAFriend = () => {

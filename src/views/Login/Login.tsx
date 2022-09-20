@@ -1,22 +1,17 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
-import { useForm, Controller } from 'react-hook-form';
-
+import { hidePassword, showPassword } from '@assets/images/index';
+import { Button, ErrorAlert, Input, Link, Spinner } from '@components/index';
 import { logIn } from '@services/thunks';
-import { Button, Input, Link, ErrorAlert, Spinner } from '@components/index';
-import { showPassword, hidePassword } from '@assets/images/index';
-
+import React, { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import useStyles from './Login.styles';
 
 const Login = () => {
   const styles = useStyles();
   const dispatch = useDispatch();
-  const user = useSelector((state: RootStateOrAny) => state.userReducer);
   const [passwordVisible, setPasswordVisible] = useState(true);
   const [eyeIcon, setEyeIcon] = useState(showPassword);
-
-  console.log('user error ', user?.error);
 
   const {
     control,

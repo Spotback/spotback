@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { FC } from 'react';
-import { View, Text } from 'react-native';
-import Modal from 'react-native-modal';
 import { Button } from '@components/index';
-import useStyles from './ErrorAlert.styles';
-import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
 import { clearUserError } from '@services/thunks';
+import React, { FC } from 'react';
+import { Text, View } from 'react-native';
+import Modal from 'react-native-modal';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import useStyles from './ErrorAlert.styles';
 
-const ErrorAlert = () => {
+const ErrorAlert: FC = () => {
   const styles = useStyles();
   const dispatch = useDispatch();
   const userError = useSelector((state: RootStateOrAny) => state.userReducer.error);

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { Button, Loader } from '@components/index';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { Text, View } from 'react-native';
 import useStyles from './SearchingForMatch.styles';
 
 const SearchingForMatch = () => {

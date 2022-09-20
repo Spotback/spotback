@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
-import { View, Text } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
 import { Button, ErrorAlert, Spinner } from '@components/index';
+import { Picker } from '@react-native-picker/picker';
 import { postSpot } from '@services/thunks';
 import { theme } from '@utils/theme';
+import React, { useState } from 'react';
+import { Text, View } from 'react-native';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import useStyles from './PostMySpot.styles';
 
 const PostMySpot = ({ route: { params } }: Record<any, any>) => {
@@ -24,16 +24,6 @@ const PostMySpot = ({ route: { params } }: Record<any, any>) => {
     } else {
       coordinates = user.pinnedCoordinates;
     }
-    console.log('coordiantes on submit ', coordinates);
-    console.log(
-      'onSumbit ',
-      user.bearer,
-      'coordinates ',
-      coordinates,
-      user.car,
-      spotType,
-      leaveTime
-    );
     dispatch(postSpot(user.bearer, coordinates, user.car, spotType, leaveTime));
   };
 

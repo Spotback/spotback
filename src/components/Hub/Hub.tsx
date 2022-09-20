@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import { View, Text, Image, TouchableOpacity, SafeAreaView } from 'react-native';
-import useStyles from './Hub.styles';
 import { ProfilePic } from '@components/index';
+import React, { FC } from 'react';
+import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import useStyles from './Hub.styles';
 
 interface HubProps {
   title: string;
