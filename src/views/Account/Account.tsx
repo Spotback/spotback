@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { useSelector, RootStateOrAny } from 'react-redux';
+import { editProfile, exit, help, invite } from '@assets/images/index';
+import { ProfilePic, Stars } from '@components/index';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { removeAsyncStorage } from '../../utils/asyncStorage';
-import { Stars, ProfilePic } from '@components/index';
-import { transfers, invite, editProfile, help, creditCard, exit } from '@assets/images/index';
 import useStyles from './Account.styles';
 
 const Account = () => {
@@ -14,7 +14,7 @@ const Account = () => {
   const [imageSource, setImageSource] = useState('');
 
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  console.log('user', user);
+  
   const getProfilePic = () => {
     storage()
       .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)

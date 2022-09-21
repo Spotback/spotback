@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { FC } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
-import Modal from 'react-native-modal';
-import useStyles from './Spinner.styles';
 import { theme } from '@utils/theme';
-import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
+import React, { FC } from 'react';
+import { ActivityIndicator, Text, View } from 'react-native';
+import Modal from 'react-native-modal';
+import { RootStateOrAny, useSelector } from 'react-redux';
+import useStyles from './Spinner.styles';
 
-const Spinner = () => {
+const Spinner: FC = () => {
   const styles = useStyles();
   const userSpinner = useSelector((state: RootStateOrAny) => state.userReducer.spinner);
-  console.log('userspinner ', userSpinner);
   return (
     <Modal
       isVisible={userSpinner}

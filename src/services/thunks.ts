@@ -2,7 +2,7 @@ import {
   CAR_PROFILE_PICTURE_KEY,
   CAR_PROFILE_PICTURE_URL,
   SPOTS_BASE_URL,
-  USERS_BASE_URL,
+  USERS_BASE_URL
 } from '@env';
 import * as RootNavigation from '@navigation/RootNavigation';
 import database from '@react-native-firebase/database';
@@ -10,8 +10,6 @@ import { setAsyncStorage } from '@utils/asyncStorage';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { UserTypes } from './types';
-
-console.log(`${USERS_BASE_URL}/createAccount`);
 
 export const signUp = (
   email: string,

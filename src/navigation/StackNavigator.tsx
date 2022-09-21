@@ -1,25 +1,25 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { RootStackParamsList } from './types';
-import { navigationRef } from './RootNavigation';
+import React from 'react';
 import BackArrow from '../components/BackArrow/BackArrow';
-import Onboarding from '../views/Onboarding/Onboarding';
-import Signup from '../views/Signup/Signup';
-import Login from '../views/Login/Login';
-import Home from '../views/Home/Home';
-import FindMeASpot from '../views/FindMeASpot/FindMeASpot';
-import PostMySpot from '../views/PostMySpot/PostMySpot';
 import Account from '../views/Account/Account';
-import InviteAFriend from '../views/InviteAFriend/InviteAFriend';
 import EditProfile from '../views/EditProfile/EditProfile';
+import FindMeASpot from '../views/FindMeASpot/FindMeASpot';
 import Help from '../views/Help/Help';
+import Home from '../views/Home/Home';
+import InviteAFriend from '../views/InviteAFriend/InviteAFriend';
+import Login from '../views/Login/Login';
+import Onboarding from '../views/Onboarding/Onboarding';
+import PostMySpot from '../views/PostMySpot/PostMySpot';
+import Signup from '../views/Signup/Signup';
+import { navigationRef } from './RootNavigation';
+import { RootStackParamsList } from './types';
 // import Payments from '../views/Payments/Payments';
+import { theme } from '@utils/theme';
+import AuthLoading from '../views/AuthLoading/AuthLoading';
 import SearchingForMatch from '../views/SearchingForMatch/SearchingForMatch';
 import SpotExchange from '../views/SpotExchange/SpotExchange';
 import SpotExchangeComplete from '../views/SpotExchangeComplete/SpotExchangeComplete';
-import AuthLoading from '../views/AuthLoading/AuthLoading';
-import { theme } from '@utils/theme';
 
 const Stack = createStackNavigator<RootStackParamsList>();
 
