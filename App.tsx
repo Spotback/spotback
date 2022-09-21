@@ -4,7 +4,7 @@ import store from './src/services/redux/store';
 import { ThemeProvider } from 'react-native-elements';
 import { theme } from './src/utils/theme';
 import StackNavigator from './src/navigation/StackNavigator';
-import { StripeProvider } from '@stripe/stripe-react-native';
+// import { StripeProvider } from '@stripe/stripe-react-native';
 
 const App = () => {
   return (
