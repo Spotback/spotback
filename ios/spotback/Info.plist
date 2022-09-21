@@ -62,10 +62,9 @@
     <string>fb</string>
     <string>facebook-stories</string>
   </array>
-
-  <!-- <key>NSAppleMusicUsageDescription</key>
-  <string>YOUR TEXT</string>
   <key>NSContactsUsageDescription</key>
+  <string>Spotback needs access to your contacts to share a referral</string>
+  <!-- <key>NSAppleMusicUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSBluetoothAlwaysUsageDescription</key>
   <string>YOUR TEXT</string>
