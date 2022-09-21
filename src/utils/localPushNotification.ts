@@ -1,4 +1,4 @@
-import notifee, { AndroidStyle, AuthorizationStatus, Notification } from '@notifee/react-native';
+import notifee, { AuthorizationStatus } from '@notifee/react-native';
 import { Alert } from 'react-native';
 
 export const onDisplayNotification = async (id, name, title, body, smallIcon?) => {
