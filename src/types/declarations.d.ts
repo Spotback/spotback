@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { RootStackParamsList } from './src/navigation/types';
+import { RootStackParamsList } from '../navigation/types';
 
 declare module 'rn-sliding-view';
 declare module '*.png';

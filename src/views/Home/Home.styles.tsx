@@ -38,6 +38,14 @@ const useStyles = makeStyles((theme: any) =>
       justifyContent: 'center',
       alignItems: 'center',
     },
+    pushNotificationButtonContainer: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      bottom: 200,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     smallButtonContainer: {
       top: 110,
       right: 20,

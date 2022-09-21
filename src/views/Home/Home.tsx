@@ -4,6 +4,7 @@ import Geolocation from '@react-native-community/geolocation';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import { pinnedCoordinates } from '@services/thunks';
+import { onDisplayNotification } from '@utils/localPushNotification';
 import React, { useEffect, useState } from 'react';
 import { Image, LogBox, Platform, ScrollView, Text, View } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
@@ -11,6 +12,7 @@ import { PERMISSIONS, request, RESULTS } from 'react-native-permissions';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import SlidingView from 'rn-sliding-view';
 import useStyles from './Home.styles';
+
 
 const Home = () => {
   const styles = useStyles();
@@ -195,6 +197,15 @@ const Home = () => {
             </View>
           </View>
         )}
+         <View style={styles.pushNotificationButtonContainer}>
+            <View style={styles.spacing}>
+              <Button
+                title="Trigger Push Notification"
+                size="large"
+                onPress={() => onDisplayNotification('default', 'Default Channel', 'Spotback', 'Local push notification')}
+              />
+            </View>
+          </View>
       </View>
 
       <Hub title="SpotNews" bottom onPress={() => setspotNewsVisible(!spotNewsVisible)} />
