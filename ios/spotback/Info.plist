@@ -63,7 +63,7 @@
     <string>facebook-stories</string>
   </array>
 
-  <key>NSAppleMusicUsageDescription</key>
+  <!-- <key>NSAppleMusicUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSContactsUsageDescription</key>
   <string>YOUR TEXT</string>
@@ -90,7 +90,7 @@
   <key>NSSiriUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSUserTrackingUsageDescription</key>
-  <string>YOUR TEXT</string>
+  <string>YOUR TEXT</string> -->
 
   <!-- Keep only the permissions used in your app -->
 
