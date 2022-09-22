@@ -41,15 +41,15 @@
   <!-- Keep only the permissions used in your app -->
 
   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback 1</string>
+  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
   <key>NSLocationAlwaysUsageDescription</key>
-  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback 2 - Depricated</string>
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback 3</string>
+  <!-- <string>Your location is required in order to enjoy a seemless parking experience while using Spotback 2 - Depricated</string>
+  <key>NSLocationWhenInUseUsageDescription</key> -->
+  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
   <key>NSLocationTemporaryUsageDescriptionDictionary</key>
   <dict>
     <key>Spotback</key>
-    <string>Your location is required in order to enjoy a seemless parking experience while using Spotback 4</string>
+    <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
   </dict>
   <key>NSPhotoLibraryUsageDescription</key>
   <string>Test - NSPhotoLibraryUsageDescription</string>
@@ -62,8 +62,8 @@
     <string>fb</string>
     <string>facebook-stories</string>
   </array>
-  <key>NSContactsUsageDescription</key>
-  <string>Spotback needs access to your contacts to share a referral</string>
+  <!-- <key>NSContactsUsageDescription</key>
+  <string>Spotback needs access to your contacts to share a referral</string> -->
   <!-- <key>NSAppleMusicUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSBluetoothAlwaysUsageDescription</key>
