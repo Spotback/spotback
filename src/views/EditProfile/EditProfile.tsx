@@ -7,8 +7,9 @@ import { fetchCarPicture, triggerSpinner, update } from '@services/thunks';
 import { theme } from '@utils/theme';
 import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { Alert, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
+import { PERMISSIONS, request, RESULTS } from 'react-native-permissions';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import useStyles from './EditProfile.styles';
 
@@ -83,7 +84,7 @@ const EditProfile = () => {
     getCarProfilePic();
   }, []);
 
-  const uploadProfilePic = () => {
+  const uploadProfilePic = async () => {
     const options: any = {
       title: 'Pick a new profile pick',
       maxWidth: 256,
@@ -94,28 +95,45 @@ const EditProfile = () => {
         skipBackup: true,
       },
     };
-    launchImageLibrary(options, (response: any) => {
-      if (response.didCancel) {
-        Alert.alert('You did not select any image');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else {
-        const image = response.assets[0].uri;
-        setImageSource(image);
-        console.log('the uri ', image);
-        storage()
-          .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
-          .putFile(image)
-          .then(() => {
-            console.log(`${image} has been successfully uploaded.`);
-            dispatch(triggerSpinner());
-            setTimeout(() => {
-              Alert.alert('Your profile pic is saved');
-            }, 2000);
-          })
-          .catch((e) => console.log('uploading image error => ', e));
+    const granted = await request(
+      Platform.OS === 'ios'
+        ? PERMISSIONS.IOS.PHOTO_LIBRARY
+        : PERMISSIONS.ANDROID.ACCESS_MEDIA_LOCATION,
+      {
+        title: 'Photo Library Access Required',
+        message: 'Spotback needs to Access your photo library',
+        buttonNeutral: 'Ask Me Later',
+        buttonNegative: 'Cancel',
+        buttonPositive: 'OK',
       }
-    });
+    );
+    if (granted === RESULTS.GRANTED) {
+      console.log(granted);
+      launchImageLibrary(options, (response: any) => {
+        if (response.didCancel) {
+          Alert.alert('You did not select any image');
+        } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        } else {
+          const image = response.assets[0].uri;
+          setImageSource(image);
+          console.log('the uri ', image);
+          storage()
+            .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
+            .putFile(image)
+            .then(() => {
+              console.log(`${image} has been successfully uploaded.`);
+              dispatch(triggerSpinner());
+              setTimeout(() => {
+                Alert.alert('Your profile pic is saved');
+              }, 2000);
+            })
+            .catch((e) => console.log('uploading image error => ', e));
+        }
+      });
+    } else {
+      console.log('not granted');
+    }
   };
 
   return (

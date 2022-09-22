@@ -1,8 +1,8 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-# upgraded to 13 from 12 to allow google maps on ios
-platform :ios, '13.0'
+# upgraded to 13 then to 14 from 12 to allow google maps on ios
+platform :ios, '14.0'
 
 target 'spotback' do
 

@@ -39,7 +39,32 @@
 	</dict>
 
   <!-- Keep only the permissions used in your app -->
-  <key>NSAppleMusicUsageDescription</key>
+
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <!-- <string>Your location is required in order to enjoy a seemless parking experience while using Spotback 2 - Depricated</string>
+  <key>NSLocationWhenInUseUsageDescription</key> -->
+  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
+  <key>NSLocationTemporaryUsageDescriptionDictionary</key>
+  <dict>
+    <key>Spotback</key>
+    <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
+  </dict>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Test - NSPhotoLibraryUsageDescription</string>
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+    <string>whatsapp</string>
+    <string>mailto</string>
+    <string>instagram</string>
+    <string>instagram-stories</string>
+    <string>fb</string>
+    <string>facebook-stories</string>
+  </array>
+  <!-- <key>NSContactsUsageDescription</key>
+  <string>Spotback needs access to your contacts to share a referral</string> -->
+  <!-- <key>NSAppleMusicUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSBluetoothAlwaysUsageDescription</key>
   <string>YOUR TEXT</string>
@@ -49,26 +74,11 @@
   <string>YOUR TEXT</string>
   <key>NSCameraUsageDescription</key>
   <string>YOUR TEXT</string>
-  <key>NSContactsUsageDescription</key>
-  <string>YOUR TEXT</string>
   <key>NSFaceIDUsageDescription</key>
   <string>YOUR TEXT</string>
-  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
-  <key>NSLocationAlwaysUsageDescription</key>
-  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
-  <key>NSLocationTemporaryUsageDescriptionDictionary</key>
-  <dict>
-    <key>YOUR-PURPOSE-KEY</key>
-    <string>YOUR TEXT</string>
-  </dict>
-   <key>NSLocationWhenInUseUsageDescription</key>
-   <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
   <key>NSMicrophoneUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSMotionUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSPhotoLibraryUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSPhotoLibraryAddUsageDescription</key>
   <string>YOUR TEXT</string>
@@ -79,7 +89,8 @@
   <key>NSSiriUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSUserTrackingUsageDescription</key>
-  <string>YOUR TEXT</string>
+  <string>YOUR TEXT</string> -->
+
   <!-- Keep only the permissions used in your app -->
 
 	<key>UILaunchStoryboardName</key>
