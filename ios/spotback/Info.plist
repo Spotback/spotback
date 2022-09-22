@@ -43,8 +43,8 @@
   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
   <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
   <key>NSLocationAlwaysUsageDescription</key>
-  <!-- <string>Your location is required in order to enjoy a seemless parking experience while using Spotback 2 - Depricated</string>
-  <key>NSLocationWhenInUseUsageDescription</key> -->
+  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
   <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
   <key>NSLocationTemporaryUsageDescriptionDictionary</key>
   <dict>
