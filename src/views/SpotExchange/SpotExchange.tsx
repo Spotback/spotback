@@ -218,7 +218,7 @@ const SpotExchange = () => {
                     <Text style={styles.modalText}>FF35DG2</Text>
                   </View>
                   <View style={styles.starContainer}>
-                    <Stars starSize={20} starWidth={3} />
+                    <Stars starSize={20} starWidth={3} rating={user.rating}/>
                   </View>
                 </View>
               </TouchableOpacity>

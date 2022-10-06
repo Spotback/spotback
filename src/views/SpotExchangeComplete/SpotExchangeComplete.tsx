@@ -34,7 +34,7 @@ const SpotExchangeComplete = () => {
       <ProfilePic imageSource={imageSource} size="large" />
       <Text style={styles.text}>Users Name</Text>
       <View style={styles.starContainer}>
-        <Stars starSize={30} starWidth={5} disabled={false} />
+        <Stars starSize={30} starWidth={5} disabled={false} rating={user.rating} />
       </View>
 
       <Options

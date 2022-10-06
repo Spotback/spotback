@@ -34,7 +34,7 @@ const Account = () => {
       <View style={styles.subContainer}>
         <ProfilePic imageSource={imageSource} size="large" />
         <View style={styles.starContainer}>
-          <Stars starSize={20} starWidth={5} />
+          <Stars starSize={20} starWidth={5} rating={user.rating}/>
         </View>
         <View style={styles.centerContainer}>
           <Text style={styles.titleText}>
