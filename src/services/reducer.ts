@@ -28,13 +28,14 @@ const initialState = {
   spinner: false,
   error: {},
   transactionId: 'transaction1234',
+  matchInProgress: {},
 };
 
 const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case UserTypes.SIGN_UP:
       console.log('sign up reducer ', action);
-      // // data is returned through user object except for freespots and headers
+      // data is returned through user object except for freespots and headers
       return {
         ...state,
         referrals: action.payload.user.referrals,
@@ -98,7 +99,7 @@ const reducer = (state = initialState, action: any) => {
       return { ...state, spinner: false };
     case UserTypes.MATCH:
       console.log('match reducer ', action);
-      return { ...state, spinner: false };
+      return { ...state, matchInProress: action };
     case UserTypes.PINNED_COORDINATES:
       console.log('coordinates reducer ', action);
       return {

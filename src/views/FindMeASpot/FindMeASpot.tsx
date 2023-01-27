@@ -54,7 +54,7 @@ const FindMeASpot = () => {
   };
 
   const onSubmit = (flag: boolean) => {
-    console.log('coordiantes on submit ', user.bearer, flag, currentLocation, desiredLocation);
+    console.log('coordinates on submit', user.bearer, flag, currentLocation, desiredLocation);
     dispatch(match(user.bearer, currentLocation, flag ? desiredLocation : currentLocation));
   };
 

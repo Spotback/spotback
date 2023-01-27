@@ -11,7 +11,7 @@ const SearchingForMatch = () => {
   return (
     <View style={styles.container}>
       <Loader />
-      <Text style={styles.text}>Searching for a Driver</Text>
+      <Text style={styles.text}>Searching for a match</Text>
       <View style={styles.button}>
         <Button title="Cancel" size="large" onPress={() => navigation.navigate('SpotExchange')} />
       </View>

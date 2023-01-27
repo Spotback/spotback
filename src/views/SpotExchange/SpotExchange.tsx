@@ -21,7 +21,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 import MapView, { Marker, Polyline as GooglePolyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import { RootStateOrAny, useSelector } from 'react-redux';
@@ -32,7 +32,7 @@ const SpotExchange = () => {
   const navigation = useNavigation();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   const transactionId = useSelector((state: RootStateOrAny) => state.userReducer.transactionId);
-
+  console.log('spotExchange User Data ', user);
   const [modalVis, setModalVis] = useState(false);
   const [hubVis, setHubVis] = useState(false);
   const [imageSource, setImageSource] = useState('');
@@ -218,7 +218,7 @@ const SpotExchange = () => {
                     <Text style={styles.modalText}>FF35DG2</Text>
                   </View>
                   <View style={styles.starContainer}>
-                    <Stars starSize={20} starWidth={3} rating={user.rating}/>
+                    <Stars starSize={20} starWidth={3} rating={user.rating} />
                   </View>
                 </View>
               </TouchableOpacity>
