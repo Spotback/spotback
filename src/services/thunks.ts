@@ -11,6 +11,7 @@ import { setAsyncStorage } from '@utils/asyncStorage';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { UserTypes } from './types';
+import { sqsMatchingResMessage } from './sqsMatchingResMessage';
 
 export const signUp = (
   email: string,
@@ -243,6 +244,8 @@ export const match = (bearer: string, currentLocation: string, desiredLocation: 
       )
       .then((res) => {
         console.log('res =>', res);
+        const matchingResponse = sqsMatchingResMessage();
+        console.log('matchingResponse =>', matchingResponse);
         dispatch({
           type: UserTypes.MATCH,
           payload: res.data,
@@ -273,6 +276,15 @@ export const clearUserError = () => {
     dispatch({
       type: UserTypes.ERROR,
       payload: {},
+    });
+  };
+};
+
+export const setUserPositionType = (position: string) => {
+  return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.USER_SPOT_POSITION,
+      payload: position,
     });
   };
 };

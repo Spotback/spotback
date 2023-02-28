@@ -7,6 +7,7 @@ import Polyline from '@mapbox/polyline';
 import database from '@react-native-firebase/database';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
+import { UserSpotPosition } from '@services/types';
 import { theme } from '@utils/theme';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -186,7 +187,7 @@ const SpotExchange = () => {
           </MapView>
         </View>
         <Hub
-          title="Arriving in 5 Minutes"
+          title={`Arriving in ${user.matchedUsersData.match.etaFromSpot.value} Minutes`}
           client
           imageSource={imageSource}
           balance={15}
@@ -298,13 +299,17 @@ const SpotExchange = () => {
           keyboardVerticalOffset={10}
           enabled
           style={styles.bottomContainer}>
-          <View style={styles.startNavButton}>
-            <Button
-              title="Press to Start Navigation"
-              size="large"
-              onPress={() => openGoogleMapsIntent('32.946709, -96.952667', '32.951520, -96.955670')}
-            />
-          </View>
+          {user.UserSpotPosition === UserSpotPosition.DRIVER ? (
+            <View style={styles.startNavButton}>
+              <Button
+                title="Press to Start Navigation"
+                size="large"
+                onPress={() =>
+                  openGoogleMapsIntent('32.946709, -96.952667', '32.951520, -96.955670')
+                }
+              />
+            </View>
+          ) : null}
           <View style={styles.spotSwitchCompleteContainer}>
             <Button
               title="Spot Switch complete"

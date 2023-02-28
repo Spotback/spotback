@@ -5,7 +5,7 @@ import useStyles from './Link.styles';
 interface LinkProps {
   extraText?: string;
   linkText: string;
-  onPress?: any;
+  onPress?: () => void;
 }
 
 const Link: FC<LinkProps> = ({ extraText, linkText, onPress }) => {

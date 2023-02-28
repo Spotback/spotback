@@ -1,4 +1,4 @@
-import { UserTypes } from './types';
+import { UserTypes, UserSpotPosition } from './types';
 
 const initialState = {
   referrals: [],
@@ -28,7 +28,10 @@ const initialState = {
   spinner: false,
   error: {},
   transactionId: 'transaction1234',
-  matchInProgress: {},
+  // DRIVER is person who is driving to the spot and choose the "find me a spot" option
+  // PARKER is person who chose "post my spot" option and is waiting for the driver to arrive
+  userSpotPosition: UserSpotPosition,
+  matchedUsersData: {},
 };
 
 const reducer = (state = initialState, action: any) => {
@@ -99,7 +102,7 @@ const reducer = (state = initialState, action: any) => {
       return { ...state, spinner: false };
     case UserTypes.MATCH:
       console.log('match reducer ', action);
-      return { ...state, matchInProress: action };
+      return { ...state, matchedUsersData: action.payload };
     case UserTypes.PINNED_COORDINATES:
       console.log('coordinates reducer ', action);
       return {
@@ -128,6 +131,11 @@ const reducer = (state = initialState, action: any) => {
           carProfilePictureUrl: action.payload,
           spinner: false,
         },
+      };
+    case UserTypes.USER_SPOT_POSITION:
+      return {
+        ...state,
+        UserSpotPosition: action.payload,
       };
     default:
       return state;
