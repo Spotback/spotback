@@ -7,7 +7,7 @@ interface HubProps {
   title: string;
   imageSource?: any;
   balance?: number;
-  onPress: any;
+  onPress: () => void;
   top?: boolean;
   bottom?: boolean;
   host?: boolean;

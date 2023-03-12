@@ -1,6 +1,6 @@
 # spotback
 
-Spotback React Native for Android
+Spotback React Native
 Full React Native Environment Set Up Here: https://reactnative.dev/docs/environment-setup
 
 ## First
@@ -139,6 +139,9 @@ Npm start --reset-cache
 
 IOS NUKE
 rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && cd .. && npm install --force && cd ios && pod install && cd .. && npm start --reset-cache
+
+Just IOS
+rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && pod install
 
 IOS/ANDROID NUKE
 rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && cd .. && cd android/app && rm -rf build && cd .. && cd .. && npm install --force && cd ios && pod install && cd .. && npm start --reset-cache

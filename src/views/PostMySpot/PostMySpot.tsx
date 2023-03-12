@@ -1,11 +1,12 @@
 import { Button, ErrorAlert, Spinner } from '@components/index';
 import { Picker } from '@react-native-picker/picker';
-import { postSpot } from '@services/thunks';
+import { postSpot, setUserPositionType } from '@services/thunks';
 import { theme } from '@utils/theme';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import useStyles from './PostMySpot.styles';
+import { UserSpotPosition } from '@services/types';
 
 const PostMySpot = ({ route: { params } }: Record<any, any>) => {
   const styles = useStyles();
@@ -25,6 +26,7 @@ const PostMySpot = ({ route: { params } }: Record<any, any>) => {
       coordinates = user.pinnedCoordinates;
     }
     dispatch(postSpot(user.bearer, coordinates, user.car, spotType, leaveTime));
+    dispatch(setUserPositionType(UserSpotPosition.PARKER));
   };
 
   return (

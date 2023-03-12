@@ -1,12 +1,13 @@
 import { spotPin2 } from '@assets/images/index';
 import { Button, ErrorAlert, Input, Spinner } from '@components/index';
 import Geolocation from '@react-native-community/geolocation';
-import { match } from '@services/thunks';
+import { match, setUserPositionType } from '@services/thunks';
 import React, { useEffect, useState } from 'react';
 import { Platform, View } from 'react-native';
 import { PERMISSIONS, request, RESULTS } from 'react-native-permissions';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import useStyles from './FindMeASpot.styles';
+import { UserSpotPosition } from '@services/types';
 
 const FindMeASpot = () => {
   const styles = useStyles();
@@ -54,8 +55,9 @@ const FindMeASpot = () => {
   };
 
   const onSubmit = (flag: boolean) => {
-    console.log('coordiantes on submit ', user.bearer, flag, currentLocation, desiredLocation);
+    console.log('coordinates on submit', user.bearer, flag, currentLocation, desiredLocation);
     dispatch(match(user.bearer, currentLocation, flag ? desiredLocation : currentLocation));
+    dispatch(setUserPositionType(UserSpotPosition.DRIVER));
   };
 
   useEffect(() => {

@@ -8,7 +8,7 @@ interface ButtonProps {
   backgroundColor?: string;
   size?: string;
   icon?: any;
-  onPress?: any;
+  onPress?: () => void;
   customButtonStyles?: any;
   customTextStyles?: any;
 }

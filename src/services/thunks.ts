@@ -1,8 +1,9 @@
 import {
   CAR_PROFILE_PICTURE_KEY,
   CAR_PROFILE_PICTURE_URL,
+  MATCHING_BASE_URL,
   SPOTS_BASE_URL,
-  USERS_BASE_URL
+  USERS_BASE_URL,
 } from '@env';
 import * as RootNavigation from '@navigation/RootNavigation';
 import database from '@react-native-firebase/database';
@@ -10,6 +11,7 @@ import { setAsyncStorage } from '@utils/asyncStorage';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { UserTypes } from './types';
+import { sqsMatchingResMessage } from './sqsMatchingResMessage';
 
 export const signUp = (
   email: string,
@@ -194,10 +196,6 @@ export const postSpot = (
   leaveTime: number
 ) => {
   return (dispatch: any) => {
-    dispatch({
-      type: UserTypes.SPINNER,
-      payload: true,
-    });
     axios
       .post(
         `${SPOTS_BASE_URL}/createSpot`,
@@ -230,37 +228,37 @@ export const postSpot = (
 };
 
 export const match = (bearer: string, currentLocation: string, desiredLocation: string) => {
+  console.log('coordinates on submit match =>', bearer, currentLocation, desiredLocation);
   return (dispatch: any) => {
-    // dispatch({
-    //   type: UserTypes.SPINNER,
-    //   payload: true,
-    // });
-    // axios
-    //   .post(
-    //     `${MATCHING_BASE_URL}/match`,
-    //     {
-    //       currentLocation,
-    //       desiredLocation,
-    //     },
-    //     {
-    //       headers: { 'spotback-correlation-id': uuidv4(), Bearer: bearer },
-    //     }
-    //   )
-    //   .then((res) => {
-    //     console.log('res ', res);
-    //     dispatch({
-    //       type: UserTypes.POST_SPOT,
-    //       payload: res.data,
-    //     });
     RootNavigation.navigate('SearchingForMatch');
-    // })
-    // .catch((err) => {
-    //   console.log('err ', err.response.data);
-    //   dispatch({
-    //     type: UserTypes.ERROR,
-    //     payload: err.response.data,
-    //   });
-    // });
+    axios
+      .post(
+        `${MATCHING_BASE_URL}/match`,
+        {
+          currentLocation,
+          desiredLocation,
+        },
+        {
+          headers: { 'spotback-correlation-id': uuidv4(), Bearer: bearer },
+        }
+      )
+      .then((res) => {
+        console.log('res =>', res);
+        const matchingResponse = sqsMatchingResMessage();
+        console.log('matchingResponse =>', matchingResponse);
+        dispatch({
+          type: UserTypes.MATCH,
+          payload: res.data,
+        });
+        RootNavigation.navigate('SpotExchange');
+      })
+      .catch((err) => {
+        console.log('err ', err.response.data);
+        dispatch({
+          type: UserTypes.ERROR,
+          payload: err.response.data,
+        });
+      });
   };
 };
 
@@ -278,6 +276,15 @@ export const clearUserError = () => {
     dispatch({
       type: UserTypes.ERROR,
       payload: {},
+    });
+  };
+};
+
+export const setUserPositionType = (position: string) => {
+  return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.USER_SPOT_POSITION,
+      payload: position,
     });
   };
 };
