@@ -13,7 +13,6 @@ import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import SlidingView from 'rn-sliding-view';
 import useStyles from './Home.styles';
 
-
 const Home = () => {
   const styles = useStyles();
   const navigation = useNavigation();
@@ -197,15 +196,22 @@ const Home = () => {
             </View>
           </View>
         )}
-         <View style={styles.pushNotificationButtonContainer}>
-            <View style={styles.spacing}>
-              <Button
-                title="Trigger Push Notification"
-                size="large"
-                onPress={() => onDisplayNotification('default', 'Default Channel', 'Spotback', 'Local push notification')}
-              />
-            </View>
+        <View style={styles.pushNotificationButtonContainer}>
+          <View style={styles.spacing}>
+            <Button
+              title="Trigger Push Notification"
+              size="large"
+              onPress={() =>
+                onDisplayNotification(
+                  'default',
+                  'Default Channel',
+                  'Spotback',
+                  'Local push notification'
+                )
+              }
+            />
           </View>
+        </View>
       </View>
 
       <Hub title="SpotNews" bottom onPress={() => setspotNewsVisible(!spotNewsVisible)} />

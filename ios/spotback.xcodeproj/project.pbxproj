@@ -9,17 +9,15 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* spotbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* spotbackTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2298E0F8C47667E53E95E249 /* libPods-spotback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C020CCCCBF362A48128FD91C /* libPods-spotback.a */; };
+		248B983F74D4517A7F13FB55 /* libPods-spotback-spotbackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 932A848023CD91429FD74ECF /* libPods-spotback-spotbackTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* spotbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* spotbackTests.m */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		B53114F31F440E10DCED8A79 /* libPods-spotback-spotbackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F70CF09E326EDB8516153770 /* libPods-spotback-spotbackTests.a */; };
+		D19A96AB2F6DE02719751FDF /* libPods-spotback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC57B6AAB2BF5A39B04E9070 /* libPods-spotback.a */; };
 		E97C3430284C06F000481AA0 /* Fix.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97C342F284C06F000481AA0 /* Fix.swift */; };
-		E986A22A285C001000EEB5D2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E986A229285C001000EEB5D2 /* GoogleService-Info.plist */; };
+		E9C31D8629BE5578002C9BC3 /* spotback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C31D8529BE5578002C9BC3 /* spotback.swift */; };
+		E9FAB28229BEBD4A00AC4DC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E986A229285C001000EEB5D2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,26 +42,27 @@
 		00E356EE1AD99517003FC87E /* spotbackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spotbackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* spotbackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = spotbackTests.m; sourceTree = "<group>"; };
-		0A8DC41BDA702E33AE01D631 /* Pods-spotback-spotbackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotback-spotbackTests.debug.xcconfig"; path = "Target Support Files/Pods-spotback-spotbackTests/Pods-spotback-spotbackTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0DA27B5B4008F14340C2B0A1 /* Pods-spotback-spotbackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotback-spotbackTests.release.xcconfig"; path = "Target Support Files/Pods-spotback-spotbackTests/Pods-spotback-spotbackTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* spotback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spotback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = spotback/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = spotback/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = spotback/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = spotback/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = spotback/main.m; sourceTree = "<group>"; };
-		23EC78494BCDC4236ECEFACA /* Pods-spotback.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotback.release.xcconfig"; path = "Target Support Files/Pods-spotback/Pods-spotback.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* spotback-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "spotback-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* spotback-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "spotback-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = spotback/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9A6BBB3A3D31F8502388E30D /* Pods-spotback-spotbackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotback-spotbackTests.release.xcconfig"; path = "Target Support Files/Pods-spotback-spotbackTests/Pods-spotback-spotbackTests.release.xcconfig"; sourceTree = "<group>"; };
-		C020CCCCBF362A48128FD91C /* libPods-spotback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-spotback.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C859CA1DA6CEA77721729F6C /* Pods-spotback.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotback.debug.xcconfig"; path = "Target Support Files/Pods-spotback/Pods-spotback.debug.xcconfig"; sourceTree = "<group>"; };
+		83314C9A913A402C9C0090AF /* Pods-spotback.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotback.release.xcconfig"; path = "Target Support Files/Pods-spotback/Pods-spotback.release.xcconfig"; sourceTree = "<group>"; };
+		932A848023CD91429FD74ECF /* libPods-spotback-spotbackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-spotback-spotbackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		962A9FCBAAF761B411E6D5A6 /* Pods-spotback.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotback.debug.xcconfig"; path = "Target Support Files/Pods-spotback/Pods-spotback.debug.xcconfig"; sourceTree = "<group>"; };
 		E97C342E284C06EF00481AA0 /* spotback-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "spotback-Bridging-Header.h"; sourceTree = "<group>"; };
 		E97C342F284C06F000481AA0 /* Fix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fix.swift; sourceTree = "<group>"; };
 		E986A229285C001000EEB5D2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E9C31D8529BE5578002C9BC3 /* spotback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spotback.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F70CF09E326EDB8516153770 /* libPods-spotback-spotbackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-spotback-spotbackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F337ECBCB35AB2F0248BEF4D /* Pods-spotback-spotbackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotback-spotbackTests.debug.xcconfig"; path = "Target Support Files/Pods-spotback-spotbackTests/Pods-spotback-spotbackTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FC57B6AAB2BF5A39B04E9070 /* libPods-spotback.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-spotback.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B53114F31F440E10DCED8A79 /* libPods-spotback-spotbackTests.a in Frameworks */,
+				248B983F74D4517A7F13FB55 /* libPods-spotback-spotbackTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2298E0F8C47667E53E95E249 /* libPods-spotback.a in Frameworks */,
+				D19A96AB2F6DE02719751FDF /* libPods-spotback.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +126,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				E9C31D8529BE5578002C9BC3 /* spotback.swift */,
 			);
 			name = spotback;
 			sourceTree = "<group>";
@@ -136,8 +136,8 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				C020CCCCBF362A48128FD91C /* libPods-spotback.a */,
-				F70CF09E326EDB8516153770 /* libPods-spotback-spotbackTests.a */,
+				FC57B6AAB2BF5A39B04E9070 /* libPods-spotback.a */,
+				932A848023CD91429FD74ECF /* libPods-spotback-spotbackTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,10 +145,10 @@
 		4EA9A8C673DFE738BF8C49DC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C859CA1DA6CEA77721729F6C /* Pods-spotback.debug.xcconfig */,
-				23EC78494BCDC4236ECEFACA /* Pods-spotback.release.xcconfig */,
-				0A8DC41BDA702E33AE01D631 /* Pods-spotback-spotbackTests.debug.xcconfig */,
-				9A6BBB3A3D31F8502388E30D /* Pods-spotback-spotbackTests.release.xcconfig */,
+				962A9FCBAAF761B411E6D5A6 /* Pods-spotback.debug.xcconfig */,
+				83314C9A913A402C9C0090AF /* Pods-spotback.release.xcconfig */,
+				F337ECBCB35AB2F0248BEF4D /* Pods-spotback-spotbackTests.debug.xcconfig */,
+				0DA27B5B4008F14340C2B0A1 /* Pods-spotback-spotbackTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -196,12 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "spotbackTests" */;
 			buildPhases = (
-				27DBA14396373C5336DF2D66 /* [CP] Check Pods Manifest.lock */,
+				F963728E1A719C7010143D4C /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C18D5C38B40D1B133E845B0E /* [CP] Copy Pods Resources */,
-				147531E20E71618B839F218F /* [CP] Embed Pods Frameworks */,
+				2C5610403254782043E7D390 /* [CP] Embed Pods Frameworks */,
+				AA13E21BA2F074BDA5A7168E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,15 +217,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "spotback" */;
 			buildPhases = (
-				C12BC696CF846B653BC28DEA /* [CP] Check Pods Manifest.lock */,
+				024F1B777A88A3DC5635D992 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				4A226CD4764D467FAAB2E4FF /* [CP] Copy Pods Resources */,
-				6E5A9ED3215EC66E8738AA9A /* [CP] Embed Pods Frameworks */,
-				FDAC12A3A8BC833100F10316 /* [CP-User] [RNFB] Core Configuration */,
+				369DE0CE1AD9C4F2F2FA2BD3 /* [CP] Embed Pods Frameworks */,
+				6FD0E032EFD2A3EE24F27CEE /* [CP] Copy Pods Resources */,
+				25A244E31178C0288481A936 /* [CP-User] [RNFB] Core Configuration */,
 			);
 			buildRules = (
 			);
@@ -333,9 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				E986A22A285C001000EEB5D2 /* GoogleService-Info.plist in Resources */,
+				E9FAB28229BEBD4A00AC4DC5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +341,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,27 +368,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		147531E20E71618B839F218F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-spotback-spotbackTests/Pods-spotback-spotbackTests-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spotback-spotbackTests/Pods-spotback-spotbackTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		27DBA14396373C5336DF2D66 /* [CP] Check Pods Manifest.lock */ = {
+		024F1B777A88A3DC5635D992 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -406,11 +383,54 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-spotback-spotbackTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-spotback-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25A244E31178C0288481A936 /* [CP-User] [RNFB] Core Configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "[CP-User] [RNFB] Core Configuration";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  _RN_ROOT_EXISTS=$(ruby -e \"require 'rubygems';require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\" || echo '')\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
+		};
+		2C5610403254782043E7D390 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spotback-spotbackTests/Pods-spotback-spotbackTests-frameworks.sh",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxAccounts/MapboxAccounts.framework/MapboxAccounts",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxNavigationNative/MapboxNavigationNative.framework/MapboxNavigationNative",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxAccounts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxNavigationNative.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spotback-spotbackTests/Pods-spotback-spotbackTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
@@ -427,7 +447,37 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		4A226CD4764D467FAAB2E4FF /* [CP] Copy Pods Resources */ = {
+		369DE0CE1AD9C4F2F2FA2BD3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spotback/Pods-spotback-frameworks.sh",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxAccounts/MapboxAccounts.framework/MapboxAccounts",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxCommon/MapboxCommon.framework/MapboxCommon",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MapboxNavigationNative/MapboxNavigationNative.framework/MapboxNavigationNative",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxAccounts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCommon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxNavigationNative.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spotback/Pods-spotback-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FD0E032EFD2A3EE24F27CEE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -435,6 +485,125 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-spotback/Pods-spotback-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ar.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ar.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/Contents.json",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Base.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Base.lproj/Navigation.storyboard",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Base.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/bg.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ca.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ca.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ca.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/da.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/da.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/da.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/de.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/de.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/de.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/el.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/el.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/el.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/en.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/es.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/es.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/es.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fa.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fr.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fr.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fr.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/he.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/he.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/he.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/hu.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/hu.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/hu.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/it.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ja.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ja.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ja.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ko.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ko.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ko.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/lt.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/nl.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-BR.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-BR.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-PT.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-PT.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-PT.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ru.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ru.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ru.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sl.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sv.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sv.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sv.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/tr.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/tr.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/tr.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/uk.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/uk.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/uk.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/vi.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/vi.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/vi.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/yo.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/yo.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/yo.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/zh-Hans.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/zh-Hans.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/zh-Hant.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/carplay",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/close.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/exit-left.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/exit-right.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/feedback",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/location.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/minus.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/overview.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/pan-map.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/plus.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/recenter.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/report_checkmark.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/reroute-sound.dataset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/RouteAnnotations",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/scroll.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/search-monocle.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/star.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/triangle.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/volume_off.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/volume_up.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ar.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Base.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/bg.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ca.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/da.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/de.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/el.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/en.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/es.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fa.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fr.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/he.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/hu.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/it.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ja.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ko.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/lt.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/nl.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-BR.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-PT.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ru.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sl.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sv.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/tr.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/uk.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/vi.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/yo.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/zh-Hans.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/zh-Hant.lproj",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -456,6 +625,61 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Localizable.strings",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Navigation.strings",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Contents.json",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Navigation.storyboardc",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Localizable.stringsdict",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/carplay",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/close.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/exit-left.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/exit-right.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/feedback",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/location.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/minus.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/overview.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pan-map.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/plus.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/recenter.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/report_checkmark.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/reroute-sound.dataset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RouteAnnotations",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/scroll.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/search-monocle.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/star.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/triangle.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/volume_off.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/volume_up.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ar.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Base.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/bg.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ca.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/da.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/de.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/el.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/es.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fa.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fr.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/he.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/hu.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/it.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ja.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ko.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lt.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/nl.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pt-BR.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pt-PT.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ru.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sl.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sv.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/tr.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/uk.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/vi.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/yo.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hant.lproj",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -479,49 +703,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spotback/Pods-spotback-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6E5A9ED3215EC66E8738AA9A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-spotback/Pods-spotback-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spotback/Pods-spotback-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C12BC696CF846B653BC28DEA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-spotback-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C18D5C38B40D1B133E845B0E /* [CP] Copy Pods Resources */ = {
+		AA13E21BA2F074BDA5A7168E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -529,6 +711,125 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-spotback-spotbackTests/Pods-spotback-spotbackTests-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ar.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ar.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/Contents.json",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Base.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Base.lproj/Navigation.storyboard",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Base.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/bg.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ca.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ca.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ca.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/da.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/da.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/da.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/de.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/de.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/de.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/el.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/el.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/el.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/en.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/es.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/es.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/es.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fa.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fr.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fr.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fr.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/he.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/he.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/he.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/hu.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/hu.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/hu.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/it.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ja.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ja.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ja.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ko.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ko.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ko.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/lt.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/nl.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-BR.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-BR.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-PT.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-PT.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-PT.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ru.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ru.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ru.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sl.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sv.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sv.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sv.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/tr.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/tr.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/tr.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/uk.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/uk.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/uk.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/vi.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/vi.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/vi.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/yo.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/yo.lproj/Localizable.stringsdict",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/yo.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/zh-Hans.lproj/Localizable.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/zh-Hans.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/zh-Hant.lproj/Navigation.strings",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/carplay",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/close.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/exit-left.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/exit-right.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/feedback",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/location.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/minus.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/overview.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/pan-map.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/plus.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/recenter.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/report_checkmark.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/reroute-sound.dataset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/RouteAnnotations",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/scroll.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/search-monocle.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/star.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/triangle.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/volume_off.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets/volume_up.imageset",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ar.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Assets.xcassets",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/Base.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/bg.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ca.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/da.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/de.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/el.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/en.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/es.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fa.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/fr.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/he.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/hu.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/it.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ja.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ko.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/lt.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/nl.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-BR.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/pt-PT.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/ru.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sl.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/sv.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/tr.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/uk.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/vi.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/yo.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/zh-Hans.lproj",
+				"${PODS_ROOT}/MapboxNavigation/Sources/MapboxNavigation/Resources/zh-Hant.lproj",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -550,6 +851,61 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Localizable.strings",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Navigation.strings",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Contents.json",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Navigation.storyboardc",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Localizable.stringsdict",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/carplay",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/close.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/exit-left.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/exit-right.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/feedback",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/location.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/minus.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/overview.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pan-map.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/plus.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/recenter.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/report_checkmark.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/reroute-sound.dataset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RouteAnnotations",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/scroll.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/search-monocle.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/star.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/triangle.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/volume_off.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/volume_up.imageset",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ar.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Base.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/bg.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ca.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/da.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/de.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/el.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/es.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fa.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fr.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/he.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/hu.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/it.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ja.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ko.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lt.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/nl.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pt-BR.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pt-PT.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ru.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sl.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sv.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/tr.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/uk.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/vi.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/yo.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hant.lproj",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -571,6 +927,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spotback-spotbackTests/Pods-spotback-spotbackTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F963728E1A719C7010143D4C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-spotback-spotbackTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -611,19 +989,6 @@
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FDAC12A3A8BC833100F10316 /* [CP-User] [RNFB] Core Configuration */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			name = "[CP-User] [RNFB] Core Configuration";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"info:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"info:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"info: -> RNFB build script started\"\necho \"info: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"info:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"info:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  _RN_ROOT_EXISTS=$(ruby -e \"require 'rubygems';require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\" || echo '')\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"info: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"info: <- RNFB build script finished\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -639,6 +1004,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C31D8629BE5578002C9BC3 /* spotback.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				E97C3430284C06F000481AA0 /* Fix.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
@@ -680,7 +1046,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A8DC41BDA702E33AE01D631 /* Pods-spotback-spotbackTests.debug.xcconfig */;
+			baseConfigurationReference = F337ECBCB35AB2F0248BEF4D /* Pods-spotback-spotbackTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -704,7 +1070,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A6BBB3A3D31F8502388E30D /* Pods-spotback-spotbackTests.release.xcconfig */;
+			baseConfigurationReference = 0DA27B5B4008F14340C2B0A1 /* Pods-spotback-spotbackTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -725,7 +1091,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C859CA1DA6CEA77721729F6C /* Pods-spotback.debug.xcconfig */;
+			baseConfigurationReference = 962A9FCBAAF761B411E6D5A6 /* Pods-spotback.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -733,13 +1099,14 @@
 				DEVELOPMENT_TEAM = UTM4JJV7Y6;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = spotback/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = spotback;
 				SWIFT_OBJC_BRIDGING_HEADER = "spotback-Bridging-Header.h";
@@ -751,20 +1118,21 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23EC78494BCDC4236ECEFACA /* Pods-spotback.release.xcconfig */;
+			baseConfigurationReference = 83314C9A913A402C9C0090AF /* Pods-spotback.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UTM4JJV7Y6;
 				INFOPLIST_FILE = spotback/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = spotback;
 				SWIFT_OBJC_BRIDGING_HEADER = "spotback-Bridging-Header.h";
@@ -928,7 +1296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -979,7 +1347,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
