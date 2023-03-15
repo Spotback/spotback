@@ -1,3 +1,4 @@
+import { AWS_ACCESS_KEY_ID, AWS_SECRET_KEY_ID } from '@env';
 import 'react-native-url-polyfill/auto';
 import 'react-native-get-random-values';
 import { ReceiveMessageCommand, DeleteMessageCommand, SQSClient } from '@aws-sdk/client-sqs';
@@ -13,8 +14,8 @@ const params = {
 };
 const sqsClient = new SQSClient({
   credentials: {
-    accessKeyId: '',
-    secretAccessKey: '',
+    accessKeyId: AWS_ACCESS_KEY_ID,
+    secretAccessKey: AWS_SECRET_KEY_ID,
   },
   region: REGION,
 });
@@ -23,7 +24,7 @@ export const sqsMatchingResMessage = async () => {
     let responseToJSON;
     const data = await sqsClient.send(new ReceiveMessageCommand(params));
     if (data.Messages) {
-      console.log('Success ', JSON.parse(data.Messages[0].Body as string));
+      console.log('Success sqsMatchingResMessage', JSON.parse(data.Messages[0].Body as string));
       responseToJSON = JSON.parse(data.Messages[0].Body as string);
       const deleteParams = {
         QueueUrl: queueURL,
@@ -31,7 +32,7 @@ export const sqsMatchingResMessage = async () => {
       };
       try {
         const data = await sqsClient.send(new DeleteMessageCommand(deleteParams));
-        console.log('Message deleted', data);
+        console.log('Message deleted sqsMatchingResMessage', data);
       } catch (err) {
         console.log('Error', err);
       }

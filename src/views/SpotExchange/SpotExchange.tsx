@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
-import { driverCar, phone, sendMessage, spotPinGold } from '@assets/images/index';
+import { driverCar, phone, sendMessage, spotPinGold, exit } from '@assets/images/index';
 import { Button, Hub, Options, Stars } from '@components/index';
 import { GOOGLE_API_KEY } from '@env';
 import Polyline from '@mapbox/polyline';
@@ -32,23 +32,23 @@ import { Coordinate } from 'react-native-maps';
 
 const SpotExchange = () => {
   const styles = useStyles();
+
   const navigation = useNavigation();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   const transactionId = useSelector((state: RootStateOrAny) => state.userReducer.transactionId);
 
-  const [modalVis, setModalVis] = useState(false);
   const [imageSource, setImageSource] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState({});
-  const [secondaryModalVis, setSecondaryModalVis] = useState({
+  const [userHubModalVis, setuserHubModalVis] = useState(false);
+  const [cancelCompleteModalVis, setcancelCompleteModalVis] = useState({
     visible: false,
     type: 'cancelTransaction' || 'spotSwitchComplete',
   });
-
+  const [youHaveArrivedModalVis, setYouHaveArrivedModalVis] = useState(false);
   // MabBox Coordinates
   const [currentLocation, setCurrentlocation] = useState<number[]>([]);
   const [desiredLocation, setDesiredLocation] = useState<number[]>([]);
-
   // MabBox Coordinate
 
   // google maps navigation
@@ -159,11 +159,12 @@ const SpotExchange = () => {
             origin={currentLocation as Coordinate}
             destination={desiredLocation as Coordinate}
             shouldSimulateRoute
-            showsEndOfRouteFeedback
+            // showsEndOfRouteFeedback
             onLocationChange={(event) => {
               const { latitude, longitude } = event.nativeEvent;
             }}
             onRouteProgressChange={(event) => {
+              // TODO: Send this info to the other user via firebase and drawn their map towards them
               const { distanceTraveled, durationRemaining, fractionTraveled, distanceRemaining } =
                 event.nativeEvent;
             }}
@@ -177,26 +178,34 @@ const SpotExchange = () => {
             }}
             onArrive={() => {
               // Called when you arrive at the destination.
+              setYouHaveArrivedModalVis(true);
+              setuserHubModalVis(true);
             }}
           />
         </View>
-
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={modalVis}
-          onRequestClose={() => {
-            setModalVis(!modalVis);
-          }}>
-          <TouchableOpacity
-            onPress={() => setModalVis(!modalVis)}
-            style={styles.mainCommunicationsHub}>
+        {youHaveArrivedModalVis ? (
+          <View style={styles.youHaveArrivedContainer}>
+            <Text style={[styles.text, { fontSize: 30 }]}>You Have Arrived!</Text>
+            <Text style={[styles.text, { textAlign: 'center' }]}>
+              When you have succsesfully switched press the "Spot Switch Complete" button.
+            </Text>
+          </View>
+        ) : null}
+        {/* User hub and communication Modal */}
+        {userHubModalVis ? (
+          <View style={styles.mainCommunicationsHub}>
+            <TouchableOpacity
+              style={styles.communicationHubCloseX}
+              onPress={() => setuserHubModalVis(false)}>
+              <Image style={styles.xImage} source={exit} />
+            </TouchableOpacity>
             <Text style={styles.text}>Walter White</Text>
             <Text style={styles.text}>BMW, 3 Series, Black</Text>
             <Text style={styles.text}>FF35DG2</Text>
             <View style={styles.starContainer}>
               <Stars starSize={20} starWidth={3} rating={user.rating} />
             </View>
+
             <View style={styles.transactionsButtonContainer}>
               <Button
                 size="small"
@@ -204,22 +213,22 @@ const SpotExchange = () => {
                 backgroundColor={theme.colors.light}
                 titleColor={theme.colors.error}
                 onPress={() => {
-                  setSecondaryModalVis({
-                    visible: !secondaryModalVis.visible,
+                  setcancelCompleteModalVis({
+                    visible: !cancelCompleteModalVis.visible,
                     type: 'cancelTransaction',
                   });
-                  setModalVis(!modalVis);
+                  setuserHubModalVis(!userHubModalVis);
                 }}
               />
               <Button
                 title="Spot Switch complete"
                 size="small"
                 onPress={() => {
-                  setSecondaryModalVis({
-                    visible: !secondaryModalVis.visible,
+                  setcancelCompleteModalVis({
+                    visible: !cancelCompleteModalVis.visible,
                     type: 'spotSwitchComplete',
                   });
-                  setModalVis(!modalVis);
+                  setuserHubModalVis(!userHubModalVis);
                 }}
               />
             </View>
@@ -273,48 +282,54 @@ const SpotExchange = () => {
                 />
               </View>
             </View>
-          </TouchableOpacity>
-        </Modal>
+          </View>
+        ) : null}
+
+        {/* Cancel or Complete Ride Modal */}
         <Modal
           animationType="fade"
           transparent={true}
-          visible={secondaryModalVis.visible}
+          visible={cancelCompleteModalVis.visible}
           onRequestClose={() => {
-            setSecondaryModalVis({
-              visible: !secondaryModalVis.visible,
+            setcancelCompleteModalVis({
+              visible: !cancelCompleteModalVis.visible,
               type: 'cancelTransaction',
             });
           }}>
           <View style={styles.innerModalContainer}>
             <Options
               leftButtonColor={
-                secondaryModalVis.type === 'cancelTransaction'
+                cancelCompleteModalVis.type === 'cancelTransaction'
                   ? theme.colors.error
                   : theme.colors.light
               }
               rightButtonColor={
-                secondaryModalVis.type === 'cancelTransaction'
+                cancelCompleteModalVis.type === 'cancelTransaction'
                   ? theme.colors.success
                   : theme.colors.light
               }
-              leftButtonTitle={secondaryModalVis.type === 'cancelTransaction' ? 'Yes' : 'Complete'}
-              rightButtonTitle={secondaryModalVis.type === 'cancelTransaction' ? 'No' : 'Not Yet'}
+              leftButtonTitle={
+                cancelCompleteModalVis.type === 'cancelTransaction' ? 'Yes' : 'Complete'
+              }
+              rightButtonTitle={
+                cancelCompleteModalVis.type === 'cancelTransaction' ? 'No' : 'Not Yet'
+              }
               type="standard"
               onPressLeft={() => {
-                setSecondaryModalVis({
-                  visible: !secondaryModalVis.visible,
+                setcancelCompleteModalVis({
+                  visible: !cancelCompleteModalVis.visible,
                   type: 'cancelTransaction',
                 }),
                   navigation.navigate('SpotExchangeComplete');
               }}
               onPressRight={() =>
-                setSecondaryModalVis({
-                  visible: !secondaryModalVis.visible,
+                setcancelCompleteModalVis({
+                  visible: !cancelCompleteModalVis.visible,
                   type: 'cancelTransaction',
                 })
               }
               texts={
-                secondaryModalVis.type === 'cancelTransaction'
+                cancelCompleteModalVis.type === 'cancelTransaction'
                   ? [
                       'Are you sure you want to cancel?',
                       'If you cancel during this transaction a fee may apply.',
@@ -327,18 +342,22 @@ const SpotExchange = () => {
             />
           </View>
         </Modal>
-        <View style={styles.openCommumnicationHubButton}>
-          <Button
-            customButtonStyles={styles.customButtonStyles}
-            size="medium"
-            title="Chat with User"
-            backgroundColor={theme.colors.primary}
-            titleColor={theme.colors.light}
-            onPress={() => {
-              setModalVis(!modalVis);
-            }}
-          />
-        </View>
+
+        {userHubModalVis ? null : (
+          <View style={styles.openCommumnicationHubButton}>
+            <Button
+              activeOpacity={0.9}
+              customButtonStyles={styles.customButtonStyles}
+              size="medium"
+              title="Chat with User"
+              backgroundColor={theme.colors.primary}
+              titleColor={theme.colors.light}
+              onPress={() => {
+                setuserHubModalVis(!userHubModalVis);
+              }}
+            />
+          </View>
+        )}
       </View>
     </View>
   );

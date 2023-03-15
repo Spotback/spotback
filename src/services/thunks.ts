@@ -228,7 +228,14 @@ export const postSpot = (
 };
 
 export const match = (bearer: string, currentLocation: string, desiredLocation: string) => {
-  console.log('coordinates on submit match =>', bearer, currentLocation, desiredLocation);
+  console.log(
+    'coordinates on submit match =>',
+    bearer,
+    currentLocation,
+    desiredLocation,
+    MATCHING_BASE_URL
+  );
+  console.log(' MATCHING_BASE_URL =>', MATCHING_BASE_URL);
   return (dispatch: any) => {
     RootNavigation.navigate('SearchingForMatch');
     axios
@@ -243,7 +250,7 @@ export const match = (bearer: string, currentLocation: string, desiredLocation: 
         }
       )
       .then((res) => {
-        console.log('res =>', res);
+        console.log('match res =>', res);
         const matchingResponse = sqsMatchingResMessage();
         console.log('matchingResponse =>', matchingResponse);
         dispatch({

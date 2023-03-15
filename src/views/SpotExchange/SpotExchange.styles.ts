@@ -11,19 +11,12 @@ const useStyles = makeStyles((theme: any) =>
       flex: 1,
     },
     subContainer: {
-      // backgroundColor: theme.colors.background,
       flex: 1,
-      // zIndex: -1,
     },
 
     mapView: {
       ...StyleSheet.absoluteFillObject,
-      // height: height + 30,
-      // marginTop: 80,
     },
-    // map: {
-    //   ...StyleSheet.absoluteFillObject,
-    // },
 
     // modal
     modalContainer: {
@@ -34,19 +27,6 @@ const useStyles = makeStyles((theme: any) =>
       alignItems: 'center',
       flex: 1,
       marginTop: 10,
-    },
-
-    otherUserInfoView: {
-      // backgroundColor: theme.colors.primary,
-      // borderRadius: 15,
-      // elevation: 5,
-      // height: 150,
-      // padding: 15,
-      // shadowColor: theme.colors.shadow,
-      // shadowOffset: { width: 0, height: 1 },
-      // shadowOpacity: 0.8,
-      // shadowRadius: 2,
-      // width: 360,
     },
     otherUserTextContainer: {
       left: 20,
@@ -77,19 +57,35 @@ const useStyles = makeStyles((theme: any) =>
       justifyContent: 'center',
     },
 
+    // you have arrived message
+    youHaveArrivedContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center',
+      backgroundColor: theme.colors.primary,
+      height: 180,
+      padding: 15,
+    },
+
     // messenger
+
+    communicationHubCloseX: {
+      alignItems: 'flex-end',
+    },
+    xImage: {
+      height: 30,
+      width: 30,
+      tintColor: 'white',
+    },
     mainCommunicationsHub: {
-      backgroundColor: theme.colors.primaryNoChildOpacity,
-      flex: 1,
-      top: 260,
+      // backgroundColor: theme.colors.primaryNoChildOpacity,
+      backgroundColor: theme.colors.primary,
       bottom: 0,
       left: 0,
       right: 0,
       position: 'absolute',
-      // backgroundColor: theme.colors.primary,
-      height: 300,
+      height: 400,
       padding: 15,
-      marginHorizontal: 20,
       borderRadius: 20,
     },
 
@@ -108,7 +104,7 @@ const useStyles = makeStyles((theme: any) =>
       borderRadius: 10,
       borderWidth: 2,
       elevation: 10,
-      height: 50,
+      height: 100,
       padding: 4,
       shadowColor: theme.colors.shadow,
       shadowOffset: { width: 0, height: 1 },
@@ -168,6 +164,7 @@ const useStyles = makeStyles((theme: any) =>
       shadowOpacity: 0.8,
       shadowRadius: 2,
       width: 75,
+      zIndex: 2,
     },
     buttonTitle: {
       color: theme.colors.dark,
@@ -198,10 +195,7 @@ const useStyles = makeStyles((theme: any) =>
     openCommumnicationHubButton: {
       position: 'absolute',
       bottom: 0,
-      // left: 0,
       right: 0,
-      // top: 0,
-     
     },
     customButtonStyles: {
       alignItems: 'center',
@@ -209,7 +203,6 @@ const useStyles = makeStyles((theme: any) =>
       justifyContent: 'center',
       paddingHorizontal: 15,
       backgroundColor: theme.colors.primary,
-      // flex: 1,
       width: 195,
       height: 113.5,
       borderBottomLeftRadius: 0,
@@ -221,7 +214,6 @@ const useStyles = makeStyles((theme: any) =>
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.8,
       shadowRadius: 2,
-      zIndex: 1,
     },
   })
 );
