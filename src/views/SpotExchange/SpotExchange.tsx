@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
-import { driverCar, phone, sendMessage, spotPinGold } from '@assets/images/index';
+import { driverCar, phone, sendMessage, spotPinGold, exit } from '@assets/images/index';
 import { Button, Hub, Options, Stars } from '@components/index';
 import { GOOGLE_API_KEY } from '@env';
 import Polyline from '@mapbox/polyline';
@@ -8,12 +8,12 @@ import database from '@react-native-firebase/database';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
 import { UserSpotPosition } from '@services/types';
+import { makeCall } from '@utils/makeCall';
 import { theme } from '@utils/theme';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import {
   Image,
-  KeyboardAvoidingView,
   Linking,
   LogBox,
   Modal,
@@ -24,37 +24,41 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import MapView, { Marker, Polyline as GooglePolyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import { RootStateOrAny, useSelector } from 'react-redux';
 import useStyles from './SpotExchange.styles';
+import MapboxNavigation from '@homee/react-native-mapbox-navigation';
+import { coordinatesSeperator } from '@utils/coordinatesSeperator';
+import { Coordinate } from 'react-native-maps';
 
 const SpotExchange = () => {
   const styles = useStyles();
+
   const navigation = useNavigation();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
   const transactionId = useSelector((state: RootStateOrAny) => state.userReducer.transactionId);
-  console.log('spotExchange User Data ', user);
-  const [modalVis, setModalVis] = useState(false);
-  const [hubVis, setHubVis] = useState(false);
+
   const [imageSource, setImageSource] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState({});
-  const [secondaryModalVis, setSecondaryModalVis] = useState({
+  const [userHubModalVis, setuserHubModalVis] = useState(false);
+  const [cancelCompleteModalVis, setcancelCompleteModalVis] = useState({
     visible: false,
     type: 'cancelTransaction' || 'spotSwitchComplete',
   });
+  const [youHaveArrivedModalVis, setYouHaveArrivedModalVis] = useState(false);
+  // MabBox Coordinates
+  const [currentLocation, setCurrentlocation] = useState<number[]>([]);
+  const [desiredLocation, setDesiredLocation] = useState<number[]>([]);
+  // MabBox Coordinate
 
   // google maps navigation
   const [coords, setCoords] = useState([]);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   // google maps navigation
-
+  console.log('spotExchange User Data ', user.matchedUsersData.body);
+  console.log('spotExchange current and desired location ', currentLocation, desiredLocation);
   const dbChatRoomRef = database().ref(`chat_rooms/-${transactionId}/messages`);
-
-  useEffect(() => {
-    LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
-  }, []);
 
   const getProfilePic = () => {
     storage()
@@ -77,7 +81,6 @@ const SpotExchange = () => {
 
   const pushTransactionChatRoomMessage = (messageFromButton) => {
     const newMessage = dbChatRoomRef.push();
-
     newMessage
       .set({
         created: Date.now(),
@@ -85,7 +88,6 @@ const SpotExchange = () => {
         text: message === '' ? messageFromButton : message,
       })
       .then(() => console.log('Message sent!'));
-
     setMessage('');
   };
 
@@ -101,21 +103,12 @@ const SpotExchange = () => {
           longitude: point[1],
         };
       });
-      console.log('coords ', coords);
+      // console.log('coords ', coords);
       setCoords(coords);
     } catch (error) {
       console.log('error ', error);
     }
   };
-
-  useEffect(() => {
-    getProfilePic();
-    getDirections('32.946709, -96.952667', '32.951520, -96.955670');
-  }, []);
-
-  useEffect(() => {
-    retrieveTransactionChatRoomMessages();
-  }, [message]);
 
   const displayMessages = () => {
     return messages !== null
@@ -146,142 +139,197 @@ const SpotExchange = () => {
     Linking.openURL(phoneNumber);
   };
 
-  const openGoogleMapsIntent = (startLoc, destinationLoc) => {
-    const url = `https://www.google.com/maps/dir/?api=1&origin=${startLoc}&destination=${destinationLoc}&key=${GOOGLE_API_KEY}`;
-    Linking.canOpenURL(url)
-      .then((supported) => {
-        if (!supported) {
-          console.log("Can't handle url: " + url);
-        } else {
-          return Linking.openURL(url);
-        }
-      })
-      .catch((err) => console.error('An error occurred', err));
-  };
+  useEffect(() => {
+    getProfilePic();
+    getDirections('32.946709, -96.952667', '32.951520, -96.955670');
+    LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+    setCurrentlocation(coordinatesSeperator(user.matchedUsersData.body.currentLocation));
+    setDesiredLocation(coordinatesSeperator(user.matchedUsersData.body.desiredLocation));
+  }, []);
+
+  useEffect(() => {
+    retrieveTransactionChatRoomMessages();
+  }, [message]);
 
   return (
     <View style={styles.mainContainer}>
       <View style={styles.subContainer}>
         <View style={styles.mapView}>
-          <MapView
-            provider={PROVIDER_GOOGLE}
-            style={styles.map}
-            region={{
-              latitude: 32.946709,
-              longitude: -96.952667,
-              latitudeDelta: 0.015,
-              longitudeDelta: 0.0121,
-            }}>
-            <Marker
-              coordinate={{ latitude: 32.95152, longitude: -96.95567 }}
-              title={'Your Location'}>
-              <Image style={{ width: 40, height: 40 }} source={driverCar} />
-            </Marker>
-            <Marker
-              coordinate={{ latitude: 32.946709, longitude: -96.952667 }}
-              title={'Driver Location'}>
-              <Image source={spotPinGold} />
-            </Marker>
-
-            <GooglePolyline coordinates={coords} strokeWidth={5} strokeColor="#6865FF" />
-          </MapView>
+          <MapboxNavigation
+            origin={currentLocation as Coordinate}
+            destination={desiredLocation as Coordinate}
+            shouldSimulateRoute
+            // showsEndOfRouteFeedback
+            onLocationChange={(event) => {
+              const { latitude, longitude } = event.nativeEvent;
+            }}
+            onRouteProgressChange={(event) => {
+              // TODO: Send this info to the other user via firebase and drawn their map towards them
+              const { distanceTraveled, durationRemaining, fractionTraveled, distanceRemaining } =
+                event.nativeEvent;
+            }}
+            onError={(event) => {
+              const { message } = event.nativeEvent;
+            }}
+            onCancelNavigation={() => {
+              // User tapped the "X" cancel button in the nav UI
+              // or canceled via the OS system tray on android.
+              // Do whatever you need to here.
+            }}
+            onArrive={() => {
+              // Called when you arrive at the destination.
+              setYouHaveArrivedModalVis(true);
+              setuserHubModalVis(true);
+            }}
+          />
         </View>
-        <Hub
-          title={`Arriving in ${user.matchedUsersData.match.etaFromSpot.value} Minutes`}
-          client
-          imageSource={imageSource}
-          balance={15}
-          onPress={() => {
-            setHubVis(!hubVis);
-            setModalVis(!modalVis);
-          }}
-          hide={hubVis}
-        />
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={modalVis}
-          onRequestClose={() => {
-            setModalVis(!modalVis);
-            setHubVis(!hubVis);
-          }}>
-          <View style={styles.modalContainer}>
-            <View style={styles.centeredView}>
-              <TouchableOpacity
-                onPress={() => {
-                  setModalVis(!modalVis);
-                  setHubVis(!hubVis);
-                }}>
-                <View style={styles.modalView}>
-                  <View style={styles.modalTextContainer}>
-                    <Text style={styles.modalText}>Walter White</Text>
-                    <Text style={styles.modalText}>BMW, 3 Series, Black</Text>
-                    <Text style={styles.modalText}>FF35DG2</Text>
-                  </View>
-                  <View style={styles.starContainer}>
-                    <Stars starSize={20} starWidth={3} rating={user.rating} />
-                  </View>
-                </View>
-              </TouchableOpacity>
+        {youHaveArrivedModalVis ? (
+          <View style={styles.youHaveArrivedContainer}>
+            <Text style={[styles.text, { fontSize: 30 }]}>You Have Arrived!</Text>
+            <Text style={[styles.text, { textAlign: 'center' }]}>
+              When you have succsesfully switched press the "Spot Switch Complete" button.
+            </Text>
+          </View>
+        ) : null}
+        {/* User hub and communication Modal */}
+        {userHubModalVis ? (
+          <View style={styles.mainCommunicationsHub}>
+            <TouchableOpacity
+              style={styles.communicationHubCloseX}
+              onPress={() => setuserHubModalVis(false)}>
+              <Image style={styles.xImage} source={exit} />
+            </TouchableOpacity>
+            <Text style={styles.text}>Walter White</Text>
+            <Text style={styles.text}>BMW, 3 Series, Black</Text>
+            <Text style={styles.text}>FF35DG2</Text>
+            <View style={styles.starContainer}>
+              <Stars starSize={20} starWidth={3} rating={user.rating} />
             </View>
-            <View style={styles.cancelTransaction}>
+
+            <View style={styles.transactionsButtonContainer}>
               <Button
                 size="small"
                 title="Cancel Transaction"
                 backgroundColor={theme.colors.light}
                 titleColor={theme.colors.error}
                 onPress={() => {
-                  setModalVis(!modalVis);
-                  setHubVis(!hubVis);
-                  setSecondaryModalVis({
-                    visible: !secondaryModalVis.visible,
+                  setcancelCompleteModalVis({
+                    visible: !cancelCompleteModalVis.visible,
                     type: 'cancelTransaction',
                   });
+                  setuserHubModalVis(!userHubModalVis);
+                }}
+              />
+              <Button
+                title="Spot Switch complete"
+                size="small"
+                onPress={() => {
+                  setcancelCompleteModalVis({
+                    visible: !cancelCompleteModalVis.visible,
+                    type: 'spotSwitchComplete',
+                  });
+                  setuserHubModalVis(!userHubModalVis);
                 }}
               />
             </View>
+            <View style={styles.chatContainer}>
+              <ScrollView style={styles.scrollMessagingContainer}>
+                <View style={styles.scrollItemsContainer}>{displayMessages()}</View>
+              </ScrollView>
+              <View style={styles.messageChat}>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Type a message..."
+                  onChangeText={(text) => setMessage(text)}
+                  value={message}
+                />
+                {message.length ? (
+                  <TouchableOpacity
+                    style={styles.sendMessageButton}
+                    onPress={pushTransactionChatRoomMessage}>
+                    <Image source={sendMessage} />
+                  </TouchableOpacity>
+                ) : null}
+              </View>
+
+              <View style={styles.buttonsContainer}>
+                <Button
+                  size="small"
+                  title="On My Way!"
+                  customButtonStyles={styles.button}
+                  customTextStyles={styles.buttonTitle}
+                  onPress={() => pushTransactionChatRoomMessage('On My Way!')}
+                />
+                <Button
+                  size="small"
+                  title="Almost There"
+                  customButtonStyles={styles.button}
+                  customTextStyles={styles.buttonTitle}
+                  onPress={() => pushTransactionChatRoomMessage('Almost There')}
+                />
+                <Button
+                  size="small"
+                  title="I'm Here"
+                  customButtonStyles={styles.button}
+                  customTextStyles={styles.buttonTitle}
+                  onPress={() => pushTransactionChatRoomMessage("I'm Here")}
+                />
+                <Button
+                  icon={phone}
+                  customButtonStyles={styles.button}
+                  customTextStyles={styles.buttonTitle}
+                  onPress={makeCall}
+                />
+              </View>
+            </View>
           </View>
-        </Modal>
+        ) : null}
+
+        {/* Cancel or Complete Ride Modal */}
         <Modal
           animationType="fade"
           transparent={true}
-          visible={secondaryModalVis.visible}
+          visible={cancelCompleteModalVis.visible}
           onRequestClose={() => {
-            setSecondaryModalVis({
-              visible: !secondaryModalVis.visible,
+            setcancelCompleteModalVis({
+              visible: !cancelCompleteModalVis.visible,
               type: 'cancelTransaction',
             });
           }}>
           <View style={styles.innerModalContainer}>
             <Options
               leftButtonColor={
-                secondaryModalVis.type === 'cancelTransaction'
+                cancelCompleteModalVis.type === 'cancelTransaction'
                   ? theme.colors.error
                   : theme.colors.light
               }
               rightButtonColor={
-                secondaryModalVis.type === 'cancelTransaction'
+                cancelCompleteModalVis.type === 'cancelTransaction'
                   ? theme.colors.success
                   : theme.colors.light
               }
-              leftButtonTitle={secondaryModalVis.type === 'cancelTransaction' ? 'Yes' : 'Complete'}
-              rightButtonTitle={secondaryModalVis.type === 'cancelTransaction' ? 'No' : 'Not Yet'}
+              leftButtonTitle={
+                cancelCompleteModalVis.type === 'cancelTransaction' ? 'Yes' : 'Complete'
+              }
+              rightButtonTitle={
+                cancelCompleteModalVis.type === 'cancelTransaction' ? 'No' : 'Not Yet'
+              }
               type="standard"
               onPressLeft={() => {
-                setSecondaryModalVis({
-                  visible: !secondaryModalVis.visible,
+                setcancelCompleteModalVis({
+                  visible: !cancelCompleteModalVis.visible,
                   type: 'cancelTransaction',
                 }),
                   navigation.navigate('SpotExchangeComplete');
               }}
               onPressRight={() =>
-                setSecondaryModalVis({
-                  visible: !secondaryModalVis.visible,
+                setcancelCompleteModalVis({
+                  visible: !cancelCompleteModalVis.visible,
                   type: 'cancelTransaction',
                 })
               }
               texts={
-                secondaryModalVis.type === 'cancelTransaction'
+                cancelCompleteModalVis.type === 'cancelTransaction'
                   ? [
                       'Are you sure you want to cancel?',
                       'If you cancel during this transaction a fee may apply.',
@@ -294,86 +342,22 @@ const SpotExchange = () => {
             />
           </View>
         </Modal>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          keyboardVerticalOffset={10}
-          enabled
-          style={styles.bottomContainer}>
-          {user.UserSpotPosition === UserSpotPosition.DRIVER ? (
-            <View style={styles.startNavButton}>
-              <Button
-                title="Press to Start Navigation"
-                size="large"
-                onPress={() =>
-                  openGoogleMapsIntent('32.946709, -96.952667', '32.951520, -96.955670')
-                }
-              />
-            </View>
-          ) : null}
-          <View style={styles.spotSwitchCompleteContainer}>
+
+        {userHubModalVis ? null : (
+          <View style={styles.openCommumnicationHubButton}>
             <Button
-              title="Spot Switch complete"
-              size="small"
+              activeOpacity={0.9}
+              customButtonStyles={styles.customButtonStyles}
+              size="medium"
+              title="Chat with User"
+              backgroundColor={theme.colors.primary}
+              titleColor={theme.colors.light}
               onPress={() => {
-                setSecondaryModalVis({
-                  visible: !secondaryModalVis.visible,
-                  type: 'spotSwitchComplete',
-                });
+                setuserHubModalVis(!userHubModalVis);
               }}
             />
           </View>
-
-          <View style={styles.chatContainer}>
-            <ScrollView style={styles.scrollMessagingContainer}>
-              <View style={styles.scrollItemsContainer}>{displayMessages()}</View>
-            </ScrollView>
-            <View style={styles.messageChat}>
-              <TextInput
-                style={styles.input}
-                placeholder="Type a message..."
-                onChangeText={(text) => setMessage(text)}
-                value={message}
-              />
-              {message.length ? (
-                <TouchableOpacity
-                  style={styles.sendMessageButton}
-                  onPress={pushTransactionChatRoomMessage}>
-                  <Image source={sendMessage} />
-                </TouchableOpacity>
-              ) : null}
-            </View>
-
-            <View style={styles.buttonsContainer}>
-              <Button
-                size="small"
-                title="On My Way!"
-                customButtonStyles={styles.button}
-                customTextStyles={styles.buttonTitle}
-                onPress={() => pushTransactionChatRoomMessage('On My Way!')}
-              />
-              <Button
-                size="small"
-                title="Almost There"
-                customButtonStyles={styles.button}
-                customTextStyles={styles.buttonTitle}
-                onPress={() => pushTransactionChatRoomMessage('Almost There')}
-              />
-              <Button
-                size="small"
-                title="I'm Here"
-                customButtonStyles={styles.button}
-                customTextStyles={styles.buttonTitle}
-                onPress={() => pushTransactionChatRoomMessage("I'm Here")}
-              />
-              <Button
-                icon={phone}
-                customButtonStyles={styles.button}
-                customTextStyles={styles.buttonTitle}
-                onPress={makeCall}
-              />
-            </View>
-          </View>
-        </KeyboardAvoidingView>
+        )}
       </View>
     </View>
   );

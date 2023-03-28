@@ -11,6 +11,7 @@ interface ButtonProps {
   onPress?: () => void;
   customButtonStyles?: any;
   customTextStyles?: any;
+  activeOpacity?: number;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -22,10 +23,11 @@ const Button: FC<ButtonProps> = ({
   backgroundColor,
   customButtonStyles,
   customTextStyles,
+  activeOpacity,
 }) => {
   const styles = useStyles(titleColor, backgroundColor)();
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} activeOpacity={activeOpacity}>
       {size === 'large' && (
         <View style={customButtonStyles ? customButtonStyles : styles.buttonLarge}>
           <Text style={customTextStyles ? customTextStyles : styles.titleLarge}>{title}</Text>

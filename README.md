@@ -12,7 +12,6 @@ sudo gem install cocoapods
 
 ```
 
-
 ## Second
 
 ```sh
@@ -24,7 +23,7 @@ brew install --cask adoptopenjdk8
 ## Third
 
 ```sh
-Download and install Android Studio from https://developer.android.com/studio/index.html 
+Download and install Android Studio from https://developer.android.com/studio/index.html
 Choose a "Custom" setup when prompted to select an installation type. Make sure the boxes next to all of the following are checked:
 Android SDK
 Android SDK Platform
@@ -92,8 +91,7 @@ npx react-native run-ios
 npx react-native run-ios --simulator "iPhone X"
 ```
 
-
-## Common Commands Android 
+## Common Commands Android
 
 ```sh
 
@@ -125,26 +123,26 @@ with ES7+ React/Redux/React-Native snippets installed run rnfe in editor
 
 ```sh
 
-Open Xcode go to product 
-Clean build folder 
+Open Xcode go to product
+Clean build folder
 rm -rf node_modules
 Npm install
-Cd ios 
+Cd ios
 Pod deintegrate
-Pod install 
+Pod install
 Pod update
 Pod install
 
-Npm start --reset-cache 
+Npm start --reset-cache
 
 IOS NUKE
 rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && cd .. && npm install --force && cd ios && pod install && cd .. && npm start --reset-cache
 
-Just IOS
-rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && pod install
-
 IOS/ANDROID NUKE
 rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && cd .. && cd android/app && rm -rf build && cd .. && cd .. && npm install --force && cd ios && pod install && cd .. && npm start --reset-cache
+
+Just IOS
+rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && pod install
 
 
 with ES7+ React/Redux/React-Native snippets installed run rnfe in editor

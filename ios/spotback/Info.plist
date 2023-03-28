@@ -22,10 +22,19 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>UIUserInterfaceStyle</key>
-    <string>Light</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>whatsapp</string>
+		<string>mailto</string>
+		<string>instagram</string>
+		<string>instagram-stories</string>
+		<string>fb</string>
+		<string>facebook-stories</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1Ijoic3BvdGJhY2siLCJhIjoiY2xmNXBtZG0xMWVlbzNyazd3YnUzY2g5byJ9.j-tOAko9Av1MIhvy7bAaiA</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -37,62 +46,24 @@
 			</dict>
 		</dict>
 	</dict>
-
-  <!-- Keep only the permissions used in your app -->
-
-  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
-  <key>NSLocationAlwaysUsageDescription</key>
-  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
-  <key>NSLocationTemporaryUsageDescriptionDictionary</key>
-  <dict>
-    <key>Spotback</key>
-    <string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
-  </dict>
-  <key>NSPhotoLibraryUsageDescription</key>
-  <string>Test - NSPhotoLibraryUsageDescription</string>
-  <key>LSApplicationQueriesSchemes</key>
-  <array>
-    <string>whatsapp</string>
-    <string>mailto</string>
-    <string>instagram</string>
-    <string>instagram-stories</string>
-    <string>fb</string>
-    <string>facebook-stories</string>
-  </array>
-  <!-- <key>NSContactsUsageDescription</key>
-  <string>Spotback needs access to your contacts to share a referral</string> -->
-  <!-- <key>NSAppleMusicUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSBluetoothAlwaysUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSBluetoothPeripheralUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSCalendarsUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSCameraUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSFaceIDUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSMicrophoneUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSMotionUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSPhotoLibraryAddUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSRemindersUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSSpeechRecognitionUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSSiriUsageDescription</key>
-  <string>YOUR TEXT</string>
-  <key>NSUserTrackingUsageDescription</key>
-  <string>YOUR TEXT</string> -->
-
-  <!-- Keep only the permissions used in your app -->
-
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>Spotback</key>
+		<string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
+	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is required in order to enjoy a seemless parking experience while using Spotback</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Test - NSPhotoLibraryUsageDescription</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -105,6 +76,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

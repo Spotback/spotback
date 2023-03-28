@@ -12,7 +12,7 @@ interface Inputprops {
   onChangeText?: any;
   value?: any;
   autoComplete?: boolean;
-  onPress?: () => void;
+  onPress?: any;
   autoCapitalize?: any;
   isPasswordInput?: boolean;
   hidePassword?: boolean;
