@@ -27,10 +27,11 @@ const initialState = {
   imageSource: '',
   spinner: false,
   error: {},
-  transactionId: 'transaction1234',
+  transactionIdInfo: {matchEmail: '', createdTime: 0},
+  transactionId: '',
   // DRIVER is person who is driving to the spot and choose the "find me a spot" option
   // PARKER is person who chose "post my spot" option and is waiting for the driver to arrive
-  userSpotPosition: UserSpotPosition,
+  userSpotPosition: UserSpotPosition.UNKNOWN,
   matchedUsersData: {},
 };
 
@@ -136,6 +137,16 @@ const reducer = (state = initialState, action: any) => {
       return {
         ...state,
         UserSpotPosition: action.payload,
+      };
+    case UserTypes.TRANSACTION_ID_INFO:
+        return {
+          ...state,
+          transactionIdInfo: action.payload,
+        };  
+    case UserTypes.TRANSACTION_ID:
+      return {
+        ...state,
+        transactionId: action.payload,
       };
     default:
       return state;
