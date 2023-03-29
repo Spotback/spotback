@@ -13,10 +13,10 @@ const SpotExchangeComplete = () => {
   const [imageSource, setImageSource] = useState('');
 
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-
+  console.log('spotExchange User Data for Rating ', user.matchedUsersData);
   const getProfilePic = () => {
     storage()
-      .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
+      .ref(`users/profile_images/${user.matchedUsersData.match.email.replace('@', '_').replace('.', '_')}.png`)
       .getDownloadURL()
       .then((url: string) => {
         url ? setImageSource(url) : setImageSource('');
@@ -32,7 +32,7 @@ const SpotExchangeComplete = () => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{"You've just recieved 5 points from"}</Text>
       <ProfilePic imageSource={imageSource} size="large" />
-      <Text style={styles.text}>Users Name</Text>
+      <Text style={styles.text}>Camila Rodgriguez</Text>
       <View style={styles.starContainer}>
         <Stars starSize={30} starWidth={5} disabled={false} rating={user.rating} />
       </View>

@@ -195,7 +195,8 @@ const Home = () => {
             </View>
           </View>
         )}
-        <View style={styles.pushNotificationButtonContainer}>
+        {/* TODO: For testing push notification */}
+        {/* <View style={styles.pushNotificationButtonContainer}>
           <View style={styles.spacing}>
             <Button
               title="Trigger Push Notification"
@@ -210,7 +211,7 @@ const Home = () => {
               }
             />
           </View>
-        </View>
+        </View> */}
       </View>
 
       <Hub title="SpotNews" bottom onPress={() => setspotNewsVisible(!spotNewsVisible)} />
