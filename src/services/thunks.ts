@@ -253,9 +253,14 @@ export const match = (bearer: string, currentLocation: string, desiredLocation: 
         console.log('match res =>', res);
         const matchingResponse = sqsMatchingResMessage();
         console.log('matchingResponse =>', matchingResponse);
+        const transactionIdInfo = {matchEmail: res.data.match.email, createdTime: res.data.match.created_time};
         dispatch({
           type: UserTypes.MATCH,
           payload: res.data,
+        });
+        dispatch({
+          type: UserTypes.TRANSACTION_ID_INFO,
+          payload: transactionIdInfo,
         });
         RootNavigation.navigate('SpotExchange');
       })
@@ -292,6 +297,15 @@ export const setUserPositionType = (position: string) => {
     dispatch({
       type: UserTypes.USER_SPOT_POSITION,
       payload: position,
+    });
+  };
+};
+
+export const setTransactionId = (transactionId: string) => {
+  return (dispatch: any) => {
+    dispatch({
+      type: UserTypes.TRANSACTION_ID,
+      payload: transactionId,
     });
   };
 };

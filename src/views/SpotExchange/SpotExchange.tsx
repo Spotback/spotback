@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
-import { driverCar, phone, sendMessage, spotPinGold, exit } from '@assets/images/index';
-import { Button, Hub, Options, Stars } from '@components/index';
+import { phone, sendMessage, exit } from '@assets/images/index';
+import { Button, Options, Stars } from '@components/index';
 import { GOOGLE_API_KEY } from '@env';
 import Polyline from '@mapbox/polyline';
 import database from '@react-native-firebase/database';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
-import { UserSpotPosition } from '@services/types';
-import { makeCall } from '@utils/makeCall';
 import { theme } from '@utils/theme';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -29,19 +27,18 @@ import useStyles from './SpotExchange.styles';
 import MapboxNavigation from '@homee/react-native-mapbox-navigation';
 import { coordinatesSeperator } from '@utils/coordinatesSeperator';
 import { Coordinate } from 'react-native-maps';
+import { useSetTransactionId } from '../../hooks/useSetTransactionId';
 
 const SpotExchange = () => {
   const styles = useStyles();
-
   const navigation = useNavigation();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  const transactionId = useSelector((state: RootStateOrAny) => state.userReducer.transactionId);
-
+  const transactionId =   useSetTransactionId();
   const [imageSource, setImageSource] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState({});
   const [userHubModalVis, setuserHubModalVis] = useState(false);
-  const [cancelCompleteModalVis, setcancelCompleteModalVis] = useState({
+  const [cancelCompleteModalVis, setCancelCompleteModalVis] = useState({
     visible: false,
     type: 'cancelTransaction' || 'spotSwitchComplete',
   });
@@ -187,7 +184,7 @@ const SpotExchange = () => {
           <View style={styles.youHaveArrivedContainer}>
             <Text style={[styles.text, { fontSize: 30 }]}>You Have Arrived!</Text>
             <Text style={[styles.text, { textAlign: 'center' }]}>
-              When you have succsesfully switched press the "Spot Switch Complete" button.
+              When you have successfully switched press the "Spot Switch Complete" button.
             </Text>
           </View>
         ) : null}
@@ -213,7 +210,7 @@ const SpotExchange = () => {
                 backgroundColor={theme.colors.light}
                 titleColor={theme.colors.error}
                 onPress={() => {
-                  setcancelCompleteModalVis({
+                  setCancelCompleteModalVis({
                     visible: !cancelCompleteModalVis.visible,
                     type: 'cancelTransaction',
                   });
@@ -224,7 +221,7 @@ const SpotExchange = () => {
                 title="Spot Switch complete"
                 size="small"
                 onPress={() => {
-                  setcancelCompleteModalVis({
+                  setCancelCompleteModalVis({
                     visible: !cancelCompleteModalVis.visible,
                     type: 'spotSwitchComplete',
                   });
@@ -291,7 +288,7 @@ const SpotExchange = () => {
           transparent={true}
           visible={cancelCompleteModalVis.visible}
           onRequestClose={() => {
-            setcancelCompleteModalVis({
+            setCancelCompleteModalVis({
               visible: !cancelCompleteModalVis.visible,
               type: 'cancelTransaction',
             });
@@ -316,14 +313,14 @@ const SpotExchange = () => {
               }
               type="standard"
               onPressLeft={() => {
-                setcancelCompleteModalVis({
+                setCancelCompleteModalVis({
                   visible: !cancelCompleteModalVis.visible,
                   type: 'cancelTransaction',
                 }),
                   navigation.navigate('SpotExchangeComplete');
               }}
               onPressRight={() =>
-                setcancelCompleteModalVis({
+                setCancelCompleteModalVis({
                   visible: !cancelCompleteModalVis.visible,
                   type: 'cancelTransaction',
                 })
