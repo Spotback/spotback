@@ -16,7 +16,7 @@ import {
   View,
 } from 'react-native';
 import { RootStateOrAny, useSelector } from 'react-redux';
-import useStyles from './SpotExchange.styles';
+import useStyles from './SpotExchangeDriver.styles';
 import { useSetTransactionId } from '../../hooks/useSetTransactionId';
 
 const HubModal = ({ closeHub, cancelPress, spotSwitchCompletePress }) => {

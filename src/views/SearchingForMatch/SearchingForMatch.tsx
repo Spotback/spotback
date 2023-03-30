@@ -7,6 +7,8 @@ import { sqsMatchingResMessage } from '@services/sqsMatchingResMessage';
 import usePoll from 'react-use-poll';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { UserSpotPosition, UserTypes } from '@services/types';
+import * as RootNavigation from '@navigation/RootNavigation';
+
 const SearchingForMatch = () => {
   const styles = useStyles();
   const navigation = useNavigation();
@@ -22,6 +24,7 @@ const SearchingForMatch = () => {
           payload: sqsMatchingRes,
         });
         console.log('Hello world!', sqsMatchingRes);
+        RootNavigation.navigate('SpotExchange');
       }
     },
     [],

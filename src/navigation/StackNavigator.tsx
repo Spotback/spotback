@@ -34,7 +34,7 @@ const StackNavigator = () => {
             title: '',
             headerStyle: {
               backgroundColor: theme.colors.background,
-              shadowColor: 'transparent'
+              shadowColor: 'transparent',
             },
             headerLeft: () => null,
           }}
@@ -46,7 +46,7 @@ const StackNavigator = () => {
             title: '',
             headerStyle: {
               backgroundColor: theme.colors.background,
-              shadowColor: 'transparent'
+              shadowColor: 'transparent',
             },
             headerLeft: () => null,
           }}
@@ -153,7 +153,7 @@ const StackNavigator = () => {
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-              shadowColor: 'transparent'
+              shadowColor: 'transparent',
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
@@ -172,7 +172,7 @@ const StackNavigator = () => {
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-              shadowColor: 'transparent'
+              shadowColor: 'transparent',
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
@@ -191,7 +191,7 @@ const StackNavigator = () => {
             },
             headerStyle: {
               backgroundColor: theme.colors.background,
-              shadowColor: 'transparent'
+              shadowColor: 'transparent',
             },
             headerLeft: () => <BackArrow navigationDirection="Account" />,
           }}
