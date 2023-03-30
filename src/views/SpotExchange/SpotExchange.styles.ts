@@ -37,14 +37,20 @@ const useStyles = makeStyles((theme: any) =>
       color: 'white',
       fontWeight: 'bold',
       marginVertical: 4,
+      marginLeft: 30,
     },
     starContainer: {
-      top: 70,
+      top: 20,
       position: 'absolute',
-      right: 20,
+      left: 40,
+    },
+    matchedCarPicContainer: {
+      top: 20,
+      position: 'absolute',
+      right: 50,
     },
     transactionsButtonContainer: {
-      marginVertical: 5,
+      marginVertical: 10,
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'space-evenly',
