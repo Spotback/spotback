@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { ProfilePic } from '@components/index';
 import useStyles from './Button.styles';
 
 interface ButtonProps {
@@ -12,6 +13,7 @@ interface ButtonProps {
   customButtonStyles?: any;
   customTextStyles?: any;
   activeOpacity?: number;
+  matchedUserPic?: any;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -24,6 +26,7 @@ const Button: FC<ButtonProps> = ({
   customButtonStyles,
   customTextStyles,
   activeOpacity,
+  matchedUserPic,
 }) => {
   const styles = useStyles(titleColor, backgroundColor)();
   return (
@@ -53,6 +56,11 @@ const Button: FC<ButtonProps> = ({
       {icon && !size && (
         <View style={customButtonStyles ? customButtonStyles : styles.buttonSmall}>
           <Image source={icon} />
+        </View>
+      )}
+      {matchedUserPic && (
+        <View style={styles.matchedUserPic}>
+          <ProfilePic imageSource={matchedUserPic} size="medium" />
         </View>
       )}
     </TouchableOpacity>

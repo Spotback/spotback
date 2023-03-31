@@ -20,7 +20,11 @@ const SpotExchangeDriver = () => {
   const styles = useStyles();
   const navigation = useNavigation();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
+  const matchedUser = useSelector(
+    (state: RootStateOrAny) => state.userReducer.transactionIdInfo.matchEmail
+  );
   const [imageSource, setImageSource] = useState('');
+  const [matchImageSource, setMatchImageSource] = useState('');
   const [userHubModalVis, setuserHubModalVis] = useState(false);
   const [cancelCompleteModalVis, setCancelCompleteModalVis] = useState({
     visible: false,
@@ -53,8 +57,25 @@ const SpotExchangeDriver = () => {
       });
   };
 
+  const getMatchProfilePic = () => {
+    storage()
+      .ref(`users/profile_images/${matchedUser.replace('@', '_').replace('.', '_')}.png`)
+      .getDownloadURL()
+      .then((url: string) => {
+        url ? setMatchImageSource(url) : setMatchImageSource('');
+      })
+      .catch((e) => {
+        setMatchImageSource('');
+        console.log('getting downloadURL of image error => ', e);
+      });
+  };
+
   useEffect(() => {
     getProfilePic();
+    getMatchProfilePic();
+  }, []);
+
+  useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
     setCurrentlocation(coordinatesSeperator(user.matchedUsersData.body.currentLocation));
     setDesiredLocation(coordinatesSeperator(user.matchedUsersData.body.desiredLocation));
@@ -186,7 +207,9 @@ const SpotExchangeDriver = () => {
               activeOpacity={0.9}
               customButtonStyles={styles.customButtonStyles}
               size="medium"
-              title="Chat with User"
+              title="Chat with"
+              // matchedUserPic={  matchImageSource}
+              customTextStyles={styles.customTextStyles}
               backgroundColor={theme.colors.primary}
               titleColor={theme.colors.light}
               onPress={() => {
