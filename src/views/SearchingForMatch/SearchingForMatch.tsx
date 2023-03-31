@@ -17,13 +17,13 @@ const SearchingForMatch = () => {
 
   usePoll(
     async () => {
-      if (user.UserSpotPosition === UserSpotPosition.PARKER) {
-        const sqsMatchingRes = await sqsMatchingResMessage();
+      const sqsMatchingRes = await sqsMatchingResMessage();
+      if (user.UserSpotPosition === UserSpotPosition.PARKER && sqsMatchingRes !== undefined) {
         dispatch({
           type: UserTypes.MATCH,
           payload: sqsMatchingRes,
         });
-        console.log('Hello world!', sqsMatchingRes);
+        console.log('SQS FROM AWS RECEIVED', sqsMatchingRes);
         RootNavigation.navigate('SpotExchange');
       }
     },

@@ -104,7 +104,7 @@ const HubModal = ({ closeHub, cancelPress, spotSwitchCompletePress }) => {
       <View style={styles.starContainer}>
         <Stars starSize={20} starWidth={3} rating={user.rating} />
       </View>
-      <Text style={styles.text}>Walter White</Text>
+      <Text style={styles.text}>Camila Rodriguez</Text>
       <Text style={styles.text}>{carInfo}</Text>
       <Text style={styles.text}>{licensePlate}</Text>
       <View style={styles.matchedCarPicContainer}>

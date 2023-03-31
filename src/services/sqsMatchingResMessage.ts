@@ -13,8 +13,8 @@ const params = {
 };
 const sqsClient = new SQSClient({
   credentials: {
-    accessKeyId: '',
-    secretAccessKey: '',
+    accessKeyId: 'AKIA3DCEWEDWXYINXD4A',
+    secretAccessKey: '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',
   },
   region: REGION,
 });

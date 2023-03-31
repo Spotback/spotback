@@ -68,6 +68,11 @@ const useStyles = (titleColor?: string, backgroundColor?: string) =>
         width: 32,
         height: 40,
       },
+      matchedUserPic: {
+        position: 'absolute',
+        right: 20,
+        bottom: 20 
+      },
     })
   );
 

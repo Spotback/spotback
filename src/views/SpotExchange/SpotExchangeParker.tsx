@@ -1,45 +1,31 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
-import { driverCar, phone, sendMessage, spotPinGold } from '@assets/images/index';
+import { driverCar, spotPinGold } from '@assets/images/index';
 import { Button, Hub, Options, Stars } from '@components/index';
 import { GOOGLE_API_KEY } from '@env';
 import Polyline from '@mapbox/polyline';
-import database from '@react-native-firebase/database';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
-import { UserSpotPosition } from '@services/types';
 import { theme } from '@utils/theme';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import {
-  Image,
-  KeyboardAvoidingView,
-  Linking,
-  LogBox,
-  Modal,
-  Platform,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Image, Linking, LogBox, Modal, Text, TouchableOpacity, View } from 'react-native';
 import MapView, { Marker, Polyline as GooglePolyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import { RootStateOrAny, useSelector } from 'react-redux';
-import useStyles from './SpotExchangeParker.styles';
 import HubModal from './HubModal';
+import useStyles from './SpotExchangeParker.styles';
+import database from '@react-native-firebase/database';
+import { useSetTransactionId } from '../../hooks/useSetTransactionId';
+import usePoll from 'react-use-poll';
 
 const SpotExchangeParker = () => {
   const styles = useStyles();
   const navigation = useNavigation();
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  const transactionId = useSelector((state: RootStateOrAny) => state.userReducer.transactionId);
   console.log('spotExchangeParker User Data ', user);
   const [modalVis, setModalVis] = useState(false);
   const [hubVis, setHubVis] = useState(false);
   const [imageSource, setImageSource] = useState('');
-  const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState({});
 
   const [cancelCompleteModalVis, setCancelCompleteModalVis] = useState({
     visible: false,
@@ -48,11 +34,12 @@ const SpotExchangeParker = () => {
   const [userHubModalVis, setuserHubModalVis] = useState(false);
 
   // google maps navigation
+  const transactionId = useSetTransactionId();
+  const dbRealTimeInfoRef = database().ref(`driver_real_time_info/-${transactionId}/body`);
   const [coords, setCoords] = useState([]);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   // google maps navigation
-
 
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
@@ -90,53 +77,27 @@ const SpotExchangeParker = () => {
     }
   };
 
+  const retrievefireBaseRealTimeUpdates = () => {
+    dbRealTimeInfoRef.orderByChild('created').on('value', (body) => {
+      console.log('firebase coordinates retrieved by Parker ', body);
+    });
+  };
+
+  usePoll(
+    async () => {
+      retrievefireBaseRealTimeUpdates();
+      getDirections('32.946709, -96.952667', '32.951520, -96.955670');
+    },
+    [],
+    {
+      interval: 11000,
+    }
+  );
+
   useEffect(() => {
     getProfilePic();
     getDirections('32.946709, -96.952667', '32.951520, -96.955670');
   }, []);
-
-
-  const displayMessages = () => {
-    return messages !== null
-      ? Object.values(messages)
-          .sort((a: any, b: any) => b.created - a.created)
-          .map((item: any, index: number) => {
-            return (
-              <View
-                key={index}
-                style={
-                  item.sender_id === user.email ? styles.incomingTextRight : styles.incomingTextLeft
-                }>
-                <Text style={styles.incomingTextMsg}>{item.text}</Text>
-              </View>
-            );
-          })
-      : null;
-  };
-
-  const makeCall = () => {
-    let phoneNumber = '';
-
-    if (Platform.OS === 'android') {
-      phoneNumber = 'tel:${16508881712}';
-    } else {
-      phoneNumber = 'telprompt:${16508881712}';
-    }
-    Linking.openURL(phoneNumber);
-  };
-
-  const openGoogleMapsIntent = (startLoc, destinationLoc) => {
-    const url = `https://www.google.com/maps/dir/?api=1&origin=${startLoc}&destination=${destinationLoc}&key=${GOOGLE_API_KEY}`;
-    Linking.canOpenURL(url)
-      .then((supported) => {
-        if (!supported) {
-          console.log("Can't handle url: " + url);
-        } else {
-          return Linking.openURL(url);
-        }
-      })
-      .catch((err) => console.error('An error occurred', err));
-  };
 
   return (
     <View style={styles.mainContainer}>
@@ -243,8 +204,12 @@ const SpotExchangeParker = () => {
                   ? theme.colors.success
                   : theme.colors.light
               }
-              leftButtonTitle={cancelCompleteModalVis.type === 'cancelTransaction' ? 'Yes' : 'Complete'}
-              rightButtonTitle={cancelCompleteModalVis.type === 'cancelTransaction' ? 'No' : 'Not Yet'}
+              leftButtonTitle={
+                cancelCompleteModalVis.type === 'cancelTransaction' ? 'Yes' : 'Complete'
+              }
+              rightButtonTitle={
+                cancelCompleteModalVis.type === 'cancelTransaction' ? 'No' : 'Not Yet'
+              }
               type="standard"
               onPressLeft={() => {
                 setCancelCompleteModalVis({

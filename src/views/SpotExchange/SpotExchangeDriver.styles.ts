@@ -221,6 +221,14 @@ const useStyles = makeStyles((theme: any) =>
       shadowOpacity: 0.8,
       shadowRadius: 2,
     },
+    customTextStyles: {
+      color: theme.colors.light,
+      fontSize: 18,
+      flexWrap: 'wrap',
+      flex: 1,
+      textAlign: 'left',
+      marginLeft: 10,
+    },
   })
 );
 
