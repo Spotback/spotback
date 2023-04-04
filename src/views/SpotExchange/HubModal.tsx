@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
-import { phone, sendMessage, exit } from '@assets/images/index';
-import { Button, Stars, ProfilePic } from '@components/index';
-import database from '@react-native-firebase/database';
-import { theme } from '@utils/theme';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Image,
   Linking,
@@ -15,26 +12,48 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { RootStateOrAny, useSelector } from 'react-redux';
-import useStyles from './SpotExchangeDriver.styles';
+import database from '@react-native-firebase/database';
+
+import { theme } from '@utils/theme';
+import { phone, sendMessage, exit } from '@assets/images/index';
+import { Button, Stars, ProfilePic } from '@components/index';
+import { UserSpotPosition } from '@services/types';
 import { useSetTransactionId } from '../../hooks/useSetTransactionId';
+import {
+  userPositionSelector,
+  userRatingSelector,
+  driverSelector,
+  parkerSelector,
+} from '../../services/selectors';
+
+import useStyles from './SpotExchangeDriver.styles';
 
 const HubModal = ({ closeHub, cancelPress, spotSwitchCompletePress }) => {
   const styles = useStyles();
-  const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  const matchedUser = useSelector((state: RootStateOrAny) => state.userReducer.matchedUsersData);
-  const transactionId = useSetTransactionId();
+  const userPosition = useSelector(userPositionSelector);
+  const userRating = useSelector(userRatingSelector);
+  const driver = useSelector(driverSelector);
+  const parker = useSelector(parkerSelector);
   const [matchedCarImageSource, setMatchedCarImageSource] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState({});
-  console.log('transactionID !!! ', transactionId);
+  const transactionId = useSetTransactionId();
+
   const dbChatRoomRef = database().ref(`chat_rooms/-${transactionId}/messages`);
-  const carInfo = `${matchedUser.match.car.make}, ${matchedUser.match.car.model}, ${matchedUser.match.car.color}`;
-  const licensePlate = `${matchedUser.match.car.licencePlate.toUpperCase()}`;
+  const user = userPosition === UserSpotPosition.DRIVER ? driver : parker;
+  const matchEmail = userPosition === UserSpotPosition.DRIVER ? parker.email : driver.email;
+  const matchCarInfo =
+    userPosition === UserSpotPosition.DRIVER
+      ? `${parker.car.make}, ${parker.car.model}, ${parker.car.color}`
+      : `${driver.car.make}, ${driver.car.model}, ${driver.car.color}`;
+  const matchLicensePlate =
+    userPosition === UserSpotPosition.DRIVER
+      ? `${parker.car.licencePlate.toUpperCase()}`
+      : `${driver.car.licencePlate.toUpperCase()}`;
 
   const getMatchCarPic = () => {
     const dbCarPictureRef = database().ref(
-      `car_pictures_urls/${matchedUser.match.email.replace('@', '_').replace('.', '_')}/url`
+      `car_pictures_urls/${matchEmail.replace('@', '_').replace('.', '_')}/url`
     );
     dbCarPictureRef.orderByChild('url').on('value', (url) => {
       setMatchedCarImageSource(url.val());
@@ -55,7 +74,7 @@ const HubModal = ({ closeHub, cancelPress, spotSwitchCompletePress }) => {
         sender_id: user.email,
         text: message === '' ? messageFromButton : message,
       })
-      .then(() => console.log('Message sent!'));
+      .then(() => console.log('Message sent!', message));
     setMessage('');
   };
 
@@ -90,7 +109,7 @@ const HubModal = ({ closeHub, cancelPress, spotSwitchCompletePress }) => {
 
   useEffect(() => {
     getMatchCarPic();
-  }, [matchedUser.match.email]);
+  }, [matchEmail]);
 
   useEffect(() => {
     retrieveTransactionChatRoomMessages();
@@ -102,11 +121,11 @@ const HubModal = ({ closeHub, cancelPress, spotSwitchCompletePress }) => {
         <Image style={styles.xImage} source={exit} />
       </TouchableOpacity>
       <View style={styles.starContainer}>
-        <Stars starSize={20} starWidth={3} rating={user.rating} />
+        <Stars starSize={20} starWidth={3} rating={userRating} />
       </View>
-      <Text style={styles.text}>Camila Rodriguez</Text>
-      <Text style={styles.text}>{carInfo}</Text>
-      <Text style={styles.text}>{licensePlate}</Text>
+      <Text style={styles.text}>{matchEmail}</Text>
+      <Text style={styles.text}>{matchCarInfo}</Text>
+      <Text style={styles.text}>{matchLicensePlate}</Text>
       <View style={styles.matchedCarPicContainer}>
         <ProfilePic imageSource={matchedCarImageSource} size="large" blured />
       </View>
@@ -139,7 +158,7 @@ const HubModal = ({ closeHub, cancelPress, spotSwitchCompletePress }) => {
           {message.length ? (
             <TouchableOpacity
               style={styles.sendMessageButton}
-              onPress={pushTransactionChatRoomMessage}>
+              onPress={() => pushTransactionChatRoomMessage(message)}>
               <Image source={sendMessage} />
             </TouchableOpacity>
           ) : null}

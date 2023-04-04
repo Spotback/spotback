@@ -1,52 +1,56 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
-import { Button, Options } from '@components/index';
-import { GOOGLE_API_KEY } from '@env';
-import Polyline from '@mapbox/polyline';
-import storage from '@react-native-firebase/storage';
-import { useNavigation } from '@react-navigation/native';
-import { theme } from '@utils/theme';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { LogBox, Modal, Text, View } from 'react-native';
-import { RootStateOrAny, useSelector } from 'react-redux';
-import useStyles from './SpotExchangeDriver.styles';
-import MapboxNavigation from '@homee/react-native-mapbox-navigation';
-import { coordinatesSeperator } from '@utils/coordinatesSeperator';
+import { useSelector } from 'react-redux';
 import { Coordinate } from 'react-native-maps';
-import HubModal from './HubModal';
+import storage from '@react-native-firebase/storage';
+import { useNavigation } from '@react-navigation/native';
+import MapboxNavigation from '@homee/react-native-mapbox-navigation';
 import database from '@react-native-firebase/database';
+
+import { Button, Options } from '@components/index';
+import { theme } from '@utils/theme';
+import { coordinatesSeperator } from '@utils/coordinatesSeperator';
+import { UserSpotPosition } from '@services/types';
 import { useSetTransactionId } from '../../hooks/useSetTransactionId';
+import {
+  userPositionSelector,
+  driverSelector,
+  parkerSelector,
+  driverCurrentLocationSelector,
+  driverDesiredLocationSelector,
+} from '../../services/selectors';
+
+import HubModal from './HubModal';
+import useStyles from './SpotExchangeDriver.styles';
 
 const SpotExchangeDriver = () => {
   const styles = useStyles();
   const navigation = useNavigation();
-  const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  const matchedUser = useSelector(
-    (state: RootStateOrAny) => state.userReducer.transactionIdInfo.matchEmail
-  );
+  const userPosition = useSelector(userPositionSelector);
+  const driver = useSelector(driverSelector);
+  const parker = useSelector(parkerSelector);
+  const matchCurrentLocation = useSelector(driverCurrentLocationSelector);
+  const matchDesiredLocation = useSelector(driverDesiredLocationSelector);
   const [matchImageSource, setMatchImageSource] = useState('');
-  const [userHubModalVis, setuserHubModalVis] = useState(false);
+  const [userHubModalVis, setUserHubModalVis] = useState(false);
   const [cancelCompleteModalVis, setCancelCompleteModalVis] = useState({
     visible: false,
     type: 'cancelTransaction' || 'spotSwitchComplete',
   });
   const [youHaveArrivedModalVis, setYouHaveArrivedModalVis] = useState(false);
   // MabBox Coordinates
-  const [currentLocation, setCurrentlocation] = useState<number[]>([]);
+  const [currentLocation, setCurrentLocation] = useState<number[]>([]);
   const [desiredLocation, setDesiredLocation] = useState<number[]>([]);
   // MabBox Coordinate
-
-  // google maps navigation
   const transactionId = useSetTransactionId();
   const dbRealTimeInfoRef = database().ref(`driver_real_time_info/-${transactionId}/body`);
-  // google maps navigation
-  console.log('spotExchangeDriver User Data ', user.matchedUsersData.body);
-  console.log('spotExchange current and desired location ', currentLocation, desiredLocation);
+  const matchEmail = userPosition === UserSpotPosition.DRIVER ? parker.email : driver.email;
 
   const getMatchProfilePic = () => {
     storage()
-      .ref(`users/profile_images/${matchedUser.replace('@', '_').replace('.', '_')}.png`)
+      .ref(`users/profile_images/${matchEmail.replace('@', '_').replace('.', '_')}.png`)
       .getDownloadURL()
       .then((url: string) => {
         url ? setMatchImageSource(url) : setMatchImageSource('');
@@ -57,7 +61,7 @@ const SpotExchangeDriver = () => {
       });
   };
 
-  const pushtofireBaseRealTimeUpdatesETA = (eta?) => {
+  const pushToFireBaseRealTimeUpdatesETA = (eta?) => {
     const newBody = dbRealTimeInfoRef.push();
     if (eta !== '') {
       setInterval(function () {
@@ -66,12 +70,12 @@ const SpotExchangeDriver = () => {
             created: Date.now(),
             eta: eta,
           })
-          .then(() => console.log('Message sent!'));
+          .then(() => console.log('ETA sent!'));
       }, 10000);
     }
   };
 
-  const pushtofireBaseRealTimeUpdatesCoords = (latitude, longitude) => {
+  const pushToFireBaseRealTimeUpdatesCoords = (latitude, longitude) => {
     const newBody = dbRealTimeInfoRef.push();
     if (latitude && longitude !== 0) {
       setInterval(function () {
@@ -81,19 +85,19 @@ const SpotExchangeDriver = () => {
             lat: latitude,
             long: longitude,
           })
-          .then(() => console.log('Message sent!'));
+          .then(() => console.log('Coords sent!'));
       }, 10000);
     }
   };
 
   useEffect(() => {
     getMatchProfilePic();
-  }, []);
+  }, [matchEmail]);
 
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
-    setCurrentlocation(coordinatesSeperator(user.matchedUsersData.body.currentLocation));
-    setDesiredLocation(coordinatesSeperator(user.matchedUsersData.body.desiredLocation));
+    setCurrentLocation(coordinatesSeperator(matchCurrentLocation));
+    setDesiredLocation(coordinatesSeperator(matchDesiredLocation));
   }, []);
 
   return (
@@ -108,7 +112,7 @@ const SpotExchangeDriver = () => {
             onLocationChange={(event) => {
               const { latitude, longitude }: any = event.nativeEvent;
               console.log('onLocationChange', latitude, longitude);
-              pushtofireBaseRealTimeUpdatesCoords(latitude, longitude);
+              pushToFireBaseRealTimeUpdatesCoords(latitude, longitude);
             }}
             onRouteProgressChange={(event) => {
               // TODO: Send this info to the other user via firebase and drawn their map towards them
@@ -123,7 +127,7 @@ const SpotExchangeDriver = () => {
 
                 durationRemaining
               );
-              pushtofireBaseRealTimeUpdatesETA(durationRemaining);
+              pushToFireBaseRealTimeUpdatesETA(durationRemaining);
             }}
             onError={(event) => {
               const { message }: any = event.nativeEvent;
@@ -136,7 +140,7 @@ const SpotExchangeDriver = () => {
             onArrive={() => {
               // Called when you arrive at the destination.
               setYouHaveArrivedModalVis(true);
-              setuserHubModalVis(true);
+              setUserHubModalVis(true);
             }}
           />
         </View>
@@ -152,20 +156,20 @@ const SpotExchangeDriver = () => {
 
         {userHubModalVis ? (
           <HubModal
-            closeHub={() => setuserHubModalVis(!userHubModalVis)}
+            closeHub={() => setUserHubModalVis(!userHubModalVis)}
             cancelPress={() => {
               setCancelCompleteModalVis({
                 visible: !cancelCompleteModalVis.visible,
                 type: 'cancelTransaction',
               });
-              setuserHubModalVis(!userHubModalVis);
+              setUserHubModalVis(!userHubModalVis);
             }}
             spotSwitchCompletePress={() => {
               setCancelCompleteModalVis({
                 visible: !cancelCompleteModalVis.visible,
                 type: 'spotSwitchComplete',
               });
-              setuserHubModalVis(!userHubModalVis);
+              setUserHubModalVis(!userHubModalVis);
             }}
           />
         ) : null}
@@ -229,7 +233,7 @@ const SpotExchangeDriver = () => {
         </Modal>
 
         {userHubModalVis ? null : (
-          <View style={styles.openCommumnicationHubButton}>
+          <View style={styles.openCommunicationHubButton}>
             <Button
               activeOpacity={0.9}
               customButtonStyles={styles.customButtonStyles}
@@ -240,7 +244,7 @@ const SpotExchangeDriver = () => {
               backgroundColor={theme.colors.primary}
               titleColor={theme.colors.light}
               onPress={() => {
-                setuserHubModalVis(!userHubModalVis);
+                setUserHubModalVis(!userHubModalVis);
               }}
             />
           </View>

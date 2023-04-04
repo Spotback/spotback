@@ -8,6 +8,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 // import { StripeProvider } from '@stripe/stripe-react-native';
 
 const App = () => {
+  // console.disableYellowBox = true;
+  // LogBox.ignoreAllLogs(disable)
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

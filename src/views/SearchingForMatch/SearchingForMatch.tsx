@@ -1,24 +1,27 @@
-import { Button, Loader } from '@components/index';
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Text, View } from 'react-native';
-import useStyles from './SearchingForMatch.styles';
-import { sqsMatchingResMessage } from '@services/sqsMatchingResMessage';
+import { useDispatch, useSelector } from 'react-redux';
 import usePoll from 'react-use-poll';
-import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
+
+import { Button, Loader } from '@components/index';
+import { sqsMatchingResMessage } from '@services/sqsMatchingResMessage';
 import { UserSpotPosition, UserTypes } from '@services/types';
 import * as RootNavigation from '@navigation/RootNavigation';
+import { userPositionSelector } from '../../services/selectors';
+
+import useStyles from './SearchingForMatch.styles';
 
 const SearchingForMatch = () => {
   const styles = useStyles();
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const user = useSelector((state: RootStateOrAny) => state.userReducer);
+  const userPosition = useSelector(userPositionSelector);
 
   usePoll(
     async () => {
       const sqsMatchingRes = await sqsMatchingResMessage();
-      if (user.UserSpotPosition === UserSpotPosition.PARKER && sqsMatchingRes !== undefined) {
+      if (userPosition === UserSpotPosition.PARKER && sqsMatchingRes !== undefined) {
         dispatch({
           type: UserTypes.MATCH,
           payload: sqsMatchingRes,
@@ -45,6 +48,3 @@ const SearchingForMatch = () => {
 };
 
 export default SearchingForMatch;
-function dispatch(arg0: { type: UserTypes; payload: any }) {
-  throw new Error('Function not implemented.');
-}
