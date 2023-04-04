@@ -1,40 +1,47 @@
-import { Options, ProfilePic, Stars } from '@components/index';
-import storage from '@react-native-firebase/storage';
-import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, Text, View } from 'react-native';
-import { RootStateOrAny, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import storage from '@react-native-firebase/storage';
+import { useNavigation } from '@react-navigation/native';
+
+import { Options, ProfilePic, Stars } from '@components/index';
+import { UserSpotPosition } from '@services/types';
+import { userPositionSelector, driverSelector, parkerSelector, userRatingSelector } from '../../services/selectors';
+
 import useStyles from './SpotExchangeComplete.styles';
 
 const SpotExchangeComplete = () => {
   const styles = useStyles();
   const navigation = useNavigation();
+  const userPosition = useSelector(userPositionSelector);
+  const driver = useSelector(driverSelector);
+  const parker = useSelector(parkerSelector);
+  const userRating = useSelector(userRatingSelector)
+  const [matchProfilePicSource, setMatchProfilePicSource] = useState('');
 
-  const [imageSource, setImageSource] = useState('');
+  const matchEmail = userPosition === UserSpotPosition.DRIVER ? parker.email : driver.email;
 
-  const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  console.log('spotExchange User Data for Rating ', user.matchedUsersData);
-  const getProfilePic = () => {
+  const getMatchProfilePic = () => {
     storage()
-      .ref(`users/profile_images/${user.matchedUsersData.match.email.replace('@', '_').replace('.', '_')}.png`)
+      .ref(`users/profile_images/${matchEmail.replace('@', '_').replace('.', '_')}.png`)
       .getDownloadURL()
       .then((url: string) => {
-        url ? setImageSource(url) : setImageSource('');
+        url ? setMatchProfilePicSource(url) : setMatchProfilePicSource('');
       })
       .catch((e) => console.log('getting downloadURL of image error => ', e));
   };
 
   useEffect(() => {
-    getProfilePic();
+    getMatchProfilePic();
   });
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>{"You've just recieved 5 points from"}</Text>
-      <ProfilePic imageSource={imageSource} size="large" />
-      <Text style={styles.text}>Camila Rodgriguez</Text>
+      <Text style={styles.text}>{"You've just received 5 points from"}</Text>
+      <ProfilePic imageSource={matchProfilePicSource} size="large" />
+      <Text style={styles.text}>{matchEmail}</Text>
       <View style={styles.starContainer}>
-        <Stars starSize={30} starWidth={5} disabled={false} rating={user.rating} />
+        <Stars starSize={30} starWidth={5} disabled={false} rating={userRating} />
       </View>
 
       <Options

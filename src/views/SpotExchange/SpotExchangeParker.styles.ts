@@ -188,7 +188,7 @@ const useStyles = makeStyles((theme: any) =>
       color: theme.colors.dark,
       fontSize: 11,
     },
-    openCommumnicationHubButton: {
+    openCommunicationHubButton: {
       position: 'absolute',
       bottom: 0,
       right: 0,
@@ -210,6 +210,14 @@ const useStyles = makeStyles((theme: any) =>
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.8,
       shadowRadius: 2,
+    },
+    customTextStyles: {
+      color: theme.colors.light,
+      fontSize: 18,
+      flexWrap: 'wrap',
+      flex: 1,
+      textAlign: 'left',
+      marginLeft: 10,
     },
   })
 );

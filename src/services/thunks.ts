@@ -1,3 +1,7 @@
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+import database from '@react-native-firebase/database';
+
 import {
   CAR_PROFILE_PICTURE_KEY,
   CAR_PROFILE_PICTURE_URL,
@@ -6,10 +10,8 @@ import {
   USERS_BASE_URL,
 } from '@env';
 import * as RootNavigation from '@navigation/RootNavigation';
-import database from '@react-native-firebase/database';
 import { setAsyncStorage } from '@utils/asyncStorage';
-import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
+
 import { UserTypes } from './types';
 import { sqsMatchingResMessage } from './sqsMatchingResMessage';
 
@@ -231,7 +233,9 @@ export const match = (bearer: string, currentLocation: string, desiredLocation: 
   console.log(
     'coordinates on submit match =>',
     bearer,
+    'currentLocation ',
     currentLocation,
+    'desiredLocation ',
     desiredLocation,
     MATCHING_BASE_URL
   );
@@ -253,14 +257,9 @@ export const match = (bearer: string, currentLocation: string, desiredLocation: 
         console.log('match res =>', res);
         const matchingResponse = sqsMatchingResMessage();
         console.log('matchingResponse =>', matchingResponse);
-        const transactionIdInfo = {matchEmail: res.data.match.email, createdTime: res.data.match.created_time};
         dispatch({
           type: UserTypes.MATCH,
           payload: res.data,
-        });
-        dispatch({
-          type: UserTypes.TRANSACTION_ID_INFO,
-          payload: transactionIdInfo,
         });
         RootNavigation.navigate('SpotExchange');
       })

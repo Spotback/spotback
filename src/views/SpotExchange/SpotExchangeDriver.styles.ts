@@ -198,7 +198,7 @@ const useStyles = makeStyles((theme: any) =>
       color: theme.colors.dark,
       fontSize: 11,
     },
-    openCommumnicationHubButton: {
+    openCommunicationHubButton: {
       position: 'absolute',
       bottom: 0,
       right: 0,

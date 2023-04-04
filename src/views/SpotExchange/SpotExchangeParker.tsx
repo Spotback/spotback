@@ -1,59 +1,84 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable react/no-unescaped-entities */
-import { driverCar, spotPinGold } from '@assets/images/index';
-import { Button, Hub, Options, Stars } from '@components/index';
-import { GOOGLE_API_KEY } from '@env';
+import React, { useEffect, useState } from 'react';
+import { Image, LogBox, Modal, Text, TouchableOpacity, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import MapView, { Marker, Polyline as GooglePolyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import Polyline from '@mapbox/polyline';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
+import database from '@react-native-firebase/database';
+import usePoll from 'react-use-poll';
+
+import { driverCar, spotPinGold } from '@assets/images/index';
+import { Button, Hub, Options, Stars } from '@components/index';
+import { GOOGLE_API_KEY } from '@env';
 import { theme } from '@utils/theme';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Image, Linking, LogBox, Modal, Text, TouchableOpacity, View } from 'react-native';
-import MapView, { Marker, Polyline as GooglePolyline, PROVIDER_GOOGLE } from 'react-native-maps';
-import { RootStateOrAny, useSelector } from 'react-redux';
+import { UserSpotPosition } from '@services/types';
+import { useSetTransactionId } from '../../hooks/useSetTransactionId';
+import {
+  userPositionSelector,
+  driverSelector,
+  parkerSelector,
+  driverCurrentLocationSelector,
+  driverDesiredLocationSelector,
+  userRatingSelector,
+} from '../../services/selectors';
+
 import HubModal from './HubModal';
 import useStyles from './SpotExchangeParker.styles';
-import database from '@react-native-firebase/database';
-import { useSetTransactionId } from '../../hooks/useSetTransactionId';
-import usePoll from 'react-use-poll';
 
 const SpotExchangeParker = () => {
   const styles = useStyles();
   const navigation = useNavigation();
-  const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  console.log('spotExchangeParker User Data ', user);
+  const userPosition = useSelector(userPositionSelector);
+  const driver = useSelector(driverSelector);
+  const parker = useSelector(parkerSelector);
+  const currentLocation = useSelector(driverCurrentLocationSelector);
+  const desiredLocation = useSelector(driverDesiredLocationSelector);
+  const userRating = useSelector(userRatingSelector);
   const [modalVis, setModalVis] = useState(false);
   const [hubVis, setHubVis] = useState(false);
-  const [imageSource, setImageSource] = useState('');
-
+  const [matchImageSource, setMatchImageSource] = useState('');
   const [cancelCompleteModalVis, setCancelCompleteModalVis] = useState({
     visible: false,
     type: 'cancelTransaction' || 'spotSwitchComplete',
   });
-  const [userHubModalVis, setuserHubModalVis] = useState(false);
-
-  // google maps navigation
-  const transactionId = useSetTransactionId();
-  const dbRealTimeInfoRef = database().ref(`driver_real_time_info/-${transactionId}/body`);
+  const [userHubModalVis, setUserHubModalVis] = useState(false);
   const [coords, setCoords] = useState([]);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
-  // google maps navigation
+  const [eta, setEta] = useState('');
+  const transactionId = useSetTransactionId();
+
+  const matchEmail = userPosition === UserSpotPosition.DRIVER ? parker.email : driver.email;
+  const dbRealTimeCoordsRef = database().ref(`driver_real_time_coords/-${transactionId}/body`);
+  const dbRealTimeETARef = database().ref(`driver_real_time_eta/-${transactionId}/body`);
+  const currentLocationArray = currentLocation.trim().split(',');
+  const desiredLocationArray = desiredLocation.trim().split(',');
+  const matchCarInfo =
+    userPosition === UserSpotPosition.DRIVER
+      ? `${parker.car.make}, ${parker.car.model}, ${parker.car.color}`
+      : `${driver.car.make}, ${driver.car.model}, ${driver.car.color}`;
+  const matchLicensePlate =
+    userPosition === UserSpotPosition.DRIVER
+      ? `${parker.car.licencePlate.toUpperCase()}`
+      : `${driver.car.licencePlate.toUpperCase()}`;
 
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   }, []);
 
-  const getProfilePic = () => {
+  const getMatchProfilePic = () => {
     storage()
-      .ref(`users/profile_images/${user.email.replace('@', '_').replace('.', '_')}.png`)
+      .ref(`users/profile_images/${matchEmail.replace('@', '_').replace('.', '_')}.png`)
       .getDownloadURL()
       .then((url: string) => {
-        url ? setImageSource(url) : setImageSource('');
+        url ? setMatchImageSource(url) : setMatchImageSource('');
       })
       .catch((e) => {
-        setImageSource('');
+        setMatchImageSource('');
         console.log('getting downloadURL of image error => ', e);
       });
   };
@@ -77,25 +102,37 @@ const SpotExchangeParker = () => {
     }
   };
 
-  const retrievefireBaseRealTimeUpdates = () => {
-    dbRealTimeInfoRef.orderByChild('created').on('value', (body) => {
-      console.log('firebase coordinates retrieved by Parker ', body);
-    });
+  const retrieveFireBaseRealTimeUpdates = () => {
+    // dbRealTimeCoordsRef.orderByChild('created').on('value', (data) => {
+    //   console.log('retrieveFireBaseRealTimeUpdates ', data.val());
+    // });
+    dbRealTimeCoordsRef
+      .orderByChild('created')
+      .limitToFirst(1)
+      .once('value', (data) => {
+        console.log('retrieveFireBaseRealTimeUpdates ', data.val());
+      });
+    // dbRealTimeETARef.orderByChild('created').on('value', (data) => {
+    // console.log('firebase ETA retrieved by Parker ', data.val());
+    // });
   };
 
   usePoll(
     async () => {
-      retrievefireBaseRealTimeUpdates();
-      getDirections('32.946709, -96.952667', '32.951520, -96.955670');
+      retrieveFireBaseRealTimeUpdates();
+      getDirections(currentLocation, desiredLocation);
     },
     [],
     {
-      interval: 11000,
+      interval: 10000,
     }
   );
 
   useEffect(() => {
-    getProfilePic();
+    getMatchProfilePic();
+  }, [matchEmail]);
+
+  useEffect(() => {
     getDirections('32.946709, -96.952667', '32.951520, -96.955670');
   }, []);
 
@@ -107,19 +144,19 @@ const SpotExchangeParker = () => {
             provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
-              latitude: 32.946709,
-              longitude: -96.952667,
+              latitude: currentLocationArray[0],
+              longitude: currentLocationArray[1],
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}>
             <Marker
-              coordinate={{ latitude: 32.95152, longitude: -96.95567 }}
-              title={'Your Location'}>
+              coordinate={{ latitude: 32.946709, longitude: -96.952667 }}
+              title={'Driver Location'}>
               <Image style={{ width: 40, height: 40 }} source={driverCar} />
             </Marker>
             <Marker
-              coordinate={{ latitude: 32.946709, longitude: -96.952667 }}
-              title={'Driver Location'}>
+              coordinate={{ latitude: desiredLocationArray[0], longitude: desiredLocationArray[1] }}
+              title={'Your Location'}>
               <Image source={spotPinGold} />
             </Marker>
 
@@ -127,9 +164,9 @@ const SpotExchangeParker = () => {
           </MapView>
         </View>
         <Hub
-          title={`Arriving in ${user.matchedUsersData.match.etaFromSpot.value} Minutes`}
+          title={`Arriving in ${parker.etaFromSpot.value} Minutes`}
           client
-          imageSource={imageSource}
+          // imageSource={imageSource}
           balance={15}
           onPress={() => {
             // setHubVis(!hubVis);
@@ -154,12 +191,12 @@ const SpotExchangeParker = () => {
                 }}>
                 <View style={styles.modalView}>
                   <View style={styles.modalTextContainer}>
-                    <Text style={styles.modalText}>Walter White</Text>
-                    <Text style={styles.modalText}>BMW, 3 Series, Black</Text>
-                    <Text style={styles.modalText}>FF35DG2</Text>
+                    <Text style={styles.modalText}>{matchEmail}</Text>
+                    <Text style={styles.modalText}>{matchCarInfo}</Text>
+                    <Text style={styles.modalText}>{matchLicensePlate}</Text>
                   </View>
                   <View style={styles.starContainer}>
-                    <Stars starSize={20} starWidth={3} rating={user.rating} />
+                    <Stars starSize={20} starWidth={3} rating={userRating} />
                   </View>
                 </View>
               </TouchableOpacity>
@@ -240,35 +277,37 @@ const SpotExchangeParker = () => {
         </Modal>
         {userHubModalVis ? (
           <HubModal
-            closeHub={() => setuserHubModalVis(!userHubModalVis)}
+            closeHub={() => setUserHubModalVis(!userHubModalVis)}
             cancelPress={() => {
               setCancelCompleteModalVis({
                 visible: !cancelCompleteModalVis.visible,
                 type: 'cancelTransaction',
               });
-              setuserHubModalVis(!userHubModalVis);
+              setUserHubModalVis(!userHubModalVis);
             }}
             spotSwitchCompletePress={() => {
               setCancelCompleteModalVis({
                 visible: !cancelCompleteModalVis.visible,
                 type: 'spotSwitchComplete',
               });
-              setuserHubModalVis(!userHubModalVis);
+              setUserHubModalVis(!userHubModalVis);
             }}
           />
         ) : null}
 
         {userHubModalVis ? null : (
-          <View style={styles.openCommumnicationHubButton}>
+          <View style={styles.openCommunicationHubButton}>
             <Button
               activeOpacity={0.9}
               customButtonStyles={styles.customButtonStyles}
               size="medium"
-              title="Chat with User"
+              title="Chat with"
+              matchedUserPic={matchImageSource}
+              customTextStyles={styles.customTextStyles}
               backgroundColor={theme.colors.primary}
               titleColor={theme.colors.light}
               onPress={() => {
-                setuserHubModalVis(!userHubModalVis);
+                setUserHubModalVis(!userHubModalVis);
               }}
             />
           </View>

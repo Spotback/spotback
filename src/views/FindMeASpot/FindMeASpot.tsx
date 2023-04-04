@@ -85,7 +85,11 @@ const FindMeASpot = () => {
           inputStyle="large"
           autoComplete
           onPress={(data: any, details: any) => {
-            setDesiredLocation(`${details.geometry.location.lat},${details.geometry.location.lng}`);
+            setDesiredLocation(
+              `${details.geometry.location.lat
+                .toString()
+                .substring(0, 9)},${details.geometry.location.lng.toString().substring(0, 10)}`
+            );
           }}
         />
       </View>
