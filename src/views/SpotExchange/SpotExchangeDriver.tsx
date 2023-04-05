@@ -113,7 +113,6 @@ const SpotExchangeDriver = () => {
             // showsEndOfRouteFeedback
             onLocationChange={(event) => {
               const { latitude, longitude }: any = event.nativeEvent;
-              console.log('onLocationChange', latitude, longitude);
               pushToFireBaseRealTimeUpdatesCoords(latitude, longitude);
             }}
             onRouteProgressChange={(event) => {
@@ -124,11 +123,6 @@ const SpotExchangeDriver = () => {
                 fractionTraveled,
                 distanceRemaining,
               }: any = event.nativeEvent;
-              console.log(
-                'onRouteProgressChange',
-
-                durationRemaining
-              );
               pushToFireBaseRealTimeUpdatesETA(durationRemaining);
             }}
             onError={(event) => {

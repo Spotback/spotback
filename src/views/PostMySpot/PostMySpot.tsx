@@ -2,17 +2,18 @@ import { Button, ErrorAlert, Spinner } from '@components/index';
 import { Picker } from '@react-native-picker/picker';
 import { postSpot, setUserPositionType } from '@services/thunks';
 import { theme } from '@utils/theme';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import useStyles from './PostMySpot.styles';
 import { UserSpotPosition } from '@services/types';
+import { GOOGLE_API_KEY } from '@env';
 
 const PostMySpot = ({ route: { params } }: Record<any, any>) => {
   const styles = useStyles();
   console.log('route params', params);
   const user = useSelector((state: RootStateOrAny) => state.userReducer);
-  console.log('user pinned coords ', user.pinnedCoordinates);
+  // console.log('user pinned coords ', user.pinnedCoordinates);
   const dispatch = useDispatch();
 
   const [spotType, setSpotType] = useState('street');
@@ -32,8 +33,7 @@ const PostMySpot = ({ route: { params } }: Record<any, any>) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>234 San Pedro Sq.</Text>
-        <Text style={styles.titleText}>Recieve 5 points</Text>
+        <Text style={styles.titleText}>3656 Howell St, Dallas</Text>
       </View>
       <View style={styles.subContainer}>
         <Text style={styles.mainText}>When will you get to your car?</Text>

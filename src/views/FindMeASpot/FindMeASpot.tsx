@@ -19,7 +19,6 @@ const FindMeASpot = () => {
   const getCurrentLocation = () => {
     Geolocation.getCurrentPosition(
       (position) => {
-        console.log('position ', position);
         setCurrentLocation(`${position.coords.latitude},${position.coords.longitude}`);
       },
       (error) => {
@@ -55,7 +54,6 @@ const FindMeASpot = () => {
   };
 
   const onSubmit = (flag: boolean) => {
-    console.log('coordinates on submit', user.bearer, flag, currentLocation, desiredLocation);
     dispatch(match(user.bearer, currentLocation, flag ? desiredLocation : currentLocation));
     dispatch(setUserPositionType(UserSpotPosition.DRIVER));
   };

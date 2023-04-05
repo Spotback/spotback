@@ -1,4 +1,5 @@
 import React from 'react';
+import { LogBox } from 'react-native';
 import { Provider } from 'react-redux';
 import { store, persistor } from './src/services/redux/store';
 import { ThemeProvider } from 'react-native-elements';
@@ -8,8 +9,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 // import { StripeProvider } from '@stripe/stripe-react-native';
 
 const App = () => {
-  // console.disableYellowBox = true;
-  // LogBox.ignoreAllLogs(disable)
+  LogBox.ignoreAllLogs(true)
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
