@@ -32,7 +32,7 @@ const SearchingForMatch = () => {
     },
     [],
     {
-      interval: 10000,
+      interval: 5000,
     }
   );
 
