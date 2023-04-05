@@ -300,15 +300,6 @@ export const setUserPositionType = (position: string) => {
   };
 };
 
-export const setTransactionId = (transactionId: string) => {
-  return (dispatch: any) => {
-    dispatch({
-      type: UserTypes.TRANSACTION_ID,
-      payload: transactionId,
-    });
-  };
-};
-
 export const triggerSpinner = () => {
   // A solution to the profile pic not re rendering on the home page. Also tells the user their pic was saved.
   return (dispatch: any) => {

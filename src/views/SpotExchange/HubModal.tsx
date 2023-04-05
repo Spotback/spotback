@@ -18,12 +18,12 @@ import { theme } from '@utils/theme';
 import { phone, sendMessage, exit } from '@assets/images/index';
 import { Button, Stars, ProfilePic } from '@components/index';
 import { UserSpotPosition } from '@services/types';
-import { useSetTransactionId } from '../../hooks/useSetTransactionId';
 import {
   userPositionSelector,
   userRatingSelector,
   driverSelector,
   parkerSelector,
+  transactionIdSelector,
 } from '../../services/selectors';
 
 import useStyles from './SpotExchangeDriver.styles';
@@ -37,11 +37,12 @@ const HubModal = ({ closeHub, cancelPress, spotSwitchCompletePress }) => {
   const [matchedCarImageSource, setMatchedCarImageSource] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState({});
-  const transactionId = useSetTransactionId();
+  const transactionId = useSelector(transactionIdSelector);
 
   const dbChatRoomRef = database().ref(`chat_rooms/-${transactionId}/messages`);
   const user = userPosition === UserSpotPosition.DRIVER ? driver : parker;
   const matchEmail = userPosition === UserSpotPosition.DRIVER ? parker.email : driver.email;
+  const matchName = userPosition === UserSpotPosition.DRIVER ? `${parker.firstName} ${parker.lastName}` : `${driver.firstName} ${driver.lastName}`;
   const matchCarInfo =
     userPosition === UserSpotPosition.DRIVER
       ? `${parker.car.make}, ${parker.car.model}, ${parker.car.color}`
@@ -123,7 +124,7 @@ const HubModal = ({ closeHub, cancelPress, spotSwitchCompletePress }) => {
       <View style={styles.starContainer}>
         <Stars starSize={20} starWidth={3} rating={userRating} />
       </View>
-      <Text style={styles.text}>{matchEmail}</Text>
+      <Text style={styles.text}>{matchName}</Text>
       <Text style={styles.text}>{matchCarInfo}</Text>
       <Text style={styles.text}>{matchLicensePlate}</Text>
       <View style={styles.matchedCarPicContainer}>

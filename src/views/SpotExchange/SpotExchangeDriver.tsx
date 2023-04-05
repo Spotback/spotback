@@ -13,13 +13,13 @@ import { Button, Options } from '@components/index';
 import { theme } from '@utils/theme';
 import { coordinatesSeperator } from '@utils/coordinatesSeperator';
 import { UserSpotPosition } from '@services/types';
-import { useSetTransactionId } from '../../hooks/useSetTransactionId';
 import {
   userPositionSelector,
   driverSelector,
   parkerSelector,
   driverCurrentLocationSelector,
   driverDesiredLocationSelector,
+  transactionIdSelector
 } from '../../services/selectors';
 
 import HubModal from './HubModal';
@@ -28,11 +28,14 @@ import useStyles from './SpotExchangeDriver.styles';
 const SpotExchangeDriver = () => {
   const styles = useStyles();
   const navigation = useNavigation();
+
   const userPosition = useSelector(userPositionSelector);
   const driver = useSelector(driverSelector);
   const parker = useSelector(parkerSelector);
   const matchCurrentLocation = useSelector(driverCurrentLocationSelector);
   const matchDesiredLocation = useSelector(driverDesiredLocationSelector);
+  const transactionId = useSelector(transactionIdSelector);
+
   const [matchImageSource, setMatchImageSource] = useState('');
   const [userHubModalVis, setUserHubModalVis] = useState(false);
   const [cancelCompleteModalVis, setCancelCompleteModalVis] = useState({
@@ -40,12 +43,11 @@ const SpotExchangeDriver = () => {
     type: 'cancelTransaction' || 'spotSwitchComplete',
   });
   const [youHaveArrivedModalVis, setYouHaveArrivedModalVis] = useState(false);
-  // MabBox Coordinates
   const [currentLocation, setCurrentLocation] = useState<number[]>([]);
   const [desiredLocation, setDesiredLocation] = useState<number[]>([]);
-  // MabBox Coordinate
-  const transactionId = useSetTransactionId();
-  const dbRealTimeInfoRef = database().ref(`driver_real_time_info/-${transactionId}/body`);
+
+  const dbRealTimeCoordsRef = database().ref(`driver_real_time_coords/-${transactionId}/body`);
+  const dbRealTimeETARef = database().ref(`driver_real_time_eta/-${transactionId}/body`);
   const matchEmail = userPosition === UserSpotPosition.DRIVER ? parker.email : driver.email;
 
   const getMatchProfilePic = () => {
@@ -62,7 +64,7 @@ const SpotExchangeDriver = () => {
   };
 
   const pushToFireBaseRealTimeUpdatesETA = (eta?) => {
-    const newBody = dbRealTimeInfoRef.push();
+    const newBody = dbRealTimeETARef.push();
     if (eta !== '') {
       setInterval(function () {
         newBody
@@ -76,7 +78,7 @@ const SpotExchangeDriver = () => {
   };
 
   const pushToFireBaseRealTimeUpdatesCoords = (latitude, longitude) => {
-    const newBody = dbRealTimeInfoRef.push();
+    const newBody = dbRealTimeCoordsRef.push();
     if (latitude && longitude !== 0) {
       setInterval(function () {
         newBody
