@@ -16,7 +16,6 @@ import { Button, Hub, Options, Stars } from '@components/index';
 import { GOOGLE_API_KEY } from '@env';
 import { theme } from '@utils/theme';
 import { UserSpotPosition } from '@services/types';
-import { useSetTransactionId } from '../../hooks/useSetTransactionId';
 import {
   userPositionSelector,
   driverSelector,
@@ -24,6 +23,8 @@ import {
   driverCurrentLocationSelector,
   driverDesiredLocationSelector,
   userRatingSelector,
+  etaInMinutesSelector,
+  transactionIdSelector
 } from '../../services/selectors';
 
 import HubModal from './HubModal';
@@ -38,6 +39,12 @@ const SpotExchangeParker = () => {
   const currentLocation = useSelector(driverCurrentLocationSelector);
   const desiredLocation = useSelector(driverDesiredLocationSelector);
   const userRating = useSelector(userRatingSelector);
+  const etaInMinutes = useSelector(etaInMinutesSelector);
+  const transactionId = useSelector(transactionIdSelector);
+
+  const currentLocationArray = currentLocation.trim().split(',');
+  const desiredLocationArray = desiredLocation.trim().split(',');
+
   const [modalVis, setModalVis] = useState(false);
   const [hubVis, setHubVis] = useState(false);
   const [matchImageSource, setMatchImageSource] = useState('');
@@ -47,16 +54,14 @@ const SpotExchangeParker = () => {
   });
   const [userHubModalVis, setUserHubModalVis] = useState(false);
   const [coords, setCoords] = useState([]);
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
-  const [eta, setEta] = useState('');
-  const transactionId = useSetTransactionId();
+  const [latitude, setLatitude] = useState(parseFloat(currentLocationArray[0]));
+  const [longitude, setLongitude] = useState(parseFloat(currentLocationArray[1]));
+  const [eta, setEta] = useState(etaInMinutes);
 
   const matchEmail = userPosition === UserSpotPosition.DRIVER ? parker.email : driver.email;
   const dbRealTimeCoordsRef = database().ref(`driver_real_time_coords/-${transactionId}/body`);
   const dbRealTimeETARef = database().ref(`driver_real_time_eta/-${transactionId}/body`);
-  const currentLocationArray = currentLocation.trim().split(',');
-  const desiredLocationArray = desiredLocation.trim().split(',');
+
   const matchCarInfo =
     userPosition === UserSpotPosition.DRIVER
       ? `${parker.car.make}, ${parker.car.model}, ${parker.car.color}`
@@ -103,18 +108,27 @@ const SpotExchangeParker = () => {
   };
 
   const retrieveFireBaseRealTimeUpdates = () => {
-    // dbRealTimeCoordsRef.orderByChild('created').on('value', (data) => {
-    //   console.log('retrieveFireBaseRealTimeUpdates ', data.val());
-    // });
     dbRealTimeCoordsRef
       .orderByChild('created')
-      .limitToFirst(1)
-      .once('value', (data) => {
-        console.log('retrieveFireBaseRealTimeUpdates ', data.val());
+      .limitToLast(1)
+      .on('child_added', (body) => {
+        const lastCoordsObj = body.val();
+        if (lastCoordsObj.lat !== undefined && lastCoordsObj.long !== undefined) {
+          setLatitude(lastCoordsObj.lat);
+          setLongitude(lastCoordsObj.long);
+        }
       });
-    // dbRealTimeETARef.orderByChild('created').on('value', (data) => {
-    // console.log('firebase ETA retrieved by Parker ', data.val());
-    // });
+
+    dbRealTimeETARef
+      .orderByChild('created')
+      .limitToLast(1)
+      .on('child_added', (body) => {
+        const etaObj = body.val();
+        if (etaObj.eta !== undefined) {
+          const eta = etaObj.eta;
+          setEta(Math.round(eta / 60));
+        }
+      });
   };
 
   usePoll(
@@ -130,11 +144,8 @@ const SpotExchangeParker = () => {
 
   useEffect(() => {
     getMatchProfilePic();
+    console.log('rerender rerender ahahahahah');
   }, [matchEmail]);
-
-  useEffect(() => {
-    getDirections('32.946709, -96.952667', '32.951520, -96.955670');
-  }, []);
 
   return (
     <View style={styles.mainContainer}>
@@ -146,12 +157,10 @@ const SpotExchangeParker = () => {
             region={{
               latitude: currentLocationArray[0],
               longitude: currentLocationArray[1],
-              latitudeDelta: 0.015,
-              longitudeDelta: 0.0121,
+              latitudeDelta: 0.0035,
+              longitudeDelta: 0.0035,
             }}>
-            <Marker
-              coordinate={{ latitude: 32.946709, longitude: -96.952667 }}
-              title={'Driver Location'}>
+            <Marker coordinate={{ latitude, longitude }} title={'Driver Location'}>
               <Image style={{ width: 40, height: 40 }} source={driverCar} />
             </Marker>
             <Marker
@@ -164,7 +173,7 @@ const SpotExchangeParker = () => {
           </MapView>
         </View>
         <Hub
-          title={`Arriving in ${parker.etaFromSpot.value} Minutes`}
+          title={eta < 1 ? `Arriving in < Minute` : `Arriving in ${eta} Minutes`}
           client
           // imageSource={imageSource}
           balance={15}

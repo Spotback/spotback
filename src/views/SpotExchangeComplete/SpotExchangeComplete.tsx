@@ -20,6 +20,7 @@ const SpotExchangeComplete = () => {
   const [matchProfilePicSource, setMatchProfilePicSource] = useState('');
 
   const matchEmail = userPosition === UserSpotPosition.DRIVER ? parker.email : driver.email;
+  const matchName = userPosition === UserSpotPosition.DRIVER ? `${parker.firstName} ${parker.lastName}` : `${driver.firstName} ${driver.lastName}`;
 
   const getMatchProfilePic = () => {
     storage()
@@ -39,7 +40,7 @@ const SpotExchangeComplete = () => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{"You've just received 5 points from"}</Text>
       <ProfilePic imageSource={matchProfilePicSource} size="large" />
-      <Text style={styles.text}>{matchEmail}</Text>
+      <Text style={styles.text}>{matchName}</Text>
       <View style={styles.starContainer}>
         <Stars starSize={30} starWidth={5} disabled={false} rating={userRating} />
       </View>
