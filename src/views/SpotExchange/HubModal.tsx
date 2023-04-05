@@ -175,10 +175,10 @@ const HubModal = ({ closeHub, cancelPress, spotSwitchCompletePress }) => {
           />
           <Button
             size="small"
-            title="Almost There"
+            title="Take your time"
             customButtonStyles={styles.button}
             customTextStyles={styles.buttonTitle}
-            onPress={() => pushTransactionChatRoomMessage('Almost There')}
+            onPress={() => pushTransactionChatRoomMessage('Take your time')}
           />
           <Button
             size="small"

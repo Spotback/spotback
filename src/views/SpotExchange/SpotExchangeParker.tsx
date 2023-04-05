@@ -137,7 +137,7 @@ const SpotExchangeParker = () => {
     },
     [],
     {
-      interval: 10000,
+      interval: 3000,
     }
   );
 

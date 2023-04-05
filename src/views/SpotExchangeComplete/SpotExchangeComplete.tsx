@@ -6,7 +6,12 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Options, ProfilePic, Stars } from '@components/index';
 import { UserSpotPosition } from '@services/types';
-import { userPositionSelector, driverSelector, parkerSelector, userRatingSelector } from '../../services/selectors';
+import {
+  userPositionSelector,
+  driverSelector,
+  parkerSelector,
+  userRatingSelector,
+} from '../../services/selectors';
 
 import useStyles from './SpotExchangeComplete.styles';
 
@@ -16,11 +21,14 @@ const SpotExchangeComplete = () => {
   const userPosition = useSelector(userPositionSelector);
   const driver = useSelector(driverSelector);
   const parker = useSelector(parkerSelector);
-  const userRating = useSelector(userRatingSelector)
+  const userRating = useSelector(userRatingSelector);
   const [matchProfilePicSource, setMatchProfilePicSource] = useState('');
 
   const matchEmail = userPosition === UserSpotPosition.DRIVER ? parker.email : driver.email;
-  const matchName = userPosition === UserSpotPosition.DRIVER ? `${parker.firstName} ${parker.lastName}` : `${driver.firstName} ${driver.lastName}`;
+  const matchName =
+    userPosition === UserSpotPosition.DRIVER
+      ? `${parker.firstName} ${parker.lastName}`
+      : `${driver.firstName} ${driver.lastName}`;
 
   const getMatchProfilePic = () => {
     storage()
@@ -38,11 +46,11 @@ const SpotExchangeComplete = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>{"You've just received 5 points from"}</Text>
+      <Text style={styles.text}>{'Please rate your experience'}</Text>
       <ProfilePic imageSource={matchProfilePicSource} size="large" />
       <Text style={styles.text}>{matchName}</Text>
       <View style={styles.starContainer}>
-        <Stars starSize={30} starWidth={5} disabled={false} rating={userRating} />
+        <Stars starSize={30} starWidth={5} disabled={false} rating={0} />
       </View>
 
       <Options
