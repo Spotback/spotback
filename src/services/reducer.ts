@@ -141,5 +141,5 @@ const reducer = (state = initialState, action: any) => {
       return state;
   }
 };
-console.log('reducer', initialState);
+console.log('reducer initialState', initialState);
 export default reducer;

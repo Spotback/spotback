@@ -100,7 +100,6 @@ const SpotExchangeParker = () => {
           longitude: point[1],
         };
       });
-      console.log('coords ', coords);
       setCoords(coords);
     } catch (error) {
       console.log('error ', error);
@@ -138,13 +137,12 @@ const SpotExchangeParker = () => {
     },
     [],
     {
-      interval: 10000,
+      interval: 3000,
     }
   );
 
   useEffect(() => {
     getMatchProfilePic();
-    console.log('rerender rerender ahahahahah');
   }, [matchEmail]);
 
   return (
@@ -160,7 +158,7 @@ const SpotExchangeParker = () => {
               latitudeDelta: 0.0035,
               longitudeDelta: 0.0035,
             }}>
-            <Marker coordinate={{ latitude, longitude }} title={'Driver Location'}>
+            <Marker coordinate={{ latitude, longitude }} title={'Driver Car'}>
               <Image style={{ width: 40, height: 40 }} source={driverCar} />
             </Marker>
             <Marker
@@ -310,8 +308,8 @@ const SpotExchangeParker = () => {
               activeOpacity={0.9}
               customButtonStyles={styles.customButtonStyles}
               size="medium"
-              title="Chat with"
-              matchedUserPic={matchImageSource}
+              title={`Chat with ${driver.firstName}`}
+              // matchedUserPic={matchImageSource}
               customTextStyles={styles.customTextStyles}
               backgroundColor={theme.colors.primary}
               titleColor={theme.colors.light}

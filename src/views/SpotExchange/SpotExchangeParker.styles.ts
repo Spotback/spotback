@@ -216,7 +216,7 @@ const useStyles = makeStyles((theme: any) =>
       fontSize: 18,
       flexWrap: 'wrap',
       flex: 1,
-      textAlign: 'left',
+      textAlign: 'center',
       marginLeft: 10,
     },
   })

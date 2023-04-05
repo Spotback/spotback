@@ -19,7 +19,7 @@ import {
   parkerSelector,
   driverCurrentLocationSelector,
   driverDesiredLocationSelector,
-  transactionIdSelector
+  transactionIdSelector,
 } from '../../services/selectors';
 
 import HubModal from './HubModal';
@@ -66,29 +66,25 @@ const SpotExchangeDriver = () => {
   const pushToFireBaseRealTimeUpdatesETA = (eta?) => {
     const newBody = dbRealTimeETARef.push();
     if (eta !== '') {
-      setInterval(function () {
-        newBody
-          .set({
-            created: Date.now(),
-            eta: eta,
-          })
-          .then(() => console.log('ETA sent!'));
-      }, 10000);
+      newBody
+        .set({
+          created: Date.now(),
+          eta: eta,
+        })
+        .then(() => console.log('ETA sent!'));
     }
   };
 
   const pushToFireBaseRealTimeUpdatesCoords = (latitude, longitude) => {
     const newBody = dbRealTimeCoordsRef.push();
     if (latitude && longitude !== 0) {
-      setInterval(function () {
-        newBody
-          .set({
-            created: Date.now(),
-            lat: latitude,
-            long: longitude,
-          })
-          .then(() => console.log('Coords sent!'));
-      }, 10000);
+      newBody
+        .set({
+          created: Date.now(),
+          lat: latitude,
+          long: longitude,
+        })
+        .then(() => console.log('Coords sent!'));
     }
   };
 
@@ -113,8 +109,9 @@ const SpotExchangeDriver = () => {
             // showsEndOfRouteFeedback
             onLocationChange={(event) => {
               const { latitude, longitude }: any = event.nativeEvent;
-              console.log('onLocationChange', latitude, longitude);
-              pushToFireBaseRealTimeUpdatesCoords(latitude, longitude);
+              setTimeout(function () {
+                pushToFireBaseRealTimeUpdatesCoords(latitude, longitude);
+              }, 2000);
             }}
             onRouteProgressChange={(event) => {
               // TODO: Send this info to the other user via firebase and drawn their map towards them
@@ -124,12 +121,9 @@ const SpotExchangeDriver = () => {
                 fractionTraveled,
                 distanceRemaining,
               }: any = event.nativeEvent;
-              console.log(
-                'onRouteProgressChange',
-
-                durationRemaining
-              );
-              pushToFireBaseRealTimeUpdatesETA(durationRemaining);
+              setTimeout(function () {
+                pushToFireBaseRealTimeUpdatesETA(durationRemaining);
+              }, 2000);
             }}
             onError={(event) => {
               const { message }: any = event.nativeEvent;
@@ -148,8 +142,8 @@ const SpotExchangeDriver = () => {
         </View>
         {youHaveArrivedModalVis ? (
           <View style={styles.youHaveArrivedContainer}>
-            <Text style={[styles.text, { fontSize: 30 }]}>You Have Arrived!</Text>
-            <Text style={[styles.text, { textAlign: 'center' }]}>
+            <Text style={[styles.text, { fontSize: 30, marginLeft: 0 }]}>You Have Arrived!</Text>
+            <Text style={[styles.text, { textAlign: 'center', marginLeft: 0 }]}>
               When you have successfully switched press the "Spot Switch Complete" button.
             </Text>
           </View>
