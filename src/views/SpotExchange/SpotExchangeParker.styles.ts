@@ -202,7 +202,7 @@ const useStyles = makeStyles((theme: any) =>
       width: 195,
       height: 113.5,
       borderBottomLeftRadius: 0,
-      borderBottomRightRadius: 40,
+      borderBottomRightRadius: 0,
       borderTopLeftRadius: 0,
       borderTopRightRadius: 0,
       elevation: 5,
