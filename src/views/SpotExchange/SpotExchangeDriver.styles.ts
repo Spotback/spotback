@@ -92,7 +92,8 @@ const useStyles = makeStyles((theme: any) =>
       position: 'absolute',
       height: 400,
       padding: 15,
-      borderRadius: 20,
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
     },
 
     startNavButton: {
