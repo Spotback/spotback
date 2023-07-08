@@ -2,7 +2,7 @@ import 'react-native-url-polyfill/auto';
 import 'react-native-get-random-values';
 import { ReceiveMessageCommand, DeleteMessageCommand, SQSClient } from '@aws-sdk/client-sqs';
 
-const queueURL = 'https://sqs.us-east-1.amazonaws.com/762500751597/matching_service.fifo';
+const queueURL = '';
 const REGION = 'us-east-1';
 const params = {
   AttributeNames: ['SentTimestamp'],
@@ -13,8 +13,8 @@ const params = {
 };
 const sqsClient = new SQSClient({
   credentials: {
-    accessKeyId: 'AKIA3DCEWEDWXYINXD4A',
-    secretAccessKey: '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',
+    accessKeyId: '',
+    secretAccessKey: '',
   },
   region: REGION,
 });
