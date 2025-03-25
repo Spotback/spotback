@@ -1,4 +1,11 @@
-# spotback
+# spotback Demo: https://youtube.com/shorts/TbP9fTLoWOI
+
+
+Spotback is a peer-to-peer parking community that matches users in need of parking with those who are vacating their spot. Our user-friendly interface enables the user to effortlessly find a parking space with just one click or by entering their destination. Spotback ensures that the user is directed to a parking spot that is within a reasonable walking distance to their final destination. Additionally, our platform allows the user vacating their spot to pin their location, enabling the spot-matching process to begin before they even reach their vehicle. This efficient process ensures a seamless transition, eliminating wait times and enabling users to arrive at their parking spot within minutes of each other. We plan to build out new features for Spotback to make it into the one-stop shop for parking apps. 
+
+
+
+
 
 Spotback React Native
 Full React Native Environment Set Up Here: https://reactnative.dev/docs/environment-setup
