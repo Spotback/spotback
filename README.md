@@ -91,60 +91,51 @@ npx react-native run-ios
 npx react-native run-ios --simulator "iPhone X"
 ```
 
-## Common Commands Android
+# 📱 iOS & Android Dev Commands Cheat Sheet
 
-```sh
+## ✅ iOS Clean & Setup (One-Liner)
+Open Xcode → Go to **Product > Clean Build Folder**
 
-cd android && ./gradlew clean && cd ..
-
-cd android && ./gradlew assembleRelease && cd ..
-
-cd android &&  ./gradlew cleanBuildCache && cd ..
-
-cd android && ./gradlew --stop && cd ..
-
-rm -Rfv ~/.gradle/
-
-ANDROID NUKE
-rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd android/app && rm -rf build && cd .. && cd .. && npm install && npm start --reset-cache
-
-npm cache clear --force
-
-Adb devices
-adb -s emulator-5554 emu kill
-
-adb shell input keyevent 82
-
-with ES7+ React/Redux/React-Native snippets installed run rnfe in editor
-
+```bash
+rm -rf node_modules && npm install && cd ios && pod deintegrate && pod install && pod update && cd .. && npm start --reset-cache
 ```
 
-## Common Commands IOS
+## 💣 iOS/Android Nuke
+```bash
+rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock.json && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && cd .. && cd android/app && rm -rf build && cd .. && cd .. && npm install && cd ios && pod install && cd .. && npm start --reset-cache
+```
 
-```sh
+## 💣 iOS Nuke
+```bash
+rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock.json && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && cd .. && npm install && cd ios && pod install && cd .. && npm cache clear --force && npm start --reset-cache
+```
 
-Open Xcode go to product
-Clean build folder
-rm -rf node_modules
-Npm install
-Cd ios
-Pod deintegrate
-Pod install
-Pod update
-Pod install
+## ⚠️ Reminder
+Revert any changes to the following files if modified, as they may cause build failures:
 
-Npm start --reset-cache
+- Info.plist
+- Strings.xml
+- Project.pbxproj
 
-IOS NUKE
-rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && cd .. && npm install --force && cd ios && pod install && cd .. && npm start --reset-cache
+## 🤖 Android Commands
+```bash
+cd android && ./gradlew clean && cd ..
+cd android && ./gradlew assembleRelease && cd ..
+cd android && ./gradlew cleanBuildCache && cd ..
+cd android && ./gradlew --stop && cd ..
+rm -Rfv ~/.gradle/
+rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd android/app && rm -rf build && cd .. && cd .. && npm install && npm start --reset-cache
+```
 
-IOS/ANDROID NUKE
-rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && rm -rf ~/.rncache && rm -rf node_modules && rm -rf package-lock && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && cd .. && cd android/app && rm -rf build && cd .. && cd .. && npm install --force && cd ios && pod install && cd .. && npm start --reset-cache
+## 🛑 Kill Emulator
+```bash
+adb devices
+adb -s emulator-5554 emu kill
+```
 
-Just IOS
-rm -rf ~/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd ios && rm -rf Podfile.lock && rm -rf Pods && rm -rf Build && pod install
-
-
-with ES7+ React/Redux/React-Native snippets installed run rnfe in editor
-
+## ❌ Delete Android Studio (Full Uninstall)
+```bash
+rm -Rf /Applications/Android\ Studio.app && rm -Rf ~/Library/Preferences/AndroidStudio* && rm -Rf ~/Library/Preferences/Google/AndroidStudio* && rm -Rf ~/Library/Preferences/com.google.android.* && rm -Rf ~/Library/Preferences/com.android.* && rm -Rf ~/Library/Application\ Support/AndroidStudio*
+rm -Rf ~/Library/Application\ Support/Google/AndroidStudio* && rm -Rf ~/Library/Logs/AndroidStudio*
+rm -Rf ~/Library/Logs/Google/AndroidStudio* && rm -Rf ~/Library/Caches/AndroidStudio* && rm -Rf ~/.AndroidStudio*
 ```
