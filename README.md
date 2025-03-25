@@ -1,95 +1,127 @@
-# spotback
+# 🚗 Spotback – Peer-to-Peer Parking App
 
-Spotback React Native
-Full React Native Environment Set Up Here: https://reactnative.dev/docs/environment-setup
+🎥 **Demo:** [Watch on YouTube](https://youtube.com/shorts/TbP9fTLoWOI)
 
-## First
+---
+
+## 📖 What is Spotback?
+
+**Spotback** Spotback is a peer-to-peer parking platform that connects drivers searching for parking with those about to leave a spot. With a simple, user-friendly interface, users can find a nearby space with one tap or by entering a destination. Spotback intelligently directs users to spots within walking distance, while drivers vacating their spots can pin their location in advance to streamline the handoff. This real-time coordination minimizes wait times and ensures a smooth, efficient parking experience.
+
+---
+
+# ⚙️ Spotback React Native Setup Guide
+
+> 📚 Full React Native Environment Setup: [React Native Docs](https://reactnative.dev/docs/environment-setup)
+
+---
+
+## 🧱 Step 1 – Install Core Tools
 
 ```sh
 brew install node
 brew install watchman
 sudo gem install cocoapods
-
 ```
 
-## Second
+---
+
+## ☕ Step 2 – Install Java Development Kit
 
 ```sh
 brew tap AdoptOpenJDK/openjdk
 brew install --cask adoptopenjdk8
-
 ```
 
-## Third
+---
 
+## 💻 Step 3 – Install Android Studio
+
+Download and install from: [Android Studio](https://developer.android.com/studio/index.html)
+
+When prompted:
+- Choose **"Custom"** setup
+- Check the following:
+  - Android SDK
+  - Android SDK Platform
+  - Performance (Intel ® HAXM)
+  - Android Virtual Device
+
+> ℹ️ If checkboxes are grayed out, you can install components later via SDK Manager.
+
+---
+
+## 📦 Step 4 – Configure Android SDK Platforms
+
+Inside Android Studio:
+- Go to **Preferences > Appearance & Behavior > System Settings > Android SDK**
+- Select the **SDK Platforms** tab
+- Enable **Show Package Details**
+- Under **Android 9 (Pie)**, check:
+  - Android SDK Platform 30
+  - Intel x86 Atom_64 System Image *or* Google APIs Intel x86 Atom System Image
+
+---
+
+## 🛠 Step 5 – Set Environment Variables
+
+In terminal:
 ```sh
-Download and install Android Studio from https://developer.android.com/studio/index.html
-Choose a "Custom" setup when prompted to select an installation type. Make sure the boxes next to all of the following are checked:
-Android SDK
-Android SDK Platform
-Performance (Intel ® HAXM) (See here for AMD)
-Android Virtual Device
-Then, click "Next" to install all of these components.
-If the checkboxes are grayed out, you will have a chance to install these components later on.
-
-
+open ~/.zshrc
 ```
 
-## Fourth
+Paste the following (replace the path with your Android SDK path):
 
 ```sh
-The SDK Manager can also be found within the Android Studio "Preferences" dialog, under Appearance & Behavior → System Settings → Android SDK.
-Select the "SDK Platforms" tab from within the SDK Manager, then check the box next to "Show Package Details" in the bottom right corner. Look for and expand the Android 9 (Pie) entry, then make sure the following items are checked:
-Android SDK Platform 30
-Intel x86 Atom_64 System Image or Google APIs Intel x86 Atom System Image
-```
-
-## Fifth
-
-```sh
-Configure the ANDROID_HOME environment variable
-The React Native tools require some environment variables to be set up in order to build apps with native code.
-Add the following lines to your $HOME/.bash_profile or $HOME/.bashrc config file unless using zsh.
-To enter profile do => open ~/.zshrc
-In android studio find your path in the android SDK location
-Copy Paste this below =>
-
 export ANDROID_HOME=/Your/Path/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-Then run => source ~/.zshrc and echo $ANDROID_HOME
-Next quit terminal and reopen
-
-Please make sure you use the correct Android SDK path. You can find the actual location of the SDK in the Android Studio "Preferences" dialog, under Appearance & Behavior → System Settings → Android SDK.
 ```
 
-## Sixth
+Apply changes:
+```sh
+source ~/.zshrc
+echo $ANDROID_HOME
+```
+
+> ✅ Close and reopen terminal after setting these variables.
+
+---
+
+## 📦 Step 6 – Install Dependencies
 
 ```sh
 npm install
 cd ios && pod install
 ```
 
-## Seventh
+---
 
-Create an env file and add in the following format:
+## 🔐 Step 7 – Create `.env` File
 
-```txt
+Inside the root of your project, create a `.env` file:
+
+```env
 KEY=VALUE
 ```
 
-## Eigth
+---
+
+## 🚀 Step 8 – Run the App
 
 ```sh
-npx react-native run-android
-
-npx react-native run-ios
-
-npx react-native run-ios --simulator "iPhone X"
+npx react-native run-android       # For Android
+npx react-native run-ios           # For iOS
+npx react-native run-ios --simulator "iPhone X"  # Specific simulator
 ```
+
+---
+
+********************************************************************************
+
+
 
 # 📱 iOS & Android Dev Commands Cheat Sheet
 
